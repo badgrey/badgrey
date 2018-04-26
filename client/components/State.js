@@ -4,20 +4,34 @@ import {withRouter} from 'react-router-dom'
 
 export class State extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
+    console.log(this.props)
     return (
       <div>
-        <h1>{this.props.match.params.state}'s Artists</h1>
+        <h1>{this.props.stateArtists[0].stateFullName} Artists</h1>
+        {
+          this.props.stateArtists.map((artist) => (
+
+              <div key={artist.id}>
+                <img src={artist.imageURL}/>
+                <h1>{artist.name}</h1>
+              </div>
+
+          ))
+        }
       </div>
     )
   }
 }
 
-const mapState = ({artists}) => ({artists})
+const mapState = ({artists}, ownProps) => {
+  return {
+    stateArtists: artists.filter((artist) => {
+      return artist.stateAbbrev === ownProps.match.params.state
+    }),
+    artists
+  }
+}
 
 const mapDispatch = null
 

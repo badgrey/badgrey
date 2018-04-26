@@ -8,7 +8,7 @@ export class Discover extends Component {
 
   clickToState = (event) => {
     const stateName = event.target.dataset.name
-    if (stateName === 'DE' || stateName === 'MD' || stateName === 'VA') {
+    if (stateName === 'DE' || stateName === 'MD' || stateName === 'VA' || stateName === 'DC') {
       this.props.history.push('/discover/DMV')
     }
     else {
@@ -187,7 +187,6 @@ export class Discover extends Component {
 }
 
 const mapState = (state) => {
-  console.log('HELLLOOOOOOOOOO')
   return {
     artists: state.artists
   }
