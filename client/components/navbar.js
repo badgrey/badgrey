@@ -3,26 +3,40 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import '../../public/style.css'
+//import {Header} from 'semantic-ui-react'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Bad Grey</h1>
+  <div className="navbar">
+    <h1 className="badgrey">Bad Grey</h1>
     <nav>
       {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/discover">Discover</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+        <div className="navLinks">
+          <div>
+            {/* The navbar will show these links after you log in */}
+            <Link to="/home">Home</Link>
+          </div>
+          <div>
+            <Link to="/discover">Discover</Link>
+          </div>
+          <div>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
         </div>
       ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/discover">Discover</Link>
+        <div className="navLinks">
+            {/* The navbar will show these links before you log in */}
+          <div>
+            <Link to="/login">Login</Link>
+          </div>
+          <div>
+            <Link to="/discover">Discover</Link>
+          </div>
+          <div>
+            <Link to="/signup">Sign Up</Link>
+          </div>
         </div>
       )}
     </nav>

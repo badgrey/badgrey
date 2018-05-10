@@ -9,9 +9,20 @@ const Artist = db.define('artist', {
   city: {
     type: Sequelize.STRING,
   },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
   imageURL: {
    type: Sequelize.STRING,
    allowNull: false
+  },
+  soundcloudURL: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  youtubeID: {
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   },
   genre: {
     type: Sequelize.STRING,

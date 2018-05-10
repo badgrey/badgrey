@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
-import {withRouter} from 'react-router-dom'
 
 export class Discover extends Component {
 
@@ -12,16 +11,14 @@ export class Discover extends Component {
       this.props.history.push('/discover/DMV')
     }
     else {
-      this.props.history.push(`/discover/${event.target.dataset.name}`)
+      this.props.history.push(`/discover/${stateName}`)
     }
   }
 
   statesCustomConfig = () => {
     return {
-      title: `${event.target.dataset.name}`,
       AL: {
         fill: 'black',
-        title: 'AL'
       },
       AK: {
         fill: 'black'
@@ -113,7 +110,7 @@ export class Discover extends Component {
       NM: {
         fill: 'black'
       },
-      NY:{
+      NY: {
         fill: 'black'
       },
       NC: {
@@ -178,9 +175,11 @@ export class Discover extends Component {
 
   render() {
     return (
-      <div className="Map">
+      <div className="discover">
         <h1>Discover Below</h1>
-        <USAMap customize={this.statesCustomConfig()} onClick={this.clickToState} />
+        <div className="Map">
+          <USAMap title="Choose Region" width={869} height={503} customize={this.statesCustomConfig()} onClick={this.clickToState} />
+        </div>
       </div>
     )
   }
@@ -195,5 +194,5 @@ const mapState = (state) => {
 
 const mapDispatch = null
 
-export default withRouter(connect(mapState, mapDispatch)(Discover))
+export default connect(mapState, mapDispatch)(Discover)
 
