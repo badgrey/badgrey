@@ -1,27 +1,36 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
+import {fetchArtists} from '../store'
 
-export const State = (props) => {
-  return (
-    <div>
-      <h1 className="title">{props.stateArtists[0].stateFullName} Artists</h1>
-      <div className="state">
-      {
-        props.stateArtists.map((artist) => (
+export class State extends Component{
 
-            <div key={artist.id}>
-              <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
-                <img src={artist.imageURL} />
-              </Link>
-            </div>
+  componentDidMount () {
+    if (this.props.stateArtists === []) {
+      this.props.loadInitialData()
+    }
+  }
+  render() {
+    return (
+      this.props.stateArtists.length === 0 ? null :
+      <div>
+        <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
+        <div className="state">
+        {
+          this.props.stateArtists.map((artist) => (
 
-        ))
-      }
+              <div key={artist.id}>
+                <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
+                  <img src={artist.imageURL} />
+                </Link>
+              </div>
+          ))
+        }
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 
@@ -34,6 +43,12 @@ const mapState = ({artists}, ownProps) => {
   }
 }
 
-const mapDispatch = null
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData () {
+      dispatch(fetchArtists())
+    }
+  }
+}
 
 export default connect(mapState, mapDispatch)(State)

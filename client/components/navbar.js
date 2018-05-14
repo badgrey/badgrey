@@ -8,16 +8,17 @@ import '../../public/style.css'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className="navbar">
-    <h1 className="badgrey">Bad Grey</h1>
+    <div className="badGreyTextLogo">
+      <img className="badgrey" src={require('../../public/images/badGreyTextLogoWhite.png')} />
+    </div>
     <nav>
       {isLoggedIn ? (
         <div className="navLinks">
           <div>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-          </div>
-          <div>
-            <Link to="/discover">Discover</Link>
+            <Link to="/">
+              <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+            </Link>
           </div>
           <div>
             <a href="#" onClick={handleClick}>
@@ -28,11 +29,11 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       ) : (
         <div className="navLinks">
             {/* The navbar will show these links before you log in */}
+          <Link to="/">
+            <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+          </Link>
           <div>
             <Link to="/login">Login</Link>
-          </div>
-          <div>
-            <Link to="/discover">Discover</Link>
           </div>
           <div>
             <Link to="/signup">Sign Up</Link>

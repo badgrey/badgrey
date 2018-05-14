@@ -50,8 +50,18 @@ path:hover {
   height: 121px;
 }
 
+.badGreyTextLogo {
+  display: flex;
+  justify-content: center;
+}
+.badGreyWolfLogo {
+  height: 100px;
+  width: 100px;
+}
+
 .badgrey {
-  color: ghostwhite;
+  height: 110px;
+  width: 110px;
 }
 
 nav a {
@@ -101,6 +111,18 @@ nav a {
 
 .artistContainer {
   text-align: -webkit-center;
+}
+
+.artistHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.artistLogos {
+  height: 100px;
+  width: 100px;
+
 }
 
 .soundcloudAndYoutube {

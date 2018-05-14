@@ -1,38 +1,49 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import badGreyWolfLogo from '../../public/images/badGreyWolfLogo.png'
+import {fetchArtists} from '../store'
+import {Link} from 'react-router-dom'
 
-export const Artist = (props) => {
 
+export class Artist extends Component{
+
+
+  componentDidMount () {
+    if (this.props.stateArtists === []) {
+      this.props.loadInitialData()
+    }
+  }
+
+  render() {
     return (
+      this.props.chosenArtist.length === 0 ? null :
       <div className="artistContainer">
-        <div>
+        <div className="artistHeader" >
+          <Link to={`/discover/${this.props.chosenArtist[0].stateAbbrev}`}>
+            <img className="artistLogos" src={require(`../../public/images/states/${this.props.chosenArtist[0].stateAbbrev}.png`)} />
+          </Link>
           <div>
-
+            <h1 className="title">{this.props.chosenArtist[0].name}</h1>
+            <h3 className="title">{this.props.chosenArtist[0].city}</h3>
           </div>
           <div>
-            <h1 className="title">{props.chosenArtist[0].name}</h1>
-            <h3 className="title">{props.chosenArtist[0].city}</h3>
-          </div>
-          <div>
-            <img src={badGreyWolfLogo} />
+            <img className="artistLogos" src= {require('../../public/images/badGreyWolfLogo.png')} />
           </div>
         </div>
         <div className="divDesc">
           <div>
             <h3>BIO</h3>
-            <h5 className="description">{props.chosenArtist[0].description}</h5>
+            <h5 className="description">{this.props.chosenArtist[0].description}</h5>
           </div>
         </div>
         <div className="soundcloudAndYoutube">
           <div>
-            <iframe width="500" height="500" scrolling="no" frameBorder="no" allow="autoplay" src={props.chosenArtist[0].soundcloudURL} />
+            <iframe width="500" height="500" scrolling="no" frameBorder="no" allow="autoplay" src={this.props.chosenArtist[0].soundcloudURL} />
           </div>
           <div className="youtube">
             {
-              props.chosenArtist[0].youtubeID.map((id) => {
+              this.props.chosenArtist[0].youtubeID.map((id) => {
                 return (
                   <YoutubePlayer key={id} ytID={id} />
                 )
@@ -42,6 +53,8 @@ export const Artist = (props) => {
         </div>
       </div>
     )
+
+  }
 }
 
 
@@ -54,6 +67,12 @@ const mapState = ({artists}, ownProps) => {
   }
 }
 
-const mapDispatch = null
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData () {
+      dispatch(fetchArtists())
+    }
+  }
+}
 
 export default connect(mapState, mapDispatch)(Artist)

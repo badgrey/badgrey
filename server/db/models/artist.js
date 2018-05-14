@@ -10,16 +10,14 @@ const Artist = db.define('artist', {
     type: Sequelize.STRING,
   },
   description: {
-    type: Sequelize.TEXT,
-    allowNull: false
+    type: Sequelize.TEXT
   },
   imageURL: {
    type: Sequelize.STRING,
    allowNull: false
   },
   soundcloudURL: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   youtubeID: {
     type: Sequelize.ARRAY(Sequelize.TEXT)

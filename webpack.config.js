@@ -26,7 +26,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif)$/,
         exclude: /node_modules/,
-        loader: ['url-loader?limit=8192']
+        loader: ['url-loader?mimetype=image/png']
       }
     ]
   }
