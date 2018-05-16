@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
+import Genre from './Genre'
 
 export class Discover extends Component {
 
@@ -179,6 +180,9 @@ export class Discover extends Component {
         <h1>Discover Below</h1>
         <div className="Map">
           <USAMap title="Choose Region" width={869} height={503} customize={this.statesCustomConfig()} onClick={this.clickToState} />
+        </div>
+        <div>
+          <Genre />
         </div>
       </div>
     )

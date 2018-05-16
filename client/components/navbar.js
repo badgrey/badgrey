@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import '../../public/style.css'
-//import {Header} from 'semantic-ui-react'
+import { slide as Menu } from 'react-burger-menu'
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className="navbar">
@@ -21,9 +21,11 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             </Link>
           </div>
           <div>
-            <a href="#" onClick={handleClick}>
-              Logout
-            </a>
+            <Menu width="80px" isOpen={true}>
+              <a className="menu-item" href="#" onClick={handleClick}>
+                Logout
+              </a>
+            </Menu>
           </div>
         </div>
       ) : (
@@ -32,12 +34,11 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/">
             <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
           </Link>
-          <div>
+          <Menu width="80px" isOpen={true}>
             <Link to="/login">Login</Link>
-          </div>
-          <div>
+
             <Link to="/signup">Sign Up</Link>
-          </div>
+          </Menu>
         </div>
       )}
     </nav>

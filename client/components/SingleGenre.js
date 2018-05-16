@@ -4,25 +4,26 @@ import {Link} from 'react-router-dom'
 import '../../public/style.css'
 import {fetchArtists} from '../store'
 
-export class State extends Component{
+export class SingleGenre extends Component{
 
   componentDidMount () {
-    if (this.props.stateArtists === []) {
+    console.log('HEY MADE IT BITCH')
+    if (this.props.genreArtists === []) {
       this.props.loadInitialData()
     }
   }
   render() {
     return (
-      this.props.stateArtists.length === 0 ? null :
+      this.props.genreArtists.length === 0 ? null :
       <div>
-        <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
+        <h1 className="title">{this.props.genreArtists[0].genre} Artists</h1>
         <div className="state">
         {
-          this.props.stateArtists.map((artist) => (
+          this.props.genreArtists.map((artist) => (
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
-                  <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
+                  <img src={artist.imageURL} />
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
@@ -36,11 +37,10 @@ export class State extends Component{
   }
 }
 
-
 const mapState = ({artists}, ownProps) => {
   return {
-    stateArtists: artists.filter((artist) => {
-      return artist.stateAbbrev === ownProps.match.params.state
+    genreArtists: artists.filter((artist) => {
+      return artist.genre === ownProps.match.params.genre
     }),
     artists
   }
@@ -54,4 +54,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(State)
+export default connect(mapState, mapDispatch)(SingleGenre)
