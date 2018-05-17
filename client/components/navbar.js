@@ -6,7 +6,7 @@ import {logout} from '../store'
 import '../../public/style.css'
 import { slide as Menu } from 'react-burger-menu'
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div className="navbar">
     <div className="badGreyTextLogo">
       <img className="badgrey" src={require('../../public/images/badGreyTextLogoWhite.png')} />
@@ -21,11 +21,23 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             </Link>
           </div>
           <div>
+          {
+            isAdmin ?
+            <Menu width="80px" isOpen={true}>
+              <Link to="/newArtist" className="menu-item">
+                Add Artist
+              </Link>
+              <a className="menu-item" href="#" onClick={handleClick}>
+                Logout
+              </a>
+            </Menu>
+                :
             <Menu width="80px" isOpen={true}>
               <a className="menu-item" href="#" onClick={handleClick}>
                 Logout
               </a>
             </Menu>
+              }
           </div>
         </div>
       ) : (
@@ -51,7 +63,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: state.user.isAdmin
   }
 }
 
@@ -70,5 +83,6 @@ export default connect(mapState, mapDispatch)(Navbar)
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }

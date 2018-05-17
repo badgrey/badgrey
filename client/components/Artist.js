@@ -23,7 +23,7 @@ export class Artist extends Component{
           <Link to={`/discover/${this.props.chosenArtist[0].stateAbbrev}`}>
             <img className="artistLogos" src={require(`../../public/images/states/${this.props.chosenArtist[0].stateAbbrev}.png`)} />
           </Link>
-          <div>
+          <div className="artistNameHeader">
             <h1 className="title">{this.props.chosenArtist[0].name}</h1>
             <h3 className="title">{this.props.chosenArtist[0].city}</h3>
           </div>

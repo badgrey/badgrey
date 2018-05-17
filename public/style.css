@@ -130,10 +130,14 @@ nav a {
   text-align: -webkit-center;
 }
 
+/* .artistNameHeader {
+  margin-left: 60px;
+} */
+
 .artistHeader {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .artistLogos {
