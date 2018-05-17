@@ -6,3 +6,8 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
+export {default as Discover} from './Discover'
+export {default as State} from './State'
+export {default as Artist} from './Artist'
+export {default as YoutubePlayer} from './Youtube'
+export {default as SingleGenre} from './SingleGenre'

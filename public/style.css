@@ -1,3 +1,9 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px
+}
+
 body {
   font-family: sans-serif;
 }
@@ -10,12 +16,184 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+/* Map Styles */
+
+path {
+  pointer-events: all;
+}
+path:hover {
+  opacity: 0.50;
+  cursor: pointer;
+}
+.discover {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+.Map {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* NAVBAR STYLES */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: #141210;
+  text-align: center;
+  height: 121px;
+}
+
+.badGreyTextLogo {
+  display: flex;
+  justify-content: center;
+}
+.badGreyWolfLogo {
+  height: 100px;
+  width: 100px;
+}
+
+.badgrey {
+  height: 110px;
+  width: 110px;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+  color: ghostwhite;
+
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bm-burger-bars {
+  background: whitesmoke;
+}
+
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  right: 96px;
+  top: 36px;
+}
+
+.bm-menu {
+  background: #141210;
+  color: whitesmoke
+}
+
+/* State Artists Styles */
+
+.title {
+  text-align: center;
+}
+.state{
+  display: flex;
+  justify-content: center;
+}
+
+.artistPic {
+  width: 300px; /* whatever set width */
+  height: 300px;
+  display: inline-block; /* or you could float them */
+  overflow: hidden;
+}
+
+.artistPic:hover {
+  opacity: 0.65;
+}
+
+.artistPic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.artistName {
+  text-align: center
+}
+
+/* Individual Artist Styles */
+
+.artistContainer {
+  text-align: -webkit-center;
+}
+
+/* .artistNameHeader {
+  margin-left: 60px;
+} */
+
+.artistHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.artistLogos {
+  height: 100px;
+  width: 100px;
+
+}
+
+.soundcloudAndYoutube {
+  display: flex;
+  justify-content: space-evenly;
+  height: 380px;
+}
+
+.divDesc {
+  display: flex;
+  justify-content: center;
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
+  width: 350px;
+  margin: 30px;
+}
+
+.description {
+  padding: 2px 16px;
+}
+
+.youtube {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 595px;
+}
+
+.genreLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin: 15px 20px 0 0;
+  padding: 5px;
+}
+
+/* Genre Grid Styles */
+
+.genreGrid {
+  display: inline-grid;
+  grid-template-rows: 160px 160px;
+  grid-template-columns: 160px 160px 160px 160px 160px;
+  grid-gap: 3px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.genreName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
 }

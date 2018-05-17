@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
-import {me} from './store'
+import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre} from './components'
+import {me, fetchArtists} from './store'
 
 /**
  * COMPONENT
@@ -15,12 +15,15 @@ class Routes extends Component {
 
   render () {
     const {isLoggedIn} = this.props
-
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route exact path="/" component={Discover} />
+        <Route exact path="/discover/genre/:genre" component={SingleGenre} />
+        <Route exact path="/discover/:state" component={State} />
+        <Route exact path="/discover/:state/:artist" component={Artist} />
         {
           isLoggedIn &&
             <Switch>
@@ -39,6 +42,7 @@ class Routes extends Component {
  * CONTAINER
  */
 const mapState = (state) => {
+  console.log(state)
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
@@ -50,6 +54,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(me())
+      dispatch(fetchArtists())
     }
   }
 }
