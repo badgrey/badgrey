@@ -58,6 +58,7 @@ export class Artist extends Component{
 
 
 const mapState = ({artists}, ownProps) => {
+  console.log("ARTISTS HERE",artists)
   return {
     chosenArtist: artists.filter((artist) => {
       return artist.name.split(' ').join('') === ownProps.match.params.artist
