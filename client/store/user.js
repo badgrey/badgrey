@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {addError} from './error'
 
 /**
  * ACTION TYPES
@@ -26,7 +27,7 @@ export const me = () =>
     axios.get('/auth/me')
       .then(res =>
         dispatch(getUser(res.data || defaultUser)))
-      .catch(err => console.log(err))
+      .catch(error => dispatch(addError({error: error})))
 
 export const auth = (email, password, method) =>
   dispatch =>
@@ -34,10 +35,8 @@ export const auth = (email, password, method) =>
       .then(res => {
         dispatch(getUser(res.data))
         history.push('/home')
-      }, authError => { // rare example: a good use case for parallel (non-catch) error handler
-        dispatch(getUser({error: authError}))
       })
-      .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+      .catch(error => dispatch(addError({error: error})))
 
 export const logout = () =>
   dispatch =>

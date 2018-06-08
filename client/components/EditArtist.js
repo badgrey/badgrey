@@ -7,7 +7,7 @@ import {
   TextArea,
   Dropdown
 } from 'semantic-ui-react';
-import { createNewArtist } from '../store/artists'
+import {editCurrentArtist} from '../store'
 
 const stateOptions = [
   { key: 'AL', text: 'AL', value: 'AL' },
@@ -73,12 +73,12 @@ const genreOptions = [
   {key: 'T', text: 'Trap', value: 'Trap'}
 ]
 
-export class NewArtist extends Component {
+export class EditArtist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      genre: '',
-      stateAbbrev: ''
+      genre: `${this.props.chosenArtist[0].genre}`,
+      stateAbbrev: `${this.props.chosenArtist[0].stateAbbrev}`
     }
     this.submit = this.submit.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this)
@@ -118,8 +118,7 @@ export class NewArtist extends Component {
         stateAbbrev: this.state.stateAbbrev
       }
     }
-    console.log(artistInfo)
-    this.props.submitForm(artistInfo)
+    this.props.submitForm(this.props.chosenArtist[0].id, artistInfo)
     this.props.history.push(`/discover/${this.state.stateAbbrev}/${urlName}`)
   }
 
@@ -128,32 +127,32 @@ export class NewArtist extends Component {
       <Form className="form" onSubmit={this.submit} >
         <Form.Field>
           <label>Artist Name</label>
-          <Input name="name" type="text" required placeholder="Name" className="formInput" />
+          <Input name="name" type="text" required placeholder="Name" className="formInput" defaultValue={`${this.props.chosenArtist[0].name}`} />
         </Form.Field>
         <Form.Field>
           <label>Artist City</label>
-          <Input name="city" type="text" required placeholder="City" />
+          <Input name="city" type="text" required placeholder="City" defaultValue={`${this.props.chosenArtist[0].city}`} />
         </Form.Field>
         <Form.Group>
-            <Dropdown name="stateAbbrev" type="text" required onChange={this.handleStateAbbrevChange} scrolling={true} label="State" options={stateOptions} placeholder="State" />
-            <Dropdown onChange={this.handleGenreChange} name="genre" type="text" required label="Genre" options={genreOptions} placeholder="Genre" />
+            <Dropdown name="stateAbbrev" type="text" required onChange={this.handleStateAbbrevChange} scrolling={true} label="State" options={stateOptions} placeholder="State" defaultValue={`${this.props.chosenArtist[0].stateAbbrev}`} />
+            <Dropdown onChange={this.handleGenreChange} name="genre" type="text" required label="Genre" options={genreOptions} placeholder="Genre" defaultValue={`${this.props.chosenArtist[0].genre}`} />
         </Form.Group>
         <Form.Field>
           <label>Artist Description</label>
-          <TextArea name="description" type="text" required placeholder="Description" />
+          <TextArea name="description" type="text" required placeholder="Description" defaultValue={`${this.props.chosenArtist[0].description}`} />
         </Form.Field>
           <Form.Group>
           <Form.Field>
             <label>Soundcloud URL</label>
-            <Input name="soundcloudURL" type="url" required placeholder="SoundCloudURL" />
+            <Input name="soundcloudURL" type="url" required placeholder="SoundCloudURL" defaultValue={`${this.props.chosenArtist[0].soundcloudURL}`} />
           </Form.Field>
           <Form.Field>
             <label>Youtube ID</label>
-            <Input name="youtubeID" placeholder="ID Number" />
+            <Input name="youtubeID" placeholder="ID Number" defaultValue={`${this.props.chosenArtist[0].youtubeID.join(' ')}`} />
           </Form.Field>
           <Form.Field>
             <label>Image File Name</label>
-            <Input name="imageURL" type="text" required placeholder="NAME.jpg" />
+            <Input name="imageURL" type="text" required placeholder="NAME.jpg" defaultValue={`${this.props.chosenArtist[0].imageURL}`} />
           </Form.Field>
         </Form.Group>
         <Button type="submit">Submit</Button>
@@ -162,12 +161,20 @@ export class NewArtist extends Component {
   }
 }
 
-const mapState = null;
+const mapState = ({artists}, ownProps) => {
+  return {
+    chosenArtist: artists.filter((artist) => {
+      return artist.name.split(' ').join('') === ownProps.match.params.artist
+    }),
+    artists
+  }
+}
+
 
 const mapDispatch = dispatch => ({
-  submitForm(artist){
-    dispatch(createNewArtist(artist))
+  submitForm(id ,artist){
+    dispatch(editCurrentArtist(id, artist))
   }
 });
 
-export default connect(mapState, mapDispatch)(NewArtist);
+export default connect(mapState, mapDispatch)(EditArtist);
