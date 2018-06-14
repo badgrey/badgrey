@@ -8,17 +8,13 @@ import { auth, deleteError } from '../store';
  */
 export class AuthForm extends Component {
   renderErrorMessage() {
-    console.log('MADE IT HERE')
     setTimeout(() => this.props.renderError(), 3000)
   }
 
   render() {
     const { name, displayName, handleSubmit } = this.props;
     const error = this.props.error.error
-    console.log('PROPS', this.props)
-    console.log("error", error)
     if (error) {
-      console.log('HITTING THIS CONDITION')
       this.renderErrorMessage()
     }
     return (
@@ -38,7 +34,7 @@ export class AuthForm extends Component {
           </div>
           {error && (
             <div className="loginError">
-              <p>Please Login with Existing Account</p>
+              <p>Username or Password Incorrect</p>
             </div>
           )}
         </form>

@@ -118,7 +118,6 @@ export class NewArtist extends Component {
         stateAbbrev: this.state.stateAbbrev
       }
     }
-    console.log(artistInfo)
     this.props.submitForm(artistInfo)
     this.props.history.push(`/discover/${this.state.stateAbbrev}/${urlName}`)
   }

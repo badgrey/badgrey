@@ -15,7 +15,6 @@ router.get('/:id', asyncHandler(async (req, res, next) => {
 }))
 
 router.post('/admin', isAdmin, asyncHandler(async (req, res, next) => {
-  console.log('YOOOOOO WHAT ARE WE HERE WHAT IS THIS SHIT???!!!!', req)
   const newArtist = await Artist.create(req.body)
   res.status(201).json(newArtist)
 }))

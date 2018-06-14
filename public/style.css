@@ -253,14 +253,14 @@ nav a {
 
 .loginError {
   position: absolute;
-  width: 150px;
+  width: 180px;
   border-radius: 4px;
   background: rgba(0,0,0,0.7);
   color: whitesmoke;
   text-align: center;
   font-size: 20px;
   margin-top: 50vh;
-  animation: fadeinout 3s linear forwards;
+  animation: fadeinout 2s linear forwards;
 }
 
 @keyframes fadeinout {
