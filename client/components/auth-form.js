@@ -1,33 +1,46 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
-import {auth} from '../store'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { auth, deleteError } from '../store';
 
 /**
  * COMPONENT
  */
-const AuthForm = (props) => {
-  const {name, displayName, handleSubmit, error} = props
+export class AuthForm extends Component {
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000)
+  }
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email"><small>Email</small></label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password"><small>Password</small></label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
-    </div>
-  )
+  render() {
+    const { name, displayName, handleSubmit } = this.props;
+    const error = this.props.error.error
+    if (error) {
+      this.renderErrorMessage()
+    }
+    return (
+      <div className="loginBorder">
+        <form className="form" onSubmit={handleSubmit} name={name}>
+          <h2>Login Below</h2>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input className="loginInput" name="email" type="text" />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input name="password" type="password" />
+          </div>
+          <div>
+            <button type="submit">{displayName}</button>
+          </div>
+          {error && (
+            <div className="loginError">
+              <p>Username or Password Incorrect</p>
+            </div>
+          )}
+        </form>
+      </div>
+    );
+  }
 }
 
 /**
@@ -37,36 +50,45 @@ const AuthForm = (props) => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = (state) => {
+const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
-  }
-}
+    error: state.error
+  };
+};
 
-const mapSignup = (state) => {
+const mapSignup = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
+    error: state.error
+  };
+};
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = dispatch => {
   return {
-    handleSubmit (evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+    handleSubmit(evt) {
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      return dispatch(auth(email, password, formName));
+    },
+    renderError(){
+      return dispatch(deleteError())
     }
-  }
-}
+  };
+};
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(
+  mapLogin,
+  mapDispatch
+)(AuthForm);
+export const Signup = connect(
+  mapSignup,
+  mapDispatch
+)(AuthForm);
 
 /**
  * PROP TYPES
@@ -76,4 +98,4 @@ AuthForm.propTypes = {
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.object
-}
+};

@@ -7,7 +7,6 @@ import {fetchArtists} from '../store'
 export class SingleGenre extends Component{
 
   componentDidMount () {
-    console.log('HEY MADE IT BITCH')
     if (this.props.genreArtists === []) {
       this.props.loadInitialData()
     }

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre} from './components'
+import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre, NewArtist, EditArtist} from './components'
 import {me, fetchArtists} from './store'
 
 /**
@@ -21,6 +21,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/" component={Discover} />
+        <Route exact path="/newArtist" component={NewArtist} />
+        <Route exact path="/edit/:artist" component={EditArtist} />
         <Route exact path="/discover/genre/:genre" component={SingleGenre} />
         <Route exact path="/discover/:state" component={State} />
         <Route exact path="/discover/:state/:artist" component={Artist} />
@@ -42,7 +44,6 @@ class Routes extends Component {
  * CONTAINER
  */
 const mapState = (state) => {
-  console.log(state)
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
