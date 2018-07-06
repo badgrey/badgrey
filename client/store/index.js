@@ -5,8 +5,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import artists from './artists'
 import error from './error'
+import email from './email'
 
-const reducer = combineReducers({user, artists, error})
+const reducer = combineReducers({user, artists, error, email})
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})
@@ -17,3 +18,4 @@ export default store
 export * from './user'
 export * from './artists'
 export * from './error'
+export * from './email'
