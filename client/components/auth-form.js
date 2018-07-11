@@ -1,26 +1,70 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { auth, deleteError } from '../store';
+import { auth, deleteError, sendConfirmEmail } from '../store';
 
-/**
- * COMPONENT
- */
 export class AuthForm extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      rand: '',
+      checking: false,
+      email: '',
+      password: ''
+      }
+    this.sendEmail = this.sendEmail.bind(this)
+    this.completeSignUp = this.completeSignUp.bind(this)
+  }
+
+  sendEmail(evt) {
+    evt.preventDefault();
+      const formName = evt.target.name;
+      this.setState({formName: formName})
+      if (formName === 'signup') {
+        const rand = Math.floor(((Math.random() * 10000) + 54))
+        this.setState({rand: '' + rand})
+        this.setState({checking: true})
+        this.setState({email: evt.target.email.value})
+        this.setState({password: evt.target.password.value})
+        const info = {
+          rand: rand,
+          email: evt.target.email.value
+        }
+        this.props.handleSubmitSignUp(info)
+      }
+      if (formName === 'login') {
+        this.props.handleSubmitLogin(evt.target.email.value, evt.target.password.value, formName)
+        this.props.history.push('/home')
+      }
+  }
+
+
+  completeSignUp(evt) {
+    evt.preventDefault();
+    if (this.state.rand === evt.target.code.value) {
+      this.props.submitForm(this.state.email, this.state.password, this.props.name)
+      this.props.history.push('/home')
+    }
+  }
+
+
   renderErrorMessage() {
     setTimeout(() => this.props.renderError(), 3000)
   }
 
   render() {
-    const { name, displayName, handleSubmit } = this.props;
+    const { name, displayName, submitForm } = this.props;
     const error = this.props.error.error
     if (error) {
       this.renderErrorMessage()
     }
     return (
+      !this.state.checking ?
       <div className="loginBorder">
-        <form className="form" onSubmit={handleSubmit} name={name}>
-          <h2>Login Below</h2>
+        <form className="form" onSubmit={this.sendEmail} name={name}>
+          <h2>{this.props.displayName} Below</h2>
           <div>
             <label htmlFor="email">Email</label>
             <input className="loginInput" name="email" type="text" />
@@ -38,6 +82,24 @@ export class AuthForm extends Component {
             </div>
           )}
         </form>
+      </div>
+      :
+      <div className="loginBorder" onSubmit={this.completeSignUp}>
+          <form className="form">
+            <h2>Enter Code Below</h2>
+            <div>
+              <label>Code</label>
+              <input className="loginInput" name="code" type="text" />
+            </div>
+            <div>
+              <button type="submit">Enter</button>
+            </div>
+            {error && (
+              <div className="loginError">
+                <p>Incorrect Code!</p>
+              </div>
+            )}
+          </form>
       </div>
     );
   }
@@ -68,12 +130,14 @@ const mapSignup = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
-      evt.preventDefault();
-      const formName = evt.target.name;
-      const email = evt.target.email.value;
-      const password = evt.target.password.value;
-      return dispatch(auth(email, password, formName));
+     handleSubmitSignUp(info) {
+        return dispatch(sendConfirmEmail(info))
+    },
+    handleSubmitLogin(email, password, formName) {
+        return dispatch(auth(email, password, formName));
+    },
+    submitForm(email, pass, formName) {
+        return dispatch(auth(email, pass, formName));
     },
     renderError(){
       return dispatch(deleteError())
@@ -96,6 +160,5 @@ export const Signup = connect(
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.object
 };
