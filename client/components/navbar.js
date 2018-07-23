@@ -27,12 +27,18 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
               <Link to="/newArtist" className="menu-item">
                 Add Artist
               </Link>
+              <Link to="/account" className="menu-item">
+              Account
+              </Link>
               <a className="menu-item" href="#" onClick={handleClick}>
                 Logout
               </a>
             </Menu>
                 :
             <Menu width="80px" isOpen={true}>
+              <Link to="/account" className="menu-item">
+              Account
+              </Link>
               <a className="menu-item" href="#" onClick={handleClick}>
                 Logout
               </a>
