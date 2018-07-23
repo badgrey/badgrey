@@ -16,6 +16,15 @@ router.post('/login', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', async (req, res, next) => {
+  const response = await User.update(req.body, {
+    where: { id: req.params.id },
+    returning: true,
+
+  });
+  res.json(response)
+})
+
 router.post('/signup', (req, res, next) => {
   User.create(req.body)
     .then(user => {

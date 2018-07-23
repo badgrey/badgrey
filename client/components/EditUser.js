@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {editCurrentUser} from '../store/user'
+import {editCurrentUser, deleteError} from '../store'
 
 export class EditArtist extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ export class EditArtist extends Component {
     this.showEmailForm = this.showEmailForm.bind(this)
     this.showPasswordForm = this.showPasswordForm.bind(this)
     this.changeEmail = this.changeEmail.bind(this)
+    this.changePassword = this.changePassword.bind(this)
   }
 
   showEmailForm(evt) {
@@ -30,12 +31,29 @@ export class EditArtist extends Component {
     const userInfo = {
       email: evt.target.email.value
     }
-    this.props.submitEmailForm(this.props.id, userInfo)
+    this.props.submitForm(this.props.id, userInfo)
     this.props.history.push('/account')
+  }
+  changePassword(evt) {
+    evt.preventDefault()
+    if (evt.target.newpassword.value === evt.target.confirmpassword.value) {
+      const userInfo = {
+        password: evt.target.newpassword.value
+      }
+      this.props.submitForm(this.props.id, userInfo)
+      this.props.history.push('/account')
+    }
+  }
+
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000)
   }
 
   render () {
-
+    const error = this.props.error.error
+    if (error) {
+      this.renderErrorMessage()
+    }
     return (
       <div>
         <div>
@@ -83,22 +101,23 @@ export class EditArtist extends Component {
             :
             (
               <div>
-                <form>
-                  <div>
-                    <label htmlFor="password">Old Password</label>
-                    <input name="password" type="password" />
-                  </div>
+                <form onSubmit={this.changePassword}>
                   <div>
                     <label htmlFor="password">New Password</label>
-                    <input name="password" type="password" />
+                    <input name="newpassword" type="password" />
                   </div>
                   <div>
                     <label htmlFor="password">Confirm Password</label>
-                    <input name="password" type="password" />
+                    <input name="confirmpassword" type="password" />
                   </div>
                   <div>
                     <button type="submit">Change</button>
                   </div>
+                  {error && (
+                    <div className="loginError">
+                      <p>Incorrect Password or Passwords Do Not Match!</p>
+                    </div>
+                  )}
                 </form>
               </div>
             )
@@ -113,13 +132,16 @@ const mapState = (state) => {
   return {
     id: state.user.id,
     email: state.user.email,
-    password: state.user.password
+    error: state.error
   }
 }
 
 const mapDispatch = dispatch => ({
-  submitEmailForm(id, user){
+  submitForm(id, user){
     dispatch(editCurrentUser(id, user))
+  },
+  renderError(){
+    return dispatch(deleteError())
   }
 });
 

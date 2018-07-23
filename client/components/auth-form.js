@@ -55,7 +55,7 @@ export class AuthForm extends Component {
   }
 
   render() {
-    const { name, displayName, submitForm } = this.props;
+    const { name, displayName} = this.props;
     const error = this.props.error.error
     if (error) {
       this.renderErrorMessage()

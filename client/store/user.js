@@ -52,7 +52,7 @@ export const logout = () =>
 export const editCurrentUser = (id, user) =>
 async (dispatch) => {
   try {
-    const updatedUser = await axios.put(`/api/users/${id}`, user)
+    const updatedUser = await axios.put(`/auth/${id}`, user)
     dispatch(editUser(updatedUser.data))
     return updatedUser;
   }
