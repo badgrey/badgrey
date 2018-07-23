@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {editCurrentUser} from '../store/user'
 
 export class EditArtist extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export class EditArtist extends Component {
 
     this.showEmailForm = this.showEmailForm.bind(this)
     this.showPasswordForm = this.showPasswordForm.bind(this)
+    this.changeEmail = this.changeEmail.bind(this)
   }
 
   showEmailForm(evt) {
@@ -21,6 +23,14 @@ export class EditArtist extends Component {
   showPasswordForm(evt) {
     evt.preventDefault()
     this.setState({passUpdate: true})
+  }
+
+  changeEmail(evt) {
+    evt.preventDefault()
+    const userInfo = {
+      email: evt.target.email.value
+    }
+    this.props.submitEmailForm(this.props.id, userInfo)
   }
 
   render () {
@@ -50,7 +60,7 @@ export class EditArtist extends Component {
                     <input className="loginInput" name="email" type="text" />
                   </div>
                   <div>
-                    <button type="submit">Change</button>
+                    <button onSubmit={this.changeEmail} type="submit">Change</button>
                   </div>
                 </form>
               </div>
@@ -100,11 +110,16 @@ export class EditArtist extends Component {
 
 const mapState = (state) => {
   return {
+    id: state.user.id,
     email: state.user.email,
     password: state.user.password
   }
 }
 
-const mapDispatch = null
+const mapDispatch = dispatch => ({
+  submitEmailForm(id, user){
+    dispatch(editCurrentUser(id, user))
+  }
+});
 
 export default connect(mapState, mapDispatch)(EditArtist);

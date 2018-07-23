@@ -172,7 +172,7 @@ const mapState = ({artists}, ownProps) => {
 
 
 const mapDispatch = dispatch => ({
-  submitForm(id ,artist){
+  submitForm(id, artist){
     dispatch(editCurrentArtist(id, artist))
   }
 });
