@@ -16,13 +16,17 @@ router.post('/login', (req, res, next) => {
     .catch(next)
 })
 
-router.put('/:id', async (req, res, next) => {
-  const response = await User.update(req.body, {
-    where: { id: req.params.id },
-    returning: true,
-
-  });
-  res.json(response)
+router.put('/:id/resetpw', (req, res, next) => {
+  User.update(req.body, {
+    where: {
+      id: req.params.id
+    },
+    individualHooks: true
+  })
+    .then(([updatedRows, [updatedUser]]) => {
+      res.status(200).json(updatedUser)
+    })
+    .catch(next)
 })
 
 router.post('/signup', (req, res, next) => {

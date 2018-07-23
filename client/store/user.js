@@ -52,13 +52,22 @@ export const logout = () =>
 export const editCurrentUser = (id, user) =>
 async (dispatch) => {
   try {
-    const updatedUser = await axios.put(`/auth/${id}`, user)
+    const updatedUser = await axios.put(`/api/users/${id}`, user)
     dispatch(editUser(updatedUser.data))
     return updatedUser;
   }
   catch (err) {
     console.log(err)
   }
+}
+
+export const updateUserPassword = (userId, newpw) => dispatch => {
+  axios.put(`/auth/${userId}/resetpw`, {password: newpw, pendingPwReset: false})
+  .then((res) => {
+    dispatch(editUser(res.data))
+    history.push('/')
+  })
+  .catch(err => console.error(err));
 }
 
 /**

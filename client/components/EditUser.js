@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {editCurrentUser, deleteError} from '../store'
+import {editCurrentUser, updateUserPassword, deleteError} from '../store'
 
 export class EditArtist extends Component {
   constructor(props) {
@@ -37,10 +37,7 @@ export class EditArtist extends Component {
   changePassword(evt) {
     evt.preventDefault()
     if (evt.target.newpassword.value === evt.target.confirmpassword.value) {
-      const userInfo = {
-        password: evt.target.newpassword.value
-      }
-      this.props.submitForm(this.props.id, userInfo)
+      this.props.submitPassForm(this.props.id, evt.target.newpassword.value)
       this.props.history.push('/account')
     }
   }
@@ -139,6 +136,9 @@ const mapState = (state) => {
 const mapDispatch = dispatch => ({
   submitForm(id, user){
     dispatch(editCurrentUser(id, user))
+  },
+  submitPassForm(id, pass){
+    dispatch(updateUserPassword(id, pass))
   },
   renderError(){
     return dispatch(deleteError())
