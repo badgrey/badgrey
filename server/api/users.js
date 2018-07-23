@@ -12,3 +12,12 @@ router.get('/', (req, res, next) => {
     .then(users => res.json(users))
     .catch(next)
 })
+
+router.put('/:id', async (req, res, next) => {
+  const response = await User.update(req.body, {
+    where: { id: req.params.id },
+    returning: true,
+
+  });
+  res.json(response)
+})

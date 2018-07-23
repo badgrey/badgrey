@@ -31,6 +31,7 @@ export class EditArtist extends Component {
       email: evt.target.email.value
     }
     this.props.submitEmailForm(this.props.id, userInfo)
+    this.props.history.push('/account')
   }
 
   render () {
@@ -54,13 +55,13 @@ export class EditArtist extends Component {
             :
             (
               <div>
-                <form>
+                <form onSubmit={this.changeEmail}>
                   <div>
                     <label htmlFor="email">New Email</label>
                     <input className="loginInput" name="email" type="text" />
                   </div>
                   <div>
-                    <button onSubmit={this.changeEmail} type="submit">Change</button>
+                    <button type="submit">Change</button>
                   </div>
                 </form>
               </div>
