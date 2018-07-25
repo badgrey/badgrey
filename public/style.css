@@ -213,6 +213,89 @@ nav a {
   justify-content: center;
   align-items: center;
   border: 2px solid black;
+  color: black;
+  font-size: 15px;
+}
+
+.genreName {
+  background-color: black;
+  color: whitesmoke;
+  transition: 0.3s;
+}
+
+#Trap #Alternative #Cloud #Conscious #Experimental #Instrumental #Pop #JazzSoul #RB #OldSchool {
+  transition: 0.3s;
+}
+
+#Trap:hover {
+  background-image: url('./images/genres/Trap.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Alternative:hover {
+  background-image: url('./images/genres/Alternative.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Cloud:hover {
+  background-image: url('./images/genres/Cloud.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Conscious:hover {
+  background-image: url('./images/genres/Conscious.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Experimental:hover {
+  background-image: url('./images/genres/Experimental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Instrumental:hover {
+  background-image: url('./images/genres/Instrumental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Pop:hover {
+  background-image: url('./images/genres/Pop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#JazzSoul:hover {
+  background-image: url('./images/genres/JazzSoul.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#RB:hover {
+  background-image: url('./images/genres/R&B.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#OldSchool:hover {
+  background-image: url('./images/genres/Old\ School.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
 }
 
 /* Artist Form Creation Styles */
