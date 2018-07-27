@@ -68,6 +68,7 @@ path:hover {
 .badgrey {
   height: 110px;
   width: 110px;
+  margin-right: 57px;
 }
 
 nav a {
@@ -118,8 +119,9 @@ nav a {
 }
 
 .artistPic:hover {
-  opacity: 1;
+  -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
+  color:whitesmoke;
   transform: scale(1.2);
 }
 .artistPic:hover .artistName {
@@ -141,7 +143,7 @@ nav a {
   margin-right: 76px;
   margin-bottom: 124px;
   font-size: 26px;
-  color: black;
+  color: white;
   transition: 0.3s;
 }
 
@@ -154,7 +156,7 @@ nav a {
 .artistHeader {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .artistLogos {
@@ -167,6 +169,7 @@ nav a {
   display: flex;
   justify-content: space-evenly;
   height: 380px;
+  margin-top: 50px;
 }
 
 .divDesc {
@@ -189,8 +192,9 @@ nav a {
 }
 
 .genreLink {
-  display: flex;
-  justify-content: center;
+  display: inline-grid;
+  grid-template-rows: 120px;
+  grid-template-columns: 120px;
   align-items: center;
   border: 2px solid black;
   margin: 15px 20px 0 0;

@@ -22,10 +22,10 @@ export class SingleGenre extends Component{
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
-                <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
-                  <div className="artistName">
+                <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
+                <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
                 </Link>
               </div>
           ))

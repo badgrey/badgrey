@@ -44,14 +44,10 @@ export class Artist extends Component{
               </Link>
             }
           </div>
-          <Link to={`/discover/genre/${this.props.chosenArtist[0].genre}`} className="genreLink">
-            More {this.props.chosenArtist[0].genre} Artists
-          </Link>
-        </div>
-        <div className="divDesc">
-          <div>
-            <h3>BIO</h3>
-            <h5 className="description">{this.props.chosenArtist[0].description}</h5>
+          <div className="genreLink">
+            <Link to={`/discover/genre/${this.props.chosenArtist[0].genre}`} className="genreLinkText">
+              More {this.props.chosenArtist[0].genre} Artists
+            </Link>
           </div>
         </div>
         <div className="soundcloudAndYoutube">
