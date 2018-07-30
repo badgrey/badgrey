@@ -108,6 +108,7 @@ nav a {
 .state{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .artistPic {
@@ -170,18 +171,6 @@ nav a {
   justify-content: space-evenly;
   height: 380px;
   margin-top: 50px;
-}
-
-.divDesc {
-  display: flex;
-  justify-content: center;
-  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
-  width: 350px;
-  margin: 30px;
-}
-
-.description {
-  padding: 2px 16px;
 }
 
 .youtube {
