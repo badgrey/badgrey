@@ -97,8 +97,16 @@ export class NewArtist extends Component {
         stateAbbrev: event.target.stateAbbrev.value
       }
     }
-    this.props.submitForm(artistInfo)
-    this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName}`)
+    let dup = false
+    for(let i = 0; i < this.props.artists.length; i++) {
+      if(this.props.artists[i].name === artistInfo.name) {
+        dup = true
+      }
+    }
+    if(!dup) {
+      this.props.submitForm(artistInfo)
+      this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName}`)
+    }
   }
 
   render() {
@@ -156,7 +164,11 @@ export class NewArtist extends Component {
   }
 }
 
-const mapState = null;
+const mapState = (state) => {
+  return {
+    artists: state.artists
+  }
+}
 
 const mapDispatch = dispatch => ({
   submitForm(artist){
