@@ -52,8 +52,8 @@ export class EditArtist extends Component {
       this.renderErrorMessage()
     }
     return (
-      <div>
-        <div>
+      <div className="outerAccountForm">
+        <div className="editEmail">
           <h1>Email</h1>
           <h3>{this.props.email}</h3>
           {
@@ -83,7 +83,7 @@ export class EditArtist extends Component {
             )
           }
         </div>
-        <div>
+        <div className="editPassword">
           <h1>Change Password</h1>
           {
             this.state.passUpdate ? null :

@@ -8,7 +8,7 @@ export const Genre = () => {
     <div className="genreGrid">
       {
         genres.map((genre) => (
-          <Link to={`/discover/genre/${genre}`} className="genreName" key={genre}>
+          <Link to={`/discover/genre/${genre}`} className="genreName" id={genre.replace(/[\s/>&]/g, '')} key={genre}>
             {genre}
           </Link>
         ))

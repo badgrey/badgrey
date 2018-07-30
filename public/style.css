@@ -68,6 +68,7 @@ path:hover {
 .badgrey {
   height: 110px;
   width: 110px;
+  margin-right: 57px;
 }
 
 nav a {
@@ -107,17 +108,25 @@ nav a {
 .state{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .artistPic {
-  width: 300px; /* whatever set width */
-  height: 300px;
+  width: 250px; /* whatever set width */
+  height: 250px;
   display: inline-block; /* or you could float them */
   overflow: hidden;
+  transition: 0.3s;
 }
 
 .artistPic:hover {
-  opacity: 0.65;
+  -webkit-filter: brightness(60%);
+  text-shadow: 0 0 3px whitesmoke;
+  color:whitesmoke;
+  transform: scale(1.2);
+}
+.artistPic:hover .artistName {
+  opacity: 1;
 }
 
 .artistPic img {
@@ -127,7 +136,16 @@ nav a {
 }
 
 .artistName {
-  text-align: center
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  margin-top: 107px;
+  margin-left: 75px;
+  margin-right: 76px;
+  margin-bottom: 124px;
+  font-size: 26px;
+  color: white;
+  transition: 0.3s;
 }
 
 /* Individual Artist Styles */
@@ -139,7 +157,7 @@ nav a {
 .artistHeader {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .artistLogos {
@@ -152,18 +170,7 @@ nav a {
   display: flex;
   justify-content: space-evenly;
   height: 380px;
-}
-
-.divDesc {
-  display: flex;
-  justify-content: center;
-  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
-  width: 350px;
-  margin: 30px;
-}
-
-.description {
-  padding: 2px 16px;
+  margin-top: 50px;
 }
 
 .youtube {
@@ -174,14 +181,42 @@ nav a {
 }
 
 .genreLink {
-  display: flex;
-  justify-content: center;
+  display: inline-grid;
+  grid-template-rows: 120px;
+  grid-template-columns: 120px;
   align-items: center;
   border: 2px solid black;
   margin: 15px 20px 0 0;
   padding: 5px;
 }
 
+.adminButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+#editButton {
+  margin-right: 125px;
+}
+
+.editdelete {
+  background-color: black;
+  color: white;
+  width: 9em;
+  border-radius: 4px;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+
+}
+
+.editdelete:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
 /* Genre Grid Styles */
 
 .genreGrid {
@@ -198,9 +233,96 @@ nav a {
   justify-content: center;
   align-items: center;
   border: 2px solid black;
+  color: black;
+  font-size: 15px;
+}
+
+.genreName {
+  background-color: black;
+  color: whitesmoke;
+  transition: 0.3s;
+}
+
+#Trap #Alternative #Cloud #Conscious #Experimental #Instrumental #Pop #JazzSoul #RB #OldSchool {
+  transition: 0.3s;
+}
+
+#Trap:hover {
+  background-image: url('./images/genres/Trap.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Alternative:hover {
+  background-image: url('./images/genres/Alternative.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Cloud:hover {
+  background-image: url('./images/genres/Cloud.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Conscious:hover {
+  background-image: url('./images/genres/Conscious.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Experimental:hover {
+  background-image: url('./images/genres/Experimental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Instrumental:hover {
+  background-image: url('./images/genres/Instrumental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#Pop:hover {
+  background-image: url('./images/genres/Pop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#JazzSoul:hover {
+  background-image: url('./images/genres/JazzSoul.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#RB:hover {
+  background-image: url('./images/genres/R&B.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+}
+#OldSchool:hover {
+  background-image: url('./images/genres/Old\ School.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
 }
 
 /* Artist Form Creation Styles */
+
+#newArtistForm {
+  height: 60vh;
+}
 
 .form {
   margin:3em 0 0 0;
@@ -214,7 +336,7 @@ nav a {
   border-radius: 4px;
 }
 
-.loginBorder {
+.outerForm {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,4 +395,26 @@ nav a {
   50% {
     opacity: 1
   }
+}
+
+/* Edit User Styles */
+
+.outerAccountForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editEmail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.editPassword {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

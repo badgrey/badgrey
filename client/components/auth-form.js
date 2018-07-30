@@ -62,7 +62,7 @@ export class AuthForm extends Component {
     }
     return (
       !this.state.checking ?
-      <div className="loginBorder">
+      <div className="outerForm">
         <form className="form" onSubmit={this.sendEmail} name={name}>
           <h2>{this.props.displayName} Below</h2>
           <div>

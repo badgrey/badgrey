@@ -4,13 +4,11 @@ const db = require('../db')
 const Artist = db.define('artist', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   city: {
     type: Sequelize.STRING,
-  },
-  description: {
-    type: Sequelize.TEXT
   },
   imageURL: {
    type: Sequelize.STRING,
