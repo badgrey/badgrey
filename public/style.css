@@ -396,3 +396,25 @@ nav a {
     opacity: 1
   }
 }
+
+/* Edit User Styles */
+
+.outerAccountForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editEmail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.editPassword {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
