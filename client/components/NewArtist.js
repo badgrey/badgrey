@@ -103,8 +103,8 @@ export class NewArtist extends Component {
 
   render() {
     return (
-      <div>
-        <form className="form" onSubmit={this.submit} >
+      <div className="outerForm">
+        <form className="form" id="newArtistForm" onSubmit={this.submit} >
           <div>
             <label>Artist Name</label>
             <input name="name" type="text" required placeholder="Name" className="formInput" />
@@ -114,7 +114,7 @@ export class NewArtist extends Component {
             <input name="city" type="text" required placeholder="City" />
           </div>
           <div>
-              <select name="stateAbbrev" type="text" required onChange={this.handleStateAbbrevChange} scrolling={true} label="State" options={stateOptions} placeholder="State" >
+              <select name="stateAbbrev" type="text" required onChange={this.handleStateAbbrevChange} label="State">
               <option value="" disabled selected>State</option>
                 {
                   stateOptions.map((state) => {
@@ -124,7 +124,7 @@ export class NewArtist extends Component {
                   })
                 }
               </select>
-              <select onChange={this.handleGenreChange} name="genre" type="text" required label="Genre" options={genreOptions} placeholder="Genre" >
+              <select onChange={this.handleGenreChange} name="genre" type="text" required label="Genre">
               <option value="" disabled selected>Genre</option>
                 {
                   genreOptions.map((genre) => {

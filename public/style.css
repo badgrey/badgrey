@@ -331,6 +331,10 @@ nav a {
 
 /* Artist Form Creation Styles */
 
+#newArtistForm {
+  height: 60vh;
+}
+
 .form {
   margin:3em 0 0 0;
   width: 50vw;
@@ -343,7 +347,7 @@ nav a {
   border-radius: 4px;
 }
 
-.loginBorder {
+.outerForm {
   display: flex;
   justify-content: center;
   align-items: center;
