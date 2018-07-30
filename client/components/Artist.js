@@ -39,9 +39,12 @@ export class Artist extends Component{
             <h3 className="title">{this.props.chosenArtist[0].city}</h3>
             {
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
-              <Link to={`/edit/${this.props.match.params.artist}`}>
-                <button>Edit Artist Info</button>
-              </Link>
+              <div className="adminButtons">
+                <Link id="editButton"to={`/edit/${this.props.match.params.artist}`}>
+                  <button className="editdelete">Edit Artist Info</button>
+                </Link>
+                <button className="editdelete" onClick={this.deleteArtist} >DELETE ARTIST</button>
+              </div>
             }
           </div>
           <div className="genreLink">
@@ -53,10 +56,6 @@ export class Artist extends Component{
         <div className="soundcloudAndYoutube">
           <div>
             <iframe width="500" height="500" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay" src={this.props.chosenArtist[0].soundcloudURL} />
-            {
-              !this.props.isLoggedIn && !this.props.isAdmin ? null :
-              <button className="deleteButton" onClick={this.deleteArtist} >DELETE THIS ARTIST</button>
-            }
           </div>
           <div className="youtube">
             {

@@ -9,9 +9,6 @@ const Artist = db.define('artist', {
   city: {
     type: Sequelize.STRING,
   },
-  description: {
-    type: Sequelize.TEXT
-  },
   imageURL: {
    type: Sequelize.STRING,
    allowNull: false

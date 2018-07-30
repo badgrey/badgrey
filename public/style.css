@@ -201,6 +201,33 @@ nav a {
   padding: 5px;
 }
 
+.adminButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+#editButton {
+  margin-right: 125px;
+}
+
+.editdelete {
+  background-color: black;
+  color: white;
+  width: 9em;
+  border-radius: 4px;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+
+}
+
+.editdelete:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
 /* Genre Grid Styles */
 
 .genreGrid {

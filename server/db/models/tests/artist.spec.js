@@ -10,7 +10,7 @@ describe('Artist model', () => {
   })
 
   describe('instanceMethods', () => {
-    describe('correctPassword', () => {
+    describe('correctStateName', () => {
       let lilSlendy
 
       beforeEach(() => {
