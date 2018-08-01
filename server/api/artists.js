@@ -1,7 +1,7 @@
 const router = require('express').Router()
-const {Artist} = require('../db/models')
+const {Artist, Saved} = require('../db/models')
 const asyncHandler = require('express-async-handler')
-const { isAdmin } = require('../permissions')
+const { isAdmin, isLoggedIn } = require('../permissions')
 module.exports = router
 
 router.get('/', asyncHandler(async (req, res, next) => {
@@ -36,5 +36,14 @@ router.delete('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {
     }
   })
   res.status(204)
+}))
+
+router.get('/saved', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const savedArtists = await Saved.findAll({
+    where: {
+      id: req.id
+    }
+  })
+  res.json(savedArtists)
 }))
 

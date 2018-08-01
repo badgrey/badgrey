@@ -1,8 +1,8 @@
 const User = require('./user')
 const Artist = require('./artist')
 
-User.belongsToMany(Artist, {through: 'savedArtists'})
-Artist.belongsToMany(User, {through: 'savedArtists'})
+User.belongsToMany(Artist, {through: 'Saved'})
+Artist.belongsToMany(User, {through: 'Saved'})
 
 module.exports = {
   User,
