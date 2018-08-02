@@ -6,8 +6,9 @@ import user from './user'
 import artists from './artists'
 import error from './error'
 import email from './email'
+import savedArtists from './savedArtists'
 
-const reducer = combineReducers({user, artists, error, email})
+const reducer = combineReducers({user, artists, error, email, savedArtists})
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})
@@ -19,3 +20,4 @@ export * from './user'
 export * from './artists'
 export * from './error'
 export * from './email'
+export * from './savedArtists'
