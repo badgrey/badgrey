@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -89,6 +89,9 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(fetchArtists())
+      if (this.props.isLoggedIn) {
+        dispatch(fetchSavedArtists(this.state.user.id))
+      }
     },
     delete (id) {
       dispatch(deleteCurrentArtist(id))

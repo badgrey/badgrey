@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
-import {fetchArtists} from '../store'
+import {fetchArtists, fetchSavedArtists} from '../store'
 
 export class SingleGenre extends Component{
 
@@ -49,6 +49,9 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(fetchArtists())
+      if (this.props.isLoggedIn) {
+        dispatch(fetchSavedArtists(this.state.user.id))
+      }
     }
   }
 }

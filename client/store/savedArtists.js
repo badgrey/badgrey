@@ -36,9 +36,9 @@ export default function reducer (artists = [], action){
 
 //THUNK CREATORS
 
-export const fetchSavedArtists = () => async (dispatch) => {
+export const fetchSavedArtists = (id) => async (dispatch) => {
   try {
-    const artists = await axios.get('/api/artists')
+    const artists = await axios.get('/api/artists/saved', id)
     return dispatch(getSavedArtists(artists.data));
   }
   catch (err) {
@@ -46,9 +46,9 @@ export const fetchSavedArtists = () => async (dispatch) => {
   }
 }
 
-export const addNewSavedArtist = (artist) => async (dispatch) => {
+export const addNewSavedArtist = (info) => async (dispatch) => {
   try {
-    const newCreatedArtist = await axios.post('/api/artists/admin', artist)
+    const newCreatedArtist = await axios.post('/api/artists/saved', info)
     return dispatch(addSavedArtist(newCreatedArtist.data));
   }
   catch (err) {
@@ -56,10 +56,10 @@ export const addNewSavedArtist = (artist) => async (dispatch) => {
   }
 }
 
-export const deleteCurrentSavedArtist = (id) => async (dispatch) => {
+export const deleteCurrentSavedArtist = (info) => async (dispatch) => {
   try {
-    const deletedArtist = await axios.delete(`/api/artists/admin/${id}`)
-    return dispatch(deleteSavedArtist(id))
+    const deletedArtist = await axios.delete(`/api/artists/saved`, info)
+    return dispatch(deleteSavedArtist(info))
   }
   catch (err) {
     console.log(err)
