@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
+import {fetchSavedArtists} from '../store'
 
 export class Discover extends Component {
 
@@ -174,6 +175,12 @@ export class Discover extends Component {
     }
   }
 
+  componentDidMount() {
+    if(this.props.isLoggedIn) {
+      this.props.loadInitialData(this.props.user.id)
+    }
+  }
+
   render() {
     return (
       <div className="discover">
@@ -191,12 +198,20 @@ export class Discover extends Component {
 
 const mapState = (state) => {
   return {
-    artists: state.artists
+    artists: state.artists,
+    user: state.user,
+    isLoggedIn: !!state.user.id
   }
 }
 
 
-const mapDispatch = null
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData (id) {
+      dispatch(fetchSavedArtists(id))
+    }
+  }
+}
 
 export default connect(mapState, mapDispatch)(Discover)
 

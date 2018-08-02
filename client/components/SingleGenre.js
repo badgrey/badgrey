@@ -10,6 +10,9 @@ export class SingleGenre extends Component{
     if (this.props.genreArtists === []) {
       this.props.loadInitialData()
     }
+    if (this.props.isLoggedIn) {
+      this.props.fetchSaved(this.props.user.id)
+    }
   }
   render() {
     return (
@@ -36,12 +39,14 @@ export class SingleGenre extends Component{
   }
 }
 
-const mapState = ({artists}, ownProps) => {
+const mapState = ({artists, user}, ownProps) => {
   return {
     genreArtists: artists.filter((artist) => {
       return artist.genre === ownProps.match.params.genre
     }),
-    artists
+    artists,
+    isLoggedIn: !!user.id,
+    user
   }
 }
 
@@ -49,9 +54,9 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(fetchArtists())
-      if (this.props.isLoggedIn) {
-        dispatch(fetchSavedArtists(this.state.user.id))
-      }
+    },
+    fetchSaved(id) {
+      dispatch(fetchSavedArtists(id))
     }
   }
 }

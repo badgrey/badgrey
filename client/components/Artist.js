@@ -5,8 +5,6 @@ import {YoutubePlayer} from './index'
 import {fetchArtists, deleteCurrentArtist, fetchSavedArtists} from '../store'
 import {Link} from 'react-router-dom'
 
-
-
 export class Artist extends Component{
 
   constructor(props){
@@ -17,6 +15,9 @@ export class Artist extends Component{
   componentDidMount () {
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
+    }
+    if (this.props.isLoggedIn) {
+      this.props.fetchSaved(this.props.user.id)
     }
   }
 
@@ -80,7 +81,7 @@ const mapState = ({artists, user}, ownProps) => {
       return artist.name.split(' ').join('') === ownProps.match.params.artist
     }),
     artists,
-    isLoggedIn: !!user.id,
+    isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin
   }
 }
@@ -89,12 +90,12 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(fetchArtists())
-      if (this.props.isLoggedIn) {
-        dispatch(fetchSavedArtists(this.state.user.id))
-      }
     },
     delete (id) {
       dispatch(deleteCurrentArtist(id))
+    },
+    fetchSaved(id) {
+      dispatch(fetchSavedArtists(id))
     }
   }
 }

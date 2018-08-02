@@ -58,9 +58,6 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(me())
       dispatch(fetchArtists())
-      if (this.props.isLoggedIn) {
-        dispatch(fetchSavedArtists(this.state.user.id))
-      }
     }
   }
 }
