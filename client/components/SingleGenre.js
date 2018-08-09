@@ -12,7 +12,7 @@ export class SingleGenre extends Component{
       this.props.loadInitialData()
     }
     if (this.props.isLoggedIn) {
-      this.props.fetchSaved(this.props.user.id)
+      this.props.fetchSaved()
     }
   }
   render() {
@@ -57,7 +57,7 @@ const mapDispatch = (dispatch) => {
       dispatch(fetchArtists())
     },
     fetchSaved(id) {
-      dispatch(fetchSavedArtists(id))
+      dispatch(fetchSavedArtists())
     }
   }
 }

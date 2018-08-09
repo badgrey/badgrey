@@ -36,10 +36,9 @@ export default function reducer (artists = [], action){
 
 //THUNK CREATORS
 
-export const fetchSavedArtists = (id) => async (dispatch) => {
+export const fetchSavedArtists = () => async (dispatch) => {
   try {
-    const artists = await axios.get('/api/artists/saved', id)
-    console.log(artists)
+    const artists = await axios.get('/api/artists/saved')
     return dispatch(getSavedArtists(artists.data));
   }
   catch (err) {

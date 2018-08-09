@@ -39,11 +39,8 @@ router.delete('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/saved', isLoggedIn, asyncHandler(async (req, res, next) => {
-  const savedArtists = await Saved.findAll({
-    where: {
-      id: req.id
-    }
-  })
+  const user = await User.findById(req.body.id)
+  const savedArtists = await user.getArtists()
   res.json(savedArtists)
 }))
 
