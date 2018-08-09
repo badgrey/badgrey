@@ -39,6 +39,7 @@ export default function reducer (artists = [], action){
 export const fetchSavedArtists = (id) => async (dispatch) => {
   try {
     const artists = await axios.get('/api/artists/saved', id)
+    console.log(artists)
     return dispatch(getSavedArtists(artists.data));
   }
   catch (err) {

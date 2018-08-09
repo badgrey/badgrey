@@ -176,7 +176,7 @@ export class Discover extends Component {
   }
 
   componentDidMount() {
-    if(this.props.isLoggedIn) {
+    if (this.props.isLoggedIn) {
       this.props.loadInitialData(this.props.user.id)
     }
   }
