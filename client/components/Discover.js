@@ -175,9 +175,9 @@ export class Discover extends Component {
     }
   }
 
-  componentDidMount() {
-    if (this.props.isLoggedIn) {
-      this.props.loadInitialData(this.props.user.id)
+  componentDidUpdate () {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
+      this.props.loadInitialData()
     }
   }
 
@@ -200,15 +200,16 @@ const mapState = (state) => {
   return {
     artists: state.artists,
     user: state.user,
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    savedArtists: state.savedArtists
   }
 }
 
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData (id) {
-      dispatch(fetchSavedArtists(id))
+    loadInitialData () {
+      dispatch(fetchSavedArtists())
     }
   }
 }

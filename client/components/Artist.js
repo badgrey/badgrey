@@ -16,8 +16,14 @@ export class Artist extends Component{
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.isLoggedIn) {
-      this.props.fetchSaved(this.props.user.id)
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
+      this.props.fetchSaved()
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
+      this.props.fetchSaved()
     }
   }
 
@@ -75,14 +81,15 @@ export class Artist extends Component{
 }
 
 
-const mapState = ({artists, user}, ownProps) => {
+const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
       return artist.name.split(' ').join('') === ownProps.match.params.artist
     }),
     artists,
     isLoggedIn: !!user.isLoggedIn,
-    isAdmin: user.isAdmin
+    isAdmin: user.isAdmin,
+    savedArtists
   }
 }
 
@@ -94,8 +101,8 @@ const mapDispatch = (dispatch) => {
     delete (id) {
       dispatch(deleteCurrentArtist(id))
     },
-    fetchSaved(id) {
-      dispatch(fetchSavedArtists(id))
+    fetchSaved() {
+      dispatch(fetchSavedArtists())
     }
   }
 }
