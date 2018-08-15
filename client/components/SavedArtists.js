@@ -7,21 +7,21 @@ import {fetchArtists, fetchSavedArtists} from '../store'
 export class SavedArtists extends Component{
 
   componentDidMount () {
-    if (this.props.stateArtists === []) {
+    if (this.props.artists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.isLoggedIn) {
-      this.props.fetchSaved(this.props.user.id)
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
+      this.props.fetchSaved()
     }
   }
   render() {
     return (
-      this.props.stateArtists.length === 0 ? null :
+      this.props.savedArtists.length === 0 ? null :
       <div>
-        <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
+        <h1 className="title">Saved Artists</h1>
         <div className="state">
         {
-          this.props.stateArtists.map((artist) => (
+          this.props.savedArtists.map((artist) => (
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
@@ -40,11 +40,9 @@ export class SavedArtists extends Component{
 }
 
 
-const mapState = ({artists, user}, ownProps) => {
+const mapState = ({artists, user, savedArtists}) => {
   return {
-    savedSrtists: artists.filter((artist) => {
-      return artist.stateAbbrev === ownProps.match.params.state
-    }),
+    savedArtists,
     artists,
     isLoggedIn: !!user,
     user
@@ -56,8 +54,8 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(fetchArtists())
     },
-    fetchSaved(id) {
-      dispatch(fetchSavedArtists(id))
+    fetchSaved() {
+      dispatch(fetchSavedArtists())
     }
   }
 }

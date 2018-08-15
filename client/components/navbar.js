@@ -30,14 +30,20 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
               <Link to="/account" className="menu-item">
               Account
               </Link>
+              <Link to="/saved" className="menu-item">
+              Saved
+              </Link>
               <a className="menu-item" href="#" onClick={handleClick}>
-                Logout
+              Logout
               </a>
             </Menu>
                 :
             <Menu width="80px" isOpen={true}>
               <Link to="/account" className="menu-item">
               Account
+              </Link>
+              <Link to="/saved" className="menu-item">
+              Saved
               </Link>
               <a className="menu-item" href="#" onClick={handleClick}>
                 Logout
