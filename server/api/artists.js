@@ -21,9 +21,11 @@ router.post('/saved', isLoggedIn, asyncHandler(async (req, res, next) => {
   res.status(201).json(newArtist)
 }))
 
-router.delete('/saved', isLoggedIn, asyncHandler(async (req, res, next) => {
+router.delete('/saved/:id', isLoggedIn, asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id)
-  await user.removeArtist(req.artistId)
+  const artist = await Artist.findById(req.params.id)
+  console.log('HERE IN BACK END', user, artist)
+  await user.removeArtist(artist)
   res.status(204)
 }))
 
@@ -55,6 +57,4 @@ router.delete('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {
   })
   res.status(204)
 }))
-
-
 

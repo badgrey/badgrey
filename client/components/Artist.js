@@ -9,28 +9,31 @@ export class Artist extends Component{
 
   constructor(props){
     super(props)
+    this.state = {
+      savedCheck: true
+    }
     this.deleteArtist = this.deleteArtist.bind(this)
+    this.saved = this.saved.bind(this)
   }
 
   componentDidMount () {
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
-      this.props.fetchSaved()
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
-      this.props.fetchSaved()
-    }
+    this.saved()
   }
 
   deleteArtist() {
     const state = this.props.chosenArtist[0].stateAbbrev
     this.props.delete(this.props.chosenArtist[0].id)
     this.props.history.push(`/discover/${state}`)
+  }
+
+  saved() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
+      this.props.fetchSaved()
+    }
+    this.setState({savedCheck: false})
   }
 
   render() {

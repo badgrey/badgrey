@@ -6,17 +6,25 @@ import {fetchArtists, fetchSavedArtists} from '../store'
 
 export class State extends Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      savedCheck: true
+    }
+    this.saved = this.saved.bind(this)
+  }
+
   componentDidMount () {
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
-      this.props.fetchSaved()
-    }
+    this.saved()
   }
-  componentDidUpdate () {
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
+
+  saved() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck ) {
       this.props.fetchSaved()
+      this.setState({savedCheck: false})
     }
   }
 

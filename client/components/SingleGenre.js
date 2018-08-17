@@ -6,14 +6,27 @@ import {fetchArtists, fetchSavedArtists} from '../store'
 
 export class SingleGenre extends Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      savedCheck: true
+    }
+    this.saved = this.saved.bind(this)
+  }
+
   componentDidMount () {
     console.log(this.props)
     if (this.props.genreArtists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
-      this.props.fetchSaved({id: this.props.user.id})
+    this.saved()
+  }
+
+  saved() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
+      this.props.fetchSaved()
     }
+    this.setState({savedCheck: false})
   }
   render() {
     return (

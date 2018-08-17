@@ -27,6 +27,7 @@ export default function reducer (artists = [], action){
       return [...artists, action.artist]
 
     case DELETE_SAVED_ARTIST:
+    console.log('hello')
       return artists.filter(artist => artist.id !== action.id)
 
     default:
@@ -56,10 +57,10 @@ export const addNewSavedArtist = (info) => async (dispatch) => {
   }
 }
 
-export const deleteCurrentSavedArtist = (info) => async (dispatch) => {
+export const deleteCurrentSavedArtist = (id) => async (dispatch) => {
   try {
-    const deletedArtist = await axios.delete(`/api/artists/saved`, info)
-    return dispatch(deleteSavedArtist(info))
+    const deletedArtist = await axios.delete(`/api/artists/saved/${id}`)
+    return dispatch(deleteSavedArtist(id))
   }
   catch (err) {
     console.log(err)

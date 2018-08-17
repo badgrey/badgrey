@@ -2,18 +2,37 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
-import {fetchArtists, fetchSavedArtists} from '../store'
+import {fetchArtists, fetchSavedArtists, deleteCurrentSavedArtist} from '../store'
 
 export class SavedArtists extends Component{
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      savedCheck: true
+    }
+    this.deleteSaved = this.deleteSaved.bind(this)
+    this.saved = this.saved.bind(this)
+  }
+  deleteSaved(event) {
+    console.log(event)
+    this.props.delete()
+  }
 
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0) {
+    this.saved()
+  }
+
+  saved() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
       this.props.fetchSaved()
+      this.setState({savedCheck: false})
     }
   }
+
   render() {
     return (
       this.props.savedArtists.length === 0 ? null :
@@ -30,6 +49,8 @@ export class SavedArtists extends Component{
                   </div>
                   <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
                 </Link>
+                <button onClick={() => {this.props.delete(artist.id)
+                  this.props.history.push('/saved')}}>X</button>
               </div>
           ))
         }
@@ -56,6 +77,9 @@ const mapDispatch = (dispatch) => {
     },
     fetchSaved() {
       dispatch(fetchSavedArtists())
+    },
+    delete(id) {
+      dispatch(deleteCurrentSavedArtist(id))
     }
   }
 }
