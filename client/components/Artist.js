@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist, fetchSavedArtists} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist} from '../store'
 import {Link} from 'react-router-dom'
 
 export class Artist extends Component{
@@ -14,6 +14,7 @@ export class Artist extends Component{
     }
     this.deleteArtist = this.deleteArtist.bind(this)
     this.saved = this.saved.bind(this)
+    this.saveArtist = this.saveArtist.bind(this)
   }
 
   componentDidMount () {
@@ -36,7 +37,13 @@ export class Artist extends Component{
     this.setState({savedCheck: false})
   }
 
+  saveArtist() {
+    this.props.saveCurrentArtist(this.props.chosenArtist[0].id)
+    this.props.history.push('/saved')
+  }
+
   render() {
+    console.log(this.props.savedArtists.indexOf(this.props.chosenArtist[0]) !== -1, this.props.savedArtists, this.props.chosenArtist[0])
     return (
       this.props.chosenArtist.length === 0 ? null :
       <div className="artistContainer">
@@ -47,6 +54,18 @@ export class Artist extends Component{
           <div className="artistNameHeader">
             <h1 className="title">{this.props.chosenArtist[0].name}</h1>
             <h3 className="title">{this.props.chosenArtist[0].city}</h3>
+            {
+              this.props.savedArtists.filter((artist) => {
+                return artist.Saved.artistId === this.props.chosenArtist[0].id
+              }).length !== 0 ?
+              (
+                <div>Saved</div>
+              )
+              :
+              (
+                <button onClick={this.saveArtist}>+ Save +</button>
+              )
+            }
             {
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
               <div className="adminButtons">
@@ -106,6 +125,9 @@ const mapDispatch = (dispatch) => {
     },
     fetchSaved() {
       dispatch(fetchSavedArtists())
+    },
+    saveCurrentArtist(id) {
+      dispatch(addNewSavedArtist(id))
     }
   }
 }

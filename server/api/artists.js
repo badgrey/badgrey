@@ -15,10 +15,11 @@ router.get('/saved', isLoggedIn, asyncHandler(async (req, res, next) => {
   res.json(savedArtists)
 }))
 
-router.post('/saved', isLoggedIn, asyncHandler(async (req, res, next) => {
+router.post('/saved/add/:id', isLoggedIn, asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id)
-  const newArtist = await user.addArtist(req.artistId)
-  res.status(201).json(newArtist)
+  const artist = await Artist.findById(req.params.id)
+  await user.addArtist(artist)
+  res.status(201).json(artist)
 }))
 
 router.delete('/saved/:id', isLoggedIn, asyncHandler(async (req, res, next) => {

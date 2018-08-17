@@ -47,9 +47,9 @@ export const fetchSavedArtists = () => async (dispatch) => {
   }
 }
 
-export const addNewSavedArtist = (info) => async (dispatch) => {
+export const addNewSavedArtist = (id) => async (dispatch) => {
   try {
-    const newCreatedArtist = await axios.post('/api/artists/saved', info)
+    const newCreatedArtist = await axios.post(`/api/artists/saved/add/${id}`)
     return dispatch(addSavedArtist(newCreatedArtist.data));
   }
   catch (err) {
