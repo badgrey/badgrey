@@ -17,6 +17,7 @@ const deleteSavedArtist = id => ({type: DELETE_SAVED_ARTIST, id})
 
 //REDUCER
 export default function reducer (artists = [], action){
+  console.log('ACTION TYPE', action.type)
 
   switch (action.type) {
 
@@ -27,7 +28,6 @@ export default function reducer (artists = [], action){
       return [...artists, action.artist]
 
     case DELETE_SAVED_ARTIST:
-    console.log('hello')
       return artists.filter(artist => artist.id !== action.id)
 
     default:
@@ -58,8 +58,11 @@ export const addNewSavedArtist = (info) => async (dispatch) => {
 }
 
 export const deleteCurrentSavedArtist = (id) => async (dispatch) => {
+  console.log('made it to thunk')
   try {
+    console.log('about to enter API')
     const deletedArtist = await axios.delete(`/api/artists/saved/${id}`)
+    console.log('about to enter reducer')
     return dispatch(deleteSavedArtist(id))
   }
   catch (err) {
