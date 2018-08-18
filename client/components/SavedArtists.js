@@ -42,14 +42,15 @@ export class SavedArtists extends Component{
         {
           this.props.savedArtists.map((artist) => (
 
-              <div key={artist.id}>
+              <div key={artist.id} className="savedArtists">
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
                   <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
                 </Link>
-                <button onClick={() => {this.props.delete(artist.id)
+                <button
+                className="savedArtistsButton" onClick={() => {this.props.delete(artist.id)
                   this.props.history.push('/saved')}}>X</button>
               </div>
           ))

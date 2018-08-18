@@ -62,7 +62,7 @@ export class Artist extends Component{
               )
               :
               (
-                <button onClick={this.saveArtist}>+ Save +</button>
+                <button className="addToSavedButton" onClick={this.saveArtist}>+ Save +</button>
               )
             }
             {
@@ -75,11 +75,11 @@ export class Artist extends Component{
               </div>
             }
           </div>
-          <div className="genreLink">
-            <Link to={`/discover/genre/${this.props.chosenArtist[0].genre}`} className="genreLinkText">
+          <Link to={`/discover/genre/${this.props.chosenArtist[0].genre}`} className="genreLink">
+            <div className="genreLinkText">
               More {this.props.chosenArtist[0].genre} Artists
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         <div className="soundcloudAndYoutube">
           <div>
