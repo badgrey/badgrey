@@ -36,7 +36,7 @@ export class AuthForm extends Component {
       }
       if (formName === 'login') {
         this.props.handleSubmitLogin(evt.target.email.value, evt.target.password.value, formName)
-        this.props.history.push('/home')
+        this.props.history.push('/')
       }
   }
 
@@ -45,7 +45,7 @@ export class AuthForm extends Component {
     evt.preventDefault();
     if (this.state.rand === evt.target.code.value) {
       this.props.submitForm(this.state.email, this.state.password, this.props.name)
-      this.props.history.push('/home')
+      this.props.history.push('/account')
     }
   }
 
