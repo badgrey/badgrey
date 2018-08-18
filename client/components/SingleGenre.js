@@ -15,10 +15,12 @@ export class SingleGenre extends Component{
   }
 
   componentDidMount () {
-    console.log(this.props)
     if (this.props.genreArtists === []) {
       this.props.loadInitialData()
     }
+  }
+
+  componentDidUpdate () {
     this.saved()
   }
 
@@ -28,6 +30,7 @@ export class SingleGenre extends Component{
     }
     this.setState({savedCheck: false})
   }
+
   render() {
     return (
       this.props.genreArtists.length === 0 ? null :

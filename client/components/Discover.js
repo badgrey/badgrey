@@ -183,7 +183,7 @@ export class Discover extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidUpdate () {
     this.saved()
   }
 

@@ -18,6 +18,9 @@ export class State extends Component{
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }
+  }
+
+  componentDidUpdate () {
     this.saved()
   }
 

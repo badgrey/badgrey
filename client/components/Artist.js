@@ -21,6 +21,9 @@ export class Artist extends Component{
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }
+  }
+
+  componentDidUpdate () {
     this.saved()
   }
 
@@ -33,17 +36,15 @@ export class Artist extends Component{
   saved() {
     if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
       this.props.fetchSaved()
+      this.setState({savedCheck: false})
     }
-    this.setState({savedCheck: false})
   }
 
   saveArtist() {
     this.props.saveCurrentArtist(this.props.chosenArtist[0].id)
-    this.props.history.push('/saved')
   }
 
   render() {
-    console.log(this.props.savedArtists.indexOf(this.props.chosenArtist[0]) !== -1, this.props.savedArtists, this.props.chosenArtist[0])
     return (
       this.props.chosenArtist.length === 0 ? null :
       <div className="artistContainer">
@@ -55,9 +56,7 @@ export class Artist extends Component{
             <h1 className="title">{this.props.chosenArtist[0].name}</h1>
             <h3 className="title">{this.props.chosenArtist[0].city}</h3>
             {
-              this.props.savedArtists.filter((artist) => {
-                return artist.Saved.artistId === this.props.chosenArtist[0].id
-              }).length !== 0 ?
+              this.props.isSaved ?
               (
                 <div>Saved</div>
               )
@@ -111,7 +110,12 @@ const mapState = ({artists, user, savedArtists}, ownProps) => {
     artists,
     isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin,
-    savedArtists
+    savedArtists,
+    isSaved: savedArtists.filter((artist) => {
+      return artist.id === (artists.filter((otherArtist) => {
+        return otherArtist.name.split(' ').join('') === ownProps.match.params.artist
+      }))[0].id
+    }).length !== 0
   }
 }
 
