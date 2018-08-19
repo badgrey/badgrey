@@ -11,6 +11,7 @@ export class AuthForm extends Component {
     this.state = {
       rand: '',
       checking: false,
+      username: '',
       email: '',
       password: ''
       }
@@ -26,6 +27,7 @@ export class AuthForm extends Component {
         const rand = Math.floor(((Math.random() * 10000) + 54))
         this.setState({rand: '' + rand})
         this.setState({checking: true})
+        this.setState({username: evt.target.username.value})
         this.setState({email: evt.target.email.value})
         this.setState({password: evt.target.password.value})
         const info = {
@@ -35,7 +37,7 @@ export class AuthForm extends Component {
         this.props.handleSubmitSignUp(info)
       }
       if (formName === 'login') {
-        this.props.handleSubmitLogin(evt.target.email.value, evt.target.password.value, formName)
+        this.props.handleSubmitLogin(evt.target.username.value, evt.target.email.value, evt.target.password.value, formName)
         this.props.history.push('/')
       }
   }
@@ -44,7 +46,7 @@ export class AuthForm extends Component {
   completeSignUp(evt) {
     evt.preventDefault();
     if (this.state.rand === evt.target.code.value) {
-      this.props.submitForm(this.state.email, this.state.password, this.props.name)
+      this.props.submitForm(this.state.username, this.state.email, this.state.password, this.props.name)
       this.props.history.push('/account')
     }
   }
@@ -65,6 +67,10 @@ export class AuthForm extends Component {
       <div className="outerForm">
         <form className="form" onSubmit={this.sendEmail} name={name}>
           <h2>{this.props.displayName} Below</h2>
+          <div>
+            <label>Username</label>
+            <input className="loginInput" name="username" type="text" />
+          </div>
           <div>
             <label htmlFor="email">Email</label>
             <input className="loginInput" name="email" type="text" />
@@ -133,11 +139,11 @@ const mapDispatch = dispatch => {
      handleSubmitSignUp(info) {
         return dispatch(sendConfirmEmail(info))
     },
-    handleSubmitLogin(email, password, formName) {
-        return dispatch(auth(email, password, formName));
+    handleSubmitLogin(username, email, password, formName) {
+        return dispatch(auth(username, email, password, formName));
     },
-    submitForm(email, pass, formName) {
-        return dispatch(auth(email, pass, formName));
+    submitForm(username, email, pass, formName) {
+        return dispatch(auth(username, email, pass, formName));
     },
     renderError(){
       return dispatch(deleteError())
