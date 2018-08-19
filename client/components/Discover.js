@@ -3,8 +3,17 @@ import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
+import {fetchSavedArtists} from '../store'
 
 export class Discover extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      savedCheck: true
+    }
+    this.saved = this.saved.bind(this)
+  }
 
   clickToState = (event) => {
     const stateName = event.target.dataset.name
@@ -174,6 +183,17 @@ export class Discover extends Component {
     }
   }
 
+  componentDidUpdate () {
+    this.saved()
+  }
+
+  saved() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
+      this.props.loadInitialData()
+      this.setState({savedCheck: false})
+    }
+  }
+
   render() {
     return (
       <div className="discover">
@@ -191,12 +211,21 @@ export class Discover extends Component {
 
 const mapState = (state) => {
   return {
-    artists: state.artists
+    artists: state.artists,
+    user: state.user,
+    isLoggedIn: !!state.user.id,
+    savedArtists: state.savedArtists
   }
 }
 
 
-const mapDispatch = null
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData () {
+      dispatch(fetchSavedArtists())
+    }
+  }
+}
 
 export default connect(mapState, mapDispatch)(Discover)
 

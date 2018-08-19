@@ -2,16 +2,19 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist} from '../store'
 import {Link} from 'react-router-dom'
-
-
 
 export class Artist extends Component{
 
   constructor(props){
     super(props)
+    this.state = {
+      savedCheck: true
+    }
     this.deleteArtist = this.deleteArtist.bind(this)
+    this.saved = this.saved.bind(this)
+    this.saveArtist = this.saveArtist.bind(this)
   }
 
   componentDidMount () {
@@ -20,10 +23,25 @@ export class Artist extends Component{
     }
   }
 
+  componentDidUpdate () {
+    this.saved()
+  }
+
   deleteArtist() {
     const state = this.props.chosenArtist[0].stateAbbrev
     this.props.delete(this.props.chosenArtist[0].id)
     this.props.history.push(`/discover/${state}`)
+  }
+
+  saved() {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
+      this.props.fetchSaved()
+      this.setState({savedCheck: false})
+    }
+  }
+
+  saveArtist() {
+    this.props.saveCurrentArtist(this.props.chosenArtist[0].id)
   }
 
   render() {
@@ -38,6 +56,16 @@ export class Artist extends Component{
             <h1 className="title">{this.props.chosenArtist[0].name}</h1>
             <h3 className="title">{this.props.chosenArtist[0].city}</h3>
             {
+              this.props.isSaved ?
+              (
+                <div>Saved</div>
+              )
+              :
+              (
+                <button className="addToSavedButton" onClick={this.saveArtist}>+ Save +</button>
+              )
+            }
+            {
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
               <div className="adminButtons">
                 <Link id="editButton"to={`/edit/${this.props.match.params.artist}`}>
@@ -47,11 +75,11 @@ export class Artist extends Component{
               </div>
             }
           </div>
-          <div className="genreLink">
-            <Link to={`/discover/genre/${this.props.chosenArtist[0].genre}`} className="genreLinkText">
+          <Link to={`/discover/genre/${this.props.chosenArtist[0].genre}`} className="genreLink">
+            <div className="genreLinkText">
               More {this.props.chosenArtist[0].genre} Artists
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         <div className="soundcloudAndYoutube">
           <div>
@@ -74,14 +102,20 @@ export class Artist extends Component{
 }
 
 
-const mapState = ({artists, user}, ownProps) => {
+const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
       return artist.name.split(' ').join('') === ownProps.match.params.artist
     }),
     artists,
-    isLoggedIn: !!user.id,
-    isAdmin: user.isAdmin
+    isLoggedIn: !!user.isLoggedIn,
+    isAdmin: user.isAdmin,
+    savedArtists,
+    isSaved: savedArtists.filter((artist) => {
+      return artist.id === (artists.filter((otherArtist) => {
+        return otherArtist.name.split(' ').join('') === ownProps.match.params.artist
+      }))[0].id
+    }).length !== 0
   }
 }
 
@@ -92,6 +126,12 @@ const mapDispatch = (dispatch) => {
     },
     delete (id) {
       dispatch(deleteCurrentArtist(id))
+    },
+    fetchSaved() {
+      dispatch(fetchSavedArtists())
+    },
+    saveCurrentArtist(id) {
+      dispatch(addNewSavedArtist(id))
     }
   }
 }

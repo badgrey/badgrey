@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser} from './components'
+import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists} from './components'
 import {me, fetchArtists} from './store'
 
 /**
@@ -32,6 +32,7 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route exact path="/home" component={UserHome} />
               <Route exact path="/account" component={EditUser} />
+              <Route exact path="/saved" component={SavedArtists} />
             </Switch>
         }
         {/* Displays our Login component as a fallback */}
