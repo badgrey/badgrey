@@ -7,12 +7,23 @@ export class AllUsers extends Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      selectedUser: ''
+    }
+
+    this.view = this.view.bind(this)
   }
 
   componentDidMount() {
     if (this.props.users.length === 0) {
       this.props.loadUsers()
     }
+  }
+
+  view(user) {
+    this.setState({selectedUser: user})
+    console.log(this.state)
   }
 
   render() {
@@ -26,6 +37,13 @@ export class AllUsers extends Component {
             return (
               <div key={user.id}>
                 <h1>{user.username}</h1>
+                <button onClick={() => {return this.view(user.username)}}>View</button>
+                {
+                  this.state.selectedUser !== user.username ? null :
+                  <div>
+                    <h4>{user.email}</h4>
+                  </div>
+                }
               </div>
             )
           })
