@@ -98,12 +98,12 @@ export class NewArtist extends Component {
       }
     }
     let dup = false
-    for(let i = 0; i < this.props.artists.length; i++) {
-      if(this.props.artists[i].name === artistInfo.name) {
+    for (let i = 0; i < this.props.artists.length; i++) {
+      if (this.props.artists[i].name === artistInfo.name) {
         dup = true
       }
     }
-    if(!dup) {
+    if (!dup) {
       this.props.submitForm(artistInfo)
       this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName}`)
     }

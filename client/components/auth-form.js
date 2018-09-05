@@ -37,8 +37,12 @@ export class AuthForm extends Component {
         this.props.handleSubmitSignUp(info)
       }
       if (formName === 'login') {
-        this.props.handleSubmitLogin(evt.target.username.value, evt.target.email.value, evt.target.password.value, formName)
-        this.props.history.push('/')
+        try {
+          this.props.handleSubmitLogin(evt.target.username.value, evt.target.email.value, evt.target.password.value, formName)
+          this.props.history.push('/')
+        } catch (err) {
+          console.log(err)
+        }
       }
   }
 
