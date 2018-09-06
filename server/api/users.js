@@ -13,6 +13,16 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.delete('/delete/:id', (async (req, res, next) => {
+  const user = await User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.status(204)
+  res.json(user)
+}))
+
 router.put('/:id', async (req, res, next) => {
   const response = await User.update(req.body, {
     where: { id: req.params.id },
@@ -21,3 +31,5 @@ router.put('/:id', async (req, res, next) => {
   });
   res.json(response)
 })
+
+

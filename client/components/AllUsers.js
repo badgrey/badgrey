@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchUsers, editSingleUser} from '../store/allusers'
+import {fetchUsers, editSingleUser, deleteCurrentUser} from '../store/allusers'
 import '../../public/style.css'
 
 export class AllUsers extends Component {
@@ -13,6 +13,10 @@ export class AllUsers extends Component {
     }
 
     this.view = this.view.bind(this)
+    this.changeAdmin = this.changeBlogger.bind(this)
+    this.changeBlogger = this.changeBlogger.bind(this)
+    this.changeEmployee = this.changeEmployee.bind(this)
+    this.deleteUser = this.deleteUser.bind(this)
   }
 
   componentDidMount() {
@@ -25,8 +29,24 @@ export class AllUsers extends Component {
     this.setState({selectedUser: user})
   }
 
-  changeAdmin(id, info) {
+  changeAdmin(evt, id, info) {
+    evt.preventDefault()
     this.props.submitChange(id, info)
+    this.props.history.push('/')
+  }
+
+  changeBlogger(id, info) {
+    this.props.submitChange(id, info)
+    this.props.history.push('/')
+  }
+
+  changeEmployee(id, info) {
+    this.props.submitChange(id, info)
+    this.props.history.push('/')
+  }
+
+  deleteUser(id) {
+    this.props.delete(id)
     this.props.history.push('/users')
   }
 
@@ -57,17 +77,17 @@ export class AllUsers extends Component {
                     }
                     {
                       user.isBlogger ?
-                      <button>Remove Blogger</button>
+                      <button onClick={() => {return this.changeBlogger(user.id, {isBlogger: false})}}>Remove Blogger</button>
                       :
-                      <button>Make Blogger</button>
+                      <button onClick={() => {return this.changeBlogger(user.id, {isBlogger: true})}}>Make Blogger</button>
                     }
                     {
                       user.isEmployee ?
-                      <button>Remove Employee</button>
+                      <button onClick={() => {return this.changeEmployee(user.id, {isEmployee: false})}}>Remove Employee</button>
                       :
-                      <button>Make Employee</button>
+                      <button onClick={() => {return this.changeEmployee(user.id, {isEmployee: true})}}>Make Employee</button>
                     }
-                    <button>Delete User</button>
+                    <button onClick={() => {return this.deleteUser(user.id)}}>Delete User</button>
                   </div>
                 }
               </div>
@@ -93,6 +113,9 @@ const mapDispatch = (dispatch) => {
     },
     submitChange(id, user){
       dispatch(editSingleUser(id, user))
+    },
+    delete (id) {
+      dispatch(deleteCurrentUser(id))
     }
   }
 }
