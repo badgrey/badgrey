@@ -9,7 +9,8 @@ export class AllUsers extends Component {
     super(props)
 
     this.state = {
-      selectedUser: ''
+      selectedUser: '',
+      search: ''
     }
 
     this.view = this.view.bind(this)
@@ -17,6 +18,7 @@ export class AllUsers extends Component {
     this.changeBlogger = this.changeBlogger.bind(this)
     this.changeEmployee = this.changeEmployee.bind(this)
     this.deleteUser = this.deleteUser.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount() {
@@ -50,14 +52,27 @@ export class AllUsers extends Component {
     this.props.history.push('/users')
   }
 
+  handleSearch(evt) {
+    this.setState({
+      search: evt.target.value
+    })
+  }
+
   render() {
+    const users = this.props.users.filter((user) => user.username.startsWith(this.state.search))
     return (
        this.props.users.length === 0 ? null :
       <div className="allUsers">
         <h1>ALL USERS</h1>
+        <div>
+          <form>
+            <label>Search User</label>
+            <input onChange={this.handleSearch} placeholder="Username" />
+          </form>
+        </div>
         <div className="users">
         {
-          this.props.users.map((user) => {
+          users.map((user) => {
             return (
               <div key={user.id} className="singleUser">
                 <h1>{user.username}</h1>
