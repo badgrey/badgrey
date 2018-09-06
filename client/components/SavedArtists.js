@@ -65,7 +65,7 @@ export class SavedArtists extends Component{
 const mapState = ({artists, user, savedArtists}) => {
   return {
     savedArtists,
-    artists,
+    artists: artists.sort((artistA, artistB) => artistA.name + artistB.name),
     isLoggedIn: !!user,
     user
   }

@@ -211,7 +211,7 @@ export class Discover extends Component {
 
 const mapState = (state) => {
   return {
-    artists: state.artists,
+    artists: state.artists.sort((artistA, artistB) => artistA.name + artistB.name),
     user: state.user,
     isLoggedIn: !!state.user.id,
     savedArtists: state.savedArtists

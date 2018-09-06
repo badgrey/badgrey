@@ -4,16 +4,14 @@ import {Link} from 'react-router-dom'
 import '../../public/style.css'
 import {fetchArtists, fetchSavedArtists} from '../store'
 
-export class State extends Component{
+export class AllArtists extends Component{
 
   constructor(props) {
     super(props)
     this.state = {
-      savedCheck: true,
-      search: ''
+      savedCheck: true
     }
     this.saved = this.saved.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount () {
@@ -33,27 +31,14 @@ export class State extends Component{
     }
   }
 
-  handleSearch(evt) {
-    this.setState({
-      search: evt.target.value
-    })
-  }
-
   render() {
-    const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
-      this.props.stateArtists.length === 0 ? null :
+      this.props.artists.length === 0 ? null :
       <div>
-        <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
-        <div className="artistSearch">
-          <form>
-            <label>Search Artist</label>
-            <input onChange={this.handleSearch} placeholder="Name" />
-          </form>
-        </div>
+        <h1 className="title">All Artists</h1>
         <div className="state">
         {
-          artists.map((artist) => (
+          this.props.artists.map((artist) => (
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
@@ -71,13 +56,9 @@ export class State extends Component{
   }
 }
 
-
 const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
-    stateArtists: artists.filter((artist) => {
-      return artist.stateAbbrev === ownProps.match.params.state
-    }),
-    artists: artists.sort((artistA, artistB) => artistA.name + artistB.name),
+    artists: artists.sort((a, b) => a + b),
     isLoggedIn: !!user.id,
     user,
     savedArtists
@@ -95,4 +76,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(State)
+export default connect(mapState, mapDispatch)(AllArtists)

@@ -544,4 +544,16 @@ nav a {
   transform: scale(1.2);
 }
 
+/* Artist Search Bar Styles */
+
+.artistSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.artistSearch form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
 

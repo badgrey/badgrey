@@ -9,9 +9,11 @@ export class SingleGenre extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      savedCheck: true
+      savedCheck: true,
+      search: ''
     }
     this.saved = this.saved.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount () {
@@ -28,17 +30,32 @@ export class SingleGenre extends Component{
     if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
       this.props.fetchSaved()
     }
-    this.setState({savedCheck: false})
+    if (this.state.savedCheck === true) {
+      this.setState({savedCheck: false})
+    }
+  }
+
+  handleSearch(evt) {
+    this.setState({
+      search: evt.target.value
+    })
   }
 
   render() {
+    const artists = this.props.genreArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       this.props.genreArtists.length === 0 ? null :
       <div>
         <h1 className="title">{this.props.genreArtists[0].genre} Artists</h1>
+        <div className="artistSearch">
+          <form>
+            <label>Search Artist</label>
+            <input onChange={this.handleSearch} placeholder="Name" />
+          </form>
+        </div>
         <div className="state">
         {
-          this.props.genreArtists.map((artist) => (
+          artists.map((artist) => (
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
@@ -61,7 +78,7 @@ const mapState = ({artists, user, savedArtists}, ownProps) => {
     genreArtists: artists.filter((artist) => {
       return artist.genre === ownProps.match.params.genre
     }),
-    artists,
+    artists: artists.sort((artistA, artistB) => artistA.name + artistB.name),
     isLoggedIn: !!user.id,
     user,
     savedArtists
