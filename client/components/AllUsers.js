@@ -59,35 +59,41 @@ export class AllUsers extends Component {
         {
           this.props.users.map((user) => {
             return (
-              <div key={user.id}>
+              <div key={user.id} className="singleUser">
                 <h1>{user.username}</h1>
                 {
                   this.state.selectedUser === user.username ? null :
-                  <button onClick={() => {return this.view(user.username)}}>View</button>
+                  <button className="userViewButton" onClick={() => {return this.view(user.username)}}>View</button>
                 }
                 {
                   this.state.selectedUser !== user.username ? null :
                   <div>
                     <h4>{user.email}</h4>
-                    {
-                      user.isAdmin ?
-                      <button onClick={() => {return this.changeAdmin(user.id, {isAdmin: false})}}>Remove Admin</button>
-                      :
-                      <button onClick={() => {return this.changeAdmin(user.id, {isAdmin: true})}}>Make Admin</button>
-                    }
-                    {
-                      user.isBlogger ?
-                      <button onClick={() => {return this.changeBlogger(user.id, {isBlogger: false})}}>Remove Blogger</button>
-                      :
-                      <button onClick={() => {return this.changeBlogger(user.id, {isBlogger: true})}}>Make Blogger</button>
-                    }
-                    {
-                      user.isEmployee ?
-                      <button onClick={() => {return this.changeEmployee(user.id, {isEmployee: false})}}>Remove Employee</button>
-                      :
-                      <button onClick={() => {return this.changeEmployee(user.id, {isEmployee: true})}}>Make Employee</button>
-                    }
-                    <button onClick={() => {return this.deleteUser(user.id)}}>Delete User</button>
+                    <div className="userButtons">
+                      <div className="userButtonsSection">
+                        {
+                          user.isAdmin ?
+                          <button className="userButton" onClick={() => {return this.changeAdmin(user.id, {isAdmin: false})}}>Remove Admin</button>
+                          :
+                          <button className="userButton" onClick={() => {return this.changeAdmin(user.id, {isAdmin: true})}}>Make Admin</button>
+                        }
+                        {
+                          user.isBlogger ?
+                          <button className="userButton" onClick={() => {return this.changeBlogger(user.id, {isBlogger: false})}}>Remove Blogger</button>
+                          :
+                          <button className="userButton" onClick={() => {return this.changeBlogger(user.id, {isBlogger: true})}}>Make Blogger</button>
+                        }
+                      </div>
+                      <div className="userButtonsSection">
+                        {
+                          user.isEmployee ?
+                          <button className="userButton" onClick={() => {return this.changeEmployee(user.id, {isEmployee: false})}}>Remove Employee</button>
+                          :
+                          <button className="userButton" onClick={() => {return this.changeEmployee(user.id, {isEmployee: true})}}>Make Employee</button>
+                        }
+                        <button className="userButton" onClick={() => {return this.deleteUser(user.id)}}>Delete User</button>
+                      </div>
+                    </div>
                   </div>
                 }
               </div>
