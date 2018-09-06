@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists} from './components'
+import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers} from './components'
 import {me, fetchArtists} from './store'
 
 /**
@@ -21,8 +21,6 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/" component={Discover} />
-        <Route exact path="/newArtist" component={NewArtist} />
-        <Route exact path="/edit/:artist" component={EditArtist} />
         <Route exact path="/discover/genre/:genre" component={SingleGenre} />
         <Route exact path="/discover/:state" component={State} />
         <Route exact path="/discover/:state/:artist" component={Artist} />
@@ -32,6 +30,9 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route exact path="/home" component={UserHome} />
               <Route exact path="/account" component={EditUser} />
+              <Route exact path="/newArtist" component={NewArtist} />
+              <Route exact path="/edit/:artist" component={EditArtist} />
+              <Route exact path="/users" component={AllUsers} />
               <Route exact path="/saved" component={SavedArtists} />
             </Switch>
         }

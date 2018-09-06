@@ -33,6 +33,9 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
               <Link to="/saved" className="menu-item">
               Saved
               </Link>
+              <Link to="/users" className="menu-item">
+              Users
+              </Link>
               <a className="menu-item" href="#" onClick={handleClick}>
               Logout
               </a>

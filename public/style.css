@@ -474,3 +474,74 @@ nav a {
   color: black;
   transform: scale(1.2);
 }
+
+/* All Users Styles */
+
+.allUsers {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.users {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 49px;
+}
+
+.singleUser {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 106px;
+  width: 180px;
+}
+
+.userButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.userButtonsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.userViewButton {
+  margin-top: 13px;
+  width: 49px;
+  height: 22px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+}
+
+.userViewButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+.userButton {
+  margin-top: 13px;
+  width: 82px;
+  height: 52px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+}
+
+.userButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+
