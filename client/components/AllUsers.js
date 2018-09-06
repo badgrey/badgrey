@@ -53,9 +53,9 @@ export class AllUsers extends Component {
   render() {
     return (
        this.props.users.length === 0 ? null :
-      <div>
+      <div className="allUsers">
         <h1>ALL USERS</h1>
-        <div>
+        <div className="users">
         {
           this.props.users.map((user) => {
             return (

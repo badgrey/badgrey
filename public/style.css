@@ -474,3 +474,15 @@ nav a {
   color: black;
   transform: scale(1.2);
 }
+
+/* All Users Styles */
+
+.allUsers {
+  text-align: center;
+}
+
+.users {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
