@@ -41,7 +41,7 @@ const stateOptions = [
   'OR',
   'PA',
   'RI',
-  'ROW',
+  'International',
   'SC',
   'SD',
   'TN',
