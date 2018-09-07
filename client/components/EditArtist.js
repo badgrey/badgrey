@@ -158,7 +158,11 @@ const mapState = ({artists}, ownProps) => {
     chosenArtist: artists.filter((artist) => {
       return artist.name.split(' ').join('') === ownProps.match.params.artist
     }),
-    artists: artists.sort((artistA, artistB) => artistA.name + artistB.name)
+    artists: artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    })
   }
 }
 

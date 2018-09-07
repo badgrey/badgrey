@@ -47,6 +47,27 @@ path:hover {
   justify-content: space-around;
 }
 
+.allArtistsButton {
+  margin-top: 58px;
+  width: 208px;
+  height: 70px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  font-size: 1.3em;
+}
+
+.allArtistsButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+.genreDiv {
+  margin-top: -24px;
+}
+
 /* NAVBAR STYLES */
 .navbar {
   display: flex;

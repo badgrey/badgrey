@@ -166,7 +166,11 @@ export class NewArtist extends Component {
 
 const mapState = (state) => {
   return {
-    artists: state.artists.sort((artistA, artistB) => artistA.name + artistB.name)
+    artists: state.artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    })
   }
 }
 

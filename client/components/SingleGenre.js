@@ -78,7 +78,11 @@ const mapState = ({artists, user, savedArtists}, ownProps) => {
     genreArtists: artists.filter((artist) => {
       return artist.genre === ownProps.match.params.genre
     }),
-    artists: artists.sort((artistA, artistB) => artistA.name + artistB.name),
+    artists: artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    }),
     isLoggedIn: !!user.id,
     user,
     savedArtists

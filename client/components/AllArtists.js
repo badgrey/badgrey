@@ -58,7 +58,11 @@ export class AllArtists extends Component{
 
 const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
-    artists: artists.sort((a, b) => a + b),
+    artists: artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    }),
     isLoggedIn: !!user.id,
     user,
     savedArtists

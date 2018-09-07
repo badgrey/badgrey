@@ -4,6 +4,7 @@ import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
 import {fetchSavedArtists} from '../store'
+import {Link} from 'react-router-dom'
 
 export class Discover extends Component {
 
@@ -202,6 +203,11 @@ export class Discover extends Component {
           <USAMap title="Choose Region" width={869} height={503} customize={this.statesCustomConfig()} onClick={this.clickToState} />
         </div>
         <div>
+          <Link to="/discover/all">
+            <button className="allArtistsButton" >View All Artists</button>
+          </Link>
+        </div>
+        <div className="genreDiv">
           <Genre />
         </div>
       </div>
@@ -211,7 +217,11 @@ export class Discover extends Component {
 
 const mapState = (state) => {
   return {
-    artists: state.artists.sort((artistA, artistB) => artistA.name + artistB.name),
+    artists: state.artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    }),
     user: state.user,
     isLoggedIn: !!state.user.id,
     savedArtists: state.savedArtists

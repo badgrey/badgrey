@@ -14,8 +14,7 @@ export class SavedArtists extends Component{
     this.deleteSaved = this.deleteSaved.bind(this)
     this.saved = this.saved.bind(this)
   }
-  deleteSaved(event) {
-    console.log(event)
+  deleteSaved() {
     this.props.delete()
   }
 
@@ -65,7 +64,11 @@ export class SavedArtists extends Component{
 const mapState = ({artists, user, savedArtists}) => {
   return {
     savedArtists,
-    artists: artists.sort((artistA, artistB) => artistA.name + artistB.name),
+    artists: artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    }),
     isLoggedIn: !!user,
     user
   }
