@@ -199,13 +199,17 @@ export class Discover extends Component {
     return (
       <div className="discover">
         <h1>Discover Below</h1>
-        <div className="Map">
-          <USAMap title="Choose Region" width={869} height={503} customize={this.statesCustomConfig()} onClick={this.clickToState} />
-        </div>
-        <div>
+        <div className="allAndGlobe">
           <Link to="/discover/all">
             <button className="allArtistsButton" >View All Artists</button>
           </Link>
+          <Link className="internationalLink" to="/discover/International">
+            <img className="globe" src={require('../../public/images/states/International.png')} />
+            <label className="globeLabel" >International</label>
+          </Link>
+        </div>
+        <div className="Map">
+          <USAMap title="Choose Region" width={869} height={503} customize={this.statesCustomConfig()} onClick={this.clickToState} />
         </div>
         <div className="genreDiv">
           <Genre />

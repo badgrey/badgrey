@@ -63,10 +63,10 @@ export class AllUsers extends Component {
     return (
        this.props.users.length === 0 ? null :
       <div className="allUsers">
-        <h1>ALL USERS</h1>
+        <h1>All Users</h1>
         <div>
           <form>
-            <label>Search User</label>
+            <label className="searchLabel">Search User</label>
             <input onChange={this.handleSearch} placeholder="Username" />
           </form>
         </div>

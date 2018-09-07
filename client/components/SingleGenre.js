@@ -49,7 +49,7 @@ export class SingleGenre extends Component{
         <h1 className="title">{this.props.genreArtists[0].genre} Artists</h1>
         <div className="artistSearch">
           <form>
-            <label>Search Artist</label>
+            <label className="searchLabel">Search Artist</label>
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>

@@ -9,13 +9,15 @@ export class AllArtists extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      savedCheck: true
+      savedCheck: true,
+      search: ''
     }
     this.saved = this.saved.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount () {
-    if (this.props.stateArtists === []) {
+    if (this.props.artists === []) {
       this.props.loadInitialData()
     }
   }
@@ -31,14 +33,27 @@ export class AllArtists extends Component{
     }
   }
 
+  handleSearch(evt) {
+    this.setState({
+      search: evt.target.value
+    })
+  }
+
   render() {
+    const artists = this.props.artists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       this.props.artists.length === 0 ? null :
       <div>
         <h1 className="title">All Artists</h1>
+        <div className="artistSearch">
+          <form>
+            <label className="searchLabel" >Search Artist</label>
+            <input onChange={this.handleSearch} placeholder="Name" />
+          </form>
+        </div>
         <div className="state">
         {
-          this.props.artists.map((artist) => (
+          artists.map((artist) => (
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>

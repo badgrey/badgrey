@@ -18,7 +18,7 @@ export class Artist extends Component{
   }
 
   componentDidMount () {
-    if (this.props.stateArtists === []) {
+    if (this.props.chosenArtist === []) {
       this.props.loadInitialData()
     }
   }

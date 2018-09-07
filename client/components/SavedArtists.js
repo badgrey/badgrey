@@ -9,10 +9,12 @@ export class SavedArtists extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      savedCheck: true
+      savedCheck: true,
+      search: ''
     }
     this.deleteSaved = this.deleteSaved.bind(this)
     this.saved = this.saved.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
   deleteSaved() {
     this.props.delete()
@@ -32,14 +34,27 @@ export class SavedArtists extends Component{
     }
   }
 
+  handleSearch(evt) {
+    this.setState({
+      search: evt.target.value
+    })
+  }
+
   render() {
+    const artists = this.props.savedArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       this.props.savedArtists.length === 0 ? null :
       <div>
         <h1 className="title">Saved Artists</h1>
+        <div className="artistSearch">
+          <form>
+            <label className="searchLabel">Search Artist</label>
+            <input onChange={this.handleSearch} placeholder="Name" />
+          </form>
+        </div>
         <div className="state">
         {
-          this.props.savedArtists.map((artist) => (
+          artists.map((artist) => (
 
               <div key={artist.id} className="savedArtists">
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
