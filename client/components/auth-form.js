@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { auth, deleteError, sendConfirmEmail } from '../store';
+import {Link} from 'react-router-dom'
 
 export class AuthForm extends Component {
 
@@ -39,7 +40,7 @@ export class AuthForm extends Component {
       if (formName === 'login') {
         try {
           this.props.handleSubmitLogin(evt.target.username.value, evt.target.email.value, evt.target.password.value, formName)
-          this.props.history.push('/')
+          if (!this.props.error.error) this.props.history.push('/')
         } catch (err) {
           console.log(err)
         }
@@ -86,6 +87,16 @@ export class AuthForm extends Component {
           <div>
             <button type="submit">{displayName}</button>
           </div>
+          {
+            this.props.name !== 'login' ?
+            <div>
+              <h4>Already Have An Account? <Link to="/login">Login</Link></h4>
+            </div>
+            :
+            <div>
+              <h4>New To Us? <Link to="/signup">Sign Up</Link></h4>
+            </div>
+          }
           {error && (
             <div className="loginError">
               <p>Username or Password Incorrect</p>
