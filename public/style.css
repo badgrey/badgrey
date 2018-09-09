@@ -521,6 +521,19 @@ nav a {
   transform: scale(1.2);
 }
 
+.noSaved {
+  align-items: center;
+    text-align: center;
+    border: solid black;
+    height: 126px;
+    width: 445px;
+    margin-top: 74px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 356px;
+}
+
 /* All Users Styles */
 
 .allUsers {

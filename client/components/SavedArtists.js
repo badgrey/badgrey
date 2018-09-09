@@ -43,7 +43,12 @@ export class SavedArtists extends Component{
   render() {
     const artists = this.props.savedArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
-      this.props.savedArtists.length === 0 ? null :
+      this.props.savedArtists.length === 0 ?
+      <div className="noSaved">
+        <h2>You Don't Have Any Saved Artists!</h2>
+        <h6>If you add some they will show up here so you can check them out later</h6>
+      </div>
+      :
       <div>
         <h1 className="title">Saved Artists</h1>
         <div className="artistSearch">
