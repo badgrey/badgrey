@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists} from './components'
+import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists} from './components'
 import {me, fetchArtists} from './store'
 
 /**
@@ -14,7 +14,7 @@ class Routes extends Component {
   }
 
   render () {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn, isAdmin} = this.props
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
@@ -29,13 +29,17 @@ class Routes extends Component {
           isLoggedIn &&
             <Switch>
               {/* Routes placed here are only available after logging in */}
-              <Route exact path="/home" component={UserHome} />
               <Route exact path="/account" component={EditUser} />
-              <Route exact path="/newArtist" component={NewArtist} />
-              <Route exact path="/edit/:artist" component={EditArtist} />
-              <Route exact path="/users" component={AllUsers} />
               <Route exact path="/saved" component={SavedArtists} />
             </Switch>
+        }
+        {
+          isAdmin &&
+          <Switch>
+            <Route exact path="/newArtist" component={NewArtist} />
+            <Route exact path="/edit/:artist" component={EditArtist} />
+            <Route exact path="/users" component={AllUsers} />
+          </Switch>
         }
         {/* Displays our Login component as a fallback */}
         <Route component={Login} />
@@ -51,7 +55,8 @@ const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.isAdmin
   }
 }
 
