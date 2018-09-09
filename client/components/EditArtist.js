@@ -72,6 +72,13 @@ export class EditArtist extends Component {
     this.submit = this.submit.bind(this);
   }
 
+  componentDidMount () {
+    console.log(this.props)
+    if (!this.props.isAdmin) {
+      this.props.history.push('/')
+    }
+  }
+
   submit(event) {
     event.preventDefault();
     const urlName = event.target.name.value.split(' ').join('')
@@ -106,7 +113,7 @@ export class EditArtist extends Component {
         <form className="form" id="newArtistForm" onSubmit={this.submit} >
           <div>
             <label>Artist Name</label>
-            <input name="name" type="text" className="formInput" defaultValue={this.props.chosenArtist[0].name}/>
+            <input name="name" type="text" className="formInput" defaultValue={this.props.chosenArtist[0].name} />
           </div>
           <div>
             <label>Artist City</label>
@@ -153,7 +160,7 @@ export class EditArtist extends Component {
   }
 }
 
-const mapState = ({artists}, ownProps) => {
+const mapState = ({artists, user}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
       return artist.name.split(' ').join('') === ownProps.match.params.artist
@@ -162,7 +169,9 @@ const mapState = ({artists}, ownProps) => {
       if (artistA.name < artistB.name) return -1
       if (artistA.name > artistB.name) return 1
       return 0
-    })
+    }),
+    user,
+    isAdmin: user.isAdmin
   }
 }
 

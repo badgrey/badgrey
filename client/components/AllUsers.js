@@ -22,6 +22,9 @@ export class AllUsers extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.isAdmin) {
+      this.props.history.push('/')
+    }
     if (this.props.users.length === 0) {
       this.props.loadUsers()
     }
@@ -121,9 +124,11 @@ export class AllUsers extends Component {
   }
 }
 
-const mapState = ({allusers}) => {
+const mapState = ({allusers, user}) => {
   return {
-    users: allusers
+    users: allusers,
+    user,
+    isAdmin: user.isAdmin
   }
 }
 
