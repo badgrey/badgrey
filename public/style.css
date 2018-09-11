@@ -47,6 +47,52 @@ path:hover {
   justify-content: space-around;
 }
 
+.allArtistsButton {
+  margin-top: 40px;
+  width: 208px;
+  height: 70px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  font-size: 1.3em;
+}
+
+.allArtistsButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+.genreDiv {
+  margin-top: -24px;
+}
+
+.allAndGlobe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.globe {
+  border: solid black;
+  padding: 10px;
+  border-radius: 80px;
+}
+
+.globeLabel {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.internationalLink {
+  transition: 0.3s;
+}
+
+.internationalLink:hover {
+  transform: scale(1.2);
+}
+
 /* NAVBAR STYLES */
 .navbar {
   display: flex;
@@ -357,7 +403,7 @@ nav a {
 .form {
   margin:3em 0 0 0;
   width: 50vw;
-  height: 40vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -373,11 +419,12 @@ nav a {
 }
 
 .form h2 {
+  margin-top: 0px;
   width: 100%;
-  height: 20%;
+  height: 22%;
   background-color: black;
   color: whitesmoke;
-  padding-top: 10px;
+  padding-top: 13px;
   font-family: 'ABeeZee', sans-serif;
   font-weight: lighter;
 }
@@ -403,6 +450,11 @@ nav a {
   height: 25px;
 }
 
+.loginBorder {
+  display: flex;
+  justify-content: center;
+}
+
 .loginError {
   position: absolute;
   width: 180px;
@@ -411,7 +463,8 @@ nav a {
   color: whitesmoke;
   text-align: center;
   font-size: 20px;
-  margin-top: 50vh;
+  margin-top: 65vh;
+  margin-right: 5px;
   animation: fadeinout 2s linear forwards;
 }
 
@@ -475,6 +528,19 @@ nav a {
   transform: scale(1.2);
 }
 
+.noSaved {
+  align-items: center;
+    text-align: center;
+    border: solid black;
+    height: 126px;
+    width: 445px;
+    margin-top: 74px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 356px;
+}
+
 /* All Users Styles */
 
 .allUsers {
@@ -496,7 +562,7 @@ nav a {
   justify-content: center;
   text-align: center;
   align-items: center;
-  height: 106px;
+  height: 144px;
   width: 180px;
 }
 
@@ -544,4 +610,20 @@ nav a {
   transform: scale(1.2);
 }
 
+/* Artist Search Bar Styles */
+
+.artistSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.artistSearch form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
+
+.searchLabel {
+  margin-right: 20px;
+}
 

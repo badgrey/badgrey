@@ -14,7 +14,7 @@ describe('Artist routes', () => {
   describe('/api/artists', () => {
     const rapperOne = {name: 'Russ', city: 'Atlanta', imageURL: 'https://pbs.twimg.com/media/DaRpkMyXcAAXNYW.jpg', genre: 'Conscious', stateAbbrev: 'GA'}
     const rapperTwo = {name: 'Lil Uzi Vert', city: 'Philladelphia', imageURL: 'https://sslb.ulximg.com/image/405x405/artist/1464961822_6e757496657e78e0a893e0c8a3753afd.jpg/8b9b3e01b6e633fbd3974385e88c2f50/1464961822_bfdbd37bf6376d367e672d59e2b22b11.jpg', genre: 'Cloud', stateAbbrev: 'PA'}
-    const rapperThree = {name: 'Yung Lean', city: 'Stockholm', imageURL: 'https://hypb.imgix.net/image/2017/07/yung-lean-jonatan-leandoer127-katla.jpg?q=75&w=800&fit=clip&auto=compress%2Cformat', genre: 'Cloud', stateAbbrev: 'ROW'}
+    const rapperThree = {name: 'Yung Lean', city: 'Stockholm', imageURL: 'https://hypb.imgix.net/image/2017/07/yung-lean-jonatan-leandoer127-katla.jpg?q=75&w=800&fit=clip&auto=compress%2Cformat', genre: 'Cloud', stateAbbrev: 'International'}
 
     const regUser = {email: 'marko@marko.com', password: '123', isAdmin: false}
     const adminUser = {email: 'cole@cole.com', password: '123', isAdmin: true}
@@ -48,7 +48,7 @@ describe('Artist routes', () => {
         .then(res => {
           expect(res.body).to.be.an('object')
           expect(res.body.id).to.be.equal(3)
-          expect(res.body.stateAbbrev).to.be.equal('ROW')
+          expect(res.body.stateAbbrev).to.be.equal('International')
           expect(res.body.name).to.be.equal(rapperThree.name)
         })
     })

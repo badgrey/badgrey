@@ -22,6 +22,9 @@ export class AllUsers extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.isAdmin) {
+      this.props.history.push('/')
+    }
     if (this.props.users.length === 0) {
       this.props.loadUsers()
     }
@@ -63,10 +66,10 @@ export class AllUsers extends Component {
     return (
        this.props.users.length === 0 ? null :
       <div className="allUsers">
-        <h1>ALL USERS</h1>
+        <h1>All Users</h1>
         <div>
           <form>
-            <label>Search User</label>
+            <label className="searchLabel">Search User</label>
             <input onChange={this.handleSearch} placeholder="Username" />
           </form>
         </div>
@@ -121,9 +124,11 @@ export class AllUsers extends Component {
   }
 }
 
-const mapState = ({allusers}) => {
+const mapState = ({allusers, user}) => {
   return {
-    users: allusers
+    users: allusers,
+    user,
+    isAdmin: user.isAdmin
   }
 }
 

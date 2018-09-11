@@ -1,8 +1,2 @@
-//update routes to require routing
-//possible redirect to home
+//make it so it tells you if a username or email is already taken
 
-//add global
-
-//add search bar for artist pages
-
-//add all artist page

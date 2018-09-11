@@ -41,7 +41,7 @@ const stateOptions = [
 'OR',
 'PA',
 'RI',
-'ROW',
+'International',
 'SC',
 'SD',
 'TN',
@@ -71,6 +71,12 @@ export class NewArtist extends Component {
     super(props);
     this.submit = this.submit.bind(this);
 
+  }
+
+  componentDidMount () {
+    if (!this.props.isAdmin) {
+      this.props.history.push('/')
+    }
   }
 
   submit(event) {
@@ -166,7 +172,12 @@ export class NewArtist extends Component {
 
 const mapState = (state) => {
   return {
-    artists: state.artists
+    artists: state.artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    }),
+    isAdmin: state.user.isAdmin
   }
 }
 

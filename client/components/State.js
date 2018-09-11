@@ -9,9 +9,11 @@ export class State extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      savedCheck: true
+      savedCheck: true,
+      search: ''
     }
     this.saved = this.saved.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount () {
@@ -31,14 +33,27 @@ export class State extends Component{
     }
   }
 
+  handleSearch(evt) {
+    this.setState({
+      search: evt.target.value
+    })
+  }
+
   render() {
+    const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       this.props.stateArtists.length === 0 ? null :
       <div>
         <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
+        <div className="artistSearch">
+          <form>
+            <label className="searchLabel">Search Artist</label>
+            <input onChange={this.handleSearch} placeholder="Name" />
+          </form>
+        </div>
         <div className="state">
         {
-          this.props.stateArtists.map((artist) => (
+          artists.map((artist) => (
 
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
@@ -62,7 +77,11 @@ const mapState = ({artists, user, savedArtists}, ownProps) => {
     stateArtists: artists.filter((artist) => {
       return artist.stateAbbrev === ownProps.match.params.state
     }),
-    artists,
+    artists: artists.sort((artistA, artistB) => {
+      if (artistA.name < artistB.name) return -1
+      if (artistA.name > artistB.name) return 1
+      return 0
+    }),
     isLoggedIn: !!user.id,
     user,
     savedArtists

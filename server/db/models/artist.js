@@ -70,7 +70,7 @@ const Artist = db.define('artist', {
       OR: 'Oregon',
       PA: 'Pennsylvania',
       RI: 'Rhode Island',
-      ROW: 'Rest of World',
+      International: 'International',
       SC: 'South Carolina',
       SD: 'South Dakota',
       TN: 'Tennessee',

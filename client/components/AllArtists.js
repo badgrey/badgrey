@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
-import {fetchArtists, fetchSavedArtists, deleteCurrentSavedArtist} from '../store'
+import {fetchArtists, fetchSavedArtists} from '../store'
 
-export class SavedArtists extends Component{
+export class AllArtists extends Component{
 
   constructor(props) {
     super(props)
@@ -12,23 +12,22 @@ export class SavedArtists extends Component{
       savedCheck: true,
       search: ''
     }
-    this.deleteSaved = this.deleteSaved.bind(this)
     this.saved = this.saved.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
-  }
-  deleteSaved() {
-    this.props.delete()
   }
 
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
+  }
+
+  componentDidUpdate () {
     this.saved()
   }
 
   saved() {
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
+    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck ) {
       this.props.fetchSaved()
       this.setState({savedCheck: false})
     }
@@ -41,19 +40,14 @@ export class SavedArtists extends Component{
   }
 
   render() {
-    const artists = this.props.savedArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
+    const artists = this.props.artists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
-      this.props.savedArtists.length === 0 ?
-      <div className="noSaved">
-        <h2>You Don't Have Any Saved Artists!</h2>
-        <h6>If you add some they will show up here so you can check them out later</h6>
-      </div>
-      :
+      this.props.artists.length === 0 ? null :
       <div>
-        <h1 className="title">Saved Artists</h1>
+        <h1 className="title">All Artists</h1>
         <div className="artistSearch">
           <form>
-            <label className="searchLabel">Search Artist</label>
+            <label className="searchLabel" >Search Artist</label>
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>
@@ -61,16 +55,13 @@ export class SavedArtists extends Component{
         {
           artists.map((artist) => (
 
-              <div key={artist.id} className="savedArtists">
+              <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
                   <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
                 </Link>
-                <button
-                className="savedArtistsButton" onClick={() => {this.props.delete(artist.id)
-                  this.props.history.push('/saved')}}>X</button>
               </div>
           ))
         }
@@ -80,17 +71,16 @@ export class SavedArtists extends Component{
   }
 }
 
-
-const mapState = ({artists, user, savedArtists}) => {
+const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
-    savedArtists,
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
       if (artistA.name > artistB.name) return 1
       return 0
     }),
-    isLoggedIn: !!user,
-    user
+    isLoggedIn: !!user.id,
+    user,
+    savedArtists
   }
 }
 
@@ -101,11 +91,8 @@ const mapDispatch = (dispatch) => {
     },
     fetchSaved() {
       dispatch(fetchSavedArtists())
-    },
-    delete(id) {
-      dispatch(deleteCurrentSavedArtist(id))
     }
   }
 }
 
-export default connect(mapState, mapDispatch)(SavedArtists)
+export default connect(mapState, mapDispatch)(AllArtists)
