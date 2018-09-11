@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { auth, deleteError, sendConfirmEmail } from '../store';
+import { auth, deleteError, sendConfirmEmail, addError } from '../store';
 import {Link} from 'react-router-dom'
 
 export class AuthForm extends Component {
@@ -14,28 +14,31 @@ export class AuthForm extends Component {
       checking: false,
       username: '',
       email: '',
-      password: ''
+      password: '',
       }
     this.sendEmail = this.sendEmail.bind(this)
     this.completeSignUp = this.completeSignUp.bind(this)
   }
 
-  sendEmail(evt) {
+  async sendEmail(evt) {
     evt.preventDefault();
       const formName = evt.target.name;
       this.setState({formName: formName})
       if (formName === 'signup') {
         const rand = Math.floor(((Math.random() * 10000) + 54))
         this.setState({rand: '' + rand})
-        this.setState({checking: true})
         this.setState({username: evt.target.username.value})
         this.setState({email: evt.target.email.value})
         this.setState({password: evt.target.password.value})
         const info = {
+          username: evt.target.username.value,
           rand: rand,
           email: evt.target.email.value
         }
-        this.props.handleSubmitSignUp(info)
+        await this.props.handleSubmitSignUp(info)
+        if ((this.props.error.error === undefined)) {
+          this.setState({checking: true})
+        }
       }
       if (formName === 'login') {
         try {
@@ -51,10 +54,11 @@ export class AuthForm extends Component {
     evt.preventDefault();
     if (this.state.rand === evt.target.code.value) {
       this.props.submitForm(this.state.username, this.state.email, this.state.password, this.props.name)
-      this.props.history.push('/account')
+      this.props.history.push('/')
+    } else {
+      this.props.wrongCodeError()
     }
   }
-
 
   renderErrorMessage() {
     setTimeout(() => this.props.renderError(), 3000)
@@ -98,7 +102,12 @@ export class AuthForm extends Component {
           }
           {error && (
             <div className="loginError">
+            {
+              error.error === 'Username Taken' || error.error === 'Email Already In Use' ?
+              <p>{error.error}</p>
+              :
               <p>Username or Password Incorrect</p>
+            }
             </div>
           )}
         </form>
@@ -107,6 +116,7 @@ export class AuthForm extends Component {
       <div className="loginBorder" onSubmit={this.completeSignUp}>
           <form className="form">
             <h2>Enter Code Below</h2>
+            <h4>It Was Emailed To You</h4>
             <div>
               <label>Code</label>
               <input className="loginInput" name="code" type="text" />
@@ -116,7 +126,7 @@ export class AuthForm extends Component {
             </div>
             {error && (
               <div className="loginError">
-                <p>Incorrect Code!</p>
+                <p>{error.error}</p>
               </div>
             )}
           </form>
@@ -161,6 +171,10 @@ const mapDispatch = dispatch => {
     },
     renderError(){
       return dispatch(deleteError())
+    },
+    wrongCodeError(){
+      console.log('MADE IT HERE')
+      return dispatch(addError({error: 'Incorrect Code!'}))
     }
   };
 };

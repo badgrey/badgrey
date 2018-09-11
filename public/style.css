@@ -450,6 +450,11 @@ nav a {
   height: 25px;
 }
 
+.loginBorder {
+  display: flex;
+  justify-content: center;
+}
+
 .loginError {
   position: absolute;
   width: 180px;

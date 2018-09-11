@@ -50,7 +50,7 @@ router.post('/', (req, res, next) => {
       console.log(err)
     } else {
       console.log('Success!', { success: response });
-      res.status(201)
+      res.status(201).send('Success')
     }
   })
 

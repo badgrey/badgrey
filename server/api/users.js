@@ -13,6 +13,26 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/username/:username', (req, res, next) => {
+  User.findAll({
+    where: {
+      username: req.params.username
+    }
+  })
+  .then(user => res.json(user))
+  .catch(next)
+})
+
+router.get('/email/:email', (req, res, next) => {
+  User.findAll({
+    where: {
+      email: req.params.email
+    }
+  })
+  .then(user => res.json(user))
+  .catch(next)
+})
+
 router.delete('/delete/:id', (async (req, res, next) => {
   const user = await User.destroy({
     where: {
@@ -31,5 +51,4 @@ router.put('/:id', async (req, res, next) => {
   });
   res.json(response)
 })
-
 
