@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -6,72 +6,135 @@ import {logout} from '../store'
 import '../../public/style.css'
 import { slide as Menu } from 'react-burger-menu'
 
-const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
-  <div className="navbar">
-    <div className="badGreyTextLogo">
-      <img className="badgrey" src={require('../../public/images/badGreyTextLogoWhite.png')} />
-    </div>
-    <nav>
-      {isLoggedIn ? (
-        <div className="navLinks">
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/">
-              <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
-            </Link>
-          </div>
-          <div>
-          {
-            isAdmin ?
-            <Menu width="80px" isOpen={true}>
-              <Link to="/newArtist" className="menu-item">
-                Add Artist
-              </Link>
-              <Link to="/account" className="menu-item">
-              Account
-              </Link>
-              <Link to="/saved" className="menu-item">
-              Saved
-              </Link>
-              <Link to="/users" className="menu-item">
-              Users
-              </Link>
-              <a className="menu-item" href="#" onClick={handleClick}>
-              Logout
-              </a>
-            </Menu>
-                :
-            <Menu width="80px" isOpen={true}>
-              <Link to="/account" className="menu-item">
-              Account
-              </Link>
-              <Link to="/saved" className="menu-item">
-              Saved
-              </Link>
-              <a className="menu-item" href="#" onClick={handleClick}>
-                Logout
-              </a>
-            </Menu>
-              }
-          </div>
-        </div>
-      ) : (
-        <div className="navLinks">
-            {/* The navbar will show these links before you log in */}
-          <Link to="/">
-            <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
-          </Link>
-          <Menu width="80px" isOpen={true}>
-            <Link to="/login">Login</Link>
+class Navbar extends Component {
 
-            <Link to="/signup">Sign Up</Link>
-          </Menu>
+  constructor() {
+    super()
+    this.state = {
+      clicked: false
+    }
+    this.renderDropDown = this.renderDropDown.bind(this)
+  }
+
+  renderDropDown(evt) {
+    evt.preventDefault()
+    if (this.state.clicked === false) {
+      this.setState({clicked: true})
+    } else {
+      this.setState({clicked: false})
+    }
+  }
+
+  render() {
+
+    return (
+      <div className="navbar">
+        <div>
+          <Link to="/">
+            <img className="badGreyTextLogo" src={require('../../public/images/badGreyTextLogoWhite.png')} />
+          </Link>
         </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+        <nav>
+        {/* The navbar will show these links after you log in */}
+          {this.props.isLoggedIn ? (
+            <div className="navLinks">
+              <div>
+              {
+                this.props.isAdmin ?
+                <div>
+                  <div onClick={this.renderDropDown}>
+                    <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                  </div>
+                  {
+                    this.state.clicked === false ? null :
+                  <div className="navOptions">
+                    <div className="singleNavOption">
+                      <Link to="/newArtist">
+                        Add Artist
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/account">
+                      Account
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/saved">
+                      Saved
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/users">
+                      Users
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <a href="#" onClick={this.props.handleClick}>
+                      Logout
+                      </a>
+                    </div>
+                  </div>
+                }
+                </div>
+                    :
+                    <div className="navOptions">
+                      <div onClick={this.renderDropDown}>
+                        <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                      </div>
+                    {
+                      this.state.clicked === false ? null :
+                      <div>
+                        <div className="singleNavOption">
+                          <Link to="/account">
+                          Account
+                          </Link>
+                        </div>
+                        <div className="singleNavOption">
+                          <Link to="/saved">
+                          Saved
+                          </Link>
+                        </div>
+                        <div className="singleNavOption">
+                          <a href="#" onClick={this.props.handleClick}>
+                          Logout
+                          </a>
+                        </div>
+                      </div>
+                    }
+                    </div>
+                  }
+              </div>
+            </div>
+          ) : (
+            <div className="navLinks">
+              <div>
+                <div onClick={this.renderDropDown}>
+                  <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                </div>
+              {
+                this.state.clicked === false ? null :
+                <div className="navOptions">
+                    {/* The navbar will show these links before you log in */}
+                  <div className="singleNavOption">
+                    <Link to="/login">
+                      Login
+                    </Link>
+                  </div>
+                  <div className="singleNavOption">
+                    <Link to="/signup">
+                      Sign Up
+                    </Link>
+                  </div>
+                </div>
+              }
+              </div>
+            </div>
+          )}
+        </nav>
+      </div>
+    )
+  }
+}
 
 /**
  * CONTAINER

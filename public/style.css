@@ -96,19 +96,34 @@ path:hover {
 /* NAVBAR STYLES */
 .navbar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #141210;
   text-align: center;
   height: 121px;
+  justify-content: space-between;
+}
+
+.navOptions {
+  background-color: #141210;
+  margin-top: 15px;
 }
 
 .badGreyTextLogo {
-  display: flex;
-  justify-content: center;
+  height: 100px;
+  width: 100px;
 }
 .badGreyWolfLogo {
   height: 100px;
   width: 100px;
+  cursor: pointer;
+}
+
+.badGreyTextLogo:hover {
+  opacity: 0.50;
+}
+
+.badGreyWolfLogo:hover {
+  opacity: 0.50;
 }
 
 .badgrey {
@@ -144,6 +159,34 @@ nav a {
 .bm-menu {
   background: #141210;
   color: whitesmoke
+}
+
+@media only screen and (max-width: 600px) {
+  .badgrey {
+    height: 90px;
+    width: 90px;
+    margin-top: 13px;
+  }
+  .badGreyWolfLogo {
+    height: 70px;
+    width: 70px;
+    margin-top: 10px;
+  }
+  body .bm-menu-wrap {
+    position: fixed;
+    right: inherit;
+    z-index: 1100;
+    width: 58px;
+    height: 21%;
+    transition: all 0.5s ease 0s;
+  }
+  .bm-burger-button {
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    right: 59px;
+    top: 36px;
+}
 }
 
 /* State Artists Styles */
