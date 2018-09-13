@@ -34,6 +34,20 @@ class Navbar extends Component {
             <img className="badGreyTextLogo" src={require('../../public/images/badGreyTextLogoWhite.png')} />
           </Link>
         </div>
+        <div className="navList">
+          <Link to="/discover">
+            Discover
+          </Link>
+          <Link to="/playlists">
+            Playlists
+          </Link>
+          <Link to="/interviews">
+            Interviews
+          </Link>
+          <Link to="/freshman">
+            Freshman List
+          </Link>
+        </div>
         <nav>
         {/* The navbar will show these links after you log in */}
           {this.props.isLoggedIn ? (
@@ -162,5 +176,4 @@ export default connect(mapState, mapDispatch)(Navbar)
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  isAdmin: PropTypes.bool.isRequired
 }

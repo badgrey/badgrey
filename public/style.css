@@ -6,8 +6,8 @@ html, body {
   border: 0px
 }
 
-body {
-  font-family: sans-serif;
+body h1 h2 h3 h4 Link a p div button{
+  font-family: 'ABeeZee', sans-serif;
 }
 
 a {
@@ -41,6 +41,7 @@ path:hover {
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .Map {
   display: flex;
@@ -99,7 +100,7 @@ path:hover {
   flex-direction: row;
   background-color: #141210;
   text-align: center;
-  height: 121px;
+  height: 104px;
   justify-content: space-between;
 }
 
@@ -144,22 +145,21 @@ nav a {
   justify-content: space-between;
 }
 
-.bm-burger-bars {
-  background: whitesmoke;
+.navList a{
+  color: whitesmoke;
 }
 
-.bm-burger-button {
-  position: absolute;
-  width: 36px;
-  height: 30px;
-  right: 96px;
-  top: 36px;
+.navList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 0.8;
+  margin-top: 78px;
+  margin-left: 34em;
+  color: whitesmoke;
+  margin-right: 41px;
 }
 
-.bm-menu {
-  background: #141210;
-  color: whitesmoke
-}
 
 @media only screen and (max-width: 600px) {
   .badgrey {
@@ -172,21 +172,6 @@ nav a {
     width: 70px;
     margin-top: 10px;
   }
-  body .bm-menu-wrap {
-    position: fixed;
-    right: inherit;
-    z-index: 1100;
-    width: 58px;
-    height: 21%;
-    transition: all 0.5s ease 0s;
-  }
-  .bm-burger-button {
-    position: absolute;
-    width: 36px;
-    height: 30px;
-    right: 59px;
-    top: 36px;
-}
 }
 
 /* State Artists Styles */
