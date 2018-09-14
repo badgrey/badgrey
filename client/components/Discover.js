@@ -200,7 +200,7 @@ export class Discover extends Component {
       <div className="discover">
         <h1>Discover Below</h1>
         <div className="allAndGlobe">
-          <Link to="/discover/all">
+          <Link className="allArtistsLink" to="/discover/all">
             <button className="allArtistsButton" >View All Artists</button>
           </Link>
           <Link className="internationalLink" to="/discover/International">

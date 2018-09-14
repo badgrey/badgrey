@@ -27,6 +27,12 @@ form div {
   font-family: 'ABeeZee', sans-serif;
 }
 
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  body {
+    width: 68em;
+  }
+}
+
 /* Map Styles */
 
 path {
@@ -43,6 +49,9 @@ path:hover {
   justify-content: space-between;
   margin-top: 20px;
 }
+.discover h1 {
+  font-family: 'ABeeZee', sans-serif;
+}
 .Map {
   display: flex;
   justify-content: space-around;
@@ -57,6 +66,7 @@ path:hover {
   background-color: black;
   transition: 0.3s;
   font-size: 1.3em;
+  font-family: 'ABeeZee', sans-serif;
 }
 
 .allArtistsButton:hover {
@@ -94,6 +104,109 @@ path:hover {
   transform: scale(1.2);
 }
 
+@media only screen and (min-width: 600px) and (max-width:900px) {
+  .genreDiv {
+    margin-top: -20px;
+  }
+  .Map {
+    margin-top: 40px;
+  }
+  .allAndGlobe{
+    margin-top: 20px;
+  }
+  .allArtistsButton {
+    margin-top: 75px;
+    width: 139px;
+    height: 50px;
+  }
+  .allArtistsButton {
+    margin-top: 32px;
+    width: 139px;
+    height: 50px;
+    font-size: 1.1em;
+  }
+  .allArtistsLink {
+    height: 0px;
+  }
+  .internationalLink {
+    margin-top: 45;
+  }
+  .globe {
+    border-radius: 80px;
+    height: 90px;
+  }
+  .globeLabel {
+    font-size: 1em;
+    margin-bottom: -23px;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .discover {
+    margin-top: 45px;
+  }
+  .discover h1 {
+    font-size: 3em;
+    margin-bottom: 55px;
+  }
+  .allAndGlobe a {
+    height: 0px;
+  }
+  .allArtistsButton {
+    width: 246px;
+    height: 91px;
+    font-size: 1.7em;
+  }
+  .globe {
+    border-radius: 98px;
+    height: 200px;
+    width: 200px;
+  }
+  .Map svg {
+    height: 661px;
+    width: 1081px;
+    margin-top: 13em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .discover {
+    margin-top: 80px;
+  }
+  .discover h1 {
+    font-size: 5em;
+  }
+  .allAndGlobe {
+    margin-top: 5em;
+  }
+  .allAndGlobe a {
+    height: 0px;
+  }
+  .allArtistsButton {
+    width: 308px;
+    height: 145px;
+    font-size: 2.7em;
+  }
+  .globe {
+    border: solid black 6px;
+    padding: 17px;
+    border-radius: 191px;
+    height: 400px;
+    width: 400px;
+  }
+  .globeLabel {
+    font-size: 2.8em;
+    margin-top: 11px;
+  }
+  .Map {
+    margin-top: 28em;
+  }
+  .Map svg {
+    height: 86em;
+    width: 137em;
+  }
+}
+
 /* NAVBAR STYLES */
 .navbar {
   display: flex;
@@ -106,7 +219,7 @@ path:hover {
 
 .navOptions {
   background-color: #141210;
-  margin-top: 15px;
+  margin-top: -1px;
 }
 
 .badGreyTextLogo {
@@ -155,7 +268,7 @@ nav a {
   justify-content: space-between;
   flex-grow: 0.8;
   margin-top: 78px;
-  margin-left: 34em;
+  margin-left: 22em;
   color: whitesmoke;
   margin-right: 41px;
 }
@@ -171,6 +284,72 @@ nav a {
     height: 70px;
     width: 70px;
     margin-top: 10px;
+  }
+  .navOptions {
+    position: relative;
+  }
+  .navList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0px;
+  }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width:900px) {
+  .navbar {
+    width: 69em;
+  }
+  .navList {
+    margin-left: 21em;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .navbar {
+    height: 148px;
+  }
+  .badGreyTextLogo {
+    height: 160px;
+    width: 160px;
+  }
+  .navList {
+    margin-top: 111px;
+    margin-left: 19em;
+    margin-right: 1em;
+    font-size: 1.5em;
+  }
+  .badGreyWolfLogo {
+    height: 160px;
+    width: 160px;
+  }
+  .navOptions {
+    margin-top: -17px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .navbar {
+    height: 17em;
+  }
+  .badGreyTextLogo {
+    height: 260px;
+    width: 260px;
+  }
+  .badGreyWolfLogo {
+    height: 260px;
+    width: 260px;
+  }
+  .navOptions {
+    margin-top: -27px;
+    font-size: 2em;
+  }
+  .navList {
+    margin-top: 5em;
+    margin-left: 22em;
+    margin-right: 58px;
+    font-size: 2.4em;
   }
 }
 
@@ -420,6 +599,37 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+}
+
+@media only screen and (max-width: 600px) {
+  .genreGrid{
+    grid-template-columns: 70px 70px 70px 70px 70px;
+    grid-template-rows: 70px 70px;
+  }
+  .genreName {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .genreGrid {
+    grid-template-rows: 200px 200px;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    margin-top: 156px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .genreName {
+    background-color: black;
+    color: whitesmoke;
+    transition: 0.3s;
+    font-size: 2.8em;
+  }
+  .genreGrid {
+    grid-template-rows: 24em 24em;
+    grid-template-columns: 24em 24em 24em 24em 24em;
+  }
 }
 
 /* Artist Form Creation Styles */
