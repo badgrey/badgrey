@@ -104,6 +104,34 @@ path:hover {
   transform: scale(1.2);
 }
 
+@media only screen and (max-width: 400px) {
+  .discover {
+    width: 26em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Map {
+    margin-top: -15px;
+    margin-bottom: -156px;
+  }
+  .allAndGlobe a {
+    height: 0px;
+  }
+  .allArtistsButton {
+    width: 7em;
+    height: 3em;
+    font-size: 1em;
+  }
+  .globe {
+    height: 90px;
+    width: 90px;
+  }
+  .globeLabel {
+    font-size: 1em;
+  }
+}
+
 @media only screen and (min-width: 600px) and (max-width:900px) {
   .genreDiv {
     margin-top: -20px;
@@ -116,8 +144,9 @@ path:hover {
   }
   .allArtistsButton {
     margin-top: 75px;
-    width: 139px;
-    height: 50px;
+    width: 170px;
+    height: 70px;
+    font-size: 1.4em;
   }
   .allArtistsButton {
     margin-top: 32px;
@@ -133,7 +162,8 @@ path:hover {
   }
   .globe {
     border-radius: 80px;
-    height: 90px;
+    height: 150px;
+    width: 150px;
   }
   .globeLabel {
     font-size: 1em;
@@ -273,8 +303,21 @@ nav a {
   margin-right: 41px;
 }
 
+@media only screen and (max-width: 340px) {
+  .navbar {
+    width: 30em;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .navbar {
+    width: 30em;
+  }
+}
 
 @media only screen and (max-width: 600px) {
+  .nav {
+    width: 28em;
+  }
   .badgrey {
     height: 90px;
     width: 90px;
@@ -717,6 +760,79 @@ nav a {
     opacity: 1
   }
 }
+
+@media only screen and (max-width: 340px) {
+
+}
+@media only screen and (max-width: 400px) {
+  .outerForm {
+    width: 27em;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .outerForm {
+    width: 30em;
+  }
+  .form {
+    width: 81vw;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .form {
+    width: 65vw;
+  }
+  .form h2 {
+    font-size: 3em;
+    height: 3em;
+  }
+  .loginSignupLabel {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  .form input {
+    height: 2em;
+    width: 13em;
+    font-size: 2.5em;
+  }
+  .form button {
+    width: 10em;
+    height: 70px;
+    font-size: 2em;
+  }
+  .form h4 {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .form {
+    height: 70vh;
+  }
+  .form h2 {
+    font-size: 5em;
+    height: 2em;
+  }
+  .loginSignupLabel {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  .form input {
+    height: 3em;
+    width: 18em;
+    font-size: 3em;
+  }
+  .form button {
+    width: 8em;
+    height: 3em;
+    font-size: 3em;
+  }
+  .form h4 {
+    font-size: 2em;
+  }
+}
+
+
 
 /* Edit User Styles */
 
