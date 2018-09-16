@@ -104,13 +104,10 @@ path:hover {
   transform: scale(1.2);
 }
 
-@media only screen and (max-width: 400px) {
-  .discover {
-    width: 26em;
-  }
-}
-
 @media only screen and (max-width: 600px) {
+  .discover {
+    width: 29em;
+  }
   .Map {
     margin-top: -15px;
     margin-bottom: -156px;
@@ -250,6 +247,7 @@ path:hover {
 .navOptions {
   background-color: #141210;
   margin-top: -1px;
+  position: relative;
 }
 
 .badGreyTextLogo {
@@ -342,7 +340,7 @@ nav a {
 
 @media only screen and (min-width: 600px) and (max-width:900px) {
   .navbar {
-    width: 69em;
+    width: 68em;
   }
   .navList {
     margin-left: 21em;
@@ -375,6 +373,7 @@ nav a {
 @media only screen and (min-width: 1800px) {
   .navbar {
     height: 17em;
+    width: 176em;
   }
   .badGreyTextLogo {
     height: 260px;
@@ -761,11 +760,12 @@ nav a {
   }
 }
 
-@media only screen and (max-width: 340px) {
 
-}
 @media only screen and (max-width: 400px) {
   .outerForm {
+    width: 27em;
+  }
+  .loginBorder {
     width: 27em;
   }
 }
@@ -775,6 +775,9 @@ nav a {
   }
   .form {
     width: 81vw;
+  }
+  .loginBorder {
+    width: 30em;
   }
 }
 
@@ -840,6 +843,7 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 40px;
 }
 
 .editEmail {
@@ -848,12 +852,59 @@ nav a {
   justify-content: center;
   text-align: center;
 }
+.editEmail h1 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.editEmail h3 {
+  font-family: 'ABeeZee', sans-serif;
+}
 
 .editPassword {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin-top: 40px;
+}
+
+.editPassword h1 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  .outerAccountForm {
+    width: 31em;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width:900px) {
+  .outerAccountForm {
+    width: 69em;
+  }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .outerAccountForm {
+    width: 104em;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .editEmail h1 {
+    font-size: 4em;
+  }
+  .editEmail h3 {
+    font-size: 2.6em;
+  }
+  .accountLabel {
+    font-size: 2em;
+    margin-bottom: 7px;
+  }
+  .accountInput {
+    font-size: 2em;
+  }
+  .accountButton {
+    font-size: 2em;
+  }
 }
 
 /* SAVED ARTISTS STYLES */
