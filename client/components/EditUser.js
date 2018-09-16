@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {editCurrentUser, updateUserPassword, deleteError} from '../store'
+import {editCurrentUser, updateUserPassword, deleteError, addError} from '../store'
 
 export class EditArtist extends Component {
   constructor(props) {
@@ -36,9 +36,11 @@ export class EditArtist extends Component {
   }
   changePassword(evt) {
     evt.preventDefault()
-    if (evt.target.newpassword.value === evt.target.confirmpassword.value) {
+    if (evt.target.newpassword.value === evt.target.confirmpassword.value && (evt.target.newpassword.value !== '')) {
       this.props.submitPassForm(this.props.id, evt.target.newpassword.value)
       this.props.history.push('/account')
+    } else {
+      this.props.wrongCodeError()
     }
   }
 
@@ -111,8 +113,8 @@ export class EditArtist extends Component {
                     <button className="accountButton" type="submit">Change</button>
                   </div>
                   {error && (
-                    <div className="loginError">
-                      <p>Incorrect Password or Passwords Do Not Match!</p>
+                    <div className="changePassError">
+                      <p>{error.error}</p>
                     </div>
                   )}
                 </form>
@@ -142,6 +144,9 @@ const mapDispatch = dispatch => ({
   },
   renderError(){
     return dispatch(deleteError())
+  },
+  wrongCodeError(){
+    return dispatch(addError({error: 'Incorrect Password or Passwords Do Not Match!!'}))
   }
 });
 

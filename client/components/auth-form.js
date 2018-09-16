@@ -173,7 +173,6 @@ const mapDispatch = dispatch => {
       return dispatch(deleteError())
     },
     wrongCodeError(){
-      console.log('MADE IT HERE')
       return dispatch(addError({error: 'Incorrect Code!'}))
     }
   };

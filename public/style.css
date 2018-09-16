@@ -872,6 +872,19 @@ nav a {
   font-family: 'ABeeZee', sans-serif;
 }
 
+.changePassError {
+  position: absolute;
+  width: 180px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.7);
+  color: whitesmoke;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 25vh;
+  margin-right: 5em;
+  animation: fadeinout 2s linear forwards;
+}
+
 @media only screen and (max-width: 600px) {
   .outerAccountForm {
     width: 31em;
