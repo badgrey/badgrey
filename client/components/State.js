@@ -43,7 +43,7 @@ export class State extends Component{
     const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       this.props.stateArtists.length === 0 ? null :
-      <div>
+      <div className="artistsDiv">
         <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
         <div className="artistSearch">
           <form>

@@ -397,19 +397,27 @@ nav a {
 
 /* State Artists Styles */
 
+.artistsDiv {
+  margin-top: 40px;
+}
+
 .title {
   text-align: center;
+  margin-top: 40px;
+  font-family: 'ABeeZee', sans-serif;
 }
 .state{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-left: 9em;
+  margin-right: 9em;
 }
 
 .artistPic {
-  width: 250px; /* whatever set width */
-  height: 250px;
-  display: inline-block; /* or you could float them */
+  width: 150px;
+  height: 150px;
+  display: inline-block;
   overflow: hidden;
   transition: 0.3s;
 }
@@ -434,13 +442,111 @@ nav a {
   opacity: 0;
   text-align: center;
   position: absolute;
-  margin-top: 107px;
-  margin-left: 75px;
-  margin-right: 76px;
+  margin-top: 50px;
+  margin-left: 52px;
+  margin-right: 50px;
   margin-bottom: 124px;
-  font-size: 26px;
+  font-size: 15px;
   color: white;
   transition: 0.3s;
+  font-family: 'ABeeZee', sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .artistsDiv {
+    width: 32em;
+  }
+  .state {
+    margin-left: 0px;
+    margin-right: 23px;
+  }
+  .artistPic {
+    height: 85px;
+    width: 85px;
+  }
+  .artistName {
+    opacity: 1;
+    margin-top: 30px;
+    margin-left: 22px;
+    font-size: 7px;
+  }
+  .artistNameText {
+    width: 49px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .state {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+  .artistName {
+    opacity: 1;
+    margin-left: 28px;
+  }
+  .artistNameText {
+    width: 92px;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .artistPic {
+    height: 180px;
+    width: 180px;
+  }
+  .title {
+    font-size: 3em;
+  }
+  .artistSearch form {
+    margin-left: 8em;
+  }
+  .artistSearch {
+    font-size: 1.3em;
+  }
+  .searchLabel {
+    margin-top: 4px;
+  }
+  .artistName {
+    margin-top: 76px;
+    margin-left: 22px;
+    margin-right: 50px;
+    font-size: 20px;
+  }
+  .artistNameText {
+    width: 130px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .title {
+    font-size: 5em;
+  }
+  .artistSearch {
+    font-size: 3em;
+  }
+  .searchLabel {
+    margin-top: 16px;
+  }
+  .artistSearch form {
+    margin-bottom: 78px;
+    margin-top: 51px;
+    margin-left: 8em;
+  }
+  .artistPic {
+    width: 380px;
+    height: 380px;
+  }
+  .artistNameText {
+    width: 189px
+  }
+  .artistName {
+    margin-top: 153px;
+    margin-left: 98px;
+    margin-right: 50px;
+    margin-bottom: 124px;
+    font-size: 34px;
+  }
 }
 
 /* Individual Artist Styles */
@@ -948,15 +1054,15 @@ nav a {
 
 .noSaved {
   align-items: center;
-    text-align: center;
-    border: solid black;
-    height: 126px;
-    width: 445px;
-    margin-top: 74px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 356px;
+  text-align: center;
+  border: solid black;
+  height: 126px;
+  width: 445px;
+  margin-top: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 356px;
 }
 
 /* All Users Styles */
