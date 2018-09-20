@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {editCurrentUser, updateUserPassword, deleteError} from '../store'
+import {editCurrentUser, updateUserPassword, deleteError, addError} from '../store'
 
 export class EditArtist extends Component {
   constructor(props) {
@@ -36,9 +36,11 @@ export class EditArtist extends Component {
   }
   changePassword(evt) {
     evt.preventDefault()
-    if (evt.target.newpassword.value === evt.target.confirmpassword.value) {
+    if (evt.target.newpassword.value === evt.target.confirmpassword.value && (evt.target.newpassword.value !== '')) {
       this.props.submitPassForm(this.props.id, evt.target.newpassword.value)
       this.props.history.push('/account')
+    } else {
+      this.props.wrongCodeError()
     }
   }
 
@@ -61,7 +63,7 @@ export class EditArtist extends Component {
             :
             (
               <div>
-                <button type="submit" onClick={this.showEmailForm}>Update</button>
+                <button className="accountButton" type="submit" onClick={this.showEmailForm}>Update</button>
               </div>
             )
           }
@@ -72,11 +74,11 @@ export class EditArtist extends Component {
               <div>
                 <form onSubmit={this.changeEmail}>
                   <div>
-                    <label htmlFor="email">New Email</label>
-                    <input className="loginInput" name="email" type="text" />
+                    <label className="accountLabel" htmlFor="email">New Email</label>
+                    <input className="accountInput" name="email" type="text" />
                   </div>
                   <div>
-                    <button type="submit">Change</button>
+                    <button className="accountButton" type="submit">Change</button>
                   </div>
                 </form>
               </div>
@@ -89,7 +91,7 @@ export class EditArtist extends Component {
             this.state.passUpdate ? null :
             (
               <div>
-                <button type="submit" onClick={this.showPasswordForm}>Change</button>
+                <button className="accountButton" type="submit" onClick={this.showPasswordForm}>Change</button>
               </div>
             )
           }
@@ -100,19 +102,19 @@ export class EditArtist extends Component {
               <div>
                 <form onSubmit={this.changePassword}>
                   <div>
-                    <label htmlFor="password">New Password</label>
-                    <input name="newpassword" type="password" />
+                    <label className="accountLabel" htmlFor="password">New Password</label>
+                    <input className="accountInput" name="newpassword" type="password" />
                   </div>
                   <div>
-                    <label htmlFor="password">Confirm Password</label>
-                    <input name="confirmpassword" type="password" />
+                    <label className="accountLabel" htmlFor="password">Confirm Password</label>
+                    <input className="accountInput" name="confirmpassword" type="password" />
                   </div>
                   <div>
-                    <button type="submit">Change</button>
+                    <button className="accountButton" type="submit">Change</button>
                   </div>
                   {error && (
-                    <div className="loginError">
-                      <p>Incorrect Password or Passwords Do Not Match!</p>
+                    <div className="changePassError">
+                      <p>{error.error}</p>
                     </div>
                   )}
                 </form>
@@ -142,6 +144,9 @@ const mapDispatch = dispatch => ({
   },
   renderError(){
     return dispatch(deleteError())
+  },
+  wrongCodeError(){
+    return dispatch(addError({error: 'Incorrect Password or Passwords Do Not Match!!'}))
   }
 });
 

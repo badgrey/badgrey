@@ -45,7 +45,7 @@ export class SingleGenre extends Component{
     const artists = this.props.genreArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       this.props.genreArtists.length === 0 ? null :
-      <div>
+      <div className="artistsDiv">
         <h1 className="title">{this.props.genreArtists[0].genre} Artists</h1>
         <div className="artistSearch">
           <form>

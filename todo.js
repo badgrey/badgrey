@@ -1,2 +1,7 @@
-//make it so it tells you if a username or email is already taken
+// add a message if there are no artists for specific state
+
+//update favicon
+//add background image
+
+//make login error and change password error responsive
 

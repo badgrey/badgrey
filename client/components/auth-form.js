@@ -76,16 +76,16 @@ export class AuthForm extends Component {
         <form className="form" onSubmit={this.sendEmail} name={name}>
           <h2>{this.props.displayName} Below</h2>
           <div>
-            <label>Username</label>
+            <label className="loginSignupLabel">Username</label>
             <input className="loginInput" name="username" type="text" />
           </div>
           <div>
-            <label htmlFor="email">Email</label>
+            <label className="loginSignupLabel" htmlFor="email">Email</label>
             <input className="loginInput" name="email" type="text" />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <input name="password" type="password" />
+            <label className="loginSignupLabel" htmlFor="password">Password</label>
+            <input className="loginInput" name="password" type="password" />
           </div>
           <div>
             <button type="submit">{displayName}</button>
@@ -118,7 +118,7 @@ export class AuthForm extends Component {
             <h2>Enter Code Below</h2>
             <h4>It Was Emailed To You</h4>
             <div>
-              <label>Code</label>
+              <label className="loginSignupLabel">Code</label>
               <input className="loginInput" name="code" type="text" />
             </div>
             <div>
@@ -173,7 +173,6 @@ const mapDispatch = dispatch => {
       return dispatch(deleteError())
     },
     wrongCodeError(){
-      console.log('MADE IT HERE')
       return dispatch(addError({error: 'Incorrect Code!'}))
     }
   };
