@@ -106,7 +106,7 @@ path:hover {
 
 @media only screen and (max-width: 600px) {
   .discover {
-    width: 29em;
+    width: 30em;
   }
   .Map {
     margin-top: -15px;
@@ -344,7 +344,7 @@ nav a {
   }
   .navList {
     margin-left: 21em;
-  }
+}
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
@@ -553,17 +553,23 @@ nav a {
 
 .artistContainer {
   text-align: -webkit-center;
+  margin-top: 3em;
 }
 
 .artistHeader {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-bottom: 7em;
+}
+
+.stateLink {
+  height: 0px;
 }
 
 .artistLogos {
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
   transition: 0.3s;
 }
 
@@ -646,6 +652,103 @@ nav a {
   background-color: whitesmoke;
   color: black;
   transform: scale(1.2);
+}
+
+@media only screen and (max-width: 600px) {
+  .artistHeader {
+    width: 29em;
+  }
+  .artistLogos {
+    height: 80px;
+    width: 80px;
+  }
+  .genreLink {
+    grid-template-rows: 80px;
+    grid-template-columns: 80px;
+    height: 95px;
+    margin-right: -31px;
+  }
+  .artistLogos {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .soundcloudAndYoutube {
+    height: 372px;
+    margin-top: 17em;
+    flex-direction: column;
+  }
+  .soundcloud {
+    margin-bottom: 21em
+  }
+  .soundcloud iframe {
+    width: 28em;
+  }
+  .youtube iframe {
+    width: 28em;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .artistContainer {
+    margin-top: 2em;
+  }
+  .artistHeader {
+    margin-left: 6em;
+  }
+  .soundcloudAndYoutube {
+    flex-direction: column;
+    margin-top: 18em;
+    margin-right: -1em;
+  }
+  .soundcloud {
+    margin-bottom: 22em;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .genreLink {
+    font-size: 1.5em;
+    height: 7em;
+  }
+  .addToSavedButton {
+    font-size: 1.7em;
+  }
+
+  .artistLogos {
+    height: 180px;
+    width: 180px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .artistHeader {
+    margin-bottom: 30em;
+  }
+  .artistLogos {
+    height: 280px;
+    width: 280px;
+  }
+  .addToSavedButton {
+    font-size: 2.5em;
+  }
+  .genreLink {
+    grid-template-rows: 220px;
+    grid-template-columns: 220px;
+    font-size: 2.5em;
+    height: 7em;
+    line-height: 1.5;
+  }
+  .soundcloud {
+    margin-top: -25em;
+  }
+  .soundcloud iframe {
+    height: 1300px;
+    width: 800px;
+  }
+  .youtube iframe {
+    height: 640px;
+    width: 890px;
+  }
 }
 
 /* Genre Grid Styles */

@@ -49,7 +49,7 @@ export class Artist extends Component{
       this.props.chosenArtist.length === 0 ? null :
       <div className="artistContainer">
         <div className="artistHeader" >
-          <Link to={`/discover/${this.props.chosenArtist[0].stateAbbrev}`}>
+          <Link className="stateLink" to={`/discover/${this.props.chosenArtist[0].stateAbbrev}`}>
             <img className="artistLogos" src={require(`../../public/images/states/${this.props.chosenArtist[0].stateAbbrev}.png`)} />
           </Link>
           <div className="artistNameHeader">
@@ -82,7 +82,7 @@ export class Artist extends Component{
           </Link>
         </div>
         <div className="soundcloudAndYoutube">
-          <div>
+          <div className="soundcloud">
             <iframe width="500" height="500" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay" src={this.props.chosenArtist[0].soundcloudURL} />
           </div>
           <div className="youtube">
