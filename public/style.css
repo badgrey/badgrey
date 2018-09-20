@@ -984,9 +984,14 @@ nav a {
   }
   .form {
     width: 81vw;
+    height: 84vh;
   }
   .loginBorder {
     width: 30em;
+  }
+  .loginError {
+    margin-top: 85vh;
+    margin-right: 25px;
   }
 }
 
@@ -1131,6 +1136,10 @@ nav a {
 
 /* SAVED ARTISTS STYLES */
 
+.savedArtistsDiv {
+  margin-top: 2em;
+}
+
 .savedArtists {
   display: flex;
   flex-direction: column;
@@ -1167,6 +1176,59 @@ nav a {
   justify-content: center;
   margin-left: 356px;
 }
+
+@media only screen and (max-width: 600px) {
+  .savedArtistsDiv {
+    width: 32em;
+  }
+  .savedArtistsButton {
+    width: 22px;
+    height: 19px;
+  }
+  .noSaved {
+    width: 420px;
+    margin-left: 0;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width:900px) {
+  .noSaved {
+    margin-left: 19em;
+  }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .noSaved {
+    height: 15em;
+    width: 39em;
+    margin-top: 74px;
+    margin-left: 35em;
+  }
+  .noSaved h2{
+    font-size: 2.5em;
+  }
+  .noSaved h6 {
+    font-size: 1.1em;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .savedArtistsButton {
+    width: 62px;
+    height: 69px;
+    font-size: 2em;
+  }
+  .noSaved {
+    height: 30em;
+    width: 74em;
+    margin-top: 74px;
+    margin-left: 56em;
+  }
+  .noSaved h2 {
+    font-size: 4em;
+  }
+  .noSaved h6 {
+    font-size: 2em;
+  }
+}
+
 
 /* All Users Styles */
 
