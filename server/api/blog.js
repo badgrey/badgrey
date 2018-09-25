@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {Blog} = require('../db/models')
 const asyncHandler = require('express-async-handler')
-const { isAdmin, isLoggedIn, isBlogger } = require('../permissions')
+const {isBlogger} = require('../permissions')
 module.exports = router
 
 router.get('/', asyncHandler(async (req, res, next) => {
