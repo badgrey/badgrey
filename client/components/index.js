@@ -17,3 +17,5 @@ export {default as SavedArtists} from './SavedArtists'
 export {default as AllUsers} from './AllUsers'
 export {default as AllArtists} from './AllArtists'
 export {default as AllBlogs} from './AllBlogs'
+export {default as Blog} from './Blog'
+

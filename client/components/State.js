@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
-import {fetchArtists, fetchSavedArtists} from '../store'
+import {fetchArtists, fetchSavedArtists, fetchBlogs} from '../store'
 
 export class State extends Component{
 
@@ -92,6 +92,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(fetchArtists())
+      dispatch(fetchBlogs())
     },
     fetchSaved() {
       dispatch(fetchSavedArtists())

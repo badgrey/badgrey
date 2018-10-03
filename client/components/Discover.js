@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
-import {fetchSavedArtists} from '../store'
+import {fetchSavedArtists, fetchBlogs} from '../store'
 import {Link} from 'react-router-dom'
 
 export class Discover extends Component {
@@ -237,6 +237,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(fetchSavedArtists())
+      dispatch(fetchBlogs())
     }
   }
 }
