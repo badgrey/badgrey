@@ -50,7 +50,7 @@ export class Blog extends Component {
             {
             !this.props.isLoggedIn && !this.props.isAdmin ? null :
             <div className="adminButtons">
-              <Link id="editButton"to={`/editBlog/${this.props.match.params.id}`}>
+              <Link id="editButton" to={`/editBlog/${this.props.match.params.id}`}>
                 <button className="editdelete">Edit Blog</button>
               </Link>
               <button className="editdelete" onClick={this.deleteBlog} >DELETE BLOG</button>

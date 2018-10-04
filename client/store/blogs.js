@@ -65,7 +65,7 @@ export const createNewBlog = (blog) => async (dispatch) => {
 
 export const editCurrentBlog = (id, blog) => async (dispatch) => {
   try {
-    const editedBlog = await axios.put(`/api/blog/${id}`, blog)
+    const editedBlog = await axios.put(`/api/blog/edit/${id}`, blog)
     return dispatch(editBlog(editedBlog.data));
   }
   catch (err) {
