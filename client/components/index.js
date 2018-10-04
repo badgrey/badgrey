@@ -19,4 +19,5 @@ export {default as AllArtists} from './AllArtists'
 export {default as AllBlogs} from './AllBlogs'
 export {default as Blog} from './Blog'
 export {default as EditBlog} from './EditBlog'
+export {default as NewBlog} from './NewBlog'
 

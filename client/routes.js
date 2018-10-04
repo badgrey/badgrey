@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog} from './components'
+import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog} from './components'
 import {me, fetchArtists, fetchBlogs} from './store'
 
 /**
@@ -36,6 +36,7 @@ class Routes extends Component {
               <Route exact path="/newArtist" component={NewArtist} />
               <Route exact path="/edit/:artist" component={EditArtist} />
               <Route exact path="/users" component={AllUsers} />
+              <Route exact path="/newBlog" component={NewBlog} />
               <Route exact path="/editblog/:id" component={EditBlog} />
             </Switch>
         }
