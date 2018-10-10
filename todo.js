@@ -3,3 +3,5 @@
 //update favicon
 //add background image
 
+//add a blogReviewer column to the user table
+
