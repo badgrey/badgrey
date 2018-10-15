@@ -17,8 +17,6 @@ const deleteSavedArtist = id => ({type: DELETE_SAVED_ARTIST, id})
 
 //REDUCER
 export default function reducer (artists = [], action){
-  console.log('ACTION TYPE', action.type)
-
   switch (action.type) {
 
     case GET_SAVED_ARTISTS:

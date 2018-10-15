@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog} from './components'
-import {me, fetchArtists, fetchBlogs} from './store'
+import {me, fetchArtists, fetchBlogs, fetchComments, fetchUsernames} from './store'
 
 /**
  * COMPONENT
@@ -64,6 +64,8 @@ const mapDispatch = (dispatch) => {
       dispatch(me())
       dispatch(fetchArtists())
       dispatch(fetchBlogs())
+      dispatch(fetchComments())
+      dispatch(fetchUsernames())
     }
   }
 }

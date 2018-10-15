@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, fetchUsernames} from '../store'
 import {Link} from 'react-router-dom'
 import {Comment} from './Comment'
 
@@ -67,14 +67,20 @@ export class Blog extends Component {
             <p>{this.props.chosenBlog[0].blogPost}</p>
         </div>
         <div>
-          <Comment />
+          {
+            this.props.blogComments.map((comment) => (
+              <div key={comment.id}>
+                <Comment comment={comment} username={this.props.usernames.filter((username) => {return username.id === comment.id})} />
+              </div>
+            ))
+          }
         </div>
       </div>
     )
   }
 }
 
-const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
+const mapState = ({artists, blogs, user, savedArtists, comments, usernames}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
@@ -90,6 +96,7 @@ const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
     user,
     savedArtists,
     comments,
+    usernames,
     blogComments: comments.filter((comment) => {
       return '' + comment.blogId === ownProps.match.params.id
     })
@@ -101,6 +108,8 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(fetchArtists())
       dispatch(fetchBlogs())
+      dispatch(fetchComments())
+      dispatch(fetchUsernames())
     },
     fetchSaved() {
       dispatch(fetchSavedArtists())
