@@ -5,3 +5,5 @@
 
 //add a blogReviewer column to the user table
 
+//experiment with ALL ARTISTS button colors
+

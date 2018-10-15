@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import '../../public/style.css'
 import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists} from '../store'
 import {Link} from 'react-router-dom'
+import {Comment} from './Comment'
 
 export class Blog extends Component {
 
@@ -16,7 +17,6 @@ export class Blog extends Component {
   }
 
   componentDidMount () {
-    console.log('HERE')
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
@@ -66,12 +66,15 @@ export class Blog extends Component {
         <div className="blogPost">
             <p>{this.props.chosenBlog[0].blogPost}</p>
         </div>
+        <div>
+          <Comment />
+        </div>
       </div>
     )
   }
 }
 
-const mapState = ({artists, blogs, user, savedArtists}, ownProps) => {
+const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
@@ -86,6 +89,10 @@ const mapState = ({artists, blogs, user, savedArtists}, ownProps) => {
     isAdmin: user.isAdmin,
     user,
     savedArtists,
+    comments,
+    blogComments: comments.filter((comment) => {
+      return '' + comment.blogId === ownProps.match.params.id
+    })
   }
 }
 

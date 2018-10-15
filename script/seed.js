@@ -10,7 +10,7 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db')
-const {User, Artist, Blog} = require('../server/db/models')
+const {User, Artist, Blog, Comment} = require('../server/db/models')
 
 async function seed () {
   await db.sync({force: true})
@@ -53,7 +53,32 @@ async function seed () {
     Blog.create({title: 'YNW Melly Up Next', description: 'Listen Mellys new bangers, theyre amazing', author: 'Cole Eckerle', date: new Date('September 2, 2018'), blogPic: 'https://i2.wp.com/curatedflame.com/wp-content/uploads/2018/03/avatars-000353116778-yb8rnq-t500x500.jpg?fit=500%2C500&quality=80&strip=all&ssl=1', blogPost: 'I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder'})
   ])
 
+
   console.log(`seeded ${blogs.length} Blogs!`)
+
+  const comments = await Promise.all([
+    Comment.create({comment: 'This song is trash'}),
+    Comment.create({comment: 'Fetty is trash'}),
+    Comment.create({comment: 'STOOP KIDS AFRAID TO LEAVE HIS STOOP'}),
+    Comment.create({comment: 'Mirs up next for sure'})
+  ])
+
+  await comments[0].setUser(users[0])
+  await comments[1].setUser(users[0])
+  await comments[2].setUser(users[1])
+  await comments[3].setUser(users[1])
+  await comments[0].setBlog(blogs[1])
+  await comments[1].setBlog(blogs[1])
+  await comments[2].setBlog(blogs[1])
+  await comments[3].setBlog(blogs[1])
+  await comments[0].addLikes(users[0])
+  await comments[1].addLikes(users[1])
+  await comments[0].addLikes(users[2])
+  await comments[2].addDislikes(users[2])
+  await comments[2].addDislikes(users[3])
+  await comments[3].addDislikes(users[0])
+
+  console.log(`seeded ${comments.length} Comments Successfuly!`)
   console.log(`seeded successfully`)
 
 }
