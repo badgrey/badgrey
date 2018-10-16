@@ -11,51 +11,28 @@ export class Comment extends Component {
   }
 
   render() {
-    console.log(this.props)
+    const likes = this.props.loadLikes(this.props.comment)
+    const dislikes = this.props.loadDislikes(this.props.comment)
+    console.log(likes, dislikes)
     return (
+    props.username.length === 0 ? null :
       <div>
-        <h1>HI</h1>
+        <h1>{props.username[0].username}</h1>
+        <h1>{props.comment.comment}</h1>
       </div>
     )
   }
 }
 
-const mapState = ({artists, usernames, blogs, user, savedArtists, comments}, ownProps) => {
-  return {
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1
-      if (artistA.name > artistB.name) return 1
-      return 0
-    }),
-    blogs,
-    chosenBlog: blogs.filter((blog) => {
-      return '' + blog.id === ownProps.match.params.id
-    }),
-    isLoggedIn: !!user.id,
-    isAdmin: user.isAdmin,
-    user,
-    savedArtists,
-    comments,
-    usernames,
-    userComments: usernames.filter((username) => {
-      return username.id === this.props.comment.userId
-    })
-  }
-}
+const mapState = null
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData () {
-      dispatch(fetchArtists())
-      dispatch(fetchBlogs())
-      dispatch(fetchComments())
-      dispatch(fetchUsernames())
+    loadLikes(comment) {
+      dispatch(comment.getLikes())
     },
-    fetchSaved() {
-      dispatch(fetchSavedArtists())
-    },
-    delete (id) {
-      dispatch(deleteCurrentBlog(id))
+    loadDislikes(comment) {
+      dispatch(comment.getDislikes())
     }
   }
 }
