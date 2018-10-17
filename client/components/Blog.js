@@ -68,11 +68,18 @@ export class Blog extends Component {
         </div>
         <div>
           {
-            this.props.blogComments.map((comment) => (
-              <div key={comment.id}>
-                <Comment comment={comment} username={this.props.usernames.filter((username) => {return username.id === comment.id})} />
-              </div>
-            ))
+            this.props.blogComments.length === 0 ? null :
+            this.props.blogComments.map((comment) => {
+              const user = this.props.usernames.filter((name) => {
+                return name.id === comment.userId})
+              return (
+                user.length === 0 ? null :
+                <div key={comment.id}>
+                  <h1>{user[0].username}</h1>
+                  <h1>{comment.comment}</h1>
+                </div>
+              )
+            })
           }
         </div>
       </div>
