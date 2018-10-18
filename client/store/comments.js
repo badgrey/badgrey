@@ -43,9 +43,9 @@ export default function reducer (comments = [], action){
 
 //THUNK CREATORS
 
-export const fetchComments = () => async (dispatch) => {
+export const fetchComments = (id) => async (dispatch) => {
   try {
-    const comments = await axios.get('/api/comment')
+    const comments = await axios.get(`/api/comment/blog/${id}`)
     return dispatch(getComments(comments.data));
   }
   catch (err) {

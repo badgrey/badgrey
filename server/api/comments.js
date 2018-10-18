@@ -1,11 +1,20 @@
 const router = require('express').Router()
-const {Comment} = require('../db/models')
+const {Comment, User} = require('../db/models')
 const asyncHandler = require('express-async-handler')
 const {isLoggedIn, isSelf} = require('../permissions')
 module.exports = router
 
-router.get('/', asyncHandler(async (req, res, next) => {
-  const comments = await Comment.findAll()
+router.get('/blog/:id', asyncHandler(async (req, res, next) => {
+  const comments = await Comment.findAll({
+    where: {
+      blogId: req.params.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'Likes'},
+      {model: User, as: 'Dislikes'},
+    ]
+  })
   res.json(comments)
 }))
 
@@ -32,4 +41,12 @@ router.delete('/delete/:id', isSelf, asyncHandler(async (req, res, next) => {
   })
   res.status(204)
   res.json(comment)
+}))
+
+
+router.get('/likes', asyncHandler(async (req, res, next) => {
+  console.log(req.body)
+  const likes = await req.body.getLikes()
+  res.status(200)
+  res.json(likes)
 }))

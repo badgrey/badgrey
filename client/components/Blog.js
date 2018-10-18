@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, fetchUsernames} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments} from '../store'
 import {Link} from 'react-router-dom'
-import {Comment} from './Comment'
+
 
 export class Blog extends Component {
 
@@ -14,12 +14,15 @@ export class Blog extends Component {
     }
     this.saved = this.saved.bind(this)
     this.deleteBlog = this.deleteBlog.bind(this)
+    this.loadLikes = this.loadLikes.bind(this)
   }
 
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
+    const id = parseInt(this.props.match.params.id)
+    this.props.getBlogComments(id)
   }
 
   deleteBlog() {
@@ -36,6 +39,10 @@ export class Blog extends Component {
       this.props.fetchSaved()
       this.setState({savedCheck: false})
     }
+  }
+
+  loadLikes(comment) {
+   return this.props.getLikes(comment)
   }
 
   render() {
@@ -68,18 +75,14 @@ export class Blog extends Component {
         </div>
         <div>
           {
-            this.props.blogComments.length === 0 ? null :
-            this.props.blogComments.map((comment) => {
-              const user = this.props.usernames.filter((name) => {
-                return name.id === comment.userId})
-              return (
-                user.length === 0 ? null :
-                <div key={comment.id}>
-                  <h1>{user[0].username}</h1>
-                  <h1>{comment.comment}</h1>
-                </div>
-              )
-            })
+            this.props.comments.map((comment) => (
+              <div key={comment.id}>
+                <h1>{comment.user.username}</h1>
+                <h1>{comment.comment}</h1>
+                <h5>{comment.Likes.length}</h5>
+                <h5>{comment.Dislikes.length}</h5>
+              </div>
+            ))
           }
         </div>
       </div>
@@ -87,7 +90,7 @@ export class Blog extends Component {
   }
 }
 
-const mapState = ({artists, blogs, user, savedArtists, comments, usernames}, ownProps) => {
+const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
@@ -102,11 +105,7 @@ const mapState = ({artists, blogs, user, savedArtists, comments, usernames}, own
     isAdmin: user.isAdmin,
     user,
     savedArtists,
-    comments,
-    usernames,
-    blogComments: comments.filter((comment) => {
-      return '' + comment.blogId === ownProps.match.params.id
-    })
+    comments
   }
 }
 
@@ -115,14 +114,15 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(fetchArtists())
       dispatch(fetchBlogs())
-      dispatch(fetchComments())
-      dispatch(fetchUsernames())
     },
     fetchSaved() {
       dispatch(fetchSavedArtists())
     },
     delete (id) {
       dispatch(deleteCurrentBlog(id))
+    },
+    getBlogComments (id) {
+      dispatch(fetchComments(id))
     }
   }
 }
