@@ -43,10 +43,3 @@ router.delete('/delete/:id', isSelf, asyncHandler(async (req, res, next) => {
   res.json(comment)
 }))
 
-
-router.get('/likes', asyncHandler(async (req, res, next) => {
-  console.log(req.body)
-  const likes = await req.body.getLikes()
-  res.status(200)
-  res.json(likes)
-}))

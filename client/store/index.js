@@ -10,10 +10,9 @@ import savedArtists from './savedArtists'
 import allusers from './allusers'
 import blogs from './blogs'
 import comments from './comments'
-import usernames from './usernames'
-import likes from './likes'
 
-const reducer = combineReducers({user, artists, error, email, savedArtists, allusers, blogs, comments, usernames, likes})
+
+const reducer = combineReducers({user, artists, error, email, savedArtists, allusers, blogs, comments})
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
   createLogger({collapsed: true})
@@ -29,5 +28,4 @@ export * from './savedArtists'
 export * from './allusers'
 export * from './blogs'
 export * from './comments'
-export * from './usernames'
-export * from './likes'
+

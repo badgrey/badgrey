@@ -21,5 +21,4 @@ export {default as Blog} from './Blog'
 export {default as EditBlog} from './EditBlog'
 export {default as NewBlog} from './NewBlog'
 export {default as Comment} from './Comment'
-export {default as Likes} from './Likes'
 
