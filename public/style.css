@@ -603,6 +603,7 @@ nav a {
   text-decoration: none;
   color: black;
   transition: 0.3s;
+  height: 125px;
 }
 
 .genreLink:hover {
@@ -1314,5 +1315,93 @@ nav a {
 
 .searchLabel {
   margin-right: 20px;
+}
+
+/* All Blogs Styles */
+
+.allBlogsDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.allBlogsDiv h1 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.blogsList {
+  display: flex;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-top: 2em;
+  flex-wrap: wrap;
+}
+
+.singleBlogLink {
+  border: solid black 3px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+
+/* Single Blog Styles */
+
+.blogContainer {
+  margin-left: 8em;
+  margin-right: 8em;
+}
+
+.blogHeader {
+  margin-top: 40px;
+}
+
+.blogNameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogNameHeader h3 {
+  margin-top: 0px;
+}
+
+.blogPost {
+  margin-top: 40px;
+}
+
+.commentContainer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.singleComment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.likesDislikes {
+  display: flex;
+}
+
+.commentForm {
+  margin-bottom: 30px;
+}
+
+.likeDislikeButton{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+}
+
+.likeDislikeImage {
+  height: 30px;
+  width: 30px;
 }
 

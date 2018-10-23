@@ -3,5 +3,7 @@
 //update favicon
 //add background image
 
-//make login error and change password error responsive
+//add a blogReviewer column to the user table
+
+//experiment with ALL ARTISTS button colors
 

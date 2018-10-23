@@ -73,7 +73,6 @@ export class EditArtist extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props)
     if (!this.props.isAdmin) {
       this.props.history.push('/')
     }

@@ -13,6 +13,14 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/username', (req, res, next) => {
+  User.findAll({
+    attributes: ['id', 'username']
+  })
+  .then(usernames => res.json(usernames))
+  .catch(next)
+})
+
 router.get('/username/:username', (req, res, next) => {
   User.findAll({
     where: {
