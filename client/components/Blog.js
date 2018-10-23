@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -15,6 +15,7 @@ export class Blog extends Component {
     this.saved = this.saved.bind(this)
     this.deleteBlog = this.deleteBlog.bind(this)
     this.loadLikes = this.loadLikes.bind(this)
+    this.postComment = this.postComment.bind(this)
   }
 
   componentDidMount () {
@@ -45,6 +46,17 @@ export class Blog extends Component {
    return this.props.getLikes(comment)
   }
 
+  postComment(event) {
+    event.preventDefault()
+    let commentInfo = {
+      comment: {comment: event.target.comment.value},
+      user: this.props.user,
+      blog: this.props.chosenBlog[0]
+    }
+    this.props.submitForm(commentInfo)
+    this.props.getBlogComments(this.props.chosenBlog[0].id)
+  }
+
   render() {
     return (
       this.props.chosenBlog.length === 0 ? null :
@@ -73,14 +85,23 @@ export class Blog extends Component {
         <div className="blogPost">
             <p>{this.props.chosenBlog[0].blogPost}</p>
         </div>
-        <div>
+        <div className="commentContainer">
+            <form onSubmit={this.postComment} className="commentForm">
+              <label>Comment Here</label>
+              <input name="comment" type="text" required />
+              <button type="submit">Post</button>
+            </form>
           {
             this.props.comments.map((comment) => (
-              <div key={comment.id}>
-                <h1>{comment.user.username}</h1>
-                <h1>{comment.comment}</h1>
-                <h5>{comment.Likes.length}</h5>
-                <h5>{comment.Dislikes.length}</h5>
+              <div className="singleComment" key={comment.id}>
+                <h4>{comment.user.username}</h4>
+                <h4>{comment.comment}</h4>
+                <div className="likesDislikes">
+                  <h5>Likes</h5>
+                  <h6>{comment.Likes.length}</h6>
+                  <h5>Dislikes</h5>
+                  <h6>{comment.Dislikes.length}</h6>
+                </div>
               </div>
             ))
           }
@@ -123,6 +144,9 @@ const mapDispatch = (dispatch) => {
     },
     getBlogComments (id) {
       dispatch(fetchComments(id))
+    },
+    submitForm(comment) {
+      dispatch(createNewComment(comment))
     }
   }
 }

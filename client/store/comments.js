@@ -56,7 +56,8 @@ export const fetchComments = (id) => async (dispatch) => {
 export const createNewComment = (comment) => async (dispatch) => {
   try {
     const newCreatedComment = await axios.post('/api/comment', comment)
-    return dispatch(newComment(newCreatedComment.data));
+    console.log(newCreatedComment.data)
+    return dispatch(newComment(newCreatedComment.data[0]));
   }
   catch (err) {
     console.log(err)
