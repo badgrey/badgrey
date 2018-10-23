@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -92,18 +92,30 @@ export class Blog extends Component {
               <button type="submit">Post</button>
             </form>
           {
-            this.props.comments.map((comment) => (
+            this.props.comments.map((comment) => {
+              return (
               <div className="singleComment" key={comment.id}>
-                <h4>{comment.user.username}</h4>
-                <h4>{comment.comment}</h4>
+                <p className="commentUser" >{comment.user.username}</p>
+                <p>{comment.comment}</p>
                 <div className="likesDislikes">
-                  <h5>Likes</h5>
-                  <h6>{comment.Likes.length}</h6>
-                  <h5>Dislikes</h5>
-                  <h6>{comment.Dislikes.length}</h6>
+                  <button className="likeDislikeButton" onClick={() => this.props.likeComment({comment, user: this.props.user})}>
+                    <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+                  </button>
+                  <p>{comment.Likes.length}</p>
+                  <button className="likeDislikeButton" onClick={() => this.props.dislikeComment({comment, user: this.props.user})}>
+                    <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+                  </button>
+                  <p>{comment.Dislikes.length}</p>
                 </div>
+                {
+                  this.props.user.id !== comment.user.id ? null :
+                  <div className="deleteCommentButton">
+                    <button onClick={() => this.props.deleteComment(comment.id)}>X</button>
+                  </div>
+                }
               </div>
-            ))
+              )
+            })
           }
         </div>
       </div>
@@ -147,6 +159,15 @@ const mapDispatch = (dispatch) => {
     },
     submitForm(comment) {
       dispatch(createNewComment(comment))
+    },
+    deleteComment(id) {
+      dispatch(deleteCurrentComment(id))
+    },
+    likeComment(comment) {
+      dispatch(likeCurrentComment(comment))
+    },
+    dislikeComment(comment) {
+      dispatch(dislikeCurrentComment(comment))
     }
   }
 }

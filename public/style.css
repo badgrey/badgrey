@@ -1373,14 +1373,35 @@ nav a {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: left;
 }
 
 .singleComment {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
-
 
 .likesDislikes {
   display: flex;
 }
+
+.commentForm {
+  margin-bottom: 30px;
+}
+
+.likeDislikeButton{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+}
+
+.likeDislikeImage {
+  height: 30px;
+  width: 30px;
+}
+

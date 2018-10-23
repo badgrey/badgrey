@@ -18,18 +18,6 @@ router.get('/blog/:id', asyncHandler(async (req, res, next) => {
   res.json(comments)
 }))
 
-// router.get('/comment/:id', asyncHandler(async (req, res, next) => {
-//   const comment = await Comment.findAll({
-//     where: {
-//       id: req.params.id
-//     },
-//     include: [
-//       {model: User},
-
-//     ]
-//   })
-// }))
-
 router.post('/', isLoggedIn, asyncHandler(async (req, res, next) => {
   const newComment = await Comment.create(req.body.comment)
   await newComment.setUser(req.body.user.id)
@@ -47,17 +35,47 @@ router.post('/', isLoggedIn, asyncHandler(async (req, res, next) => {
   res.status(201).json(comment)
 }))
 
-router.put('/edit/:id', isSelf, asyncHandler(async (req, res, next) => {
-  const comment = await Comment.update(req.body, {
+router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const likedComment = await Comment.findAll({
     where: {
-      id: req.params.id
-    },
-    returning: true
+      id: req.body.comment.id
+    }
   })
-  res.json(comment[1][0])
+  await likedComment[0].addLikes(req.body.user.id)
+  const comment = await Comment.findAll({
+    where: {
+      id: req.body.comment.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'Likes'},
+      {model: User, as: 'Dislikes'}
+    ]
+  })
+  res.status(200).json(comment)
 }))
 
-router.delete('/delete/:id', isSelf, asyncHandler(async (req, res, next) => {
+router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const dislikedComment = await Comment.findAll({
+    where: {
+      id: req.body.comment.id
+    }
+  })
+  await dislikedComment[0].addDislikes(req.body.user.id)
+  const comment = await Comment.findAll({
+    where: {
+      id: req.body.comment.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'Likes'},
+      {model: User, as: 'Dislikes'}
+    ]
+  })
+  res.status(200).json(comment)
+}))
+
+router.delete('/delete/:id', isLoggedIn, asyncHandler(async (req, res, next) => {
   const comment = await Comment.destroy({
     where: {
       id: req.params.id

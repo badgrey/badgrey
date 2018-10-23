@@ -78,7 +78,7 @@ async function seed () {
   await comments[2].addDislikes(users[3])
   await comments[3].addDislikes(users[0])
 
-  console.log(`seeded ${comments.length} Comments Successfuly!`)
+  console.log(`seeded ${comments.length} Comments!`)
   console.log(`seeded successfully`)
 
 }
