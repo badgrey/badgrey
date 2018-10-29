@@ -1353,6 +1353,8 @@ nav a {
 
 .blogHeader {
   margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .blogNameHeader {
@@ -1405,3 +1407,23 @@ nav a {
   width: 30px;
 }
 
+.authorLink {
+  display: inline-grid;
+  grid-template-rows: 120px;
+  grid-template-columns: 120px;
+  align-items: center;
+  border: 2px solid black;
+  margin: 15px 20px 0 0;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+  height: 125px;
+  text-align: center;
+}
+
+.authorLink:hover {
+  background-color: black;
+  color: whitesmoke;
+  transform: scale(1.2);
+}

@@ -58,10 +58,19 @@ export class Blog extends Component {
   }
 
   render() {
+    const chosenArtist = this.props.chosenBlog.length === 0 ? null :
+    this.props.artists.filter((artist) => {
+      return this.props.chosenBlog[0].artistId === artist.id
+    })
     return (
       this.props.chosenBlog.length === 0 ? null :
       <div className="blogContainer">
         <div className="blogHeader">
+          <Link className="authorLink" to={`/allblogs/author/${this.props.chosenBlog[0].author.split(' ').join('')}`}>
+            <div className="authorLinkText">
+              More by {this.props.chosenBlog[0].author}
+            </div>
+          </Link>
           <div className="blogNameHeader">
             <h1 className="title">{this.props.chosenBlog[0].title}</h1>
             <h3 className="title">By {this.props.chosenBlog[0].author}</h3>
@@ -76,11 +85,12 @@ export class Blog extends Component {
             </div>
             }
           </div>
-          <Link className="authorLink" to={`/allblogs/author/${this.props.chosenBlog[0].author.split(' ').join('')}`}>
-            <div className="authorLinkText">
-              More by {this.props.chosenBlog[0].author}
-            </div>
-          </Link>
+          <Link className="artistPic" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('')}`}>
+                  <div className="artistName">
+                    <div className="artistNameText">{chosenArtist[0].name}</div>
+                  </div>
+                  <img src={require(`../../public/images/artists/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].imageURL}.jpg`)} />
+                </Link>
         </div>
         <div className="blogPost">
             <p>{this.props.chosenBlog[0].blogPost}</p>

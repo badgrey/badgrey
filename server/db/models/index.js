@@ -8,6 +8,9 @@ Artist.belongsToMany(User, {through: 'Saved'})
 
 Blog.belongsTo(User)
 User.hasMany(Blog)
+Blog.belongsTo(Artist)
+Artist.hasMany(Blog)
+
 
 Comment.belongsTo(Blog)
 Blog.hasMany(Comment)
