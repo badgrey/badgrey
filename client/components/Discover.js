@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
+import BlogHomePage from './BlogHomePage'
 import {fetchSavedArtists, fetchBlogs} from '../store'
 import {Link} from 'react-router-dom'
 
@@ -198,6 +199,7 @@ export class Discover extends Component {
   render() {
     return (
       <div className="discover">
+        <BlogHomePage />
         <h1>Discover Below</h1>
         <div className="allAndGlobe">
           <Link className="allArtistsLink" to="/discover/all">
