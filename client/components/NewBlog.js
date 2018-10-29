@@ -17,6 +17,9 @@ export class NewBlog extends Component {
 
   submit(event) {
     event.preventDefault();
+    let chosenArtist = this.props.artists.filter((artist) => {
+      return artist.name === event.target.artist.value
+    })
     let blogInfo = {
       blogInfo: {
         title: event.target.title.value,
@@ -27,8 +30,8 @@ export class NewBlog extends Component {
         date: new Date(),
       },
       user: this.props.user.id,
-      artist:
-  }
+      artist: chosenArtist[0].id
+    }
     this.props.submitForm(blogInfo)
     this.props.history.push(`/allblogs/`)
   }
@@ -56,7 +59,16 @@ export class NewBlog extends Component {
         </div>
         <div>
           <label>Artist</label>
-          <input />
+          <select name="artist" type="text" required label="Artist">
+          <option value="" disabled selected>Artist</option>
+            {
+              this.props.artists.map((artist) => {
+                return (
+                  <option key={artist.id}>{artist.name}</option>
+                )
+              })
+            }
+          </select>
         </div>
         <div>
           <label>Blog Post</label>

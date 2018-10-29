@@ -10,7 +10,9 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.post('/', isBlogger, asyncHandler(async (req, res, next) => {
-  const newBlog = await Blog.create(req.body)
+  const newBlog = await Blog.create(req.body.blogInfo)
+  await newBlog.setUser(req.body.user)
+  await newBlog.setArtist(req.body.artist)
   res.status(201).json(newBlog)
 }))
 
