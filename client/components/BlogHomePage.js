@@ -1,65 +1,37 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchBlogs} from '../store'
 
-export class BlogHomePage extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount () {
-    if (this.props.blogs === []) {
-      this.props.loadInitialData()
+const BlogHomePage = (props) => (
+  <div className="blogsHomeContainer">
+    <h1>Blogs</h1>
+    <div className="blogsDisplay">
+    {
+      props.blogs.map((blog) => {
+        return (
+          <Link className="singleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
+            <div className="singleBlog">
+              <h1>{blog.title}</h1>
+              <h2>{blog.author}</h2>
+              <h3>{blog.description}</h3>
+              <h4>{blog.date}</h4>
+            </div>
+          </Link>
+        )
+      })
     }
-  }
+    </div>
+    <div>
+      <Link to="/allBlogs">
+        <button className="allBlogsButton">All Blogs</button>
+      </Link>
+    </div>
+  </div>
+)
 
-  render() {
-    return (
-      this.props.blogs.length === 0 ? null :
-      <div>
-        <div>
-          <Link to={`/allBlogs/${this.props.blogs[0].id}`}>
-            {this.props.blogs[0].name}
-          </Link>
-        </div>
-        <div>
-          <Link to={`/allBlogs/${this.props.blogs[1].id}`}>
-            {this.props.blogs[1].name}
-          </Link>
-        </div>
-        <div>
-          <Link to={`/allBlogs/${this.props.blogs[2].id}`}>
-            {this.props.blogs[2].name}
-          </Link>
-        </div>
-        <div>
-          <Link to="/allBlogs">
-            <button>All Blogs</button>
-          </Link>
-        </div>
-      </div>
-    )
-  }
-}
+const mapState = null
 
-const mapState = ({blogs}, ownProps) => {
-  return {
-    blogs: blogs.sort((blogA, blogB) => {
-      if (blogA.date < blogB.date) return -1
-      if (blogA.date > blogB.date) return 1
-      return 0
-    })
-  }
-}
-
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData () {
-      dispatch(fetchBlogs())
-    }
-  }
-}
+const mapDispatch = null
 
 export default connect(mapState, mapDispatch)(BlogHomePage)
