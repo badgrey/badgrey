@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment} from '../store'
 import {Link} from 'react-router-dom'
 
 export class Artist extends Component{
@@ -15,12 +15,15 @@ export class Artist extends Component{
     this.deleteArtist = this.deleteArtist.bind(this)
     this.saved = this.saved.bind(this)
     this.saveArtist = this.saveArtist.bind(this)
+    this.postComment = this.postComment.bind(this)
   }
 
   componentDidMount () {
     if (this.props.chosenArtist === []) {
       this.props.loadInitialData()
     }
+    const id = parseInt(this.props.match.params.artist.split('_')[1])
+    this.props.getArtistComments(id)
   }
 
   componentDidUpdate () {
@@ -38,6 +41,17 @@ export class Artist extends Component{
       this.props.fetchSaved()
       this.setState({savedCheck: false})
     }
+  }
+
+  postComment(event) {
+    event.preventDefault()
+    let commentInfo = {
+      comment: {comment: event.target.comment.value},
+      user: this.props.user,
+      artist: this.props.chosenArtist[0]
+    }
+    this.props.submitForm(commentInfo)
+    this.props.getArtistComments(this.props.chosenArtist[0].id)
   }
 
   saveArtist() {
@@ -95,6 +109,39 @@ export class Artist extends Component{
             }
           </div>
         </div>
+        <div className="artistCommentContainer">
+            <form onSubmit={this.postComment} className="commentForm">
+              <label>Comment Here</label>
+              <input name="comment" type="text" required />
+              <button type="submit">Post</button>
+            </form>
+          {
+            this.props.comments.map((comment) => {
+              return (
+              <div className="singleComment" key={comment.id}>
+                <p className="commentUser" >{comment.user.username}</p>
+                <p>{comment.comment}</p>
+                <div className="likesDislikes">
+                  <button className="likeDislikeButton" onClick={() => this.props.likeComment({comment, user: this.props.user})}>
+                    <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+                  </button>
+                  <p>{comment.Likes.length}</p>
+                  <button className="likeDislikeButton" onClick={() => this.props.dislikeComment({comment, user: this.props.user})}>
+                    <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+                  </button>
+                  <p>{comment.Dislikes.length}</p>
+                </div>
+                {
+                  this.props.user.id !== comment.user.id ? null :
+                  <div className="deleteCommentButton">
+                    <button onClick={() => this.props.deleteComment(comment.id)}>X</button>
+                  </div>
+                }
+              </div>
+              )
+            })
+          }
+        </div>
       </div>
     )
 
@@ -102,18 +149,21 @@ export class Artist extends Component{
 }
 
 
-const mapState = ({artists, user, savedArtists}, ownProps) => {
+const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
-      return artist.name.split(' ').join('') === ownProps.match.params.artist
+      let targetArtist = ownProps.match.params.artist.split('_')[0]
+      return artist.name.split(' ').join('') === targetArtist
     }),
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
       if (artistA.name > artistB.name) return 1
       return 0
     }),
+    comments,
     isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin,
+    user,
     savedArtists,
     isSaved: savedArtists.filter((artist) => {
       return artist.id === (artists.filter((otherArtist) => {
@@ -137,6 +187,21 @@ const mapDispatch = (dispatch) => {
     },
     saveCurrentArtist(id) {
       dispatch(addNewSavedArtist(id))
+    },
+    getArtistComments (id) {
+      dispatch(fetchArtistComments(id))
+    },
+    deleteComment(id) {
+      dispatch(deleteCurrentComment(id))
+    },
+    likeComment(comment) {
+      dispatch(likeCurrentComment(comment))
+    },
+    dislikeComment(comment) {
+      dispatch(dislikeCurrentComment(comment))
+    },
+    submitForm(comment) {
+      dispatch(createNewComment(comment))
     }
   }
 }

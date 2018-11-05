@@ -69,23 +69,40 @@ async function seed () {
     Comment.create({comment: 'This song is trash'}),
     Comment.create({comment: 'Fetty is trash'}),
     Comment.create({comment: 'STOOP KIDS AFRAID TO LEAVE HIS STOOP'}),
-    Comment.create({comment: 'Mirs up next for sure'})
+    Comment.create({comment: 'Mirs up next for sure'}),
+    Comment.create({comment: 'LUCIFER!'}),
+    Comment.create({comment: 'Lil Uzi is a god'}),
+    Comment.create({comment: 'cloud genius'}),
+    Comment.create({comment: 'fuego'})
   ])
 
   await comments[0].setUser(users[0])
   await comments[1].setUser(users[0])
   await comments[2].setUser(users[1])
   await comments[3].setUser(users[1])
+  await comments[4].setUser(users[0])
+  await comments[5].setUser(users[0])
+  await comments[6].setUser(users[1])
+  await comments[7].setUser(users[2])
   await comments[0].setBlog(blogs[1])
   await comments[1].setBlog(blogs[1])
   await comments[2].setBlog(blogs[1])
   await comments[3].setBlog(blogs[1])
+  await comments[4].setArtist(artists[4])
+  await comments[5].setArtist(artists[4])
+  await comments[6].setArtist(artists[4])
+  await comments[7].setArtist(artists[4])
   await comments[0].addLikes(users[0])
   await comments[1].addLikes(users[1])
   await comments[0].addLikes(users[2])
+  await comments[4].addLikes(users[3])
+  await comments[5].addLikes(users[0])
+  await comments[6].addDislikes(users[2])
+  await comments[7].addDislikes(users[1])
   await comments[2].addDislikes(users[2])
   await comments[2].addDislikes(users[3])
   await comments[3].addDislikes(users[0])
+
 
   console.log(`seeded ${comments.length} Comments!`)
   console.log(`seeded successfully`)

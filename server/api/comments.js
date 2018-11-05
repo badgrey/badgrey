@@ -18,10 +18,29 @@ router.get('/blog/:id', asyncHandler(async (req, res, next) => {
   res.json(comments)
 }))
 
+router.get('/artist/:id', asyncHandler(async (req, res, next) => {
+  const comments = await Comment.findAll({
+    where: {
+      artistId: req.params.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'Likes'},
+      {model: User, as: 'Dislikes'},
+    ]
+  })
+  res.json(comments)
+}))
+
 router.post('/', isLoggedIn, asyncHandler(async (req, res, next) => {
   const newComment = await Comment.create(req.body.comment)
   await newComment.setUser(req.body.user.id)
-  await newComment.setBlog(req.body.blog.id)
+  if (req.body.blog) {
+    await newComment.setBlog(req.body.blog.id)
+  }
+  if (req.body.artist) {
+    await newComment.setArtist(req.body.artist.id)
+  }
   const comment = await Comment.findAll({
     where: {
       id: newComment.id

@@ -62,7 +62,7 @@ export class SavedArtists extends Component{
           artists.map((artist) => (
 
               <div key={artist.id} className="savedArtists">
-                <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('')}`}>
+                <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('') + `_${artist.id}`}`}>
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>

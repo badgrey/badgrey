@@ -1454,3 +1454,9 @@ nav a {
   color: whitesmoke;
   transform: scale(1.2);
 }
+
+/* Artist Comment Styles */
+
+.artistCommentContainer {
+  margin-top: 17em;
+}

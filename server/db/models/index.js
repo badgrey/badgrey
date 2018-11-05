@@ -14,10 +14,14 @@ Artist.hasMany(Blog)
 
 Comment.belongsTo(Blog)
 Blog.hasMany(Comment)
-Comment.belongsToMany(User, {through: 'Like_Comment', as: 'Likes'})
-Comment.belongsToMany(User, {through: 'Dislike_Comment', as: 'Dislikes'})
+Comment.belongsTo(Artist)
+Artist.hasMany(Comment)
+
 Comment.belongsTo(User)
 User.hasMany(Comment)
+
+Comment.belongsToMany(User, {through: 'Like_Comment', as: 'Likes'})
+Comment.belongsToMany(User, {through: 'Dislike_Comment', as: 'Dislikes'})
 
 module.exports = {
   User,

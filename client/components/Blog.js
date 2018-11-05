@@ -85,7 +85,7 @@ export class Blog extends Component {
             </div>
             }
           </div>
-          <Link className="artistPic" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('')}`}>
+          <Link className="artistPic" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('') + `_${chosenArtist[0].id}`}`}>
                   <div className="artistName">
                     <div className="artistNameText">{chosenArtist[0].name}</div>
                   </div>
