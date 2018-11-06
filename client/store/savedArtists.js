@@ -56,11 +56,8 @@ export const addNewSavedArtist = (id) => async (dispatch) => {
 }
 
 export const deleteCurrentSavedArtist = (id) => async (dispatch) => {
-  console.log('made it to thunk')
   try {
-    console.log('about to enter API')
     const deletedArtist = await axios.delete(`/api/artists/saved/${id}`)
-    console.log('about to enter reducer')
     return dispatch(deleteSavedArtist(id))
   }
   catch (err) {

@@ -61,6 +61,16 @@ export const fetchComments = (id) => async (dispatch) => {
   }
 }
 
+export const fetchArtistComments = (id) => async (dispatch) => {
+  try {
+    const comments = await axios.get(`/api/comment/artist/${id}`)
+    return dispatch(getComments(comments.data));
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
 export const createNewComment = (comment) => async (dispatch) => {
   try {
     const newCreatedComment = await axios.post('/api/comment', comment)
@@ -84,7 +94,6 @@ export const deleteCurrentComment = (id) => async (dispatch) => {
 export const likeCurrentComment = (comment) => async (dispatch) => {
   try {
     const likedComment = await axios.post('/api/comment/like', comment)
-    console.log(likedComment.data[0])
     return dispatch(likeComment(likedComment.data[0]))
   }
   catch (err) {
@@ -95,8 +104,7 @@ export const likeCurrentComment = (comment) => async (dispatch) => {
 export const dislikeCurrentComment = (comment) => async (dispatch) => {
   try {
     const dislikedComment = await axios.post('/api/comment/dislike', comment)
-    console.log(dislikedComment.data[0])
-    return dispatch(likeComment(dislikedComment.data[0]))
+    return dispatch(dislikeComment(dislikedComment.data[0]))
   }
   catch (err) {
     console.log(err)

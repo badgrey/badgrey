@@ -40,7 +40,9 @@ async function seed () {
     Artist.create({name: 'Lil Uzi Vert', city: 'Philadelphia', imageURL: 'liluzivert', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/10494998&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['WrsFXgQk5UI', 'zqflC-as2Qo'], genre: 'Cloud', stateAbbrev: 'PA'}),
     Artist.create({name: 'Matt Ox', city: 'Philadelphia', imageURL: 'mattox', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/242128695&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['0cZ8-RgtrP0', 'qquyvwH-QH8'], genre: 'Cloud', stateAbbrev: 'PA'}),
     Artist.create({name: 'KilConfirmed', city: 'Philadelphia', imageURL: 'kilconfirmed', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/30398868&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['2XwFup-_sOE'], genre: 'Instrumental', stateAbbrev: 'PA'}),
-    Artist.create({name: 'Yung Lean', city: 'Stockholm', imageURL: 'yunglean', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/24878713&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['BMayAfYlN_k', 'tMgkt9jdjTU'], genre: 'Cloud', stateAbbrev: 'International'})
+    Artist.create({name: 'Yung Lean', city: 'Stockholm', imageURL: 'yunglean', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/24878713&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['BMayAfYlN_k', 'tMgkt9jdjTU'], genre: 'Cloud', stateAbbrev: 'International'}),
+    Artist.create({name: 'YNW Melly', city: 'Gifford', imageURL: 'ynwmelly', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/57260844&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['hqDinxaPUK4', '7LWQEokkCqo'], genre: 'Alternative', stateAbbrev: 'FL'}),
+    Artist.create({name: 'Lil Pump', city: 'Miami', imageURL: 'lilpump', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/173834487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['cwQgjq0mCdE', '4LfJnj66HVQ'], genre: 'Alternative', stateAbbrev: 'FL'})
   ])
 
   await users[0].addArtist(artists[0])
@@ -53,6 +55,27 @@ async function seed () {
     Blog.create({title: 'YNW Melly Up Next', description: 'Listen Mellys new bangers, theyre amazing', author: 'Cole Eckerle', date: new Date('September 2, 2018'), blogPic: 'https://i2.wp.com/curatedflame.com/wp-content/uploads/2018/03/avatars-000353116778-yb8rnq-t500x500.jpg?fit=500%2C500&quality=80&strip=all&ssl=1', blogPost: 'I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder'})
   ])
 
+  await blogs[0].setUser(users[0])
+  await blogs[1].setUser(users[0])
+  await blogs[2].setUser(users[1])
+  await blogs[0].setArtist(artists[9])
+  await blogs[1].setArtist(artists[2])
+  await blogs[2].setArtist(artists[8])
+
+  await blogs[0].addBlogLikes(users[0])
+  await blogs[0].addBlogLikes(users[1])
+  await blogs[0].addBlogLikes(users[2])
+  await blogs[1].addBlogLikes(users[3])
+  await blogs[2].addBlogLikes(users[4])
+  await blogs[1].addBlogLikes(users[4])
+  await blogs[2].addBlogLikes(users[3])
+  await blogs[1].addBlogLikes(users[6])
+  await blogs[0].addBlogDislikes(users[1])
+  await blogs[0].addBlogDislikes(users[0])
+  await blogs[0].addBlogDislikes(users[2])
+  await blogs[1].addBlogDislikes(users[5])
+
+
 
   console.log(`seeded ${blogs.length} Blogs!`)
 
@@ -60,23 +83,40 @@ async function seed () {
     Comment.create({comment: 'This song is trash'}),
     Comment.create({comment: 'Fetty is trash'}),
     Comment.create({comment: 'STOOP KIDS AFRAID TO LEAVE HIS STOOP'}),
-    Comment.create({comment: 'Mirs up next for sure'})
+    Comment.create({comment: 'Mirs up next for sure'}),
+    Comment.create({comment: 'LUCIFER!'}),
+    Comment.create({comment: 'Lil Uzi is a god'}),
+    Comment.create({comment: 'cloud genius'}),
+    Comment.create({comment: 'fuego'})
   ])
 
   await comments[0].setUser(users[0])
   await comments[1].setUser(users[0])
   await comments[2].setUser(users[1])
   await comments[3].setUser(users[1])
+  await comments[4].setUser(users[0])
+  await comments[5].setUser(users[0])
+  await comments[6].setUser(users[1])
+  await comments[7].setUser(users[2])
   await comments[0].setBlog(blogs[1])
   await comments[1].setBlog(blogs[1])
   await comments[2].setBlog(blogs[1])
   await comments[3].setBlog(blogs[1])
+  await comments[4].setArtist(artists[4])
+  await comments[5].setArtist(artists[4])
+  await comments[6].setArtist(artists[4])
+  await comments[7].setArtist(artists[4])
   await comments[0].addLikes(users[0])
   await comments[1].addLikes(users[1])
   await comments[0].addLikes(users[2])
+  await comments[4].addLikes(users[3])
+  await comments[5].addLikes(users[0])
+  await comments[6].addDislikes(users[2])
+  await comments[7].addDislikes(users[1])
   await comments[2].addDislikes(users[2])
   await comments[2].addDislikes(users[3])
   await comments[3].addDislikes(users[0])
+
 
   console.log(`seeded ${comments.length} Comments!`)
   console.log(`seeded successfully`)

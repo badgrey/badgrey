@@ -111,7 +111,7 @@ export class NewArtist extends Component {
     }
     if (!dup) {
       this.props.submitForm(artistInfo)
-      this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName}`)
+      this.props.history.push(`/discover/${artistInfo.stateAbbrev}`)
     }
   }
 

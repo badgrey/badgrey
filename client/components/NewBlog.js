@@ -17,13 +17,20 @@ export class NewBlog extends Component {
 
   submit(event) {
     event.preventDefault();
+    let chosenArtist = this.props.artists.filter((artist) => {
+      return artist.name === event.target.artist.value
+    })
     let blogInfo = {
-      title: event.target.title.value,
-      author: event.target.author.value,
-      description: event.target.description.value,
-      blogPic: event.target.blogPic.value,
-      blogPost: event.target.blogPost.value,
-      date: new Date(),
+      blogInfo: {
+        title: event.target.title.value,
+        author: event.target.author.value,
+        description: event.target.description.value,
+        blogPic: event.target.blogPic.value,
+        blogPost: event.target.blogPost.value,
+        date: new Date(),
+      },
+      user: this.props.user.id,
+      artist: chosenArtist[0].id
     }
     this.props.submitForm(blogInfo)
     this.props.history.push(`/allblogs/`)
@@ -51,6 +58,19 @@ export class NewBlog extends Component {
           <input name="blogPic" type="text" required placeholder="NAME.jpg" />
         </div>
         <div>
+          <label>Artist</label>
+          <select name="artist" type="text" required label="Artist">
+          <option value="" disabled selected>Artist</option>
+            {
+              this.props.artists.map((artist) => {
+                return (
+                  <option key={artist.id}>{artist.name}</option>
+                )
+              })
+            }
+          </select>
+        </div>
+        <div>
           <label>Blog Post</label>
           <textarea name="blogPost" required placeholder="Post" />
         </div>
@@ -65,7 +85,9 @@ export class NewBlog extends Component {
 const mapState = (state) => {
   return {
     blogs: state.blogs,
-    isBlogger: state.user.isBlogger
+    isBlogger: state.user.isBlogger,
+    user: state.user,
+    artists: state.artists
   }
 }
 

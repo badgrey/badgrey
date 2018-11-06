@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
+import BlogHomePage from './BlogHomePage'
 import {fetchSavedArtists, fetchBlogs} from '../store'
 import {Link} from 'react-router-dom'
 
@@ -198,6 +199,7 @@ export class Discover extends Component {
   render() {
     return (
       <div className="discover">
+        <BlogHomePage blogs={this.props.blogs.slice(0, 3)} />
         <h1>Discover Below</h1>
         <div className="allAndGlobe">
           <Link className="allArtistsLink" to="/discover/all">
@@ -228,7 +230,12 @@ const mapState = (state) => {
     }),
     user: state.user,
     isLoggedIn: !!state.user.id,
-    savedArtists: state.savedArtists
+    savedArtists: state.savedArtists,
+    blogs: state.blogs.sort((blogA, blogB) => {
+      if (blogA.date < blogB.date) return -1
+      if (blogA.date > blogB.date) return 1
+      return 0
+    })
   }
 }
 

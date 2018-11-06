@@ -103,7 +103,7 @@ export class EditArtist extends Component {
       }
     }
     this.props.submitForm(this.props.chosenArtist[0].id, artistInfo)
-    this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName}`)
+    this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName + `_${this.props.chosenArtist[0].id}`}`)
   }
 
   render() {

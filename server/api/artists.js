@@ -5,7 +5,13 @@ const { isAdmin, isLoggedIn } = require('../permissions')
 module.exports = router
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const artists = await Artist.findAll()
+  const artists = await Artist.findAll({
+    include: [
+      {model: User},
+      {model: User, as: 'ArtistLikes'},
+      {model: User, as: 'ArtistDislikes'}
+    ]
+  })
   res.json(artists)
 }))
 
@@ -60,3 +66,43 @@ router.delete('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {
   res.json(artist)
 }))
 
+
+router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const likedArtist = await Artist.findAll({
+    where: {
+      id: req.body.artist.id
+    }
+  })
+  await likedArtist[0].addArtistLikes(req.body.user.id)
+  const artist = await Artist.findAll({
+    where: {
+      id: req.body.artist.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'ArtistLikes'},
+      {model: User, as: 'ArtistDislikes'}
+    ]
+  })
+  res.status(200).json(artist)
+}))
+
+router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const dislikedArtist = await Artist.findAll({
+    where: {
+      id: req.body.artist.id
+    }
+  })
+  await dislikedArtist[0].addArtistDislikes(req.body.user.id)
+  const artist = await Artist.findAll({
+    where: {
+      id: req.body.artist.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'ArtistLikes'},
+      {model: User, as: 'ArtistDislikes'}
+    ]
+  })
+  res.status(200).json(artist)
+}))
