@@ -38,14 +38,14 @@ class Navbar extends Component {
           <Link to="/discover">
             Discover
           </Link>
-          <Link to="/playlists">
-            Playlists
-          </Link>
           <Link to="/interviews">
             Interviews
           </Link>
-          <Link to="/freshman">
-            Freshman List
+          <Link to="/og">
+            Original Content
+          </Link>
+          <Link to="/contact">
+            Submit
           </Link>
         </div>
         <nav>
