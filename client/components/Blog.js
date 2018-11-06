@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -75,6 +75,16 @@ export class Blog extends Component {
             <h1 className="title">{this.props.chosenBlog[0].title}</h1>
             <h3 className="title">By {this.props.chosenBlog[0].author}</h3>
             <h5>{this.props.chosenBlog[0].description}</h5>
+            <div className="likesDislikes">
+              <button className="likeDislikeButton" onClick={() => this.props.likeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
+                <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+              </button>
+              <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
+              <button className="likeDislikeButton" onClick={() => this.props.dislikeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
+                <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+              </button>
+              <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
+            </div>
             {
             !this.props.isLoggedIn && !this.props.isAdmin ? null :
             <div className="adminButtons">
@@ -178,6 +188,12 @@ const mapDispatch = (dispatch) => {
     },
     dislikeComment(comment) {
       dispatch(dislikeCurrentComment(comment))
+    },
+    likeBlog(blog) {
+      dispatch(likeCurrentBlog(blog))
+    },
+    dislikeBlog(blog) {
+      dispatch(dislikeCurrentBlog(blog))
     }
   }
 }

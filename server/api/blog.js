@@ -1,11 +1,17 @@
 const router = require('express').Router()
-const {Blog} = require('../db/models')
+const {Blog, User} = require('../db/models')
 const asyncHandler = require('express-async-handler')
-const {isBlogger} = require('../permissions')
+const {isBlogger, isLoggedIn} = require('../permissions')
 module.exports = router
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const blogs = await Blog.findAll()
+  const blogs = await Blog.findAll({
+    include: [
+      {model: User},
+      {model: User, as: 'BlogLikes'},
+      {model: User, as: 'BlogDislikes'}
+    ]
+  })
   res.json(blogs)
 }))
 
@@ -39,4 +45,45 @@ router.delete('/delete/:id', isBlogger, asyncHandler(async (req, res, next) => {
 router.get('/:id', asyncHandler(async (req, res, next) => {
   const blog = await Blog.findById(req.params.id)
   res.json(blog)
+}))
+
+
+router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const likedBlog = await Blog.findAll({
+    where: {
+      id: req.body.blog.id
+    }
+  })
+  await likedBlog[0].addBlogLikes(req.body.user.id)
+  const blog = await Blog.findAll({
+    where: {
+      id: req.body.blog.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'BlogLikes'},
+      {model: User, as: 'BlogDislikes'}
+    ]
+  })
+  res.status(200).json(blog)
+}))
+
+router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
+  const dislikedBlog = await Blog.findAll({
+    where: {
+      id: req.body.blog.id
+    }
+  })
+  await dislikedBlog[0].addBlogDislikes(req.body.user.id)
+  const blog = await Blog.findAll({
+    where: {
+      id: req.body.blog.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'BlogLikes'},
+      {model: User, as: 'BlogDislikes'}
+    ]
+  })
+  res.status(200).json(blog)
 }))

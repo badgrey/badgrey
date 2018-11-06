@@ -55,12 +55,26 @@ async function seed () {
     Blog.create({title: 'YNW Melly Up Next', description: 'Listen Mellys new bangers, theyre amazing', author: 'Cole Eckerle', date: new Date('September 2, 2018'), blogPic: 'https://i2.wp.com/curatedflame.com/wp-content/uploads/2018/03/avatars-000353116778-yb8rnq-t500x500.jpg?fit=500%2C500&quality=80&strip=all&ssl=1', blogPost: 'I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder'})
   ])
 
-  blogs[0].setUser(users[0])
-  blogs[1].setUser(users[0])
-  blogs[2].setUser(users[1])
-  blogs[0].setArtist(artists[9])
-  blogs[1].setArtist(artists[2])
-  blogs[2].setArtist(artists[8])
+  await blogs[0].setUser(users[0])
+  await blogs[1].setUser(users[0])
+  await blogs[2].setUser(users[1])
+  await blogs[0].setArtist(artists[9])
+  await blogs[1].setArtist(artists[2])
+  await blogs[2].setArtist(artists[8])
+
+  await blogs[0].addBlogLikes(users[0])
+  await blogs[0].addBlogLikes(users[1])
+  await blogs[0].addBlogLikes(users[2])
+  await blogs[1].addBlogLikes(users[3])
+  await blogs[2].addBlogLikes(users[4])
+  await blogs[1].addBlogLikes(users[4])
+  await blogs[2].addBlogLikes(users[3])
+  await blogs[1].addBlogLikes(users[6])
+  await blogs[0].addBlogDislikes(users[1])
+  await blogs[0].addBlogDislikes(users[0])
+  await blogs[0].addBlogDislikes(users[2])
+  await blogs[1].addBlogDislikes(users[5])
+
 
 
   console.log(`seeded ${blogs.length} Blogs!`)

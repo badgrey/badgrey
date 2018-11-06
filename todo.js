@@ -13,3 +13,5 @@
 
 //figure out way to style actual blog post
 
+//error handle on the front end if you try to like or comment when not logged in
+
