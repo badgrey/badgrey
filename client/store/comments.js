@@ -104,7 +104,7 @@ export const likeCurrentComment = (comment) => async (dispatch) => {
 export const dislikeCurrentComment = (comment) => async (dispatch) => {
   try {
     const dislikedComment = await axios.post('/api/comment/dislike', comment)
-    return dispatch(likeComment(dislikedComment.data[0]))
+    return dispatch(dislikeComment(dislikedComment.data[0]))
   }
   catch (err) {
     console.log(err)

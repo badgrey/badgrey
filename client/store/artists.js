@@ -7,6 +7,8 @@ const GET_ARTISTS = 'GET_ARTISTS'
 const CREATE_NEW_ARTIST = 'CREATE_NEW_ARTIST'
 const EDIT_ARTIST = 'EDIT_ARTIST'
 const DELETE_ARTIST = 'DELETE_ARTIST'
+const LIKE_ARTIST = 'LIKE_ARTIST'
+const DISLIKE_ARTIST = 'DISLIKE_ARTIST'
 
 /**
  * ACTION CREATORS
@@ -16,6 +18,8 @@ const getArtists = artists => ({type: GET_ARTISTS, artists})
 const newArtist = artist => ({type: CREATE_NEW_ARTIST, artist})
 const editArtist = artist => ({type: EDIT_ARTIST, artist})
 const deleteArtist = id => ({type: DELETE_ARTIST, id})
+const likeArtist = artist => ({type: LIKE_ARTIST, artist})
+const dislikeArtist = artist => ({type: DISLIKE_ARTIST, artist})
 
 //REDUCER
 export default function reducer (artists = [], action){
@@ -35,6 +39,16 @@ export default function reducer (artists = [], action){
 
     case DELETE_ARTIST:
       return artists.filter(artist => artist.id !== action.id)
+
+    case LIKE_ARTIST:
+      return artists.map(artist => (
+        action.artist.id === artist.id ? action.artist : artist
+      ))
+
+    case DISLIKE_ARTIST:
+      return artists.map(artist => (
+        action.artist.id === artist.id ? action.artist : artist
+      ))
 
     default:
       return artists
@@ -77,6 +91,26 @@ export const deleteCurrentArtist = (id) => async (dispatch) => {
   try {
     const deletedArtist = await axios.delete(`/api/artists/admin/${id}`)
     return dispatch(deleteArtist(id))
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+export const likeCurrentArtist = (artist) => async (dispatch) => {
+  try {
+    const likedArtist = await axios.post('/api/artists/like', artist)
+    return dispatch(likeArtist(likedArtist.data[0]))
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+export const dislikeCurrentArtist = (artist) => async (dispatch) => {
+  try {
+    const dislikedArtist = await axios.post('/api/artists/dislike', artist)
+    return dispatch(dislikeArtist(dislikedArtist.data[0]))
   }
   catch (err) {
     console.log(err)

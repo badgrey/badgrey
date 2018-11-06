@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist} from '../store'
 import {Link} from 'react-router-dom'
 
 export class Artist extends Component{
@@ -79,6 +79,16 @@ export class Artist extends Component{
                 <button className="addToSavedButton" onClick={this.saveArtist}>+ Save +</button>
               )
             }
+            <div className="likesDislikes">
+              <button className="likeDislikeButton" onClick={() => this.props.likeArtist({artist: this.props.chosenArtist[0], user: this.props.user})}>
+                <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+              </button>
+              <p>{this.props.chosenArtist[0].ArtistLikes.length}</p>
+              <button className="likeDislikeButton" onClick={() => this.props.dislikeArtist({artist: this.props.chosenArtist[0], user: this.props.user})}>
+                <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+              </button>
+              <p>{this.props.chosenArtist[0].ArtistDislikes.length}</p>
+            </div>
             {
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
               <div className="adminButtons">
@@ -202,6 +212,12 @@ const mapDispatch = (dispatch) => {
     },
     submitForm(comment) {
       dispatch(createNewComment(comment))
+    },
+    likeArtist(artist) {
+      dispatch(likeCurrentArtist(artist))
+    },
+    dislikeArtist(artist) {
+      dispatch(dislikeCurrentArtist(artist))
     }
   }
 }
