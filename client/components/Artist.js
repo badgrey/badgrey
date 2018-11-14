@@ -177,7 +177,7 @@ const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
     savedArtists,
     isSaved: savedArtists.filter((artist) => {
       return artist.id === (artists.filter((otherArtist) => {
-        return otherArtist.name.split(' ').join('') === ownProps.match.params.artist
+        return otherArtist.name.split(' ').join('') === ownProps.match.params.artist.split('_')[0]
       }))[0].id
     }).length !== 0
   }

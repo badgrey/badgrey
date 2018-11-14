@@ -10,14 +10,9 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db')
-const {User, Artist, Blog, Comment} = require('../server/db/models')
+const {User, Artist, Blog, Comment, Interview} = require('../server/db/models')
 
-async function seed () {
-  await db.sync({force: true})
-  console.log('db synced!')
-  // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
-  // executed until that promise resolves!
-
+async function seedUsers() {
   const users = await Promise.all([
     User.create({username: 'markoAdmin', email: 'marko@email.com', password: '123', isAdmin: true, isBlogger: true, isEmployee: true}),
     User.create({username: 'coleNotAdmin', email: 'cole@email.com', password: '123', isAdmin: false, isBlogger: false, isEmployee: true}),
@@ -28,9 +23,10 @@ async function seed () {
     User.create({username: 'markzucks', email: 'zuck@email.com', password: '123', isAdmin: false, isBlogger: false, isEmployee: false}),
     User.create({username: 'rhirhi', email: 'rihiana@email.com', password: '123', isAdmin: false, isBlogger: false, isEmployee: false})
   ])
-  // Wowzers! We can even `await` on the right-hand side of the assignment operator
-  // and store the result that the promise resolves to in a variable! This is nice!
-  console.log(`seeded ${users.length} Users!`)
+  return users
+}
+
+async function seedArtists () {
 
   const artists = await Promise.all([
     Artist.create({name: 'A Boogie Wit Da Hoodie', city: 'Bronx', imageURL: 'aboogiewitdahoodie', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/10332955&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['fUtlqtdn1Xo', 'DVbKboc8XmE'], genre: 'Trap', stateAbbrev: 'NY'}),
@@ -45,16 +41,19 @@ async function seed () {
     Artist.create({name: 'Lil Pump', city: 'Miami', imageURL: 'lilpump', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/173834487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['cwQgjq0mCdE', '4LfJnj66HVQ'], genre: 'Alternative', stateAbbrev: 'FL'})
   ])
 
-  await users[0].addArtist(artists[0])
-  await users[0].addArtist(artists[1])
-  console.log(`seeded ${artists.length} Artists!`)
+  return artists
+}
 
+async function seedBlogs () {
   const blogs = await Promise.all([
     Blog.create({title: 'I love It', description: 'Check out New Single I Love It by Lil Pump featuring Kanye West', author: 'Chris Gardner', date: new Date('Auguest 25, 2018'), blogPic: 'https://ssle.ulximg.com/image/750x750/cover/1536326085_f0573ef5c038e554ef31e7d1032fa5ad.jpg/358c67ca9c6b4a40f3e480e5f2f0171a/1536326085_db38e87e3d3947fa2c65a3a2a995adff.jpg', blogPost: 'Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang Gucci Gang'}),
     Blog.create({title: 'Mir X Fetty?', description: 'Mir Fontane and Fetty Wap might be in the studio together', author: 'Chris Gardner', date: new Date('August 28, 2018'), blogPic: 'https://ssle.ulximg.com/image/750x750/cover/1535042461_b858913611cf52af4c13fad4c6fdfcd6.jpg/add1777eb09da2b07a9da466f8c8ac21/1535042461_547cfd6db556dc2e80ef5093386b21dc.jpg', blogPost: 'Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega Bustin moves outside the Bodega, Bodega, Bodega'}),
     Blog.create({title: 'YNW Melly Up Next', description: 'Listen Mellys new bangers, theyre amazing', author: 'Cole Eckerle', date: new Date('September 2, 2018'), blogPic: 'https://i2.wp.com/curatedflame.com/wp-content/uploads/2018/03/avatars-000353116778-yb8rnq-t500x500.jpg?fit=500%2C500&quality=80&strip=all&ssl=1', blogPost: 'I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder I got Murder on My Mind I got my Mind on My Muder'})
   ])
+  return blogs
+}
 
+async function setBlogAssociations (blogs, users, artists) {
   await blogs[0].setUser(users[0])
   await blogs[1].setUser(users[0])
   await blogs[2].setUser(users[1])
@@ -74,11 +73,9 @@ async function seed () {
   await blogs[0].addBlogDislikes(users[0])
   await blogs[0].addBlogDislikes(users[2])
   await blogs[1].addBlogDislikes(users[5])
+}
 
-
-
-  console.log(`seeded ${blogs.length} Blogs!`)
-
+async function seedComments () {
   const comments = await Promise.all([
     Comment.create({comment: 'This song is trash'}),
     Comment.create({comment: 'Fetty is trash'}),
@@ -89,7 +86,10 @@ async function seed () {
     Comment.create({comment: 'cloud genius'}),
     Comment.create({comment: 'fuego'})
   ])
+  return comments
+}
 
+async function setCommentAssociations (comments, users, blogs, artists) {
   await comments[0].setUser(users[0])
   await comments[1].setUser(users[0])
   await comments[2].setUser(users[1])
@@ -116,7 +116,40 @@ async function seed () {
   await comments[2].addDislikes(users[2])
   await comments[2].addDislikes(users[3])
   await comments[3].addDislikes(users[0])
+}
 
+async function seedInterviews () {
+  const interviews = Promise.all([
+    Interview.create({})
+  ])
+}
+
+async function seed () {
+  await db.sync({force: true})
+  console.log('db synced!')
+  // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
+  // executed until that promise resolves!
+
+  const users = await seedUsers()
+  // Wowzers! We can even `await` on the right-hand side of the assignment operator
+  // and store the result that the promise resolves to in a variable! This is nice!
+  console.log(`seeded ${users.length} Users!`)
+
+  const artists = await seedArtists()
+
+  await users[0].addArtist(artists[0])
+  await users[0].addArtist(artists[1])
+
+  console.log(`seeded ${artists.length} Artists!`)
+
+  const blogs = await seedBlogs()
+  await setBlogAssociations(blogs, users, artists)
+
+  console.log(`seeded ${blogs.length} Blogs!`)
+
+  const comments = await seedComments()
+
+  await setCommentAssociations(comments, users, blogs, artists)
 
   console.log(`seeded ${comments.length} Comments!`)
   console.log(`seeded successfully`)
