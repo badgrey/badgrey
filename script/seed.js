@@ -38,8 +38,12 @@ async function seedArtists () {
     Artist.create({name: 'KilConfirmed', city: 'Philadelphia', imageURL: 'kilconfirmed', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/30398868&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['2XwFup-_sOE'], genre: 'Instrumental', stateAbbrev: 'PA'}),
     Artist.create({name: 'Yung Lean', city: 'Stockholm', imageURL: 'yunglean', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/24878713&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['BMayAfYlN_k', 'tMgkt9jdjTU'], genre: 'Cloud', stateAbbrev: 'International'}),
     Artist.create({name: 'YNW Melly', city: 'Gifford', imageURL: 'ynwmelly', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/57260844&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['hqDinxaPUK4', '7LWQEokkCqo'], genre: 'Alternative', stateAbbrev: 'FL'}),
-    Artist.create({name: 'Lil Pump', city: 'Miami', imageURL: 'lilpump', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/173834487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['cwQgjq0mCdE', '4LfJnj66HVQ'], genre: 'Alternative', stateAbbrev: 'FL'})
+    Artist.create({name: 'Lil Pump', city: 'Miami', imageURL: 'lilpump', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/173834487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['cwQgjq0mCdE', '4LfJnj66HVQ'], genre: 'Alternative', stateAbbrev: 'FL'}),
+    Artist.create({name: 'Chase N Cashe', city: 'New Orleans', imageURL: 'chasencashe', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/490529712&amp;color=ff5500', youtubeID: ['5M46hksoxdg', 'FNQtaK8x7MQ'], genre: 'Conscious', stateAbbrev: 'LA'}),
+    Artist.create({name: 'J.K. The Reaper', city: 'Greensboro', imageURL: 'jkthereaper', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/485223534&amp;color=ff5500', youtubeID: ['N_Z64Bsyj5U', 'bNnVZsLSXIg'], genre: 'Conscious', stateAbbrev: 'NC'}),
+    Artist.create({name: 'Wave Chapelle', city: 'Milwaukee', imageURL: 'wavechapelle', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/529890900&amp;color=ff5500', youtubeID: ['zeUKNPNTRQo', 'ruqXcC8d7b4'], genre: 'Conscious', stateAbbrev: 'WI'})
   ])
+
 
   return artists
 }
@@ -120,8 +124,29 @@ async function setCommentAssociations (comments, users, blogs, artists) {
 
 async function seedInterviews () {
   const interviews = Promise.all([
-    Interview.create({})
+    Interview.create({description: 'Chase N. Cashe is undoubtedly one of the most multifaceted and experienced producers/artists in Hip-Hop. With credits from artists ranging from Drake, Lil Wayne, Eminem and J Cole to Beyonce, Brandy and The Pussycat Dolls, Chase N. Cashe has developed an extensive portfolio throughout the last decade. We caught up with him to discuss growing up in New Orleans, the state of hip-hop and his biggest musical influences. Take a look and stream his newest project "DJ Lil Vegan The Natural Selector." below.', interview: 'chasencashe', soundcloud: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/490529712&amp;color=ff5500' }),
+    Interview.create({description: 'J.K. The Reaper is one of the most enigmatic figures in the underground Hip-Hop Scene. Frequently collaborating with artists like Denzel Curry and Yoshi Thompkins, J.K The Reaper tells his unique story through blending Florida trap sounds with experimental new wave flows and instrumentals. We caught up with him to talk about growing up in Greensboro, North Carolina, his favorite artists and his goals for the upcoming year. Take a look and stream his new EP "Almost Angelic 3" below.', interview: 'jkthereaper', soundcloud: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/485223534&amp;color=ff5500' }),
+    Interview.create({description: `Wave Chapelle has been making his unique imprint on the rap game for several years now, combining his lyrical storytelling ability with booming trap instrumentals. Discovered and signed by Yo Gotti in 2014, Wave has significantly elevated his style and sound by collaborating with some of the hottest artists in the game including Lil Uzi Vert, K Camp & Curren$y. We caught up with Wave to discuss his upbringing in Wisconsin, his take on the modern music industry and his favorite artists and inspirations. Take a look and stream his new project "It'll All Make Sense Soon 2" below.`, interview: 'wavechapelle', soundcloud: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/529890900&amp;color=ff5500' })
   ])
+  return interviews
+}
+
+async function setInterviewAssociations(interviews, artists, users) {
+
+  await interviews[0].setArtist(artists[10])
+  await interviews[1].setArtist(artists[11])
+  await interviews[2].setArtist(artists[12])
+
+  await interviews[0].addInterviewLikes(users[0])
+  await interviews[1].addInterviewLikes(users[1])
+  await interviews[0].addInterviewLikes(users[2])
+  await interviews[2].addInterviewLikes(users[3])
+  await interviews[2].addInterviewLikes(users[0])
+  await interviews[1].addInterviewDislikes(users[2])
+  await interviews[1].addInterviewDislikes(users[1])
+  await interviews[2].addInterviewDislikes(users[2])
+  await interviews[2].addInterviewDislikes(users[3])
+  await interviews[1].addInterviewDislikes(users[0])
 }
 
 async function seed () {
@@ -152,6 +177,12 @@ async function seed () {
   await setCommentAssociations(comments, users, blogs, artists)
 
   console.log(`seeded ${comments.length} Comments!`)
+
+  const interviews = await seedInterviews()
+
+  await setInterviewAssociations(interviews, artists, users)
+  console.log(`seeded ${interviews.length} Interviews!`)
+
   console.log(`seeded successfully`)
 
 }

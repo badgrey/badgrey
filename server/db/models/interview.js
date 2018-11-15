@@ -9,6 +9,10 @@ const Interview = db.define('interview', {
   interview: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  soundcloud: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 })
 

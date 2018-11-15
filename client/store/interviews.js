@@ -62,7 +62,7 @@ export const fetchInterviews = () => async (dispatch) => {
 
 export const createNewInterview = (interview) => async (dispatch) => {
   try {
-    const newCreatedInterview = await axios.post('/api/interview', interview)
+    const newCreatedInterview = await axios.post('/api/interview/admin', interview)
     return dispatch(newInterview(newCreatedInterview.data));
   }
   catch (err) {
@@ -72,7 +72,7 @@ export const createNewInterview = (interview) => async (dispatch) => {
 
 export const deleteCurrentInterview = (id) => async (dispatch) => {
   try {
-    const deletedInterview = await axios.delete(`/api/interview/delete/${id}`)
+    const deletedInterview = await axios.delete(`/api/interview/admin/${id}`)
     return dispatch(deleteInterview(id))
   }
   catch (err) {
