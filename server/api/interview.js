@@ -8,7 +8,6 @@ router.get('/', asyncHandler(async (req, res, next) => {
   const interviews = await Interview.findAll({
     include: [
       {model: Artist},
-      {model: User},
       {model: User, as: 'InterviewLikes'},
       {model: User, as: 'InterviewDislikes'}
     ]
