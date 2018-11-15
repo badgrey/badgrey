@@ -38,7 +38,7 @@ class Navbar extends Component {
           <Link to="/discover">
             Discover
           </Link>
-          <Link to="/allinterviews">
+          <Link to="/interviews">
             Interviews
           </Link>
           <Link to="/og">

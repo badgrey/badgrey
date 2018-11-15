@@ -27,7 +27,7 @@ class Routes extends Component {
         <Route exact path="/discover/:state/:artist" component={Artist} />
         <Route exact path="/allblogs" component={AllBlogs} />
         <Route exact path="/allblogs/:id" component={Blog} />
-        <Route exact path ="/allinterviews" component={AllInterviews}/>
+        <Route exact path ="/interviews" component={AllInterviews}/>
         {
           isLoggedIn &&
             <Switch>
