@@ -22,4 +22,5 @@ export {default as EditBlog} from './EditBlog'
 export {default as NewBlog} from './NewBlog'
 export {default as BlogHomePage} from './BlogHomePage'
 export {default as AllInterviews} from './AllInterviews'
+export {default as Interview} from './Interview'
 

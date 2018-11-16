@@ -42,16 +42,30 @@ export class AllInterviews extends Component {
         {
           this.props.interviews.map((interview, index) => {
             return (
-              <div key={interview.id} className={index % 2 === 0 ? 'rightSingleInterview' : 'leftSingleInterview'}>
-                <div className={index % 2 === 0 ? 'rightSingleInterviewInfo' : 'leftSingleInterviewInfo'}>
+              index % 2 === 0 ?
+              <div key={interview.id} className="rightSingleInterview">
+                <div className="rightSingleInterviewInfo">
                   <h1>{interview.artist.name}</h1>
                   <p>{interview.description}</p>
                   <Link to={`/interviews/${interview.interview}`}>
-                    <button>Read More</button>
+                    <button className="interviewButton">Read More</button>
                   </Link>
                 </div>
-                <div className={index % 2 === 0 ? 'rightSingleInterviewPic' : 'leftSingleInterviewPic'}>
+                <div className="singleInterviewPic">
                   <img src={require(`../../public/images/artists/${interview.artist.stateAbbrev}/${interview.artist.imageURL}.jpg`)} />
+                </div>
+              </div>
+              :
+              <div key={interview.id} className="leftSingleInterview">
+                <div className="singleInterviewPic">
+                  <img src={require(`../../public/images/artists/${interview.artist.stateAbbrev}/${interview.artist.imageURL}.jpg`)} />
+                </div>
+                <div className="leftSingleInterviewInfo">
+                  <h1>{interview.artist.name}</h1>
+                  <p>{interview.description}</p>
+                  <Link to={`/interviews/${interview.interview}`}>
+                    <button className="interviewButton">Read More</button>
+                  </Link>
                 </div>
               </div>
             )

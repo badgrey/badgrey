@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews} from './components'
+import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview} from './components'
 import {me, fetchArtists, fetchBlogs, fetchInterviews} from './store'
 
 /**
@@ -27,7 +27,8 @@ class Routes extends Component {
         <Route exact path="/discover/:state/:artist" component={Artist} />
         <Route exact path="/allblogs" component={AllBlogs} />
         <Route exact path="/allblogs/:id" component={Blog} />
-        <Route exact path ="/interviews" component={AllInterviews}/>
+        <Route exact path ="/interviews" component={AllInterviews} />
+        <Route exact path ="/interviews/:interview" component={Interview} />
         {
           isLoggedIn &&
             <Switch>
