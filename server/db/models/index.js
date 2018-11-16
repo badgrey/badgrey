@@ -17,6 +17,8 @@ Comment.belongsTo(Blog)
 Blog.hasMany(Comment)
 Comment.belongsTo(Artist)
 Artist.hasMany(Comment)
+Comment.belongsTo(Interview)
+Interview.hasMany(Comment)
 
 Comment.belongsTo(User)
 User.hasMany(Comment)

@@ -42,7 +42,7 @@ router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
       id: req.body.interview.id
     },
     include: [
-      {model: User},
+      {model: Artist},
       {model: User, as: 'InterviewLikes'},
       {model: User, as: 'InterviewDislikes'}
     ]
@@ -59,10 +59,10 @@ router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
   await dislikedInterview[0].addInterviewDislikes(req.body.user.id)
   const interview = await Interview.findAll({
     where: {
-      id: req.body.blog.id
+      id: req.body.interview.id
     },
     include: [
-      {model: User},
+      {model: Artist},
       {model: User, as: 'InterviewLikes'},
       {model: User, as: 'InterviewDislikes'}
     ]

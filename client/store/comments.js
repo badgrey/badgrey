@@ -71,6 +71,16 @@ export const fetchArtistComments = (id) => async (dispatch) => {
   }
 }
 
+export const fetchInterviewComments = (id) => async (dispatch) => {
+  try {
+    const comments = await axios.get(`/api/comment/interview/${id}`)
+    return dispatch(getComments(comments.data));
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
 export const createNewComment = (comment) => async (dispatch) => {
   try {
     const newCreatedComment = await axios.post('/api/comment', comment)

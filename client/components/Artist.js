@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist, fetchInterviews} from '../store'
 import {Link} from 'react-router-dom'
 
 export class Artist extends Component{
@@ -188,6 +188,7 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(fetchArtists())
       dispatch(fetchBlogs())
+      dispatch(fetchInterviews())
     },
     delete (id) {
       dispatch(deleteCurrentArtist(id))
