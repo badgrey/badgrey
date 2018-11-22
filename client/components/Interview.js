@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
-import {fetchArtists, fetchSavedArtists, fetchBlogs, fetchInterviews, fetchInterviewComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentInterview, dislikeCurrentInterview} from '../store'
+import {fetchArtists, fetchSavedArtists, fetchBlogs, fetchInterviews, fetchInterviewComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentInterview, dislikeCurrentInterview, deleteCurrentInterview} from '../store'
 
 export class Interview extends Component {
 
@@ -13,6 +13,7 @@ export class Interview extends Component {
     }
     this.saved = this.saved.bind(this)
     this.postComment = this.postComment.bind(this)
+    this.deleteInterview = this.deleteInterview.bind(this)
   }
 
   componentDidMount () {
@@ -20,7 +21,6 @@ export class Interview extends Component {
       this.props.loadInitialData()
     }
     const id = parseInt(this.props.match.params.interview.split('_')[1])
-    console.log('YOYOYOYO', id)
     this.props.getArtistComments(id)
   }
 
@@ -46,6 +46,11 @@ export class Interview extends Component {
     this.props.getInterviewComments(this.props.chosenInterview[0].id)
   }
 
+  deleteInterview() {
+    this.props.delete(this.props.chosenInterview[0].id)
+    this.props.history.push(`/interviews`)
+  }
+
   render() {
     return (
       !this.props.chosenInterview[0] ? null :
@@ -53,6 +58,12 @@ export class Interview extends Component {
         <div className="interviewHeader">
           <h1>{this.props.chosenInterview[0].artist.name}</h1>
           <p>{this.props.chosenInterview[0].description}</p>
+          {
+            !this.props.isLoggedIn && !this.props.isAdmin ? null :
+            <div className="adminButtons">
+              <button className="editdelete" onClick={this.deleteInterview} >DELETE Interview</button>
+            </div>
+          }
         </div>
           <div className="likesDislikes">
           <button className="likeDislikeButton" onClick={() => this.props.likeInterview({interview: this.props.chosenInterview[0], user: this.props.user})}>
@@ -118,6 +129,7 @@ const mapState = ({artists, blogs, user, savedArtists, interviews, comments}, ow
       return 0
     }),
     isLoggedIn: !!user.id,
+    isAdmin: user.isAdmin,
     user,
     savedArtists,
     blogs,
@@ -158,6 +170,9 @@ const mapDispatch = (dispatch) => {
     },
     dislikeInterview(interview) {
       dispatch(dislikeCurrentInterview(interview))
+    },
+    delete(id) {
+      dispatch(deleteCurrentInterview(id))
     }
   }
 }
