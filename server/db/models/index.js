@@ -3,6 +3,7 @@ const Artist = require('./artist')
 const Blog = require('./blog')
 const Comment = require('./comment')
 const Interview = require('./interview')
+const OriginalContent = require('./originalcontent')
 
 User.belongsToMany(Artist, {through: 'Saved'})
 Artist.belongsToMany(User, {through: 'Saved'})
@@ -43,5 +44,6 @@ module.exports = {
   Artist,
   Blog,
   Comment,
-  Interview
+  Interview,
+  OriginalContent
 }
