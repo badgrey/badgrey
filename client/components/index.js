@@ -23,4 +23,5 @@ export {default as NewBlog} from './NewBlog'
 export {default as BlogHomePage} from './BlogHomePage'
 export {default as AllInterviews} from './AllInterviews'
 export {default as Interview} from './Interview'
+export {default as NewInterview} from './NewInterview'
 

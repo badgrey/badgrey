@@ -73,6 +73,11 @@ class Navbar extends Component {
                       </Link>
                     </div>
                     <div className="singleNavOption">
+                      <Link to="/newInterview">
+                        Add Interview
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
                       <Link to="/account">
                       Account
                       </Link>

@@ -16,8 +16,19 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.post('/admin', isAdmin, asyncHandler(async (req, res, next) => {
-  const newInterview = await Interview.create(req.body)
-  res.status(201).json(newInterview)
+  const newInterview = await Interview.create(req.body.interview)
+  await newInterview.setArtist(req.body.artist)
+  const interview = await Interview.findAll({
+    where: {
+      id: newInterview.id
+    },
+    include: [
+      {model: Artist},
+      {model: User, as: 'InterviewLikes'},
+      {model: User, as: 'InterviewDislikes'}
+    ]
+  })
+  res.status(201).json(interview[0])
 }))
 
 router.delete('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {
