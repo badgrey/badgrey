@@ -1589,3 +1589,24 @@ nav a {
   align-items: center;
 }
 
+/* Submit Styles */
+
+.submitHeader {
+  margin-top: 3em;
+  text-align: center;
+}
+
+.submitHeader h1 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.submitContainer {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.submitContainer h3 h4 h5 h6{
+  font-family: 'ABeeZee', sans-serif;
+}

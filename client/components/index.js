@@ -25,4 +25,5 @@ export {default as AllInterviews} from './AllInterviews'
 export {default as Interview} from './Interview'
 export {default as NewInterview} from './NewInterview'
 export {default as OriginalContent} from './OriginalContent'
+export {default as Submit} from './Submit'
 

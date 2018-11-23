@@ -44,7 +44,7 @@ class Navbar extends Component {
           <Link to="/originalcontent">
             Original Content
           </Link>
-          <Link to="/contact">
+          <Link to="/submit">
             Submit
           </Link>
         </div>
