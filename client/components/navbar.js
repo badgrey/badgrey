@@ -41,7 +41,7 @@ class Navbar extends Component {
           <Link to="/interviews">
             Interviews
           </Link>
-          <Link to="/og">
+          <Link to="/originalcontent">
             Original Content
           </Link>
           <Link to="/contact">

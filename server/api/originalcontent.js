@@ -7,7 +7,6 @@ module.exports = router
 router.get('/', asyncHandler(async (req, res, next) => {
   const originalContent = await OriginalContent.findAll({
     include: [
-      {model: User},
       {model: User, as: 'OriginalContentLikes'},
       {model: User, as: 'OriginalContentDislikes'}
     ]
@@ -17,6 +16,15 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 router.post('/admin', isAdmin, asyncHandler(async (req, res, next) => {
   const newOriginalContent = await OriginalContent.create(req.body)
+  const oc = await OriginalContent.findAll({
+    where: {
+      id: newOriginalContent.id
+    },
+    include: [
+      {model: User, as: 'OriginalContentLikes'},
+      {model: User, as: 'OriginalContentDislikes'}
+    ]
+  })
   res.status(201).json(newOriginalContent)
 }))
 
@@ -32,7 +40,6 @@ router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
       id: req.body.oc.id
     },
     include: [
-      {model: User},
       {model: User, as: 'OriginalContentLikes'},
       {model: User, as: 'OriginalContentDislikes'}
     ]
@@ -52,7 +59,6 @@ router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
       id: req.body.oc.id
     },
     include: [
-      {model: User},
       {model: User, as: 'OriginalContentLikes'},
       {model: User, as: 'OriginalContentDislikes'}
     ]

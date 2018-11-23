@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview, NewInterview} from './components'
-import {me, fetchArtists, fetchBlogs, fetchInterviews} from './store'
+import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview, NewInterview, OriginalContent} from './components'
+import {me, fetchArtists, fetchBlogs, fetchInterviews, fetchOriginalContent} from './store'
 
 /**
  * COMPONENT
@@ -29,6 +29,7 @@ class Routes extends Component {
         <Route exact path="/allblogs/:id" component={Blog} />
         <Route exact path ="/interviews" component={AllInterviews} />
         <Route exact path ="/interviews/:interview" component={Interview} />
+        <Route exact path ="/originalcontent" component={OriginalContent} />
         {
           isLoggedIn &&
             <Switch>
@@ -68,6 +69,7 @@ const mapDispatch = (dispatch) => {
       dispatch(fetchArtists())
       dispatch(fetchBlogs())
       dispatch(fetchInterviews())
+      dispatch(fetchOriginalContent())
     }
   }
 }

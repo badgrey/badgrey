@@ -10,9 +10,31 @@ export class OriginalContent extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    if (!this.props.originalcontent.length){
+      this.props.getOriginalContent()
+    }
+  }
   render() {
     return (
-
+      !this.props.originalcontent.length ? null :
+      <div>
+        <div className="OCheader">
+          <h1>Bad Grey Films</h1>
+        </div>
+        <div className="OCcontainer">
+          {
+            this.props.originalcontent.map((oc) => {
+              console.log('YOOO LOOK HERE', oc)
+              return (
+                <div key={oc.id} className="singleoc">
+                    <YoutubePlayer ytID={oc.youtubeId} />
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
     )
   }
 }
@@ -32,4 +54,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Artist)
+export default connect(mapState, mapDispatch)(OriginalContent)
