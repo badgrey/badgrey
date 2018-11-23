@@ -10,7 +10,7 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db')
-const {User, Artist, Blog, Comment, Interview} = require('../server/db/models')
+const {User, Artist, Blog, Comment, Interview, OriginalContent} = require('../server/db/models')
 
 async function seedUsers() {
   const users = await Promise.all([
@@ -149,6 +149,18 @@ async function setInterviewAssociations(interviews, artists, users) {
   await interviews[1].addInterviewDislikes(users[0])
 }
 
+async function seedOriginalContent() {
+  const originalcontent = await Promise.all([
+    OriginalContent.create({youtubeId: 'v9tvZToTAH4'}),
+    OriginalContent.create({youtubeId: 'N2fhF-VDogs'}),
+    OriginalContent.create({youtubeId: 'Ua0CUh02-0k'}),
+    OriginalContent.create({youtubeId: 'kl2uu-RSVw4'}),
+    OriginalContent.create({youtubeId: '-fVOkqhHNw0'}),
+    OriginalContent.create({youtubeId: '6zSl-DHofbI'})
+  ])
+  return originalcontent
+}
+
 async function seed () {
   await db.sync({force: true})
   console.log('db synced!')
@@ -182,6 +194,9 @@ async function seed () {
 
   await setInterviewAssociations(interviews, artists, users)
   console.log(`seeded ${interviews.length} Interviews!`)
+
+  const originalcontent = await seedOriginalContent()
+  console.log(`seeded ${originalcontent.length} Original Contents!`)
 
   console.log(`seeded successfully`)
 
