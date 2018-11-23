@@ -43,17 +43,37 @@ router.get('/:id', asyncHandler(async (req, res, next) => {
 
 router.post('/admin', isAdmin, asyncHandler(async (req, res, next) => {
   const newArtist = await Artist.create(req.body)
-  res.status(201).json(newArtist)
+  const artist = await Artist.findAll({
+    where: {
+      id: newArtist.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'ArtistLikes'},
+      {model: User, as: 'ArtistDislikes'}
+    ]
+  })
+  res.status(201).json(artist[0])
 }))
 
 router.put('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {
-  const artist = await Artist.update(req.body, {
+  const editedartist = await Artist.update(req.body, {
     where: {
       id: req.params.id
     },
     returning: true
   })
-  res.json(artist[1][0])
+  const artist = await Artist.findAll({
+    where: {
+      id: editedartist.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'ArtistLikes'},
+      {model: User, as: 'ArtistDislikes'}
+    ]
+  })
+  res.json(artist[0])
 }))
 
 router.delete('/admin/:id', isAdmin, asyncHandler(async (req, res, next) => {

@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog} from './components'
-import {me, fetchArtists, fetchBlogs} from './store'
+import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview, NewInterview, OriginalContent, Submit} from './components'
+import {me, fetchArtists, fetchBlogs, fetchInterviews, fetchOriginalContent} from './store'
 
 /**
  * COMPONENT
@@ -27,6 +27,10 @@ class Routes extends Component {
         <Route exact path="/discover/:state/:artist" component={Artist} />
         <Route exact path="/allblogs" component={AllBlogs} />
         <Route exact path="/allblogs/:id" component={Blog} />
+        <Route exact path ="/interviews" component={AllInterviews} />
+        <Route exact path ="/interviews/:interview" component={Interview} />
+        <Route exact path ="/originalcontent" component={OriginalContent} />
+        <Route exact path ="/submit" component={Submit} />
         {
           isLoggedIn &&
             <Switch>
@@ -38,6 +42,7 @@ class Routes extends Component {
               <Route exact path="/users" component={AllUsers} />
               <Route exact path="/newBlog" component={NewBlog} />
               <Route exact path="/editblog/:id" component={EditBlog} />
+              <Route exact path="/newInterview" component={NewInterview} />
             </Switch>
         }
         {/* Displays our Login component as a fallback */}
@@ -64,6 +69,8 @@ const mapDispatch = (dispatch) => {
       dispatch(me())
       dispatch(fetchArtists())
       dispatch(fetchBlogs())
+      dispatch(fetchInterviews())
+      dispatch(fetchOriginalContent())
     }
   }
 }

@@ -19,17 +19,37 @@ router.post('/', isBlogger, asyncHandler(async (req, res, next) => {
   const newBlog = await Blog.create(req.body.blogInfo)
   await newBlog.setUser(req.body.user)
   await newBlog.setArtist(req.body.artist)
-  res.status(201).json(newBlog)
+  const blog = await Blog.findAll({
+    where: {
+      id: newBlog.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'BlogLikes'},
+      {model: User, as: 'BlogDislikes'}
+    ]
+  })
+  res.status(201).json(blog[0])
 }))
 
 router.put('/edit/:id', isBlogger, asyncHandler(async (req, res, next) => {
-  const blog = await Blog.update(req.body, {
+  const editedblog = await Blog.update(req.body, {
     where: {
       id: req.params.id
     },
     returning: true
   })
-  res.json(blog[1][0])
+  const blog = await Blog.findAll({
+    where: {
+      id: editedblog.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'BlogLikes'},
+      {model: User, as: 'BlogDislikes'}
+    ]
+  })
+  res.json(blog[0])
 }))
 
 router.delete('/delete/:id', isBlogger, asyncHandler(async (req, res, next) => {

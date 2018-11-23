@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {Comment, User} = require('../db/models')
 const asyncHandler = require('express-async-handler')
-const {isLoggedIn, isSelf} = require('../permissions')
+const {isLoggedIn} = require('../permissions')
 module.exports = router
 
 router.get('/blog/:id', asyncHandler(async (req, res, next) => {
@@ -22,6 +22,20 @@ router.get('/artist/:id', asyncHandler(async (req, res, next) => {
   const comments = await Comment.findAll({
     where: {
       artistId: req.params.id
+    },
+    include: [
+      {model: User},
+      {model: User, as: 'Likes'},
+      {model: User, as: 'Dislikes'},
+    ]
+  })
+  res.json(comments)
+}))
+
+router.get('/interview/:id', asyncHandler(async (req, res, next) => {
+  const comments = await Comment.findAll({
+    where: {
+      interviewId: req.params.id
     },
     include: [
       {model: User},

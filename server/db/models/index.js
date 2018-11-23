@@ -2,6 +2,8 @@ const User = require('./user')
 const Artist = require('./artist')
 const Blog = require('./blog')
 const Comment = require('./comment')
+const Interview = require('./interview')
+const OriginalContent = require('./originalcontent')
 
 User.belongsToMany(Artist, {through: 'Saved'})
 Artist.belongsToMany(User, {through: 'Saved'})
@@ -16,9 +18,14 @@ Comment.belongsTo(Blog)
 Blog.hasMany(Comment)
 Comment.belongsTo(Artist)
 Artist.hasMany(Comment)
+Comment.belongsTo(Interview)
+Interview.hasMany(Comment)
 
 Comment.belongsTo(User)
 User.hasMany(Comment)
+
+Interview.belongsTo(Artist)
+Artist.hasOne(Interview)
 
 Comment.belongsToMany(User, {through: 'Like_Comment', as: 'Likes'})
 Comment.belongsToMany(User, {through: 'Dislike_Comment', as: 'Dislikes'})
@@ -29,9 +36,17 @@ Blog.belongsToMany(User, {through: 'Dislike_Blog', as: 'BlogDislikes'})
 Artist.belongsToMany(User, {through: 'Like_Artist', as: 'ArtistLikes'})
 Artist.belongsToMany(User, {through: 'Dislike_Artist', as: 'ArtistDislikes'})
 
+Interview.belongsToMany(User, {through: 'Like_Interview', as: 'InterviewLikes'})
+Interview.belongsToMany(User, {through: 'Dislike_Interview', as: 'InterviewDislikes'})
+
+OriginalContent.belongsToMany(User, {through: 'Like_OriginalContent', as: 'OriginalContentLikes'})
+OriginalContent.belongsToMany(User, {through: 'Dislike_OriginalContent', as: 'OriginalContentDislikes'})
+
 module.exports = {
   User,
   Artist,
   Blog,
-  Comment
+  Comment,
+  Interview,
+  OriginalContent
 }

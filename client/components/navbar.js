@@ -41,10 +41,10 @@ class Navbar extends Component {
           <Link to="/interviews">
             Interviews
           </Link>
-          <Link to="/og">
+          <Link to="/originalcontent">
             Original Content
           </Link>
-          <Link to="/contact">
+          <Link to="/submit">
             Submit
           </Link>
         </div>
@@ -70,6 +70,11 @@ class Navbar extends Component {
                     <div className="singleNavOption">
                       <Link to="/newBlog">
                         Add Blog
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/newInterview">
+                        Add Interview
                       </Link>
                     </div>
                     <div className="singleNavOption">
