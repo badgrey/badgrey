@@ -39,6 +39,9 @@ Artist.belongsToMany(User, {through: 'Dislike_Artist', as: 'ArtistDislikes'})
 Interview.belongsToMany(User, {through: 'Like_Interview', as: 'InterviewLikes'})
 Interview.belongsToMany(User, {through: 'Dislike_Interview', as: 'InterviewDislikes'})
 
+OriginalContent.belongsToMany(User, {through: 'Like_OriginalContent', as: 'OriginalContentLikes'})
+OriginalContent.belongsToMany(User, {through: 'Dislike_OriginalContent', as: 'OriginalContentDislikes'})
+
 module.exports = {
   User,
   Artist,
