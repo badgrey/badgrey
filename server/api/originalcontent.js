@@ -25,7 +25,17 @@ router.post('/admin', isAdmin, asyncHandler(async (req, res, next) => {
       {model: User, as: 'OriginalContentDislikes'}
     ]
   })
-  res.status(201).json(newOriginalContent)
+  res.status(201).json(oc)
+}))
+
+router.delete('/delete/:id', isAdmin, asyncHandler(async (req, res, next) => {
+  const oc = await OriginalContent.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.status(204)
+  res.json(oc)
 }))
 
 router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {

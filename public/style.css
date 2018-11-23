@@ -1561,3 +1561,28 @@ nav a {
   margin-bottom: -50em;
 }
 
+/* Original Content Styles */
+
+.OCheader {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  flex-direction: column;
+}
+
+.OCheader h1 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.OCcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.singleoc {
+  margin-bottom: 2em;
+}
+

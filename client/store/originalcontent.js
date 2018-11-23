@@ -28,7 +28,7 @@ export default function reducer (ocs = [], action){
       return action.ocs
 
     case CREATE_NEW_ORIGINAL_CONTENT:
-      return [...ocs, action.oc]
+      return [action.oc, ...ocs]
 
     case DELETE_ORIGINAL_CONTENT:
       return ocs.filter(oc => oc.id !== action.id)
@@ -62,7 +62,7 @@ export const fetchOriginalContent = () => async (dispatch) => {
 
 export const createNewOriginalContent = (oc) => async (dispatch) => {
   try {
-    const newCreatedOriginalContent = await axios.post('/api/orignalcontent/admin', oc)
+    const newCreatedOriginalContent = await axios.post('/api/originalcontent/admin', oc)
     return dispatch(newOriginalContent(newCreatedOriginalContent.data));
   }
   catch (err) {
