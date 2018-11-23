@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalContent} from '../store'
+import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalContent, likeCurrentOriginalContent, dislikeCurrentOriginalContent} from '../store'
 import {Link} from 'react-router-dom'
 
 export class OriginalContent extends Component {
@@ -44,6 +44,16 @@ export class OriginalContent extends Component {
               return (
                 <div key={oc.id} className="singleoc">
                     <YoutubePlayer ytID={oc.youtubeId} />
+                    <div className="likesDislikes">
+                      <button className="likeDislikeButton" onClick={() => this.props.likeOC({oc, user: this.props.user})}>
+                        <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+                      </button>
+                      <p>{oc.OriginalContentLikes.length}</p>
+                      <button className="likeDislikeButton" onClick={() => this.props.dislikeOC({oc, user: this.props.user})}>
+                        <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+                      </button>
+                      <p>{oc.OriginalContentDislikes.length}</p>
+                    </div>
                     {
                       !this.props.isAdmin ? null :
                       <button
@@ -63,7 +73,11 @@ export class OriginalContent extends Component {
 
 const mapState = ({originalcontent, user}, ownProps) => {
   return {
-    originalcontent,
+    originalcontent: originalcontent.sort((ocA, ocB) => {
+      if (ocA.createdAt < ocB.createdAt) return -1
+      if (ocA.createdAt > ocB.createdAt) return 1
+      return 0
+    }),
     user,
     isAdmin: user.isAdmin
   }
@@ -79,6 +93,12 @@ const mapDispatch = (dispatch) => {
     },
     delete(id) {
       dispatch(deleteCurrentOriginalContent(id))
+    },
+    likeOC(oc) {
+      dispatch(likeCurrentOriginalContent(oc))
+    },
+    dislikeOC(oc) {
+      dispatch(dislikeCurrentOriginalContent(oc))
     }
   }
 }
