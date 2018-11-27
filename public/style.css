@@ -1324,6 +1324,7 @@ nav a {
 .blogsDisplay {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .blogsHomeContainer {
@@ -1349,15 +1350,59 @@ nav a {
 }
 
 .mainBlogDiv {
-  border: solid black 3px;
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 3em;;
+  background-color: black;
+  color: whitesmoke;
+  margin-bottom: 3em;
+  height: 31em;
+  width: 77em;
 }
 
 .singleBlogDiv {
   display: flex;
   justify-content: space-evenly;
+  width:100%
+}
+
+.homeSingleBlogLink {
+  width: 40%;
+  margin-bottom: 3em;
+}
+
+.homeSingleBlog {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.singleBlogInfo {
+  text-align: center;
+  color: white;
+  margin-top: 3em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.singleBlogInfo h2 {
+  font-size: 13px;
+}
+
+.singleBlogInfo h3 {
+  font-size: 15px;
+}
+
+.singleBlogPic {
+  width: 416px;
+  height: 334px;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.singleBlogPic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .mainBlog {
@@ -1366,15 +1411,34 @@ nav a {
 }
 
 .mainBlogPic {
-  width: 550px;
-  height: 550px;
+  width: 616px;
+  height: 434px;
   display: inline-block;
   overflow: hidden;
   transition: 0.3s;
 }
 
+.mainBlogPic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .mainBlogInfo {
-  text-align: end;
+  text-align: center;
+  color: white;
+  margin-top: 5em;
+  margin-right: 2em;
+}
+
+.mainBlogInfo h1 {
+  font-size: 45px;
+}
+.mainBlogInfo h2 {
+  font-size: 11px;
+}
+.mainBlogInfo h3 {
+  font-size: 14px;
 }
 /* All Blogs Styles */
 
