@@ -67,6 +67,7 @@ path:hover {
   transition: 0.3s;
   font-size: 1.3em;
   font-family: 'ABeeZee', sans-serif;
+  cursor: pointer;
 }
 
 .allArtistsButton:hover {
@@ -88,6 +89,7 @@ path:hover {
   border: solid black;
   padding: 10px;
   border-radius: 80px;
+  cursor: pointer;
 }
 
 .globeLabel {
@@ -255,6 +257,7 @@ path:hover {
 .badGreyTextLogo {
   height: 100px;
   width: 100px;
+  cursor: pointer;
 }
 .badGreyWolfLogo {
   height: 100px;
@@ -280,7 +283,7 @@ nav a {
   display: inline-block;
   margin: 1em;
   color: ghostwhite;
-
+  cursor: pointer;
 }
 
 .navLinks {
@@ -290,6 +293,7 @@ nav a {
 
 .navList a{
   color: whitesmoke;
+  cursor: pointer;
 }
 
 .navList {
@@ -422,6 +426,7 @@ nav a {
   display: inline-block;
   overflow: hidden;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .artistPic:hover {
@@ -567,12 +572,14 @@ nav a {
 
 .stateLink {
   height: 0px;
+  cursor: pointer;
 }
 
 .artistLogos {
   height: 140px;
   width: 140px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .artistLogos:hover {
@@ -606,6 +613,7 @@ nav a {
   color: black;
   transition: 0.3s;
   height: 125px;
+  cursor: pointer;
 }
 
 .genreLink:hover {
@@ -621,6 +629,7 @@ nav a {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 #editButton {
@@ -635,7 +644,7 @@ nav a {
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
-
+  cursor: pointer;
 }
 
 .editdelete:hover {
@@ -649,6 +658,7 @@ nav a {
   background-color: black;
   border-radius: 15px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .addToSavedButton:hover {
@@ -778,6 +788,7 @@ nav a {
   background-color: black;
   color: whitesmoke;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 #Trap #Alternative #Cloud #Conscious #Experimental #Instrumental #Pop #JazzSoul #RB #OldSchool {
@@ -929,6 +940,7 @@ nav a {
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .form button:hover {
@@ -1068,6 +1080,7 @@ nav a {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 }
 .editEmail h1 {
   font-family: 'ABeeZee', sans-serif;
@@ -1083,6 +1096,7 @@ nav a {
   justify-content: center;
   text-align: center;
   margin-top: 40px;
+  cursor: pointer;
 }
 
 .editPassword h1 {
@@ -1159,6 +1173,7 @@ nav a {
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .savedArtistsButton:hover {
@@ -1341,6 +1356,7 @@ nav a {
   transition: 0.3s;
   font-size: 1.3em;
   font-family: 'ABeeZee', sans-serif;
+  cursor: pointer;
 }
 
 .allBlogsButton:hover {
@@ -1366,6 +1382,7 @@ nav a {
 .homeSingleBlogLink {
   width: 40%;
   margin-bottom: 3em;
+  cursor: pointer;
 }
 
 .homeSingleBlog {
@@ -1466,11 +1483,13 @@ nav a {
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .allSingleBlogLink {
   width: 35em;
   margin-bottom: 3em;
+  cursor: pointer;
 }
 
 
@@ -1530,6 +1549,7 @@ nav a {
   overflow: hidden;
   height: 30px;
   width: 37px;
+  cursor: pointer;
 }
 
 .likeDislikeImage {
@@ -1625,12 +1645,13 @@ nav a {
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .interviewButton:hover {
   background-color: whitesmoke;
   color: black;
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 /* Single Interview Styles */

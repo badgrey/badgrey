@@ -86,7 +86,11 @@ const mapState = ({artists, blogs, user, savedArtists}, ownProps) => {
     isLoggedIn: !!user.id,
     user,
     savedArtists,
-    blogs
+    blogs: blogs.sort((blogA, blogB) => {
+      if (blogA.createdAt < blogB.createdAt) return -1
+      if (blogA.createdAt > blogB.createdAt) return 1
+      return 0
+    })
   }
 }
 const mapDispatch = (dispatch) => {

@@ -13,6 +13,7 @@ export class AllInterviews extends Component {
       search: ''
     }
     this.saved = this.saved.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount () {
@@ -32,15 +33,28 @@ export class AllInterviews extends Component {
     }
   }
 
+  handleSearch(evt) {
+    this.setState({
+      search: evt.target.value
+    })
+  }
+
   render() {
+    const interviews = this.props.interviews.filter((interview) => interview.artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       <div>
         <div className="allInterviewsHeader">
           <h1>Interviews</h1>
         </div>
+        <div className="artistSearch">
+          <form>
+            <label className="searchLabel" >Search Artist</label>
+            <input onChange={this.handleSearch} placeholder="Name" />
+          </form>
+        </div>
         <div className="allInterviewsContainer">
         {
-          this.props.interviews.map((interview, index) => {
+          interviews.map((interview, index) => {
             return (
               index % 2 === 0 ?
               <div key={interview.id} className="rightSingleInterview">
@@ -88,7 +102,11 @@ const mapState = ({artists, blogs, user, savedArtists, interviews}, ownProps) =>
     user,
     savedArtists,
     blogs,
-    interviews
+    interviews: interviews.sort((interviewA, interviewB) => {
+      if (interviewA.createdAt < interviewB.createdAt) return -1
+      if (interviewA.createdAt > interviewB.createdAt) return 1
+      return 0
+    })
   }
 }
 const mapDispatch = (dispatch) => {
