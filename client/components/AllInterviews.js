@@ -103,8 +103,8 @@ const mapState = ({artists, blogs, user, savedArtists, interviews}, ownProps) =>
     savedArtists,
     blogs,
     interviews: interviews.sort((interviewA, interviewB) => {
-      if (interviewA.createdAt < interviewB.createdAt) return -1
-      if (interviewA.createdAt > interviewB.createdAt) return 1
+      if (interviewA.createdAt < interviewB.createdAt) return 1
+      if (interviewA.createdAt > interviewB.createdAt) return -1
       return 0
     })
   }

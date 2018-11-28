@@ -53,6 +53,7 @@ export class Blog extends Component {
       user: this.props.user,
       blog: this.props.chosenBlog[0]
     }
+    document.getElementById('form').reset()
     this.props.submitForm(commentInfo)
     this.props.getBlogComments(this.props.chosenBlog[0].id)
   }
@@ -106,7 +107,7 @@ export class Blog extends Component {
             <p>{this.props.chosenBlog[0].blogPost}</p>
         </div>
         <div className="commentContainer">
-            <form onSubmit={this.postComment} className="commentForm">
+            <form onSubmit={this.postComment} id="form" className="commentForm">
               <label>Comment Here</label>
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
@@ -126,13 +127,13 @@ export class Blog extends Component {
                     <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
                   </button>
                   <p>{comment.Dislikes.length}</p>
+                  {
+                    this.props.user.id !== comment.user.id ? null :
+                    <div>
+                      <button className="deleteCommentButton" onClick={() => this.props.deleteComment(comment.id)}>X</button>
+                    </div>
+                  }
                 </div>
-                {
-                  this.props.user.id !== comment.user.id ? null :
-                  <div className="deleteCommentButton">
-                    <button onClick={() => this.props.deleteComment(comment.id)}>X</button>
-                  </div>
-                }
               </div>
               )
             })
@@ -159,8 +160,8 @@ const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
     user,
     savedArtists,
     comments: comments.sort((commentA, commentB) => {
-      if (commentA.createdAt < commentB.createdAt) return -1
-      if (commentA.createdAt > commentB.createdAt) return 1
+      if (commentA.createdAt < commentB.createdAt) return 1
+      if (commentA.createdAt > commentB.createdAt) return -1
       return 0
     })
   }

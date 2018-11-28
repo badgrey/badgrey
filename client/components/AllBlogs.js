@@ -87,8 +87,8 @@ const mapState = ({artists, blogs, user, savedArtists}, ownProps) => {
     user,
     savedArtists,
     blogs: blogs.sort((blogA, blogB) => {
-      if (blogA.createdAt < blogB.createdAt) return -1
-      if (blogA.createdAt > blogB.createdAt) return 1
+      if (blogA.createdAt < blogB.createdAt) return 1
+      if (blogA.createdAt > blogB.createdAt) return -1
       return 0
     })
   }

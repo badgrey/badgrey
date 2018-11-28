@@ -50,6 +50,7 @@ export class Artist extends Component{
       user: this.props.user,
       artist: this.props.chosenArtist[0]
     }
+    document.getElementById('form').reset()
     this.props.submitForm(commentInfo)
     this.props.getArtistComments(this.props.chosenArtist[0].id)
   }
@@ -120,7 +121,7 @@ export class Artist extends Component{
           </div>
         </div>
         <div className="artistCommentContainer">
-            <form onSubmit={this.postComment} className="commentForm">
+            <form onSubmit={this.postComment} id="form" className="commentForm">
               <label>Comment Here</label>
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
@@ -171,8 +172,8 @@ const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
       return 0
     }),
     comments: comments.sort((commentA, commentB) => {
-      if (commentA.createdAt < commentB.createdAt) return -1
-      if (commentA.createdAt > commentB.createdAt) return 1
+      if (commentA.createdAt < commentB.createdAt) return 1
+      if (commentA.createdAt > commentB.createdAt) return -1
       return 0
     }),
     isLoggedIn: !!user.isLoggedIn,

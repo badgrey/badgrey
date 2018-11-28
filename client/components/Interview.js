@@ -42,6 +42,7 @@ export class Interview extends Component {
       user: this.props.user,
       interview: this.props.chosenInterview[0]
     }
+    document.getElementById('form').reset()
     this.props.submitForm(commentInfo)
     this.props.getInterviewComments(this.props.chosenInterview[0].id)
   }
@@ -84,7 +85,7 @@ export class Interview extends Component {
           </div>
         </div>
         <div className="artistCommentContainer">
-            <form onSubmit={this.postComment} className="commentForm">
+            <form onSubmit={this.postComment} id="form" className="commentForm">
               <label>Comment Here</label>
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
@@ -135,8 +136,8 @@ const mapState = ({artists, blogs, user, savedArtists, interviews, comments}, ow
     blogs,
     interviews,
     comments: comments.sort((commentA, commentB) => {
-      if (commentA.createdAt < commentB.createdAt) return -1
-      if (commentA.createdAt > commentB.createdAt) return 1
+      if (commentA.createdAt < commentB.createdAt) return 1
+      if (commentA.createdAt > commentB.createdAt) return -1
       return 0
     }),
     chosenInterview: interviews.filter((interview) => {

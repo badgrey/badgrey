@@ -1579,6 +1579,19 @@ nav a {
   width: 30px;
 }
 
+.deleteCommentButton {
+  margin-top: 13px;
+  width: 32px;
+  height: 29px;
+  border-radius: 27px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-left: 6px;
+}
+
 .authorLink {
   display: inline-grid;
   grid-template-rows: 120px;
