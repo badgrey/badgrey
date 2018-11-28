@@ -42,7 +42,12 @@ export class State extends Component{
   render() {
     const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
-      this.props.stateArtists.length === 0 ? null :
+      this.props.stateArtists.length === 0 ?
+      <div className="noArtists">
+        <h2>We Do Not Know Of Any Artists From This State</h2>
+        <h6>If You Are An Artist From This Area Or Know Of One, Please Contact Us Through The Submit Button At The Top Of The Page</h6>
+      </div>
+      :
       <div className="artistsDiv">
         <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
         <div className="artistSearch">

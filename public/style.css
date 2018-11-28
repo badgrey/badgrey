@@ -459,6 +459,28 @@ nav a {
   font-family: 'ABeeZee', sans-serif;
 }
 
+.noArtists {
+  align-items: center;
+  text-align: center;
+  border: solid black;
+  height: 13em;
+  width: 47em;
+  margin-top: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 23em;
+}
+
+.noArtists h2{
+  font-size: 2em;
+  font-family: 'ABeeZee', sans-serif;
+}
+.noArtists h6 {
+  font-size: 1.2em;
+  font-family: 'ABeeZee', sans-serif;
+}
+
 @media only screen and (max-width: 600px) {
 
   .artistsDiv {
