@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Blog, User} = require('../db/models')
+const {Blog, User, Artist} = require('../db/models')
 const asyncHandler = require('express-async-handler')
 const {isBlogger, isLoggedIn} = require('../permissions')
 module.exports = router
@@ -7,6 +7,7 @@ module.exports = router
 router.get('/', asyncHandler(async (req, res, next) => {
   const blogs = await Blog.findAll({
     include: [
+      {model: Artist},
       {model: User},
       {model: User, as: 'BlogLikes'},
       {model: User, as: 'BlogDislikes'}
@@ -24,6 +25,7 @@ router.post('/', isBlogger, asyncHandler(async (req, res, next) => {
       id: newBlog.id
     },
     include: [
+      {model: Artist},
       {model: User},
       {model: User, as: 'BlogLikes'},
       {model: User, as: 'BlogDislikes'}
@@ -44,6 +46,7 @@ router.put('/edit/:id', isBlogger, asyncHandler(async (req, res, next) => {
       id: editedblog.id
     },
     include: [
+      {model: Artist},
       {model: User},
       {model: User, as: 'BlogLikes'},
       {model: User, as: 'BlogDislikes'}
@@ -80,6 +83,7 @@ router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
       id: req.body.blog.id
     },
     include: [
+      {model: Artist},
       {model: User},
       {model: User, as: 'BlogLikes'},
       {model: User, as: 'BlogDislikes'}
@@ -100,6 +104,7 @@ router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
       id: req.body.blog.id
     },
     include: [
+      {model: Artist},
       {model: User},
       {model: User, as: 'BlogLikes'},
       {model: User, as: 'BlogDislikes'}

@@ -1458,6 +1458,7 @@ nav a {
   margin-right: 5em;
   margin-top: 2em;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .singleBlogLink {
@@ -1467,6 +1468,10 @@ nav a {
   margin-bottom: 20px;
 }
 
+.allSingleBlogLink {
+  width: 35em;
+  margin-bottom: 3em;
+}
 
 
 /* Single Blog Styles */
