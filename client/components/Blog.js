@@ -158,7 +158,11 @@ const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
     isAdmin: user.isAdmin,
     user,
     savedArtists,
-    comments
+    comments: comments.sort((commentA, commentB) => {
+      if (commentA.createdAt < commentB.createdAt) return -1
+      if (commentA.createdAt > commentB.createdAt) return 1
+      return 0
+    })
   }
 }
 

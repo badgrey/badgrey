@@ -170,7 +170,11 @@ const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
       if (artistA.name > artistB.name) return 1
       return 0
     }),
-    comments,
+    comments: comments.sort((commentA, commentB) => {
+      if (commentA.createdAt < commentB.createdAt) return -1
+      if (commentA.createdAt > commentB.createdAt) return 1
+      return 0
+    }),
     isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin,
     user,

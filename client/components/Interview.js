@@ -134,7 +134,11 @@ const mapState = ({artists, blogs, user, savedArtists, interviews, comments}, ow
     savedArtists,
     blogs,
     interviews,
-    comments,
+    comments: comments.sort((commentA, commentB) => {
+      if (commentA.createdAt < commentB.createdAt) return -1
+      if (commentA.createdAt > commentB.createdAt) return 1
+      return 0
+    }),
     chosenInterview: interviews.filter((interview) => {
       return interview.interview === ownProps.match.params.interview.split('_')[0]
     })
