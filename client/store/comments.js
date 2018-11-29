@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {addError} from './error'
 
 /**
  * ACTION TYPES
@@ -83,6 +84,11 @@ export const fetchInterviewComments = (id) => async (dispatch) => {
 
 export const createNewComment = (comment) => async (dispatch) => {
   try {
+    if (Object.keys(comment.user).length === 0) {
+      console.log('HERE!')
+      return dispatch(addError({error: 'Login To Comment'}))
+    }
+
     const newCreatedComment = await axios.post('/api/comment', comment)
     return dispatch(newComment(newCreatedComment.data[0]));
   }

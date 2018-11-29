@@ -116,7 +116,7 @@ export class Discover extends Component {
       NH: {
         fill: 'black'
       },
-      NJ:{
+      NJ: {
         fill: 'black',
       },
       NM: {

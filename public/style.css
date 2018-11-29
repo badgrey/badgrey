@@ -1649,6 +1649,28 @@ outline: 1px solid slategrey;
   transform: scale(1.2);
 }
 
+.commentPostError {
+  width: 207px;
+  border-radius: 4px;
+  background: rgb(0, 0, 0);
+  color: whitesmoke;
+  text-align: center;
+  font-size: 20px;
+  animation: fadeinout 2s linear forwards;
+}
+
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  85%,
+  65%,
+  50% {
+    opacity: 1
+  }
+}
+
 /* Artist Comment Styles */
 
 .artistCommentContainer {

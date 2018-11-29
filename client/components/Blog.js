@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog, addError, deleteError} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -19,11 +19,13 @@ export class Blog extends Component {
   }
 
   componentDidMount () {
+    const id = parseInt(this.props.match.params.id)
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
-    const id = parseInt(this.props.match.params.id)
-    this.props.getBlogComments(id)
+    if (this.props.comments.length === 0) {
+      this.props.getBlogComments(id)
+    }
   }
 
   deleteBlog() {
@@ -58,11 +60,19 @@ export class Blog extends Component {
     this.props.getBlogComments(this.props.chosenBlog[0].id)
   }
 
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000)
+  }
+
   render() {
     const chosenArtist = this.props.chosenBlog.length === 0 ? null :
     this.props.artists.filter((artist) => {
       return this.props.chosenBlog[0].artistId === artist.id
     })
+    const error = this.props.error.error
+    if (error) {
+      this.renderErrorMessage()
+    }
     return (
       this.props.chosenBlog.length === 0 ? null :
       <div className="blogContainer">
@@ -111,6 +121,16 @@ export class Blog extends Component {
               <label>Comment Here</label>
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
+              {error ?
+                error.error === 'Login To Comment' ?
+                <div className="commentPostError">
+                  <p>{error.error}</p>
+                </div>
+                :
+                null
+                :
+                null
+              }
             </form>
             <div className="commentList">
           {
@@ -146,7 +166,7 @@ export class Blog extends Component {
   }
 }
 
-const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
+const mapState = ({artists, blogs, user, savedArtists, comments, error}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
@@ -165,7 +185,8 @@ const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
       if (commentA.Likes.length < commentB.Likes.length) return 1
       if (commentA.Likes.length > commentB.Likes.length) return -1
       return 0
-    })
+    }),
+    error
   }
 }
 
@@ -201,6 +222,9 @@ const mapDispatch = (dispatch) => {
     },
     dislikeBlog(blog) {
       dispatch(dislikeCurrentBlog(blog))
+    },
+    renderError() {
+      dispatch(deleteError())
     }
   }
 }
