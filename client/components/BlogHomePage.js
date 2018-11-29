@@ -4,23 +4,46 @@ import {Link} from 'react-router-dom'
 
 
 const BlogHomePage = (props) => (
+  !props.blogs.length ? null :
   <div className="blogsHomeContainer">
-    <h1>Blogs</h1>
     <div className="blogsDisplay">
-    {
-      props.blogs.map((blog) => {
-        return (
-          <Link className="singleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
-            <div className="singleBlog">
-              <h1>{blog.title}</h1>
-              <h2>{blog.author}</h2>
-              <h3>{blog.description}</h3>
-              <h4>{blog.date}</h4>
+      <div className="mainBlogDiv">
+        <Link className="mainBlogLink" to={`/allblogs/${props.blogs[0].id}`}>
+          <div className="mainBlog">
+            <div className="mainBlogPic">
+              <img src={require(`../../public/images/blogs/${props.blogs[0].blogPic}.jpg`)} />
             </div>
-          </Link>
-        )
-      })
-    }
+            <div className="mainBlogInfo">
+              <h1>{props.blogs[0].title}</h1>
+              <h2>By {props.blogs[0].author}</h2>
+              <h3>{props.blogs[0].description}</h3>
+              <h4>{props.blogs[0].date}</h4>
+            </div>
+          </div>
+        </Link>
+      </div>
+      <div className="singleBlogDiv">
+      {
+        props.blogs.map((blog, index) => {
+          return (
+            index === 0 ? null :
+            <Link className="homeSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
+              <div className="homeSingleBlog">
+                <div className="singleBlogPic">
+                  <img src={require(`../../public/images/blogs/${blog.blogPic}.jpg`)} />
+                </div>
+                <div className="singleBlogInfo">
+                  <h1>{blog.title}</h1>
+                  <h2>By {blog.author}</h2>
+                  <h3>{blog.description}</h3>
+                  <h4>{blog.date}</h4>
+                </div>
+              </div>
+            </Link>
+          )
+        })
+      }
+    </div>
     </div>
     <div>
       <Link to="/allBlogs">

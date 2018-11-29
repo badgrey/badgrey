@@ -67,6 +67,7 @@ path:hover {
   transition: 0.3s;
   font-size: 1.3em;
   font-family: 'ABeeZee', sans-serif;
+  cursor: pointer;
 }
 
 .allArtistsButton:hover {
@@ -88,6 +89,7 @@ path:hover {
   border: solid black;
   padding: 10px;
   border-radius: 80px;
+  cursor: pointer;
 }
 
 .globeLabel {
@@ -234,31 +236,7 @@ path:hover {
   }
 }
 
-/* Discover Blog Styles */
 
-.blogsDisplay {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
-.allBlogsButton {
-  margin-top: 40px;
-  width: 208px;
-  height: 70px;
-  border-radius: 5px;
-  color: whitesmoke;
-  background-color: black;
-  transition: 0.3s;
-  font-size: 1.3em;
-  font-family: 'ABeeZee', sans-serif;
-}
-
-.allBlogsButton:hover {
-  background-color: whitesmoke;
-  color: black;
-  transform: scale(1.2);
-}
 
 /* NAVBAR STYLES */
 .navbar {
@@ -279,6 +257,7 @@ path:hover {
 .badGreyTextLogo {
   height: 100px;
   width: 100px;
+  cursor: pointer;
 }
 .badGreyWolfLogo {
   height: 100px;
@@ -304,7 +283,7 @@ nav a {
   display: inline-block;
   margin: 1em;
   color: ghostwhite;
-
+  cursor: pointer;
 }
 
 .navLinks {
@@ -314,6 +293,7 @@ nav a {
 
 .navList a{
   color: whitesmoke;
+  cursor: pointer;
 }
 
 .navList {
@@ -446,6 +426,7 @@ nav a {
   display: inline-block;
   overflow: hidden;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .artistPic:hover {
@@ -475,6 +456,28 @@ nav a {
   font-size: 15px;
   color: white;
   transition: 0.3s;
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.noArtists {
+  align-items: center;
+  text-align: center;
+  border: solid black;
+  height: 13em;
+  width: 47em;
+  margin-top: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 23em;
+}
+
+.noArtists h2{
+  font-size: 2em;
+  font-family: 'ABeeZee', sans-serif;
+}
+.noArtists h6 {
+  font-size: 1.2em;
   font-family: 'ABeeZee', sans-serif;
 }
 
@@ -589,14 +592,31 @@ nav a {
   margin-bottom: 7em;
 }
 
+.artistNameHeader h1{
+  margin-bottom: 0;
+}
+
+.artistNameHeader h3{
+  margin-top: 0px;
+  margin-bottom: 2em;
+}
+
+.artistLikesDislikes {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
 .stateLink {
   height: 0px;
+  cursor: pointer;
 }
 
 .artistLogos {
   height: 140px;
   width: 140px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .artistLogos:hover {
@@ -630,6 +650,7 @@ nav a {
   color: black;
   transition: 0.3s;
   height: 125px;
+  cursor: pointer;
 }
 
 .genreLink:hover {
@@ -645,6 +666,7 @@ nav a {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 #editButton {
@@ -659,7 +681,7 @@ nav a {
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
-
+  cursor: pointer;
 }
 
 .editdelete:hover {
@@ -673,6 +695,7 @@ nav a {
   background-color: black;
   border-radius: 15px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .addToSavedButton:hover {
@@ -802,6 +825,7 @@ nav a {
   background-color: black;
   color: whitesmoke;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 #Trap #Alternative #Cloud #Conscious #Experimental #Instrumental #Pop #JazzSoul #RB #OldSchool {
@@ -953,6 +977,7 @@ nav a {
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .form button:hover {
@@ -1092,6 +1117,7 @@ nav a {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 }
 .editEmail h1 {
   font-family: 'ABeeZee', sans-serif;
@@ -1107,6 +1133,7 @@ nav a {
   justify-content: center;
   text-align: center;
   margin-top: 40px;
+  cursor: pointer;
 }
 
 .editPassword h1 {
@@ -1183,6 +1210,7 @@ nav a {
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .savedArtistsButton:hover {
@@ -1343,6 +1371,129 @@ nav a {
   margin-right: 20px;
 }
 
+/* Discover Blog Styles */
+
+.blogsDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogsHomeContainer {
+  margin-top: 3em;
+}
+
+.allBlogsButton {
+  margin-top: 40px;
+  width: 208px;
+  height: 70px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  font-size: 1.3em;
+  font-family: 'ABeeZee', sans-serif;
+  cursor: pointer;
+}
+
+.allBlogsButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+.mainBlogDiv {
+  background-color: black;
+  color: whitesmoke;
+  margin-bottom: 3em;
+  height: 31em;
+  width: 77em;
+}
+
+.singleBlogDiv {
+  display: flex;
+  justify-content: space-evenly;
+  width:100%
+}
+
+.homeSingleBlogLink {
+  width: 40%;
+  margin-bottom: 3em;
+  cursor: pointer;
+}
+
+.homeSingleBlog {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.singleBlogInfo {
+  text-align: center;
+  color: white;
+  margin-top: 3em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.singleBlogInfo h2 {
+  font-size: 13px;
+}
+
+.singleBlogInfo h3 {
+  font-size: 15px;
+}
+
+.singleBlogPic {
+  width: 416px;
+  height: 334px;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.singleBlogPic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.mainBlog {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainBlogPic {
+  width: 616px;
+  height: 434px;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.mainBlogPic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.mainBlogInfo {
+  text-align: center;
+  color: white;
+  margin-top: 5em;
+  margin-right: 2em;
+}
+
+.mainBlogInfo h1 {
+  font-size: 45px;
+}
+.mainBlogInfo h2 {
+  font-size: 11px;
+}
+.mainBlogInfo h3 {
+  font-size: 14px;
+}
 /* All Blogs Styles */
 
 .allBlogsDiv {
@@ -1361,6 +1512,7 @@ nav a {
   margin-right: 5em;
   margin-top: 2em;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .singleBlogLink {
@@ -1368,6 +1520,13 @@ nav a {
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.allSingleBlogLink {
+  width: 35em;
+  margin-bottom: 3em;
+  cursor: pointer;
 }
 
 
@@ -1405,6 +1564,22 @@ nav a {
   justify-content: left;
 }
 
+.commentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  /* overflow: scroll; */
+  /* height: 10em; */
+}
+/* .commentList::-webkit-scrollbar {
+  width: 7px;
+}
+
+.commentList::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+} */
+
 .singleComment {
   display: flex;
   flex-direction: column;
@@ -1427,12 +1602,31 @@ nav a {
   overflow: hidden;
   height: 30px;
   width: 37px;
+  cursor: pointer;
+}
+
+.likeDislikeButton:focus {
+  outline: 0;
 }
 
 .likeDislikeImage {
   height: 30px;
   width: 30px;
 }
+
+.deleteCommentButton {
+  margin-top: 13px;
+  width: 32px;
+  height: 29px;
+  border-radius: 27px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-left: 6px;
+}
+
 
 .authorLink {
   display: inline-grid;
@@ -1522,12 +1716,13 @@ nav a {
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .interviewButton:hover {
   background-color: whitesmoke;
   color: black;
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 /* Single Interview Styles */
@@ -1542,6 +1737,17 @@ nav a {
   height: 10em;
   margin-right: 10em;
   margin-left: 10em;
+  align-items: center;
+}
+
+.interviewHeader h1 {
+  margin-bottom: 1.3em;
+}
+
+.interviewLikesDislikes {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
 }
 
 .interviewSoundcloud {
