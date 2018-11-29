@@ -112,6 +112,7 @@ export class Blog extends Component {
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
             </form>
+            <div className="commentList">
           {
             this.props.comments.map((comment) => {
               return (
@@ -138,6 +139,7 @@ export class Blog extends Component {
               )
             })
           }
+          </div>
         </div>
       </div>
     )
@@ -160,8 +162,8 @@ const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
     user,
     savedArtists,
     comments: comments.sort((commentA, commentB) => {
-      if (commentA.createdAt < commentB.createdAt) return 1
-      if (commentA.createdAt > commentB.createdAt) return -1
+      if (commentA.Likes.length < commentB.Likes.length) return 1
+      if (commentA.Likes.length > commentB.Likes.length) return -1
       return 0
     })
   }

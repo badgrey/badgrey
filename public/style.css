@@ -592,6 +592,21 @@ nav a {
   margin-bottom: 7em;
 }
 
+.artistNameHeader h1{
+  margin-bottom: 0;
+}
+
+.artistNameHeader h3{
+  margin-top: 0px;
+  margin-bottom: 2em;
+}
+
+.artistLikesDislikes {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
 .stateLink {
   height: 0px;
   cursor: pointer;
@@ -1549,6 +1564,22 @@ nav a {
   justify-content: left;
 }
 
+.commentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  /* overflow: scroll; */
+  /* height: 10em; */
+}
+/* .commentList::-webkit-scrollbar {
+  width: 7px;
+}
+
+.commentList::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+} */
+
 .singleComment {
   display: flex;
   flex-direction: column;
@@ -1574,6 +1605,10 @@ nav a {
   cursor: pointer;
 }
 
+.likeDislikeButton:focus {
+  outline: 0;
+}
+
 .likeDislikeImage {
   height: 30px;
   width: 30px;
@@ -1591,6 +1626,7 @@ nav a {
   margin-top: 0px;
   margin-left: 6px;
 }
+
 
 .authorLink {
   display: inline-grid;
@@ -1701,6 +1737,17 @@ nav a {
   height: 10em;
   margin-right: 10em;
   margin-left: 10em;
+  align-items: center;
+}
+
+.interviewHeader h1 {
+  margin-bottom: 1.3em;
+}
+
+.interviewLikesDislikes {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
 }
 
 .interviewSoundcloud {

@@ -80,7 +80,7 @@ export class Artist extends Component{
                 <button className="addToSavedButton" onClick={this.saveArtist}>+ Save +</button>
               )
             }
-            <div className="likesDislikes">
+            <div className="artistLikesDislikes">
               <button className="likeDislikeButton" onClick={() => this.props.likeArtist({artist: this.props.chosenArtist[0], user: this.props.user})}>
                 <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
               </button>
@@ -141,13 +141,13 @@ export class Artist extends Component{
                     <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
                   </button>
                   <p>{comment.Dislikes.length}</p>
+                  {
+                    this.props.user.id !== comment.user.id ? null :
+                    <div>
+                      <button className="deleteCommentButton" onClick={() => this.props.deleteComment(comment.id)}>X</button>
+                    </div>
+                  }
                 </div>
-                {
-                  this.props.user.id !== comment.user.id ? null :
-                  <div className="deleteCommentButton">
-                    <button onClick={() => this.props.deleteComment(comment.id)}>X</button>
-                  </div>
-                }
               </div>
               )
             })
@@ -172,8 +172,8 @@ const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
       return 0
     }),
     comments: comments.sort((commentA, commentB) => {
-      if (commentA.createdAt < commentB.createdAt) return 1
-      if (commentA.createdAt > commentB.createdAt) return -1
+      if (commentA.Likes.length < commentB.Likes.length) return 1
+      if (commentA.Likes.length > commentB.Likes.length) return -1
       return 0
     }),
     isLoggedIn: !!user.isLoggedIn,
