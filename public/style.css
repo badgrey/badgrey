@@ -1568,17 +1568,7 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  /* overflow: scroll; */
-  /* height: 10em; */
 }
-/* .commentList::-webkit-scrollbar {
-  width: 7px;
-}
-
-.commentList::-webkit-scrollbar-thumb {
-background-color: darkgrey;
-outline: 1px solid slategrey;
-} */
 
 .singleComment {
   display: flex;
@@ -1675,6 +1665,9 @@ outline: 1px solid slategrey;
 
 .artistCommentContainer {
   margin-top: 17em;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 /* All Interviews Styles */

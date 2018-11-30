@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
-import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist, fetchInterviews} from '../store'
+import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist, fetchInterviews, deleteError} from '../store'
 import {Link} from 'react-router-dom'
 
 export class Artist extends Component{
@@ -56,10 +56,18 @@ export class Artist extends Component{
   }
 
   saveArtist() {
-    this.props.saveCurrentArtist(this.props.chosenArtist[0].id)
+    this.props.saveCurrentArtist({id: this.props.chosenArtist[0].id, user: this.props.user})
+  }
+
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000)
   }
 
   render() {
+    const error = this.props.error.error
+    if (error) {
+      this.renderErrorMessage()
+    }
     return (
       this.props.chosenArtist.length === 0 ? null :
       <div className="artistContainer">
@@ -78,7 +86,17 @@ export class Artist extends Component{
               :
               (
                 <button className="addToSavedButton" onClick={this.saveArtist}>+ Save +</button>
+
               )
+            }
+            {error ?
+              error.error === 'Login To Save Artist' && (
+              <div className="commentPostError">
+                <p>{error.error}</p>
+              </div>
+              )
+              :
+              null
             }
             <div className="artistLikesDislikes">
               <button className="likeDislikeButton" onClick={() => this.props.likeArtist({artist: this.props.chosenArtist[0], user: this.props.user})}>
@@ -90,6 +108,15 @@ export class Artist extends Component{
               </button>
               <p>{this.props.chosenArtist[0].ArtistDislikes.length}</p>
             </div>
+            {error ?
+              error.error === 'Login To Upvote/Downvote Artist' && (
+              <div className="commentPostError">
+                <p>{error.error}</p>
+              </div>
+              )
+              :
+              null
+            }
             {
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
               <div className="adminButtons">
@@ -125,6 +152,15 @@ export class Artist extends Component{
               <label>Comment Here</label>
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
+              {error ?
+                error.error === 'Login To Comment' && (
+                <div className="commentPostError">
+                  <p>{error.error}</p>
+                </div>
+                )
+                :
+                null
+              }
             </form>
           {
             this.props.comments.map((comment) => {
@@ -147,6 +183,15 @@ export class Artist extends Component{
                       <button className="deleteCommentButton" onClick={() => this.props.deleteComment(comment.id)}>X</button>
                     </div>
                   }
+                  {error ?
+                    error.error === 'Login To Upvote/Downvote' && (
+                    <div className="commentPostError">
+                      <p>{error.error}</p>
+                    </div>
+                    )
+                    :
+                    null
+                  }
                 </div>
               </div>
               )
@@ -160,7 +205,7 @@ export class Artist extends Component{
 }
 
 
-const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
+const mapState = ({artists, user, savedArtists, comments, error}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
       let targetArtist = ownProps.match.params.artist.split('_')[0]
@@ -179,6 +224,7 @@ const mapState = ({artists, user, savedArtists, comments}, ownProps) => {
     isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin,
     user,
+    error,
     savedArtists,
     isSaved: savedArtists.filter((artist) => {
       return artist.id === (artists.filter((otherArtist) => {
@@ -224,6 +270,9 @@ const mapDispatch = (dispatch) => {
     },
     dislikeArtist(artist) {
       dispatch(dislikeCurrentArtist(artist))
+    },
+    renderError() {
+      dispatch(deleteError())
     }
   }
 }

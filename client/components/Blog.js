@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog, addError, deleteError} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog, deleteError} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -14,7 +14,6 @@ export class Blog extends Component {
     }
     this.saved = this.saved.bind(this)
     this.deleteBlog = this.deleteBlog.bind(this)
-    this.loadLikes = this.loadLikes.bind(this)
     this.postComment = this.postComment.bind(this)
   }
 
@@ -44,10 +43,6 @@ export class Blog extends Component {
     }
   }
 
-  loadLikes(comment) {
-   return this.props.getLikes(comment)
-  }
-
   postComment(event) {
     event.preventDefault()
     let commentInfo = {
@@ -70,7 +65,6 @@ export class Blog extends Component {
       return this.props.chosenBlog[0].artistId === artist.id
     })
     const error = this.props.error.error
-    console.log(error, 'ERROR HERE')
     if (error) {
       this.renderErrorMessage()
     }
