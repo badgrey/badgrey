@@ -85,7 +85,6 @@ export const fetchInterviewComments = (id) => async (dispatch) => {
 export const createNewComment = (comment) => async (dispatch) => {
   try {
     if (Object.keys(comment.user).length === 0) {
-      console.log('HERE!')
       return dispatch(addError({error: 'Login To Comment'}))
     }
 
@@ -109,6 +108,9 @@ export const deleteCurrentComment = (id) => async (dispatch) => {
 
 export const likeCurrentComment = (comment) => async (dispatch) => {
   try {
+    if (Object.keys(comment.user).length === 0) {
+      return dispatch(addError({error: 'Login To Upvote/Downvote'}))
+    }
     const likedComment = await axios.post('/api/comment/like', comment)
     return dispatch(likeComment(likedComment.data[0]))
   }
@@ -119,6 +121,9 @@ export const likeCurrentComment = (comment) => async (dispatch) => {
 
 export const dislikeCurrentComment = (comment) => async (dispatch) => {
   try {
+    if (Object.keys(comment.user).length === 0) {
+      return dispatch(addError({error: 'Login To Upvote/Downvote'}))
+    }
     const dislikedComment = await axios.post('/api/comment/dislike', comment)
     return dispatch(dislikeComment(dislikedComment.data[0]))
   }

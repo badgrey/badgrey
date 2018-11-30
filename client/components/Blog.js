@@ -70,6 +70,7 @@ export class Blog extends Component {
       return this.props.chosenBlog[0].artistId === artist.id
     })
     const error = this.props.error.error
+    console.log(error, 'ERROR HERE')
     if (error) {
       this.renderErrorMessage()
     }
@@ -96,6 +97,15 @@ export class Blog extends Component {
               </button>
               <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
             </div>
+            {error ?
+              error.error === 'Login To Upvote/Downvote Blog' && (
+              <div className="commentPostError">
+                <p>{error.error}</p>
+              </div>
+              )
+              :
+              null
+            }
             {
             !this.props.isLoggedIn && !this.props.isAdmin ? null :
             <div className="adminButtons">
@@ -122,12 +132,11 @@ export class Blog extends Component {
               <input name="comment" type="text" required />
               <button type="submit">Post</button>
               {error ?
-                error.error === 'Login To Comment' ?
+                error.error === 'Login To Comment' && (
                 <div className="commentPostError">
                   <p>{error.error}</p>
                 </div>
-                :
-                null
+                )
                 :
                 null
               }
@@ -153,6 +162,15 @@ export class Blog extends Component {
                     <div>
                       <button className="deleteCommentButton" onClick={() => this.props.deleteComment(comment.id)}>X</button>
                     </div>
+                  }
+                  {error ?
+                    error.error === 'Login To Upvote/Downvote' && (
+                    <div className="commentPostError">
+                      <p>{error.error}</p>
+                    </div>
+                    )
+                    :
+                    null
                   }
                 </div>
               </div>

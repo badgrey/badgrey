@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { addError } from './error'
 
 /**
  * ACTION TYPES
@@ -99,6 +100,9 @@ export const deleteCurrentBlog = (id) => async (dispatch) => {
 
 export const likeCurrentBlog = (blog) => async (dispatch) => {
   try {
+    if (Object.keys(blog.user).length === 0) {
+      return dispatch(addError({error: 'Login To Upvote/Downvote Blog'}))
+    }
     const likedBlog = await axios.post('/api/blog/like', blog)
     return dispatch(likeBlog(likedBlog.data[0]))
   }
@@ -109,6 +113,9 @@ export const likeCurrentBlog = (blog) => async (dispatch) => {
 
 export const dislikeCurrentBlog = (blog) => async (dispatch) => {
   try {
+    if (Object.keys(blog.user).length === 0) {
+      return dispatch(addError({error: 'Login To Upvote/Downvote Blog'}))
+    }
     const dislikedBlog = await axios.post('/api/blog/dislike', blog)
     return dispatch(dislikeBlog(dislikedBlog.data[0]))
   }
