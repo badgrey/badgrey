@@ -18,6 +18,7 @@ export class Blog extends Component {
   }
 
   componentDidMount () {
+    // eslint-disable-next-line radix
     const id = parseInt(this.props.match.params.id)
     if (this.props.artists === []) {
       this.props.loadInitialData()
@@ -59,6 +60,7 @@ export class Blog extends Component {
     setTimeout(() => this.props.renderError(), 3000)
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const chosenArtist = this.props.chosenBlog.length === 0 ? null :
     this.props.artists.filter((artist) => {

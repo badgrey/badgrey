@@ -22,6 +22,7 @@ export class Artist extends Component{
     if (this.props.chosenArtist === []) {
       this.props.loadInitialData()
     }
+    // eslint-disable-next-line radix
     const id = parseInt(this.props.match.params.artist.split('_')[1])
     this.props.getArtistComments(id)
   }
@@ -63,6 +64,7 @@ export class Artist extends Component{
     setTimeout(() => this.props.renderError(), 3000)
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const error = this.props.error.error
     if (error) {
@@ -162,6 +164,7 @@ export class Artist extends Component{
                 null
               }
             </form>
+            <div className="commentList">
           {
             this.props.comments.map((comment) => {
               return (
@@ -197,10 +200,10 @@ export class Artist extends Component{
               )
             })
           }
+          </div>
         </div>
       </div>
     )
-
   }
 }
 

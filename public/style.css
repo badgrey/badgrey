@@ -1494,6 +1494,57 @@ nav a {
 .mainBlogInfo h3 {
   font-size: 14px;
 }
+
+@media only screen and (max-width: 600px) {
+  .mainBlogDiv {
+    height: 21em;
+    width: 25em;
+  }
+  .mainBlogPic {
+    width: 34em;
+    height: 21em;
+  }
+  .mainBlogInfo {
+    margin-top: .2em;
+    margin-right: 1em;
+  }
+  .homeSingleBlog {
+    height: 13em;
+  }
+  .singleBlogPic {
+    width: 50%;
+    height: 13em;
+  }
+  .singleBlogInfo {
+    margin-top: 0em;
+    margin-right: 0em;
+    margin-left: 0em;
+    width: 50%;
+  }
+  .singleBlogInfo h1 {
+    font-size: 19px;
+  }
+  .singleBlogInfo h2 {
+    font-size: 8px;
+    margin-bottom: 0px;
+  }
+  .singleBlogInfo h3 {
+    font-size: 9px;
+    margin-top: 1em;
+  }
+  .singleBlogInfo h4 {
+    margin-top: 0;
+    font-size: 11px;
+  }
+  .allBlogsButton {
+    margin-top: 0px;
+    width: 6em;
+    height: 2em;
+    font-size: 1.2em;
+  }
+}
+
+
 /* All Blogs Styles */
 
 .allBlogsDiv {
