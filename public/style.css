@@ -1394,6 +1394,7 @@ nav a {
   font-size: 1.3em;
   font-family: 'ABeeZee', sans-serif;
   cursor: pointer;
+  margin-bottom: 3em;
 }
 
 .allBlogsButton:hover {
@@ -1541,6 +1542,67 @@ nav a {
     width: 6em;
     height: 2em;
     font-size: 1.2em;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width:1100px) {
+  .mainBlogDiv {
+    width: 59em;
+  }
+  .allBlogsButton {
+    width: 8em;
+    height: 3em;
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .mainBlogDiv {
+    height: 45em;
+    width: 95em;
+  }
+  .mainBlogPic {
+    width: 53em;
+    height: 45em;
+  }
+  .mainBlogInfo {
+    margin-right: 0em;
+  }
+  .mainBlogInfo h1 {
+    font-size: 6em;
+  }
+  .mainBlogInfo h2 {
+    font-size: 2.3em;
+  }
+  .mainBlogInfo h3 {
+    font-size: 2em;
+  }
+  .mainBlogInfo h4 {
+    font-size: 2.5em;
+  }
+  .homeSingleBlog {
+    height: 35em;
+  }
+  .singleBlogPic {
+    width: 36em;
+    height: 35em;
+  }
+  .singleBlogInfo h1 {
+    font-size: 4em;
+  }
+  .singleBlogInfo h2 {
+    font-size: 2.1em;
+  }
+  .singleBlogInfo h3 {
+    font-size: 1.8em;
+  }
+  .singleBlogInfo h4 {
+    font-size: 2.2em;
+  }
+  .allBlogsButton {
+    width: 308px;
+    height: 145px;
+    font-size: 2.7em;
   }
 }
 
