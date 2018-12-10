@@ -1642,6 +1642,28 @@ nav a {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .allBlogsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    width: 30em;
+  }
+
+}
+
+@media only screen and (min-width: 1800px) {
+  .allBlogsDiv h1 {
+    font-size: 5em;
+  }
+  .blogList {
+    width: 100%;
+  }
+  .allSingleBlogLink {
+    width: 60em;
+  }
+}
 
 /* Single Blog Styles */
 
