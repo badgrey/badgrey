@@ -1796,6 +1796,29 @@ nav a {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .blogHeader {
+    margin-left: -7em;
+  }
+  .authorLink {
+    grid-template-rows: 70px;
+    grid-template-columns: 70px;
+    margin: 6px 2px 0 0;
+    height: 86px;
+  }
+  .blogNameHeader {
+
+  }
+  .blogNameHeader h5 {
+    font-size: .9em;
+    margin-top: auto;
+  }
+  .blogNameHeader h3 {
+    font-size: 1em;
+  }
+
+}
+
 /* Artist Comment Styles */
 
 .artistCommentContainer {
