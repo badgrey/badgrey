@@ -1394,6 +1394,7 @@ nav a {
   font-size: 1.3em;
   font-family: 'ABeeZee', sans-serif;
   cursor: pointer;
+  margin-bottom: 3em;
 }
 
 .allBlogsButton:hover {
@@ -1494,6 +1495,118 @@ nav a {
 .mainBlogInfo h3 {
   font-size: 14px;
 }
+
+@media only screen and (max-width: 600px) {
+  .mainBlogDiv {
+    height: 21em;
+    width: 25em;
+  }
+  .mainBlogPic {
+    width: 34em;
+    height: 21em;
+  }
+  .mainBlogInfo {
+    margin-top: .2em;
+    margin-right: 1em;
+  }
+  .homeSingleBlog {
+    height: 13em;
+  }
+  .singleBlogPic {
+    width: 50%;
+    height: 13em;
+  }
+  .singleBlogInfo {
+    margin-top: 0em;
+    margin-right: 0em;
+    margin-left: 0em;
+    width: 50%;
+  }
+  .singleBlogInfo h1 {
+    font-size: 19px;
+  }
+  .singleBlogInfo h2 {
+    font-size: 8px;
+    margin-bottom: 0px;
+  }
+  .singleBlogInfo h3 {
+    font-size: 9px;
+    margin-top: 1em;
+  }
+  .singleBlogInfo h4 {
+    margin-top: 0;
+    font-size: 11px;
+  }
+  .allBlogsButton {
+    margin-top: 0px;
+    width: 6em;
+    height: 2em;
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width:1100px) {
+  .mainBlogDiv {
+    width: 59em;
+  }
+  .allBlogsButton {
+    width: 8em;
+    height: 3em;
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .mainBlogDiv {
+    height: 45em;
+    width: 95em;
+  }
+  .mainBlogPic {
+    width: 53em;
+    height: 45em;
+  }
+  .mainBlogInfo {
+    margin-right: 0em;
+  }
+  .mainBlogInfo h1 {
+    font-size: 6em;
+  }
+  .mainBlogInfo h2 {
+    font-size: 2.3em;
+  }
+  .mainBlogInfo h3 {
+    font-size: 2em;
+  }
+  .mainBlogInfo h4 {
+    font-size: 2.5em;
+  }
+  .homeSingleBlog {
+    height: 35em;
+  }
+  .singleBlogPic {
+    width: 36em;
+    height: 35em;
+  }
+  .singleBlogInfo h1 {
+    font-size: 4em;
+  }
+  .singleBlogInfo h2 {
+    font-size: 2.1em;
+  }
+  .singleBlogInfo h3 {
+    font-size: 1.8em;
+  }
+  .singleBlogInfo h4 {
+    font-size: 2.2em;
+  }
+  .allBlogsButton {
+    width: 308px;
+    height: 145px;
+    font-size: 2.7em;
+  }
+}
+
+
 /* All Blogs Styles */
 
 .allBlogsDiv {
@@ -1529,6 +1642,28 @@ nav a {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .allBlogsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    width: 30em;
+  }
+
+}
+
+@media only screen and (min-width: 1800px) {
+  .allBlogsDiv h1 {
+    font-size: 5em;
+  }
+  .blogList {
+    width: 100%;
+  }
+  .allSingleBlogLink {
+    width: 60em;
+  }
+}
 
 /* Single Blog Styles */
 
@@ -1543,14 +1678,73 @@ nav a {
   justify-content: space-between;
 }
 
+.lowerBlogHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
 .blogNameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.blogNameHeader h3 {
+  margin-top: 0px;
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.blogTitle{
+  margin-bottom: 2em;
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.blogAuthor {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.artistProfile {
+  display: inline-grid;
+  grid-template-rows: 30px;
+  grid-template-columns: 120px;
+  align-items: center;
+  border: 2px solid black;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+  height: 40px;
+  cursor: pointer;
+}
+
+.artistProfile:hover {
+  background-color: black;
+  color: whitesmoke;
+  transform: scale(1.2);
+}
+
+.blogPicDescription {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.blogNameHeader h3 {
-  margin-top: 0px;
+.singleBlogBannerDiv {
+  margin-top: 2em;
+  width: 43em;
+  height: 23em;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.singleBlogBanner {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .blogPost {
@@ -1568,17 +1762,7 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  /* overflow: scroll; */
-  /* height: 10em; */
 }
-/* .commentList::-webkit-scrollbar {
-  width: 7px;
-}
-
-.commentList::-webkit-scrollbar-thumb {
-background-color: darkgrey;
-outline: 1px solid slategrey;
-} */
 
 .singleComment {
   display: flex;
@@ -1592,6 +1776,20 @@ outline: 1px solid slategrey;
 
 .commentForm {
   margin-bottom: 30px;
+}
+
+.commentForm textarea {
+  height: 3em;
+  width: 23em;
+  border: solid;
+}
+
+.commentForm button {
+  margin-left: 1em;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .likeDislikeButton{
@@ -1649,10 +1847,167 @@ outline: 1px solid slategrey;
   transform: scale(1.2);
 }
 
+.commentPostError {
+  width: 207px;
+  border-radius: 4px;
+  background: rgb(0, 0, 0);
+  color: whitesmoke;
+  text-align: center;
+  font-size: 20px;
+  animation: fadeinout 2s linear forwards;
+  position: absolute;
+}
+
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  85%,
+  65%,
+  50% {
+    opacity: 1
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .blogContainer{
+    margin: 0px;
+    width: 30em;
+  }
+
+  .blogHeader {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .authorLink {
+    display: none;
+  }
+  .singleBlogBannerDiv {
+    width: 29em;
+  }
+
+  .blogNameHeader h5 {
+    font-size: .9em;
+    margin-top: auto;
+  }
+  .blogNameHeader h3 {
+    font-size: 1em;
+  }
+
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+
+  .blogTitle {
+    font-size: 3em;
+  }
+
+  .blogAuthor {
+    font-size: 1.7em;
+  }
+
+  .likeDislikeImage {
+    height: 40px;
+    width: 40px;
+  }
+  .likeDislikeButton {
+    height: 42px;
+    width: 47px;
+  }
+  .likesDislikes p {
+    font-size: 1.4em;
+  }
+  .artistProfile {
+    grid-template-rows: 33px;
+    grid-template-columns: 170px;
+    height: 50px;
+  }
+  .artistProfileLinkText {
+    font-size: 1.4em;
+  }
+  .singleBlogBannerDiv {
+    width: 55em;
+  }
+  .blogPicDescription h5 {
+    font-size: 1.4em;
+  }
+  .blogPost {
+    font-size: 1.3em;
+  }
+  .commentForm label {
+    font-size: 1.2em;
+  }
+  .commentForm button {
+    width: 5em;
+    height: 2em;
+  }
+  .singleComment p {
+    font-size: 1.4em;
+  }
+}
+@media only screen and (min-width: 1800px) {
+
+  .blogTitle {
+    font-size: 4em;
+  }
+  .blogAuthor {
+    font-size: 2.4em;
+  }
+  .likeDislikeButton {
+    height: 67px;
+    width: 85px;
+  }
+  .likeDislikeImage {
+    height: 67px;
+    width: 67px;
+  }
+  .likesDislikes p {
+    font-size: 2.4em;
+  }
+  .artistProfile {
+    grid-template-rows: 2em;
+    grid-template-columns: 8em;
+    height: 2em;
+    font-size: 2.4em;
+  }
+  .singleBlogBannerDiv {
+    width: 82em;
+    height: 41em;
+  }
+  .blogPicDescription h5 {
+    font-size: 2.4em;
+  }
+  .blogPost {
+    font-size: 2.3em;
+  }
+  .commentForm label {
+    font-size: 2.2em;
+    margin-top: 1em;
+    margin-bottom: .5em;
+  }
+  .commentForm button {
+    width: 5em;
+    height: 2em;
+    font-size: 2.4em;
+  }
+  .commentForm textarea {
+    height: 7em;
+    width: 37em;
+  }
+  .singleComment p {
+    font-size: 2.4em;
+  }
+}
+
 /* Artist Comment Styles */
 
 .artistCommentContainer {
   margin-top: 17em;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 /* All Interviews Styles */

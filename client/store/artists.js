@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { addError } from './error'
 
 /**
  * ACTION TYPES
@@ -99,6 +100,9 @@ export const deleteCurrentArtist = (id) => async (dispatch) => {
 
 export const likeCurrentArtist = (artist) => async (dispatch) => {
   try {
+    if (Object.keys(artist.user).length === 0) {
+      return dispatch(addError({error: 'Login To Upvote/Downvote Artist'}))
+    }
     const likedArtist = await axios.post('/api/artists/like', artist)
     return dispatch(likeArtist(likedArtist.data[0]))
   }
@@ -109,6 +113,9 @@ export const likeCurrentArtist = (artist) => async (dispatch) => {
 
 export const dislikeCurrentArtist = (artist) => async (dispatch) => {
   try {
+    if (Object.keys(artist.user).length === 0) {
+      return dispatch(addError({error: 'Login To Upvote/Downvote Artist'}))
+    }
     const dislikedArtist = await axios.post('/api/artists/dislike', artist)
     return dispatch(dislikeArtist(dislikedArtist.data[0]))
   }

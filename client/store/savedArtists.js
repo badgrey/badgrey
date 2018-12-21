@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { addError } from './error'
 
 /**
  * ACTION TYPES
@@ -47,7 +48,10 @@ export const fetchSavedArtists = () => async (dispatch) => {
 
 export const addNewSavedArtist = (id) => async (dispatch) => {
   try {
-    const newCreatedArtist = await axios.post(`/api/artists/saved/add/${id}`)
+    if (Object.keys(id.user).length === 0) {
+      return dispatch(addError({error: 'Login To Save Artist'}))
+    }
+    const newCreatedArtist = await axios.post(`/api/artists/saved/add/${id.id}`)
     return dispatch(addSavedArtist(newCreatedArtist.data));
   }
   catch (err) {

@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import "../../public/style.css";
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import '../../public/style.css'
 import {
   fetchArtists,
   fetchSavedArtists,
@@ -15,7 +14,7 @@ import {
   likeCurrentInterview,
   dislikeCurrentInterview,
   deleteCurrentInterview
-} from "../store";
+} from '../store';
 
 export class Interview extends Component {
   constructor(props) {
@@ -32,7 +31,7 @@ export class Interview extends Component {
     if (this.props.artists === []) {
       this.props.loadInitialData();
     }
-    const id = parseInt(this.props.match.params.interview.split("_")[1]);
+    const id = parseInt(this.props.match.params.interview.split('_')[1]);
     this.props.getArtistComments(id);
   }
 
@@ -58,7 +57,7 @@ export class Interview extends Component {
       user: this.props.user,
       interview: this.props.chosenInterview[0]
     };
-    document.getElementById("form").reset();
+    document.getElementById('form').reset();
     this.props.submitForm(commentInfo);
     this.props.getInterviewComments(this.props.chosenInterview[0].id);
   }
@@ -94,7 +93,7 @@ export class Interview extends Component {
           >
             <img
               className="likeDislikeImage"
-              src={require("../../public/images/like.png")}
+              src={require('../../public/images/like.png')}
             />
           </button>
           <p>{this.props.chosenInterview[0].InterviewLikes.length}</p>
@@ -109,7 +108,7 @@ export class Interview extends Component {
           >
             <img
               className="likeDislikeImage"
-              src={require("../../public/images/dislike.png")}
+              src={require('../../public/images/dislike.png')}
             />
           </button>
           <p>{this.props.chosenInterview[0].InterviewDislikes.length}</p>
@@ -155,7 +154,7 @@ export class Interview extends Component {
                   >
                     <img
                       className="likeDislikeImage"
-                      src={require("../../public/images/like.png")}
+                      src={require('../../public/images/like.png')}
                     />
                   </button>
                   <p>{comment.Likes.length}</p>
@@ -170,7 +169,7 @@ export class Interview extends Component {
                   >
                     <img
                       className="likeDislikeImage"
-                      src={require("../../public/images/dislike.png")}
+                      src={require('../../public/images/dislike.png')}
                     />
                   </button>
                   <p>{comment.Dislikes.length}</p>
@@ -217,7 +216,7 @@ const mapState = (
     }),
     chosenInterview: interviews.filter(interview => {
       return (
-        interview.interview === ownProps.match.params.interview.split("_")[0]
+        interview.interview === ownProps.match.params.interview.split('_')[0]
       );
     })
   };

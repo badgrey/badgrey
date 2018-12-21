@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
-import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog} from '../store'
+import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog, deleteError} from '../store'
 import {Link} from 'react-router-dom'
 
 
@@ -14,16 +14,18 @@ export class Blog extends Component {
     }
     this.saved = this.saved.bind(this)
     this.deleteBlog = this.deleteBlog.bind(this)
-    this.loadLikes = this.loadLikes.bind(this)
     this.postComment = this.postComment.bind(this)
   }
 
   componentDidMount () {
+    // eslint-disable-next-line radix
+    const id = parseInt(this.props.match.params.id)
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
-    const id = parseInt(this.props.match.params.id)
-    this.props.getBlogComments(id)
+    if (this.props.comments.length === 0) {
+      this.props.getBlogComments(id)
+    }
   }
 
   deleteBlog() {
@@ -42,10 +44,6 @@ export class Blog extends Component {
     }
   }
 
-  loadLikes(comment) {
-   return this.props.getLikes(comment)
-  }
-
   postComment(event) {
     event.preventDefault()
     let commentInfo = {
@@ -58,35 +56,26 @@ export class Blog extends Component {
     this.props.getBlogComments(this.props.chosenBlog[0].id)
   }
 
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000)
+  }
+
+  // eslint-disable-next-line complexity
   render() {
     const chosenArtist = this.props.chosenBlog.length === 0 ? null :
     this.props.artists.filter((artist) => {
       return this.props.chosenBlog[0].artistId === artist.id
     })
+    const error = this.props.error.error
+    if (error) {
+      this.renderErrorMessage()
+    }
     return (
       this.props.chosenBlog.length === 0 ? null :
       <div className="blogContainer">
         <div className="blogHeader">
-          <Link className="authorLink" to={`/allblogs/author/${this.props.chosenBlog[0].author.split(' ').join('')}`}>
-            <div className="authorLinkText">
-              More by {this.props.chosenBlog[0].author}
-            </div>
-          </Link>
           <div className="blogNameHeader">
-            <h1 className="title">{this.props.chosenBlog[0].title}</h1>
-            <h3 className="title">By {this.props.chosenBlog[0].author}</h3>
-            <h5>{this.props.chosenBlog[0].description}</h5>
-            <div className="likesDislikes">
-              <button className="likeDislikeButton" onClick={() => this.props.likeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
-                <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
-              </button>
-              <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
-              <button className="likeDislikeButton" onClick={() => this.props.dislikeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
-                <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
-              </button>
-              <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
-            </div>
-            {
+          {
             !this.props.isLoggedIn && !this.props.isAdmin ? null :
             <div className="adminButtons">
               <Link id="editButton" to={`/editBlog/${this.props.match.params.id}`}>
@@ -95,13 +84,41 @@ export class Blog extends Component {
               <button className="editdelete" onClick={this.deleteBlog} >DELETE BLOG</button>
             </div>
             }
+            <h1 className="blogTitle">{this.props.chosenBlog[0].title}</h1>
+            <div className="lowerBlogHeader">
+              <h3 className="blogAuthor">By {this.props.chosenBlog[0].author}</h3>
+              <div className="likesDislikes">
+                <button className="likeDislikeButton" onClick={() => this.props.likeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
+                  <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+                </button>
+                <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
+                <button className="likeDislikeButton" onClick={() => this.props.dislikeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
+                  <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+                </button>
+                <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
+              </div>
+            {error ?
+              error.error === 'Login To Upvote/Downvote Blog' && (
+              <div className="commentPostError">
+                <p>{error.error}</p>
+              </div>
+              )
+              :
+              null
+            }
+              <Link className="artistProfile" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('') + `_${chosenArtist[0].id}`}`}>
+                <div className="artistProfileLinkText">
+                {chosenArtist[0].name}
+                </div>
+              </Link>
+            </div>
           </div>
-          <Link className="artistPic" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('') + `_${chosenArtist[0].id}`}`}>
-                  <div className="artistName">
-                    <div className="artistNameText">{chosenArtist[0].name}</div>
-                  </div>
-                  <img src={require(`../../public/images/artists/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].imageURL}.jpg`)} />
-                </Link>
+        </div>
+        <div className="blogPicDescription">
+          <div className="singleBlogBannerDiv">
+            <img className="singleBlogBanner" src={require(`../../public/images/blogs/${this.props.chosenBlog[0].blogPic}.jpg`)} />
+          </div>
+          <h5>{this.props.chosenBlog[0].description}</h5>
         </div>
         <div className="blogPost">
             <p>{this.props.chosenBlog[0].blogPost}</p>
@@ -109,8 +126,17 @@ export class Blog extends Component {
         <div className="commentContainer">
             <form onSubmit={this.postComment} id="form" className="commentForm">
               <label>Comment Here</label>
-              <input name="comment" type="text" required />
+              <textarea name="comment" type="text" required />
               <button type="submit">Post</button>
+              {error ?
+                error.error === 'Login To Comment' && (
+                <div className="commentPostError">
+                  <p>{error.error}</p>
+                </div>
+                )
+                :
+                null
+              }
             </form>
             <div className="commentList">
           {
@@ -134,6 +160,15 @@ export class Blog extends Component {
                       <button className="deleteCommentButton" onClick={() => this.props.deleteComment(comment.id)}>X</button>
                     </div>
                   }
+                  {error ?
+                    error.error === 'Login To Upvote/Downvote' && (
+                    <div className="commentPostError">
+                      <p>{error.error}</p>
+                    </div>
+                    )
+                    :
+                    null
+                  }
                 </div>
               </div>
               )
@@ -146,7 +181,7 @@ export class Blog extends Component {
   }
 }
 
-const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
+const mapState = ({artists, blogs, user, savedArtists, comments, error}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
@@ -165,7 +200,8 @@ const mapState = ({artists, blogs, user, savedArtists, comments}, ownProps) => {
       if (commentA.Likes.length < commentB.Likes.length) return 1
       if (commentA.Likes.length > commentB.Likes.length) return -1
       return 0
-    })
+    }),
+    error
   }
 }
 
@@ -201,6 +237,9 @@ const mapDispatch = (dispatch) => {
     },
     dislikeBlog(blog) {
       dispatch(dislikeCurrentBlog(blog))
+    },
+    renderError() {
+      dispatch(deleteError())
     }
   }
 }
