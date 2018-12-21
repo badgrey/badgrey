@@ -74,25 +74,29 @@ export class Blog extends Component {
       this.props.chosenBlog.length === 0 ? null :
       <div className="blogContainer">
         <div className="blogHeader">
-          <Link className="authorLink" to={`/allblogs/author/${this.props.chosenBlog[0].author.split(' ').join('')}`}>
-            <div className="authorLinkText">
-              More by {this.props.chosenBlog[0].author}
-            </div>
-          </Link>
           <div className="blogNameHeader">
-            <h1 className="title">{this.props.chosenBlog[0].title}</h1>
-            <h3 className="title">By {this.props.chosenBlog[0].author}</h3>
-            <h5>{this.props.chosenBlog[0].description}</h5>
-            <div className="likesDislikes">
-              <button className="likeDislikeButton" onClick={() => this.props.likeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
-                <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
-              </button>
-              <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
-              <button className="likeDislikeButton" onClick={() => this.props.dislikeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
-                <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
-              </button>
-              <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
+          {
+            !this.props.isLoggedIn && !this.props.isAdmin ? null :
+            <div className="adminButtons">
+              <Link id="editButton" to={`/editBlog/${this.props.match.params.id}`}>
+                <button className="editdelete">Edit Blog</button>
+              </Link>
+              <button className="editdelete" onClick={this.deleteBlog} >DELETE BLOG</button>
             </div>
+            }
+            <h1 className="blogTitle">{this.props.chosenBlog[0].title}</h1>
+            <div className="lowerBlogHeader">
+              <h3 className="blogAuthor">By {this.props.chosenBlog[0].author}</h3>
+              <div className="likesDislikes">
+                <button className="likeDislikeButton" onClick={() => this.props.likeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
+                  <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
+                </button>
+                <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
+                <button className="likeDislikeButton" onClick={() => this.props.dislikeBlog({blog: this.props.chosenBlog[0], user: this.props.user})}>
+                  <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
+                </button>
+                <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
+              </div>
             {error ?
               error.error === 'Login To Upvote/Downvote Blog' && (
               <div className="commentPostError">
@@ -102,22 +106,19 @@ export class Blog extends Component {
               :
               null
             }
-            {
-            !this.props.isLoggedIn && !this.props.isAdmin ? null :
-            <div className="adminButtons">
-              <Link id="editButton" to={`/editBlog/${this.props.match.params.id}`}>
-                <button className="editdelete">Edit Blog</button>
+              <Link className="artistProfile" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('') + `_${chosenArtist[0].id}`}`}>
+                <div className="artistProfileLinkText">
+                {chosenArtist[0].name}
+                </div>
               </Link>
-              <button className="editdelete" onClick={this.deleteBlog} >DELETE BLOG</button>
             </div>
-            }
           </div>
-          <Link className="artistPic" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('') + `_${chosenArtist[0].id}`}`}>
-                  <div className="artistName">
-                    <div className="artistNameText">{chosenArtist[0].name}</div>
-                  </div>
-                  <img src={require(`../../public/images/artists/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].imageURL}.jpg`)} />
-                </Link>
+        </div>
+        <div className="blogPicDescription">
+          <div className="singleBlogBannerDiv">
+            <img className="singleBlogBanner" src={require(`../../public/images/blogs/${this.props.chosenBlog[0].blogPic}.jpg`)} />
+          </div>
+          <h5>{this.props.chosenBlog[0].description}</h5>
         </div>
         <div className="blogPost">
             <p>{this.props.chosenBlog[0].blogPost}</p>
@@ -125,7 +126,7 @@ export class Blog extends Component {
         <div className="commentContainer">
             <form onSubmit={this.postComment} id="form" className="commentForm">
               <label>Comment Here</label>
-              <input name="comment" type="text" required />
+              <textarea name="comment" type="text" required />
               <button type="submit">Post</button>
               {error ?
                 error.error === 'Login To Comment' && (
