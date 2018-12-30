@@ -42,7 +42,7 @@ export class AllInterviews extends Component {
   render() {
     const interviews = this.props.interviews.filter((interview) => interview.artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
-      <div>
+      <div className="allInterviewsContainerDiv">
         <div className="allInterviewsHeader">
           <h1>Interviews</h1>
         </div>
