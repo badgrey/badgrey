@@ -69,7 +69,7 @@ export class Interview extends Component {
 
   render() {
     return !this.props.chosenInterview[0] ? null : (
-      <div>
+      <div className="singleInterviewContainer">
         <div className="interviewHeader">
           <h1>{this.props.chosenInterview[0].artist.name}</h1>
           <p>{this.props.chosenInterview[0].description}</p>
@@ -125,16 +125,32 @@ export class Interview extends Component {
               src={this.props.chosenInterview[0].soundcloud}
             />
           </div>
-          <div className="interviewContent">
-            <img
-              className="interviewContentPic"
-              src={require(`../../public/images/interviews/${
-                this.props.chosenInterview[0].interview
-              }.jpg`)}
-            />
-          </div>
         </div>
-        <div className="artistCommentContainer">
+        <div className="interviewContent">
+            {
+              this.props.chosenInterview[0].interview.map((content, index) => {
+                if (index % 2 === 0) {
+                  return (
+                    <div className="interviewQuestion">
+                      <img src={require('../../public/images/interviews/interviewWolfLogo.png')} />
+                      <p className="interviewQuestionText">{content}</p>
+                    </div>
+                  )
+                } else {
+                  return (
+                    <p className="interviewAnswer">{content}</p>
+                  )
+                }
+              })
+            }
+        </div>
+        <img
+          className="interviewContentPic"
+          src={require(`../../public/images/interviews/${
+            this.props.chosenInterview[0].interview
+          }.jpg`)}
+        />
+        <div className="interviewCommentContainer">
           <form onSubmit={this.postComment} id="form" className="commentForm">
             <label>Comment Here</label>
             <input name="comment" type="text" required />

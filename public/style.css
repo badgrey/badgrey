@@ -2190,6 +2190,38 @@ nav a {
   height: 75%;
   width: 75%;
   margin-bottom: -50em;
+  margin-left: 12em;
+}
+
+.interviewCommentContainer {
+  margin-top: 6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-left: 10em;
+}
+
+@media only screen and (max-width: 600px) {
+  .singleInterviewContainer {
+    width: 32em;
+    height: 142em;
+  }
+  .interviewHeader {
+    margin-bottom: 2em;
+    height: 15em;
+    margin-right: 4em;
+    margin-left: 4em;
+  }
+  .interviewHeader p {
+    font-size: .8em;
+  }
+  .interviewSoundcloud iframe {
+    width: 28em;
+  }
+  .interviewContentPic {
+    width: 94%;
+    margin-left: -2em;
+  }
 }
 
 /* Original Content Styles */
