@@ -17,10 +17,11 @@ export class NewInterview extends Component {
 
   submit(event) {
     event.preventDefault();
+    let interviewArray = [event.target.interviewQuestion1.value, event.target.interviewAnswer1.value, event.target.interviewQuestion2.value, event.target.interviewAnswer2.value, event.target.interviewQuestion3.value, event.target.interviewAnswer3.value, event.target.interviewQuestion4.value, event.target.interviewAnswer4.value, event.target.interviewQuestion5.value, event.target.interviewAnswer5.value]
     let interviewInfo = {
         interview: {
           description: event.target.description.value,
-          interview: event.target.interview.value,
+          interview: interviewArray,
           soundcloud: event.target.soundcloud.value,
         },
         artist: event.target.targetartist.value
@@ -40,10 +41,10 @@ export class NewInterview extends Component {
   render() {
     return (
       <div className="outerForm">
-        <form className="form" id="newArtistForm" onSubmit={this.submit} >
+        <form className="form" id="newInterviewForm" onSubmit={this.submit} >
           <div>
             <label>Description</label>
-            <textarea name="description" type="text" required placeholder="Name" className="formInput" />
+            <textarea name="description" type="text" required placeholder="Description" className="formInput" />
           </div>
           <div>
             <label>Target Artist</label>
@@ -64,8 +65,44 @@ export class NewInterview extends Component {
               <input name="soundcloud" type="url" required placeholder="SoundCloudURL" />
             </div>
             <div>
-              <label>Interview Image File</label>
-              <input name="interview" type="text" required placeholder="NAME.jpg" />
+              <label>Interview Question 1</label>
+              <input name="interviewQuestion1" type="text" required placeholder="Question 1" />
+            </div>
+            <div>
+              <label>Answer to Question 1</label>
+              <input name="interviewAnswer1" type="text" required placeholder="Answer to Question 1" />
+            </div>
+            <div>
+              <label>Interview Question 2</label>
+              <input name="interviewQuestion2" type="text" required placeholder="Question 2" />
+            </div>
+            <div>
+              <label>Answer to Question 2</label>
+              <input name="interviewAnswer2" type="text" required placeholder="Answer to Question 2" />
+            </div>
+            <div>
+              <label>Interview Question 3</label>
+              <input name="interviewQuestion3" type="text" required placeholder="Question 3" />
+            </div>
+            <div>
+              <label>Answer to Question 3</label>
+              <input name="interviewAnswer3" type="text" required placeholder="Answer to Question 3" />
+            </div>
+            <div>
+              <label>Interview Question 4</label>
+              <input name="interviewQuestion4" type="text" required placeholder="Question 4" />
+            </div>
+            <div>
+              <label>Answer to Question 4</label>
+              <input name="interviewAnswer4" type="text" required placeholder="Answer to Question 4" />
+            </div>
+            <div>
+              <label>Interview Question 5</label>
+              <input name="interviewQuestion5" type="text" required placeholder="Question 5" />
+            </div>
+            <div>
+              <label>Answer to Question 5</label>
+              <input name="interviewAnswer5" type="text" required placeholder="Answer to Question 5" />
             </div>
           </div>
           <button type="submit">Submit</button>

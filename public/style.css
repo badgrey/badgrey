@@ -940,6 +940,10 @@ nav a {
   height: 60vh;
 }
 
+#newInterviewForm {
+  height: 77vh;
+}
+
 .form {
   margin:3em 0 0 0;
   width: 50vw;
@@ -2184,13 +2188,22 @@ nav a {
   margin-top: 2em;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
-.interviewContentPic {
-  height: 75%;
-  width: 75%;
-  margin-bottom: -50em;
-  margin-left: 12em;
+.interviewQuestion {
+  display: flex;
+}
+.interviewAnswer {
+  margin-top: 1em;
+}
+
+.interviewQuestionText {
+  margin-top: 1em;
+  color: slategray;
+  font-weight: bold;
 }
 
 .interviewCommentContainer {

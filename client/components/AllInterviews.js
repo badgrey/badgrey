@@ -61,7 +61,7 @@ export class AllInterviews extends Component {
                 <div className="rightSingleInterviewInfo">
                   <h1>{interview.artist.name}</h1>
                   <p>{interview.description}</p>
-                  <Link to={`/interviews/${interview.interview}_${interview.id}`}>
+                  <Link to={`/interviews/${interview.id}`}>
                     <button className="interviewButton">Read More</button>
                   </Link>
                 </div>
@@ -77,7 +77,7 @@ export class AllInterviews extends Component {
                 <div className="leftSingleInterviewInfo">
                   <h1>{interview.artist.name}</h1>
                   <p>{interview.description}</p>
-                  <Link to={`/interviews/${interview.interview}_${interview.id}`}>
+                  <Link to={`/interviews/${interview.id}`}>
                     <button className="interviewButton">Read More</button>
                   </Link>
                 </div>

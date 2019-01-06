@@ -31,8 +31,8 @@ export class Interview extends Component {
     if (this.props.artists === []) {
       this.props.loadInitialData();
     }
-    const id = parseInt(this.props.match.params.interview.split('_')[1]);
-    this.props.getArtistComments(id);
+    const id = parseInt(this.props.match.params.interview);
+    this.props.getInterviewComments(id);
   }
 
   componentDidUpdate() {
@@ -131,25 +131,19 @@ export class Interview extends Component {
               this.props.chosenInterview[0].interview.map((content, index) => {
                 if (index % 2 === 0) {
                   return (
-                    <div className="interviewQuestion">
+                    <div key={content.id} className="interviewQuestion">
                       <img src={require('../../public/images/interviews/interviewWolfLogo.png')} />
                       <p className="interviewQuestionText">{content}</p>
                     </div>
                   )
                 } else {
                   return (
-                    <p className="interviewAnswer">{content}</p>
+                    <p key={content.id} className="interviewAnswer">{content}</p>
                   )
                 }
               })
             }
         </div>
-        <img
-          className="interviewContentPic"
-          src={require(`../../public/images/interviews/${
-            this.props.chosenInterview[0].interview
-          }.jpg`)}
-        />
         <div className="interviewCommentContainer">
           <form onSubmit={this.postComment} id="form" className="commentForm">
             <label>Comment Here</label>
@@ -232,7 +226,7 @@ const mapState = (
     }),
     chosenInterview: interviews.filter(interview => {
       return (
-        interview.interview === ownProps.match.params.interview.split('_')[0]
+        interview.id === parseInt(ownProps.match.params.interview)
       );
     })
   };
@@ -247,7 +241,7 @@ const mapDispatch = dispatch => {
     fetchSaved() {
       dispatch(fetchSavedArtists());
     },
-    getArtistComments(id) {
+    getInterviewComments(id) {
       dispatch(fetchInterviewComments(id));
     },
     deleteComment(id) {
