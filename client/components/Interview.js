@@ -147,7 +147,7 @@ export class Interview extends Component {
         <div className="interviewCommentContainer">
           <form onSubmit={this.postComment} id="form" className="commentForm">
             <label>Comment Here</label>
-            <input name="comment" type="text" required />
+            <textarea name="comment" type="text" required />
             <button type="submit">Post</button>
           </form>
           {this.props.comments.map(comment => {

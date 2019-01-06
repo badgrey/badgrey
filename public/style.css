@@ -309,18 +309,18 @@ nav a {
 
 @media only screen and (max-width: 340px) {
   .navbar {
-    width: 30em;
+    width: 32em;
   }
 }
 @media only screen and (max-width: 400px) {
   .navbar {
-    width: 30em;
+    width: 32em;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .nav {
-    width: 28em;
+    width: 32em;
   }
   .badgrey {
     height: 90px;
@@ -703,10 +703,32 @@ nav a {
   color: black;
   transform: scale(1.2);
 }
+.artistCommentContainer {
+  margin-top: 17em;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
 
 @media only screen and (max-width: 600px) {
+  .artistCommentContainer {
+    margin-top: 38em;
+  }
+  .artistContainer {
+    margin-left: 2em;
+  }
+  .artistNameHeader h1 {
+    font-size: 1.3em;
+  }
+  .artistNameHeader h3 {
+    font-size: 1em;
+  }
   .artistHeader {
     width: 29em;
+    margin-left: -3em;
+  }
+  .artistNameHeader {
+    width: 18em;
   }
   .artistLogos {
     height: 80px;
@@ -717,10 +739,12 @@ nav a {
     grid-template-columns: 80px;
     height: 95px;
     margin-right: -31px;
+    margin-left: -5em;
   }
   .artistLogos {
     margin-top: 10px;
     margin-left: 10px;
+    margin-right: -5em;
   }
   .soundcloudAndYoutube {
     height: 372px;
@@ -753,6 +777,9 @@ nav a {
   .soundcloud {
     margin-bottom: 22em;
   }
+  .artistCommentContainer {
+    margin-top: 40em;
+  }
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
@@ -767,6 +794,9 @@ nav a {
   .artistLogos {
     height: 180px;
     width: 180px;
+  }
+  .artistCommentContainer {
+    margin-top: 20em;
   }
 }
 
@@ -798,6 +828,12 @@ nav a {
   .youtube iframe {
     height: 640px;
     width: 890px;
+  }
+  .artistCommentContainer {
+    margin-top: 48em;
+  }
+  .artistLikesDislikes p {
+    font-size: 2.5em;
   }
 }
 
@@ -2005,14 +2041,8 @@ nav a {
   }
 }
 
-/* Artist Comment Styles */
 
-.artistCommentContainer {
-  margin-top: 17em;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-}
+
 
 /* All Interviews Styles */
 
@@ -2221,7 +2251,7 @@ nav a {
   }
   .interviewHeader {
     margin-bottom: 2em;
-    height: 15em;
+    height: 20em;
     margin-right: 4em;
     margin-left: 4em;
   }
@@ -2231,9 +2261,66 @@ nav a {
   .interviewSoundcloud iframe {
     width: 28em;
   }
-  .interviewContentPic {
-    width: 94%;
-    margin-left: -2em;
+  .interviewQuestionText {
+    font-size: 11px;
+  }
+  .interviewAnswer {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width:1100px) {
+  .interviewHeader {
+    height: 15em;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .interviewHeader {
+    height: 17em;
+  }
+  .interviewHeader h1 {
+    font-size: 3em;
+  }
+  .interviewHeader p {
+    font-size: 1.3em;
+  }
+  .interviewQuestionText {
+    font-size: 1.3em;
+  }
+  .interviewAnswer {
+    font-size: 1.3em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .interviewHeader {
+    height: 31em;
+  }
+  .interviewHeader h1 {
+    font-size: 6em;
+  }
+  .interviewHeader p {
+    font-size: 2.3em;
+  }
+  .interviewQuestionText {
+    font-size: 2.3em;
+  }
+  .interviewAnswer {
+    font-size: 2.3em;
+  }
+  .interviewLikesDislikes p {
+    font-size: 2.3em;
+  }
+  .interviewQuestion img {
+    height: 10em;
+  }
+  .interviewSoundcloud {
+    height: 18em;
+  }
+  .interviewSoundcloud iframe {
+    width: 129em;
+    height: 18em;
   }
 }
 
