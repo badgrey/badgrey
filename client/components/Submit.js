@@ -5,7 +5,7 @@ import '../../public/style.css'
 
 const Submit = function() {
   return (
-    <div>
+    <div className="submitContainerDiv">
       <div className="submitHeader">
         <h1>Submit Your Content To Us Here</h1>
       </div>

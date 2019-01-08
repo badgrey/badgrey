@@ -319,6 +319,9 @@ nav a {
 }
 
 @media only screen and (max-width: 600px) {
+  .navbar {
+    width: 32em;
+  }
   .nav {
     width: 32em;
   }
@@ -459,8 +462,11 @@ nav a {
   font-family: 'ABeeZee', sans-serif;
 }
 
+.noArtistsContainer {
+  display: flex;
+  justify-content: center;
+}
 .noArtists {
-  align-items: center;
   text-align: center;
   border: solid black;
   height: 13em;
@@ -469,7 +475,6 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 23em;
 }
 
 .noArtists h2{
@@ -502,6 +507,14 @@ nav a {
   }
   .artistNameText {
     width: 49px;
+  }
+  .noArtistsContainer {
+    width: 32em;
+  }
+  .noArtists {
+    height: 18em;
+    margin-left: 2em;
+    margin-right: 2em;
   }
 }
 
@@ -545,6 +558,7 @@ nav a {
   .artistNameText {
     width: 130px;
   }
+
 }
 
 @media only screen and (min-width: 1800px) {
@@ -575,6 +589,17 @@ nav a {
     margin-right: 50px;
     margin-bottom: 124px;
     font-size: 34px;
+  }
+  .noArtists {
+    height: 32em;
+    width: 92em;
+  }
+  .noArtists h6 {
+    font-size: 2.2em;
+    line-height: 2em;
+  }
+  .noArtists h2 {
+    font-size: 4em;
   }
 }
 
@@ -2405,4 +2430,46 @@ nav a {
 
 .submitContainer h3 h4 h5 h6{
   font-family: 'ABeeZee', sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  .submitContainerDiv {
+    width: 32em;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .submitHeader h1 {
+    font-size: 3em;
+  }
+  .submitContainer h4 {
+    font-size: 2em;
+  }
+  .submitContainer h3 {
+    font-size: 2.6em;
+  }
+  .submitContainer h5 {
+    font-size: 1.7em;
+  }
+  .submitContainer h6 {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .submitHeader h1 {
+    font-size: 6em;
+  }
+  .submitContainer h4 {
+    font-size: 3.4em;
+  }
+  .submitContainer h3 {
+    font-size: 4em;
+  }
+  .submitContainer h5 {
+    font-size: 3.2em;
+  }
+  .submitContainer h6 {
+    font-size: 2.7em;
+  }
 }
