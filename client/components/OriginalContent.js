@@ -29,7 +29,7 @@ export class OriginalContent extends Component {
   render() {
     return (
       !this.props.originalcontent.length ? null :
-      <div>
+      <div className="OCcontainerDiv">
         <div className="OCheader">
           <h1>Bad Grey Films</h1>
           <form className="newOC" onSubmit={this.submit}>

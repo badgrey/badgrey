@@ -152,7 +152,7 @@ export class Artist extends Component{
         <div className="artistCommentContainer">
             <form onSubmit={this.postComment} id="form" className="commentForm">
               <label>Comment Here</label>
-              <input name="comment" type="text" required />
+              <textarea name="comment" type="text" required />
               <button type="submit">Post</button>
               {error ?
                 error.error === 'Login To Comment' && (

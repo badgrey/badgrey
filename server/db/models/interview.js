@@ -7,7 +7,7 @@ const Interview = db.define('interview', {
     allowNull: false
   },
   interview: {
-    type: Sequelize.STRING,
+    type: Sequelize.ARRAY(Sequelize.TEXT),
     allowNull: false
   },
   soundcloud: {

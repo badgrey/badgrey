@@ -31,8 +31,8 @@ export class Interview extends Component {
     if (this.props.artists === []) {
       this.props.loadInitialData();
     }
-    const id = parseInt(this.props.match.params.interview.split('_')[1]);
-    this.props.getArtistComments(id);
+    const id = parseInt(this.props.match.params.interview);
+    this.props.getInterviewComments(id);
   }
 
   componentDidUpdate() {
@@ -69,7 +69,7 @@ export class Interview extends Component {
 
   render() {
     return !this.props.chosenInterview[0] ? null : (
-      <div>
+      <div className="singleInterviewContainer">
         <div className="interviewHeader">
           <h1>{this.props.chosenInterview[0].artist.name}</h1>
           <p>{this.props.chosenInterview[0].description}</p>
@@ -125,19 +125,29 @@ export class Interview extends Component {
               src={this.props.chosenInterview[0].soundcloud}
             />
           </div>
-          <div className="interviewContent">
-            <img
-              className="interviewContentPic"
-              src={require(`../../public/images/interviews/${
-                this.props.chosenInterview[0].interview
-              }.jpg`)}
-            />
-          </div>
         </div>
-        <div className="artistCommentContainer">
+        <div className="interviewContent">
+            {
+              this.props.chosenInterview[0].interview.map((content, index) => {
+                if (index % 2 === 0) {
+                  return (
+                    <div key={content.id} className="interviewQuestion">
+                      <img src={require('../../public/images/interviews/interviewWolfLogo.png')} />
+                      <p className="interviewQuestionText">{content}</p>
+                    </div>
+                  )
+                } else {
+                  return (
+                    <p key={content.id} className="interviewAnswer">{content}</p>
+                  )
+                }
+              })
+            }
+        </div>
+        <div className="interviewCommentContainer">
           <form onSubmit={this.postComment} id="form" className="commentForm">
             <label>Comment Here</label>
-            <input name="comment" type="text" required />
+            <textarea name="comment" type="text" required />
             <button type="submit">Post</button>
           </form>
           {this.props.comments.map(comment => {
@@ -216,7 +226,7 @@ const mapState = (
     }),
     chosenInterview: interviews.filter(interview => {
       return (
-        interview.interview === ownProps.match.params.interview.split('_')[0]
+        interview.id === parseInt(ownProps.match.params.interview)
       );
     })
   };
@@ -231,7 +241,7 @@ const mapDispatch = dispatch => {
     fetchSaved() {
       dispatch(fetchSavedArtists());
     },
-    getArtistComments(id) {
+    getInterviewComments(id) {
       dispatch(fetchInterviewComments(id));
     },
     deleteComment(id) {
