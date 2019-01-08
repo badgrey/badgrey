@@ -2352,6 +2352,39 @@ nav a {
   align-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .OCcontainerDiv {
+    width: 33em;
+  }
+  .singleoc iframe {
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .OCheader h1 {
+    font-size: 3.5em;
+  }
+
+}
+
+@media only screen and (min-width: 1800px) {
+  .OCheader h1 {
+    font-size: 7em;
+  }
+  .newOC {
+    font-size: 3em;
+  }
+  .newOC label {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  .singleoc iframe {
+    width: 62em;
+    height: 33em;
+  }
+}
+
 /* Submit Styles */
 
 .submitHeader {
