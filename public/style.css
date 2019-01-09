@@ -6,6 +6,18 @@ html, body {
   border: 0px
 }
 
+#app{
+  background: no-repeat center url('./images/websitebackground.png');
+  background-size: 90%;
+  background-attachment: fixed;
+}
+
+@media only screen and (max-width: 600px) {
+  #app {
+    width: 140%;
+  }
+}
+
 body h1 h2 h3 h4 Link a p div button{
   font-family: 'ABeeZee', sans-serif;
 }
@@ -108,7 +120,7 @@ path:hover {
 
 @media only screen and (max-width: 600px) {
   .discover {
-    width: 30em;
+    width: 32em;
   }
   .Map {
     margin-top: -15px;
@@ -493,7 +505,6 @@ nav a {
   }
   .state {
     margin-left: 0px;
-    margin-right: 23px;
   }
   .artistPic {
     height: 85px;
