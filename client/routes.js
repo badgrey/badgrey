@@ -21,6 +21,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/" component={Discover} />
+        <Route exact path="/discover" component={Discover} />
         <Route exact path="/discover/all" component={AllArtists} />
         <Route exact path="/discover/genre/:genre" component={SingleGenre} />
         <Route exact path="/discover/:state" component={State} />
