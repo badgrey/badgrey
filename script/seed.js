@@ -20,25 +20,220 @@ async function seedUsers() {
   return users
 }
 
-async function seedArtists () {
-
+async function seedAlabamaArtists () {
   const artists = await Promise.all([
-    Artist.create({name: 'A Boogie Wit Da Hoodie', city: 'Bronx', imageURL: 'aboogiewitdahoodie', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/10332955&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['fUtlqtdn1Xo', 'DVbKboc8XmE'], genre: 'Trap', stateAbbrev: 'NY'}),
-    Artist.create({name: 'Kweku Collins', city: 'Chicago', imageURL: 'kwekucollins', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/13591743&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['nl6OW07A5q4', '0lLqwlVF9bU'], genre: 'Alternative', stateAbbrev: 'IL'}),
-    Artist.create({name: 'Mir Fontane', city: 'Camden', imageURL: 'mirfontane', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/4121408&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['nUj4I7P5Bu0', 'oDgvWMrXInc'], genre: 'Conscious', stateAbbrev: 'NJ'}),
-    Artist.create({name: 'Lil Skies', city: 'Waynesboro', imageURL: 'lilskies', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/95492698&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['tcaw6lzYt1Q', 'WlosjSe5B8c'], genre: 'Cloud', stateAbbrev: 'PA'}),
-    Artist.create({name: 'Lil Uzi Vert', city: 'Philadelphia', imageURL: 'liluzivert', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/10494998&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['WrsFXgQk5UI', 'zqflC-as2Qo'], genre: 'Cloud', stateAbbrev: 'PA'}),
-    Artist.create({name: 'Matt Ox', city: 'Philadelphia', imageURL: 'mattox', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/242128695&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['0cZ8-RgtrP0', 'qquyvwH-QH8'], genre: 'Cloud', stateAbbrev: 'PA'}),
-    Artist.create({name: 'KilConfirmed', city: 'Philadelphia', imageURL: 'kilconfirmed', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/30398868&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['2XwFup-_sOE'], genre: 'Instrumental', stateAbbrev: 'PA'}),
-    Artist.create({name: 'Yung Lean', city: 'Stockholm', imageURL: 'yunglean', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/24878713&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['BMayAfYlN_k', 'tMgkt9jdjTU'], genre: 'Cloud', stateAbbrev: 'International'}),
-    Artist.create({name: 'YNW Melly', city: 'Gifford', imageURL: 'ynwmelly', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/57260844&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['hqDinxaPUK4', '7LWQEokkCqo'], genre: 'Alternative', stateAbbrev: 'FL'}),
-    Artist.create({name: 'Lil Pump', city: 'Miami', imageURL: 'lilpump', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/173834487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true', youtubeID: ['cwQgjq0mCdE', '4LfJnj66HVQ'], genre: 'Alternative', stateAbbrev: 'FL'}),
-    Artist.create({name: 'Chase N Cashe', city: 'New Orleans', imageURL: 'chasencashe', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/490529712&amp;color=ff5500', youtubeID: ['5M46hksoxdg', 'FNQtaK8x7MQ'], genre: 'Conscious', stateAbbrev: 'LA'}),
-    Artist.create({name: 'J.K. The Reaper', city: 'Greensboro', imageURL: 'jkthereaper', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/485223534&amp;color=ff5500', youtubeID: ['N_Z64Bsyj5U', 'bNnVZsLSXIg'], genre: 'Conscious', stateAbbrev: 'NC'}),
-    Artist.create({name: 'Wave Chapelle', city: 'Milwaukee', imageURL: 'wavechapelle', soundcloudURL: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/529890900&amp;color=ff5500', youtubeID: ['zeUKNPNTRQo', 'ruqXcC8d7b4'], genre: 'Conscious', stateAbbrev: 'WI'})
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'AL'})
   ])
+  return artists
+}
 
+async function seedAlaskaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'AK'})
+  ])
+  return artists
+}
 
+async function seedArizonaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'AZ'})
+  ])
+  return artists
+}
+
+async function seedArkansasArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'AR'})
+  ])
+  return artists
+}
+
+async function seedCaliforniaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'CA'})
+  ])
+  return artists
+}
+
+async function seedColoradoArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'CO'})
+  ])
+  return artists
+}
+
+async function seedConnecticutArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'CT'})
+  ])
+  return artists
+}
+
+async function seedDMVArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'DMV'})
+  ])
+  return artists
+}
+
+async function seedFloridaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'FL'})
+  ])
+  return artists
+}
+
+async function seedGeorgiaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'GA'})
+  ])
+  return artists
+}
+
+async function seedIllinoisArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'IL'})
+  ])
+  return artists
+}
+
+async function seedInternationalArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'International'})
+  ])
+  return artists
+}
+
+async function seedLouisianaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'LA'})
+  ])
+  return artists
+}
+
+async function seedMassachusettsArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'MA'})
+  ])
+  return artists
+}
+
+async function seedMichiganArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'MI'})
+  ])
+  return artists
+}
+
+async function seedMinnesotaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'MN'})
+  ])
+  return artists
+}
+
+async function seedMississippiArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'MS'})
+  ])
+  return artists
+}
+
+async function seedMissouriArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'MO'})
+  ])
+  return artists
+}
+
+async function seedNevadaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'NV'})
+  ])
+  return artists
+}
+
+async function seedNewJerseyArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'NJ'})
+  ])
+  return artists
+}
+
+async function seedNewYorkArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'NY'})
+  ])
+  return artists
+}
+
+async function seedNorthCarolinaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'NC'})
+  ])
+  return artists
+}
+
+async function seedOhioArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'OH'})
+  ])
+  return artists
+}
+
+async function seedOregonArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'OR'})
+  ])
+  return artists
+}
+
+async function seedPennsylvaniaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'PA'})
+  ])
+  return artists
+}
+
+async function seedRhodeIslandArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'RI'})
+  ])
+  return artists
+}
+
+async function seedSouthCarolinaArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'IL'})
+  ])
+  return artists
+}
+
+async function seedTennesseeArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'TN'})
+  ])
+  return artists
+}
+
+async function seedTexasArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'TX'})
+  ])
+  return artists
+}
+
+async function seedWashingtonArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'WA'})
+  ])
+  return artists
+}
+
+async function seedWisconsinArtists () {
+  const artists = await Promise.all([
+    Artist.create({name: '', city: '', imageURL: '', soundcloudURL: '', youtubeID: [], genre: '', stateAbbrev: 'WI'})
+  ])
   return artists
 }
 
