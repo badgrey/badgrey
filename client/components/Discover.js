@@ -200,6 +200,11 @@ export class Discover extends Component {
     return (
       <div className="discover">
         <BlogHomePage blogs={this.props.blogs.slice(0, 3)} />
+        {
+          this.props.match.path === '/discover' ?
+          window.scroll(0, 1200) :
+          null
+        }
         <h1>Discover Below</h1>
         <div className="allAndGlobe">
           <Link className="allArtistsLink" to="/discover/all">
@@ -221,7 +226,7 @@ export class Discover extends Component {
   }
 }
 
-const mapState = (state) => {
+const mapState = (state, ownProps) => {
   return {
     artists: state.artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
