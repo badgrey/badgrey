@@ -5,7 +5,7 @@ const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
 //creation of the database and connecting it to Amazon RDS
 
-const db = new Sequelize(process.env.DBNAME, process.env.DBUSER, process.env.DBPASSWORD, {
+const db = new Sequelize('badgrey', 'mlisonek98', 'itachi98', {
   host: 'badgreyinstance.cg2sibkvqrfx.us-east-2.rds.amazonaws.com',
   port: '5432',
   logging: console.log(),
