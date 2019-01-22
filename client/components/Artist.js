@@ -5,6 +5,7 @@ import {YoutubePlayer} from './index'
 import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist, fetchInterviews, deleteError} from '../store'
 import {Link} from 'react-router-dom'
 
+//individual artist page component
 export class Artist extends Component{
 
   constructor(props){
@@ -18,6 +19,7 @@ export class Artist extends Component{
     this.postComment = this.postComment.bind(this)
   }
 
+  //getting initial data and comments for specific user when getting to page
   componentDidMount () {
     if (this.props.chosenArtist === []) {
       this.props.loadInitialData()
@@ -31,6 +33,7 @@ export class Artist extends Component{
     this.saved()
   }
 
+  //deletes artist
   deleteArtist() {
     const state = this.props.chosenArtist[0].stateAbbrev
     this.props.delete(this.props.chosenArtist[0].id)
@@ -44,6 +47,7 @@ export class Artist extends Component{
     }
   }
 
+  //posts commentand resets the form
   postComment(event) {
     event.preventDefault()
     let commentInfo = {
@@ -56,10 +60,12 @@ export class Artist extends Component{
     this.props.getArtistComments(this.props.chosenArtist[0].id)
   }
 
+  //saves artist to users saved page
   saveArtist() {
     this.props.saveCurrentArtist({id: this.props.chosenArtist[0].id, user: this.props.user})
   }
 
+  //gets rid of error message after a little
   renderErrorMessage() {
     setTimeout(() => this.props.renderError(), 3000)
   }
@@ -81,6 +87,7 @@ export class Artist extends Component{
             <h1 className="title">{this.props.chosenArtist[0].name}</h1>
             <h3 className="title">{this.props.chosenArtist[0].city}</h3>
             {
+              //depending if artist is saved or not will display a button to save them or just "saved"
               this.props.isSaved ?
               (
                 <div>Saved</div>
@@ -92,6 +99,7 @@ export class Artist extends Component{
               )
             }
             {error ?
+              //displays error if trying to save artist when not logged in
               error.error === 'Login To Save Artist' && (
               <div className="commentPostError">
                 <p>{error.error}</p>
@@ -111,6 +119,7 @@ export class Artist extends Component{
               <p>{this.props.chosenArtist[0].ArtistDislikes.length}</p>
             </div>
             {error ?
+              //puts forward error if trying to like or dislike artist when not logged in
               error.error === 'Login To Upvote/Downvote Artist' && (
               <div className="commentPostError">
                 <p>{error.error}</p>
@@ -120,6 +129,7 @@ export class Artist extends Component{
               null
             }
             {
+              //displays admin buttons for edit or delete if admin
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
               <div className="adminButtons">
                 <Link id="editButton"to={`/edit/${this.props.match.params.artist}`}>
@@ -141,6 +151,7 @@ export class Artist extends Component{
           </div>
           <div className="youtube">
             {
+              //maps through youtube ids and puts up youtube video for each artist
               this.props.chosenArtist[0].youtubeID.map((id) => {
                 return (
                   <YoutubePlayer key={id} ytID={id} />
@@ -155,6 +166,7 @@ export class Artist extends Component{
               <textarea name="comment" type="text" required />
               <button type="submit">Post</button>
               {error ?
+                //posts error if trying to comment on artist page and not logged in
                 error.error === 'Login To Comment' && (
                 <div className="commentPostError">
                   <p>{error.error}</p>
@@ -166,6 +178,7 @@ export class Artist extends Component{
             </form>
             <div className="commentList">
           {
+            //mapping over all artist comments
             this.props.comments.map((comment) => {
               return (
               <div className="singleComment" key={comment.id}>
@@ -187,6 +200,7 @@ export class Artist extends Component{
                     </div>
                   }
                   {error ?
+                    //posts error when trying to like or dislike comment
                     error.error === 'Login To Upvote/Downvote' && (
                     <div className="commentPostError">
                       <p>{error.error}</p>
@@ -207,7 +221,7 @@ export class Artist extends Component{
   }
 }
 
-
+//putting artists comments chosen artist savedartists error and is saved on props
 const mapState = ({artists, user, savedArtists, comments, error}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
@@ -237,6 +251,7 @@ const mapState = ({artists, user, savedArtists, comments, error}, ownProps) => {
   }
 }
 
+//buncha stuff over here on props too
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {

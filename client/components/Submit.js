@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import '../../public/style.css'
 
-
+//for now static submit page with information how to reach us
 const Submit = function() {
   return (
     <div className="submitContainerDiv">

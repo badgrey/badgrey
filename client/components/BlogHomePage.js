@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-
+//component for three most recent blogs to be visible on homepage
 const BlogHomePage = (props) => (
   !props.blogs.length ? null :
   <div className="blogsHomeContainer">
@@ -24,6 +24,7 @@ const BlogHomePage = (props) => (
       </div>
       <div className="singleBlogDiv">
       {
+        //above is the most recent blog the bottom maps out the other two
         props.blogs.map((blog, index) => {
           return (
             index === 0 ? null :

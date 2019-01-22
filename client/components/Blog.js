@@ -17,6 +17,7 @@ export class Blog extends Component {
     this.postComment = this.postComment.bind(this)
   }
 
+  //loads comments and gets data upon arriving to page if not done already
   componentDidMount () {
     // eslint-disable-next-line radix
     const id = parseInt(this.props.match.params.id)
@@ -28,6 +29,7 @@ export class Blog extends Component {
     }
   }
 
+  //deletes blog
   deleteBlog() {
     this.props.delete(this.props.chosenBlog[0].id)
     this.props.history.push('/allblogs')
@@ -44,6 +46,7 @@ export class Blog extends Component {
     }
   }
 
+  //posts comment
   postComment(event) {
     event.preventDefault()
     let commentInfo = {
@@ -56,6 +59,7 @@ export class Blog extends Component {
     this.props.getBlogComments(this.props.chosenBlog[0].id)
   }
 
+  //makes error message dissapear after some time
   renderErrorMessage() {
     setTimeout(() => this.props.renderError(), 3000)
   }
@@ -76,6 +80,7 @@ export class Blog extends Component {
         <div className="blogHeader">
           <div className="blogNameHeader">
           {
+            //shows admin buttons if admin
             !this.props.isLoggedIn && !this.props.isAdmin ? null :
             <div className="adminButtons">
               <Link id="editButton" to={`/editBlog/${this.props.match.params.id}`}>
@@ -98,6 +103,7 @@ export class Blog extends Component {
                 <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
               </div>
             {error ?
+              //throws error if you try to like or dislike blog when not logged in
               error.error === 'Login To Upvote/Downvote Blog' && (
               <div className="commentPostError">
                 <p>{error.error}</p>
@@ -129,6 +135,7 @@ export class Blog extends Component {
               <textarea name="comment" type="text" required />
               <button type="submit">Post</button>
               {error ?
+                //throws error if try to comment on blog when not logged in
                 error.error === 'Login To Comment' && (
                 <div className="commentPostError">
                   <p>{error.error}</p>
@@ -140,6 +147,7 @@ export class Blog extends Component {
             </form>
             <div className="commentList">
           {
+            //maps over specific blogs comments
             this.props.comments.map((comment) => {
               return (
               <div className="singleComment" key={comment.id}>
@@ -155,12 +163,14 @@ export class Blog extends Component {
                   </button>
                   <p>{comment.Dislikes.length}</p>
                   {
+                    //lets you delete your wn comment
                     this.props.user.id !== comment.user.id ? null :
                     <div>
                       <button className="deleteCommentButton" onClick={() => this.props.deleteComment(comment.id)}>X</button>
                     </div>
                   }
                   {error ?
+                    //throws error if you are not logged in
                     error.error === 'Login To Upvote/Downvote' && (
                     <div className="commentPostError">
                       <p>{error.error}</p>

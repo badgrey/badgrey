@@ -17,6 +17,7 @@ export class Discover extends Component {
     this.saved = this.saved.bind(this)
   }
 
+  //changes route based on state clicked
   clickToState = (event) => {
     const stateName = event.target.dataset.name
     if (stateName === 'DE' || stateName === 'MD' || stateName === 'VA' || stateName === 'DC') {
@@ -27,6 +28,7 @@ export class Discover extends Component {
     }
   }
 
+  //makes all states black
   statesCustomConfig = () => {
     return {
       AL: {
@@ -201,6 +203,7 @@ export class Discover extends Component {
       <div className="discover">
         <BlogHomePage blogs={this.props.blogs.slice(0, 3)} />
         {
+          //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
           this.props.match.path === '/discover' ?
           window.scroll(0, 1200) :
           null
@@ -225,6 +228,7 @@ export class Discover extends Component {
     )
   }
 }
+
 
 const mapState = (state, ownProps) => {
   return {

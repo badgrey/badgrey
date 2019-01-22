@@ -13,6 +13,7 @@ import comments from './comments'
 import interviews from './interviews'
 import originalcontent from './originalcontent'
 
+//importing all individual reducers and putting them in a combined reducer
 
 const reducer = combineReducers({user, artists, error, email, savedArtists, allusers, blogs, comments, interviews, originalcontent})
 const middleware = composeWithDevTools(applyMiddleware(
@@ -20,6 +21,8 @@ const middleware = composeWithDevTools(applyMiddleware(
   createLogger({collapsed: true})
 ))
 const store = createStore(reducer, middleware)
+
+//exporting all functions from all reducers
 
 export default store
 export * from './user'

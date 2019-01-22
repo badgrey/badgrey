@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
 import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalContent, likeCurrentOriginalContent, dislikeCurrentOriginalContent} from '../store'
-import {Link} from 'react-router-dom'
 
 export class OriginalContent extends Component {
   constructor(props) {
@@ -12,12 +11,14 @@ export class OriginalContent extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  //gets original content
   componentDidMount() {
     if (!this.props.originalcontent.length){
       this.props.getOriginalContent()
     }
   }
 
+  //submits new youtube id to backend
   submit(event) {
     event.preventDefault()
     let info = {
@@ -40,6 +41,7 @@ export class OriginalContent extends Component {
         </div>
         <div className="OCcontainer">
           {
+            //maps over all youtube ids and displays original content
             this.props.originalcontent.map((oc) => {
               return (
                 <div key={oc.id} className="singleoc">

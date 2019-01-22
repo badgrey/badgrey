@@ -9,12 +9,14 @@ export class NewInterview extends Component {
     this.submit = this.submit.bind(this);
   }
 
+  //if not admin redirect
   componentDidMount () {
     if (!this.props.isAdmin) {
       this.props.history.push('/')
     }
   }
 
+  //submits new interview info to backend
   submit(event) {
     event.preventDefault();
     let interviewArray = [event.target.interviewQuestion1.value, event.target.interviewAnswer1.value, event.target.interviewQuestion2.value, event.target.interviewAnswer2.value, event.target.interviewQuestion3.value, event.target.interviewAnswer3.value, event.target.interviewQuestion4.value, event.target.interviewAnswer4.value, event.target.interviewQuestion5.value, event.target.interviewAnswer5.value]
@@ -26,6 +28,7 @@ export class NewInterview extends Component {
         },
         artist: event.target.targetartist.value
       }
+      //cannot have two interviews for one artist
     let dup = false
     for (let i = 0; i < this.props.interviews.length; i++) {
       if (this.props.interviews[i].interview === interviewInfo.interview.interview) {

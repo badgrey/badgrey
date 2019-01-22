@@ -9,12 +9,14 @@ export class EditBlog extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  //if you are not a blogger you get redirected
   componentDidMount () {
     if (!this.props.isBlogger) {
       this.props.history.push('/')
     }
   }
 
+  //submit all info to backend to edit blog
   submit(event) {
     event.preventDefault();
     let blogInfo = {
@@ -61,6 +63,7 @@ export class EditBlog extends Component {
   }
 }
 
+//chosen blog gotten from route
 const mapState = ({blogs, user}, ownProps) => {
   return {
     chosenBlog: blogs.filter((blog) => {

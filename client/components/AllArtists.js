@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import '../../public/style.css'
 import {fetchArtists, fetchSavedArtists, fetchBlogs} from '../store'
 
+
+//componnt for all artists page
 export class AllArtists extends Component{
 
   constructor(props) {
@@ -16,6 +18,7 @@ export class AllArtists extends Component{
     this.handleSearch = this.handleSearch.bind(this)
   }
 
+  //load all data if user is visiting this page for the first time
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
@@ -26,6 +29,7 @@ export class AllArtists extends Component{
     this.saved()
   }
 
+  //if logged in and no saved and it was already checked, fetch saved artists from db
   saved() {
     if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck ) {
       this.props.fetchSaved()
@@ -33,6 +37,7 @@ export class AllArtists extends Component{
     }
   }
 
+  //for search bar at top
   handleSearch(evt) {
     this.setState({
       search: evt.target.value
@@ -54,7 +59,7 @@ export class AllArtists extends Component{
         <div className="state">
         {
           artists.map((artist) => (
-
+            //mapping over every artist and returning picture with link to artists page
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('') + `_${artist.id}`}`}>
                   <div className="artistName">
@@ -71,6 +76,7 @@ export class AllArtists extends Component{
   }
 }
 
+//putting all artists in alphabetical order and user and saved artists on props
 const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
@@ -84,6 +90,7 @@ const mapState = ({artists, user, savedArtists}, ownProps) => {
   }
 }
 
+//putting loadinitiail data and fetchsaved on props
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {

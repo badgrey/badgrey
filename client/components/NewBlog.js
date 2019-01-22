@@ -9,12 +9,14 @@ export class NewBlog extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  //if not a blogger redirect
   componentDidMount () {
     if (!this.props.isBlogger) {
       this.props.history.push('/')
     }
   }
 
+  //submits new blog info to database
   submit(event) {
     event.preventDefault();
     let chosenArtist = this.props.artists.filter((artist) => {

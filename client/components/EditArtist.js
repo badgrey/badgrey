@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {editCurrentArtist} from '../store'
 
+//state and genre options for drop down
 const stateOptions = [
   'AL',
   'AK',
@@ -72,12 +73,14 @@ export class EditArtist extends Component {
     this.submit = this.submit.bind(this);
   }
 
+  //if you are not admin you are redirected to home
   componentDidMount () {
     if (!this.props.isAdmin) {
       this.props.history.push('/')
     }
   }
 
+  //submit form info to backend
   submit(event) {
     event.preventDefault();
     const urlName = event.target.name.value.split(' ').join('')
@@ -102,6 +105,7 @@ export class EditArtist extends Component {
         stateAbbrev: event.target.stateAbbrev.value
       }
     }
+    //submits then pushes new route to new artists page
     this.props.submitForm(this.props.chosenArtist[0].id, artistInfo)
     this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName + `_${this.props.chosenArtist[0].id}`}`)
   }
@@ -121,6 +125,7 @@ export class EditArtist extends Component {
           <div>
               <select name="stateAbbrev" type="text" required label="State" defaultValue={this.props.chosenArtist[0].stateAbbrev}>
                 {
+                  //maps out state options for dropdown
                   stateOptions.map((state) => {
                     return (
                       <option key={state}>{state}</option>
@@ -130,6 +135,7 @@ export class EditArtist extends Component {
               </select>
               <select name="genre" type="text" required label="Genre" defaultValue={this.props.chosenArtist[0].genre}>
                 {
+                  //maps out genre options for dropdown
                   genreOptions.map((genre) => {
                     return (
                       <option key={genre}>{genre}</option>
@@ -159,6 +165,7 @@ export class EditArtist extends Component {
   }
 }
 
+//chooses artist based off route
 const mapState = ({artists, user}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {

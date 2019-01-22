@@ -8,6 +8,7 @@ export const Genre = () => {
     <div className="genreGrid">
       {
         genres.map((genre) => (
+          //maps out the genre array to a grid, and replaces the spaces and symbols in genre with blan space
           <Link to={`/discover/genre/${genre}`} className="genreName" id={genre.replace(/[\s/>&]/g, '')} key={genre}>
             {genre}
           </Link>
