@@ -2,6 +2,10 @@ const router = require('express').Router()
 const User = require('../db/models/user')
 module.exports = router
 
+//routes for login authentication
+
+
+//login
 router.post('/login', (req, res, next) => {
   User.findOne({where: {email: req.body.email}})
     .then(user => {
@@ -16,6 +20,7 @@ router.post('/login', (req, res, next) => {
     .catch(next)
 })
 
+//change password
 router.put('/:id/resetpw', (req, res, next) => {
   User.update(req.body, {
     where: {
@@ -29,6 +34,7 @@ router.put('/:id/resetpw', (req, res, next) => {
     .catch(next)
 })
 
+//sign up
 router.post('/signup', (req, res, next) => {
   User.create(req.body)
     .then(user => {
@@ -43,6 +49,7 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
+//logout
 router.post('/logout', (req, res) => {
   req.logout()
   req.session.destroy()
@@ -52,5 +59,3 @@ router.post('/logout', (req, res) => {
 router.get('/me', (req, res) => {
   res.json(req.user)
 })
-
-router.use('/google', require('./google'))

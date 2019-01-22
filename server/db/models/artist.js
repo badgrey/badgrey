@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+//has image url that will match image file name
+
 const Artist = db.define('artist', {
   name: {
     type: Sequelize.STRING,

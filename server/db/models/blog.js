@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+//blogPic string that will match picture file name
+
 const Blog = db.define('blog', {
   title: {
     type: Sequelize.STRING,
