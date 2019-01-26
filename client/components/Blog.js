@@ -66,10 +66,21 @@ export class Blog extends Component {
 
   // eslint-disable-next-line complexity
   render() {
-    const chosenArtist = this.props.chosenBlog.length === 0 ? null :
-    this.props.artists.filter((artist) => {
-      return this.props.chosenBlog[0].artistId === artist.id
-    })
+    console.log(this.props.chosenBlog)
+    // let chosenArtist
+    // this.props.chosenBlog.length === 0 ? null :
+    // chosenArtist = this.props.artists.filter((artist) => {
+    //   console.log(artist.id, this.props.chosenBlog[0].artistId)
+    //   return this.props.chosenBlog[0].artistId === artist.id
+    // })
+    // if (this.props.chosenBlog.length) {
+    //   console.log('MADE IT HERE')
+    //   chosenArtist = this.props.artists.filter((artist) => {
+    //     console.log(artist.id, this.props.chosenBlog[0].artistId)
+    //     return this.props.chosenBlog[0].artistId === artist.id
+    //   })
+    // }
+    //console.log(this.props.chosenArtist)
     const error = this.props.error.error
     if (error) {
       this.renderErrorMessage()
@@ -112,9 +123,9 @@ export class Blog extends Component {
               :
               null
             }
-              <Link className="artistProfile" to={`/discover/${chosenArtist[0].stateAbbrev}/${chosenArtist[0].name.split(' ').join('') + `_${chosenArtist[0].id}`}`}>
+              <Link className="artistProfile" to={`/discover/${this.props.chosenBlog[0].artist.stateAbbrev}/${this.props.chosenBlog[0].artist.name.split(' ').join('') + `_${this.props.chosenBlog[0].artist.id}`}`}>
                 <div className="artistProfileLinkText">
-                {chosenArtist[0].name}
+                {this.props.chosenBlog[0].artist.name}
                 </div>
               </Link>
             </div>
@@ -127,7 +138,13 @@ export class Blog extends Component {
           <h5>{this.props.chosenBlog[0].description}</h5>
         </div>
         <div className="blogPost">
-            <p>{this.props.chosenBlog[0].blogPost}</p>
+        {
+         this.props.chosenBlog[0].blogPost.split('<>').map((post) => {
+           return (
+             <p key={post.length} className="blogPostText">{post}</p>
+           )
+         })
+        }
         </div>
         <div className="commentContainer">
             <form onSubmit={this.postComment} id="form" className="commentForm">
