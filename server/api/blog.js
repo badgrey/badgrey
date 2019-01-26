@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler')
 const {isBlogger, isLoggedIn} = require('../permissions')
 module.exports = router
 
+//gets blogs, includes associated artist and user likes/dislikes
 router.get('/', asyncHandler(async (req, res, next) => {
   const blogs = await Blog.findAll({
     include: [
@@ -16,6 +17,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
   res.json(blogs)
 }))
 
+//creates blog, returns blog with associated artist and user likes/dislikes. must be blogger
 router.post('/', isBlogger, asyncHandler(async (req, res, next) => {
   const newBlog = await Blog.create(req.body.blogInfo)
   await newBlog.setUser(req.body.user)
@@ -34,6 +36,7 @@ router.post('/', isBlogger, asyncHandler(async (req, res, next) => {
   res.status(201).json(blog[0])
 }))
 
+//edits specific blog and returns blog with associated artist and user likes/dislikes. must be blogger
 router.put('/edit/:id', isBlogger, asyncHandler(async (req, res, next) => {
   const editedblog = await Blog.update(req.body, {
     where: {
@@ -55,6 +58,7 @@ router.put('/edit/:id', isBlogger, asyncHandler(async (req, res, next) => {
   res.json(blog[0])
 }))
 
+//deletes blog. must be blogger
 router.delete('/delete/:id', isBlogger, asyncHandler(async (req, res, next) => {
   const blog = await Blog.destroy({
     where: {
@@ -65,12 +69,13 @@ router.delete('/delete/:id', isBlogger, asyncHandler(async (req, res, next) => {
   res.json(blog)
 }))
 
+//gets specific blog, not sure if in use.
 router.get('/:id', asyncHandler(async (req, res, next) => {
   const blog = await Blog.findById(req.params.id)
   res.json(blog)
 }))
 
-
+//likes blog, returns blog with artist and user likes/dislikes
 router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
   const likedBlog = await Blog.findAll({
     where: {
@@ -92,6 +97,7 @@ router.post('/like', isLoggedIn, asyncHandler(async (req, res, next) => {
   res.status(200).json(blog)
 }))
 
+//dislikes blog, returns blog with artist and user likes/dislikes
 router.post('/dislike', isLoggedIn, asyncHandler(async (req, res, next) => {
   const dislikedBlog = await Blog.findAll({
     where: {

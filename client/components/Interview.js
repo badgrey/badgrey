@@ -16,6 +16,7 @@ import {
   deleteCurrentInterview
 } from '../store';
 
+//component for single interview
 export class Interview extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +28,7 @@ export class Interview extends Component {
     this.deleteInterview = this.deleteInterview.bind(this);
   }
 
+  //loads data and specific interview comments
   componentDidMount() {
     if (this.props.artists === []) {
       this.props.loadInitialData();
@@ -50,6 +52,7 @@ export class Interview extends Component {
     }
   }
 
+  //allows comment to be posted
   postComment(event) {
     event.preventDefault();
     let commentInfo = {
@@ -62,6 +65,7 @@ export class Interview extends Component {
     this.props.getInterviewComments(this.props.chosenInterview[0].id);
   }
 
+  //delete interview
   deleteInterview() {
     this.props.delete(this.props.chosenInterview[0].id);
     this.props.history.push(`/interviews`);
@@ -73,7 +77,9 @@ export class Interview extends Component {
         <div className="interviewHeader">
           <h1>{this.props.chosenInterview[0].artist.name}</h1>
           <p>{this.props.chosenInterview[0].description}</p>
-          {!this.props.isLoggedIn && !this.props.isAdmin ? null : (
+          {
+            //show admin buttons if admin
+            !this.props.isLoggedIn && !this.props.isAdmin ? null : (
             <div className="adminButtons">
               <button className="editdelete" onClick={this.deleteInterview}>
                 DELETE Interview

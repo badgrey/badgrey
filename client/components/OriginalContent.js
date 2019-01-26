@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import '../../public/style.css'
 import {YoutubePlayer} from './index'
 import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalContent, likeCurrentOriginalContent, dislikeCurrentOriginalContent} from '../store'
-import {Link} from 'react-router-dom'
 
 export class OriginalContent extends Component {
   constructor(props) {
@@ -12,23 +11,37 @@ export class OriginalContent extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  //gets original content
   componentDidMount() {
     if (!this.props.originalcontent.length){
       this.props.getOriginalContent()
     }
   }
 
+  //submits new youtube id to backend
   submit(event) {
     event.preventDefault()
     let info = {
       youtubeId: event.target.oc.value
     }
     this.props.submitContent(info)
+    //this.props.history.push('/')
   }
 
   render() {
     return (
-      !this.props.originalcontent.length ? null :
+      !this.props.originalcontent.length ?
+      <div className="OCcontainerDiv">
+        <div className="OCheader">
+          <h1>Bad Grey Films</h1>
+          <form className="newOC" onSubmit={this.submit}>
+            <label>Add Original Content</label>
+            <input name="oc" type="text" required placeholder="Youtube ID" />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      :
       <div className="OCcontainerDiv">
         <div className="OCheader">
           <h1>Bad Grey Films</h1>
@@ -40,6 +53,7 @@ export class OriginalContent extends Component {
         </div>
         <div className="OCcontainer">
           {
+            //maps over all youtube ids and displays original content
             this.props.originalcontent.map((oc) => {
               return (
                 <div key={oc.id} className="singleoc">
@@ -74,8 +88,8 @@ export class OriginalContent extends Component {
 const mapState = ({originalcontent, user}, ownProps) => {
   return {
     originalcontent: originalcontent.sort((ocA, ocB) => {
-      if (ocA.createdAt < ocB.createdAt) return -1
-      if (ocA.createdAt > ocB.createdAt) return 1
+      if (ocA.createdAt < ocB.createdAt) return 1
+      if (ocA.createdAt > ocB.createdAt) return -1
       return 0
     }),
     user,

@@ -91,6 +91,7 @@ export class AuthForm extends Component {
             <button type="submit">{displayName}</button>
           </div>
           {
+            //will switch depending on name of form
             this.props.name !== 'login' ?
             <div>
               <h4>Already Have An Account? <Link to="/login">Login</Link></h4>
@@ -103,6 +104,7 @@ export class AuthForm extends Component {
           {error && (
             <div className="loginError">
             {
+              //depending on error that returns from store, respected error message will be displayed
               error.error === 'Username Taken' || error.error === 'Email Already In Use' ?
               <p>{error.error}</p>
               :
@@ -125,6 +127,8 @@ export class AuthForm extends Component {
               <button type="submit">Enter</button>
             </div>
             {error && (
+              //everything above is meant for a code that will be emailed to the user signing up
+              //below will be the error if they mess up
               <div className="loginError">
                 <p>{error.error}</p>
               </div>
@@ -139,8 +143,7 @@ export class AuthForm extends Component {
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -
  *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
+ *   function, and share the same Component.
  */
 const mapLogin = state => {
   return {

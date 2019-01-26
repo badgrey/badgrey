@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import '../../public/style.css'
 import {fetchArtists, fetchSavedArtists, deleteCurrentSavedArtist, fetchBlogs} from '../store'
 
+//component for showing saved artists in specific users saved component
 export class SavedArtists extends Component{
 
   constructor(props) {
@@ -16,10 +17,12 @@ export class SavedArtists extends Component{
     this.saved = this.saved.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
   }
+  //remove from saved
   deleteSaved() {
     this.props.delete()
   }
 
+  //loads info
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
@@ -43,6 +46,7 @@ export class SavedArtists extends Component{
   render() {
     const artists = this.props.savedArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
+      //if there are no saved artists after loading data display message saying no saved artists
       this.props.savedArtists.length === 0 ?
       <div className="noSaved">
         <h2>You Don't Have Any Saved Artists!</h2>
@@ -59,6 +63,7 @@ export class SavedArtists extends Component{
         </div>
         <div className="state">
         {
+          //map over saved artists and display them like everything else
           artists.map((artist) => (
 
               <div key={artist.id} className="savedArtists">

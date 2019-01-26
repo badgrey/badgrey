@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import '../../public/style.css'
-import { slide as Menu } from 'react-burger-menu'
 
 class Navbar extends Component {
 
@@ -16,6 +15,7 @@ class Navbar extends Component {
     this.renderDropDown = this.renderDropDown.bind(this)
   }
 
+  //makes wolf dropdown
   renderDropDown(evt) {
     evt.preventDefault()
     if (this.state.clicked === false) {

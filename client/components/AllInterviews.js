@@ -16,6 +16,7 @@ export class AllInterviews extends Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
 
+  //see AllArtists componenet for comments regarding lines 20-41
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
@@ -55,6 +56,7 @@ export class AllInterviews extends Component {
         <div className="allInterviewsContainer">
         {
           interviews.map((interview, index) => {
+            //maps interviews depending on index gives them different classnames for style purposes. creates links to single interview page
             return (
               index % 2 === 0 ?
               <div key={interview.id} className="rightSingleInterview">
@@ -91,6 +93,7 @@ export class AllInterviews extends Component {
   }
 }
 
+//puts artists and interviews in alphabetical order and blogs, saved artists, and user on props
 const mapState = ({artists, blogs, user, savedArtists, interviews}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
@@ -109,6 +112,7 @@ const mapState = ({artists, blogs, user, savedArtists, interviews}, ownProps) =>
     })
   }
 }
+//fetches blogs and artists and interviews and saved artists on props
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {

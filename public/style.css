@@ -1828,6 +1828,11 @@ nav a {
 
 .blogPost {
   margin-top: 40px;
+  text-align: center;
+}
+
+.blogPostText {
+  margin-bottom: 40px;
 }
 
 .commentContainer {

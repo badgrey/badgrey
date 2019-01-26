@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import '../../public/style.css'
 import {fetchArtists, fetchSavedArtists, fetchBlogs} from '../store'
 
+//component for artists under single genre
 export class SingleGenre extends Component{
 
   constructor(props) {
@@ -16,6 +17,7 @@ export class SingleGenre extends Component{
     this.handleSearch = this.handleSearch.bind(this)
   }
 
+  //if no genre artists fetch data
   componentDidMount () {
     if (this.props.genreArtists === []) {
       this.props.loadInitialData()
@@ -56,7 +58,7 @@ export class SingleGenre extends Component{
         <div className="state">
         {
           artists.map((artist) => (
-
+            //map over all artists that belong to chosen genre
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('') + `_${artist.id}`}`}>
                 <div className="artistName">
@@ -73,6 +75,7 @@ export class SingleGenre extends Component{
   }
 }
 
+//matches artists with route
 const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
     genreArtists: artists.filter((artist) => {

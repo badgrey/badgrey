@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewArtist } from '../store/artists'
 
+//state and genre options for dropdown
 const stateOptions = [
 'AL',
 'AK',
@@ -73,12 +74,14 @@ export class NewArtist extends Component {
 
   }
 
+  //if not admin redirects
   componentDidMount () {
     if (!this.props.isAdmin) {
       this.props.history.push('/')
     }
   }
 
+  //sends artist info to backend
   submit(event) {
     event.preventDefault();
     const urlName = event.target.name.value.split(' ').join('')
@@ -103,6 +106,7 @@ export class NewArtist extends Component {
         stateAbbrev: event.target.stateAbbrev.value
       }
     }
+    //checks to see if adding an artist that is already added
     let dup = false
     for (let i = 0; i < this.props.artists.length; i++) {
       if (this.props.artists[i].name === artistInfo.name) {

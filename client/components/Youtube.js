@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import YouTube from 'react-youtube';
 import {connect} from 'react-redux'
 
-
+//necessary component to display youtube videos
 export class YoutubePlayer extends Component {
 
   _onReady(event) {

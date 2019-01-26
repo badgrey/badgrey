@@ -21,6 +21,7 @@ export class AllUsers extends Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
 
+  //checks to make sure person accessing this componenet is an admin, and if all users have not been loaded to load the users
   componentDidMount() {
     if (!this.props.isAdmin) {
       this.props.history.push('/')
@@ -30,26 +31,31 @@ export class AllUsers extends Component {
     }
   }
 
+  //puts current user being viewed on state to show them visible to user
   view(user) {
     this.setState({selectedUser: user})
   }
 
+  //changes user to admin or reverse
   changeAdmin(evt, id, info) {
     evt.preventDefault()
     this.props.submitChange(id, info)
     this.props.history.push('/')
   }
 
+  //changes user to blogger or reverse
   changeBlogger(id, info) {
     this.props.submitChange(id, info)
     this.props.history.push('/')
   }
 
+  //change user to employee or reverse
   changeEmployee(id, info) {
     this.props.submitChange(id, info)
     this.props.history.push('/')
   }
 
+  //delete user
   deleteUser(id) {
     this.props.delete(id)
     this.props.history.push('/users')

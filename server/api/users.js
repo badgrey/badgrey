@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {User} = require('../db/models')
 module.exports = router
 
+//gets all users for admins.
 router.get('/', (req, res, next) => {
   User.findAll({
     // explicitly select only the id and email fields - even though
@@ -13,6 +14,7 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+//gets only users id and username
 router.get('/username', (req, res, next) => {
   User.findAll({
     attributes: ['id', 'username']
@@ -21,6 +23,7 @@ router.get('/username', (req, res, next) => {
   .catch(next)
 })
 
+//gets specific user by username
 router.get('/username/:username', (req, res, next) => {
   User.findAll({
     where: {
@@ -31,6 +34,7 @@ router.get('/username/:username', (req, res, next) => {
   .catch(next)
 })
 
+//gets specific user by email address
 router.get('/email/:email', (req, res, next) => {
   User.findAll({
     where: {
@@ -41,6 +45,7 @@ router.get('/email/:email', (req, res, next) => {
   .catch(next)
 })
 
+//deletes user
 router.delete('/delete/:id', (async (req, res, next) => {
   const user = await User.destroy({
     where: {
@@ -51,6 +56,7 @@ router.delete('/delete/:id', (async (req, res, next) => {
   res.json(user)
 }))
 
+//edits user
 router.put('/:id', async (req, res, next) => {
   const response = await User.update(req.body, {
     where: { id: req.params.id },

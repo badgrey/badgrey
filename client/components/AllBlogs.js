@@ -15,7 +15,7 @@ export class AllBlogs extends Component {
     this.saved = this.saved.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
   }
-
+  //see All artists componenet for comments regarding lines 18-40
   componentDidMount () {
     if (this.props.artists === []) {
       this.props.loadInitialData()
@@ -53,6 +53,7 @@ export class AllBlogs extends Component {
         <div className="blogsList">
           {
             blogs.map((blog) => {
+              //mapping over all blogs and creating links to individual blog pages
               return (
                 <Link className="allSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
                   <div className="homeSingleBlog">
@@ -76,6 +77,7 @@ export class AllBlogs extends Component {
   }
 }
 
+//putting artists and blogs sorted alphabetically saved artists and user on props
 const mapState = ({artists, blogs, user, savedArtists}, ownProps) => {
   return {
     artists: artists.sort((artistA, artistB) => {
@@ -93,6 +95,7 @@ const mapState = ({artists, blogs, user, savedArtists}, ownProps) => {
     })
   }
 }
+//putting load initial data and fetch saved on props
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {

@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import '../../public/style.css'
 import {fetchArtists, fetchSavedArtists, fetchBlogs} from '../store'
 
+//for indivisula states display of artists that live there
 export class State extends Component{
 
   constructor(props) {
@@ -16,6 +17,7 @@ export class State extends Component{
     this.handleSearch = this.handleSearch.bind(this)
   }
 
+  //load data if no artists
   componentDidMount () {
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
@@ -42,6 +44,7 @@ export class State extends Component{
   render() {
     const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
+      //if there are no artists in this state load informative message
       this.props.stateArtists.length === 0 ?
       <div className="noArtistsContainer">
         <div className="noArtists">
@@ -61,7 +64,7 @@ export class State extends Component{
         <div className="state">
         {
           artists.map((artist) => (
-
+            //map over artists and display link for their individual page
               <div key={artist.id}>
                 <Link className="artistPic" to={`/discover/${artist.stateAbbrev}/${artist.name.split(' ').join('') + `_${artist.id}`}`}>
                   <div className="artistName">

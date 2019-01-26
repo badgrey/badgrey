@@ -3,7 +3,9 @@ const nodemailer = require('nodemailer')
 const Mailgen = require('mailgen');
 module.exports = router
 
+//file sets up automated email for when signing up
 
+//creates mailgen and email with random number sent back through front end and sendsmail from specified email address
 router.post('/', (req, res, next) => {
   const mailGenerator = new Mailgen({
     theme: 'default',

@@ -1,6 +1,8 @@
 const router = require('express').Router()
 module.exports = router
 
+//traffic coming in through here will be routed to these routers below
+
 router.use('/users', require('./users'))
 router.use('/artists', require('./artists'))
 router.use('/send', require('./email'))

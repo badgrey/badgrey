@@ -3,10 +3,17 @@ const pkg = require('../../package.json')
 
 const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
-const db = new Sequelize(
-  process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`,
-  {
-    logging: false
+//creation of the database and connecting it to Amazon RDS
+
+const db = new Sequelize('badgrey', 'mlisonek98', 'itachi98', {
+  host: 'badgreyinstance.cg2sibkvqrfx.us-east-2.rds.amazonaws.com',
+  port: '5432',
+  logging: console.log(),
+  maxConcurrentQueries: 100,
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: 'Amazon RDS'
   }
+}
 )
 module.exports = db
