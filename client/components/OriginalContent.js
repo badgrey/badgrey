@@ -25,11 +25,23 @@ export class OriginalContent extends Component {
       youtubeId: event.target.oc.value
     }
     this.props.submitContent(info)
+    //this.props.history.push('/')
   }
 
   render() {
     return (
-      !this.props.originalcontent.length ? null :
+      !this.props.originalcontent.length ?
+      <div className="OCcontainerDiv">
+        <div className="OCheader">
+          <h1>Bad Grey Films</h1>
+          <form className="newOC" onSubmit={this.submit}>
+            <label>Add Original Content</label>
+            <input name="oc" type="text" required placeholder="Youtube ID" />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      :
       <div className="OCcontainerDiv">
         <div className="OCheader">
           <h1>Bad Grey Films</h1>
@@ -76,8 +88,8 @@ export class OriginalContent extends Component {
 const mapState = ({originalcontent, user}, ownProps) => {
   return {
     originalcontent: originalcontent.sort((ocA, ocB) => {
-      if (ocA.createdAt < ocB.createdAt) return -1
-      if (ocA.createdAt > ocB.createdAt) return 1
+      if (ocA.createdAt < ocB.createdAt) return 1
+      if (ocA.createdAt > ocB.createdAt) return -1
       return 0
     }),
     user,

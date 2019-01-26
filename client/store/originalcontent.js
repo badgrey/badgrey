@@ -63,7 +63,7 @@ export const fetchOriginalContent = () => async (dispatch) => {
 export const createNewOriginalContent = (oc) => async (dispatch) => {
   try {
     const newCreatedOriginalContent = await axios.post('/api/originalcontent/admin', oc)
-    return dispatch(newOriginalContent(newCreatedOriginalContent.data));
+    return dispatch(newOriginalContent(newCreatedOriginalContent.data[0]));
   }
   catch (err) {
     console.log(err)

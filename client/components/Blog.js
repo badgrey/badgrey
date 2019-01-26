@@ -66,21 +66,6 @@ export class Blog extends Component {
 
   // eslint-disable-next-line complexity
   render() {
-    console.log(this.props.chosenBlog)
-    // let chosenArtist
-    // this.props.chosenBlog.length === 0 ? null :
-    // chosenArtist = this.props.artists.filter((artist) => {
-    //   console.log(artist.id, this.props.chosenBlog[0].artistId)
-    //   return this.props.chosenBlog[0].artistId === artist.id
-    // })
-    // if (this.props.chosenBlog.length) {
-    //   console.log('MADE IT HERE')
-    //   chosenArtist = this.props.artists.filter((artist) => {
-    //     console.log(artist.id, this.props.chosenBlog[0].artistId)
-    //     return this.props.chosenBlog[0].artistId === artist.id
-    //   })
-    // }
-    //console.log(this.props.chosenArtist)
     const error = this.props.error.error
     if (error) {
       this.renderErrorMessage()
