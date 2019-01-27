@@ -14,7 +14,7 @@
     "prepush": "npm run lint && npm test",
     "postinstall": "touch secrets.js",
     "seed": "node script/seed.js",
-    "start": "node server & webpack -p",
+    "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "NODE_ENV='test' mocha ./server/**/*.spec.js ./server/**/**/*.spec.js ./client/**/*.spec.js --require @babel/polyfill --require @babel/register"
@@ -80,7 +80,6 @@
     "style-loader": "^0.21.0",
     "supertest": "^3.0.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9"
+    "webpack": "^4.0.1"
   }
 }
