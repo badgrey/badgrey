@@ -11,7 +11,7 @@ const BlogHomePage = (props) => (
         <Link className="mainBlogLink" to={`/allblogs/${props.blogs[0].id}`}>
           <div className="mainBlog">
             <div className="mainBlogPic">
-              <img src={require(`../../public/images/blogs/${props.blogs[0].blogPic}.jpg`)} />
+              <img src={props.blogs[0].blogPic} />
             </div>
             <div className="mainBlogInfo">
               <h1>{props.blogs[0].title}</h1>
@@ -31,7 +31,7 @@ const BlogHomePage = (props) => (
             <Link className="homeSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
               <div className="homeSingleBlog">
                 <div className="singleBlogPic">
-                  <img src={require(`../../public/images/blogs/${blog.blogPic}.jpg`)} />
+                  <img src={`url${(props.blogs[index].blogPic)}`} />
                 </div>
                 <div className="singleBlogInfo">
                   <h1>{blog.title}</h1>

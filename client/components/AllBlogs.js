@@ -58,7 +58,7 @@ export class AllBlogs extends Component {
                 <Link className="allSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
                   <div className="homeSingleBlog">
                     <div className="singleBlogPic">
-                      <img src={require(`../../public/images/blogs/${blog.blogPic}.jpg`)} />
+                      <img src={blog.blogPic} />
                     </div>
                     <div className="singleBlogInfo">
                       <h1>{blog.title}</h1>
