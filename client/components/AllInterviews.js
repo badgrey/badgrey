@@ -68,13 +68,13 @@ export class AllInterviews extends Component {
                   </Link>
                 </div>
                 <div className="singleInterviewPic">
-                  <img src={require(`../../public/images/artists/${interview.artist.stateAbbrev}/${interview.artist.imageURL}.jpg`)} />
+                  <img src={interview.artist.imageURL} />
                 </div>
               </div>
               :
               <div key={interview.id} className="leftSingleInterview">
                 <div className="singleInterviewPic">
-                  <img src={require(`../../public/images/artists/${interview.artist.stateAbbrev}/${interview.artist.imageURL}.jpg`)} />
+                  <img src={interview.artist.imageURL} />
                 </div>
                 <div className="leftSingleInterviewInfo">
                   <h1>{interview.artist.name}</h1>

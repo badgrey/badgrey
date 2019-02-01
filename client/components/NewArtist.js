@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewArtist } from '../store/artists'
+import axios from 'axios'
 
 //state and genre options for dropdown
 const stateOptions = [
@@ -71,7 +72,9 @@ export class NewArtist extends Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
-
+    this.state = {
+      file: null
+    }
   }
 
   //if not admin redirects
@@ -81,38 +84,72 @@ export class NewArtist extends Component {
     }
   }
 
+  //changes state to file name
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files});
+  }
+
   //sends artist info to backend
-  submit(event) {
+  async submit(event) {
+
     event.preventDefault();
-    const urlName = event.target.name.value.split(' ').join('')
+
     let artistInfo;
+    let name = event.target.name.value
+    let city = event.target.city.value
+    let soundcloudURL = event.target.soundcloudURL.value
+    let youtubeID
+
     if (event.target.youtubeID.value !== '') {
-      artistInfo = {
-        name: event.target.name.value,
-        city: event.target.city.value,
-        imageURL: event.target.imageURL.value,
-        soundcloudURL: event.target.soundcloudURL.value,
-        youtubeID: event.target.youtubeID.value.split(' '),
-        genre: event.target.genre.value,
-        stateAbbrev: event.target.stateAbbrev.value
-      }
-    } else {
-      artistInfo = {
-        name: event.target.name.value,
-        city: event.target.city.value,
-        imageURL: event.target.imageURL.value,
-        soundcloudURL: event.target.soundcloudURL.value,
-        genre: event.target.genre.value,
-        stateAbbrev: event.target.stateAbbrev.value
-      }
+      youtubeID = event.target.youtubeID.value.split(' ')
     }
+
+    let genre = event.target.genre.value
+    let stateAbbrev = event.target.stateAbbrev.value
+
     //checks to see if adding an artist that is already added
     let dup = false
     for (let i = 0; i < this.props.artists.length; i++) {
-      if (this.props.artists[i].name === artistInfo.name) {
+      if (this.props.artists[i].name === name) {
         dup = true
       }
     }
+
+    let picture
+
+    if (!dup) {
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+      console.log(formData, 'WHAT THE FUCK IS THIS')
+      picture = await axios.post('/api/uploadArtistPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+    }
+
+
+    if (youtubeID) {
+      artistInfo = {
+        name,
+        city,
+        imageURL: picture.data.Location,
+        soundcloudURL,
+        youtubeID,
+        genre,
+        stateAbbrev
+      }
+    } else {
+      artistInfo = {
+        name,
+        city,
+        imageURL: picture.data.Location,
+        soundcloudURL,
+        genre,
+        stateAbbrev
+      }
+    }
+
     if (!dup) {
       this.props.submitForm(artistInfo)
       this.props.history.push(`/discover/${artistInfo.stateAbbrev}`)
@@ -163,8 +200,8 @@ export class NewArtist extends Component {
               <input name="youtubeID" placeholder="ID Number" />
             </div>
             <div>
-              <label>Image File Name</label>
-              <input name="imageURL" type="text" required placeholder="NAME.jpg" />
+              <label>Uplaod Image</label>
+              <input name="imageURL" type="file" required onChange={this.handleFileUpload} />
             </div>
             </div>
           <button type="submit">Submit</button>

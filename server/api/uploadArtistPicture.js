@@ -19,16 +19,17 @@ AWS.config.setPromisesDependency(bluebird)
 const s3 = new AWS.S3()
 
 // abstracts function to upload a file returning a promise
-const uploadBlogFile = (buffer, name, type) => {
+const uploadArtistFile = (buffer, name, type) => {
   const params = {
     ACL: 'public-read',
     Body: buffer,
-    Bucket: process.env.BLOGS_BUCKET,
+    Bucket: process.env.ARTISTS_BUCKET,
     ContentType: type.mime,
     Key: `${name}.${type.ext}`
   };
   return s3.upload(params).promise();
 }
+
 
 // Define POST route
 router.post('/', (request, response) => {
@@ -41,11 +42,10 @@ router.post('/', (request, response) => {
         const type = fileType(buffer)
         const timestamp = Date.now().toString()
         const fileName = `${files.file[0].originalFilename}${timestamp}-lg`
-        const data = await uploadBlogFile(buffer, fileName, type)
+        const data = await uploadArtistFile(buffer, fileName, type)
         return response.status(200).send(data)
       } catch (error) {
         return response.status(400).send(error)
       }
     })
 })
-

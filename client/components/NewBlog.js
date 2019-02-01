@@ -15,7 +15,6 @@ export class NewBlog extends Component {
 
   //changes state to file name
   handleFileUpload = (event) => {
-    console.log(event.target.files)
     this.setState({file: event.target.files});
   }
 
@@ -24,10 +23,6 @@ export class NewBlog extends Component {
     if (!this.props.isBlogger) {
       this.props.history.push('/')
     }
-  }
-
-  handleChange = (event) => {
-    console.log(event.target.value)
   }
 
   //submits new blog info to database
@@ -51,7 +46,6 @@ export class NewBlog extends Component {
         'Content-Type': 'multipart/form-data'
       }
     })
-    console.log(picture.data.Location)
     let blogInfo = {
       blogInfo: {
         title,
@@ -92,7 +86,7 @@ export class NewBlog extends Component {
         </div>
         <div>
           <label>Artist</label>
-          <select onChange={this.handleChange} name="artist" type="text" required label="Artist">
+          <select name="artist" type="text" required label="Artist">
           <option value="" disabled selected>Artist</option>
             {
               this.props.artists.map((artist) => {
