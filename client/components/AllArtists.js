@@ -65,7 +65,7 @@ export class AllArtists extends Component{
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
-                  <img src={`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`} />
+                  <img src={artist.imageURL} />
                 </Link>
               </div>
           ))

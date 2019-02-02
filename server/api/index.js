@@ -10,6 +10,8 @@ router.use('/blog', require('./blog'))
 router.use('/comment', require('./comments'))
 router.use('/interview', require('./interview'))
 router.use('/originalcontent', require('./originalcontent'))
+router.use('/uploadBlogPicture', require('./uploadBlogPicture'))
+router.use('/uploadArtistPicture', require('./uploadArtistPicture'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

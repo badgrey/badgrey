@@ -71,7 +71,7 @@ export class SavedArtists extends Component{
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
-                  <img src={require(`../../public/images/artists/${artist.stateAbbrev}/${artist.imageURL}.jpg`)} />
+                  <img src={artist.imageURL} />
                 </Link>
                 <button
                 className="savedArtistsButton" onClick={() => {this.props.delete(artist.id)

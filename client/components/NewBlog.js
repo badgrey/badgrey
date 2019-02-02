@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewBlog } from '../store'
+import axios from 'axios'
 
 export class NewBlog extends Component {
 
   constructor(props) {
     super(props)
     this.submit = this.submit.bind(this)
+    this.state = {
+      file: null
+    }
+  }
+
+  //changes state to file name
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files});
   }
 
   //if not a blogger redirect
@@ -17,25 +26,41 @@ export class NewBlog extends Component {
   }
 
   //submits new blog info to database
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
+
     let chosenArtist = this.props.artists.filter((artist) => {
       return artist.name === event.target.artist.value
     })
+
+    let title = event.target.title.value
+    let author = event.target.author.value
+    let description = event.target.description.value
+    let blogPost = event.target.blogPost.value
+
+    const formData = new FormData();
+    formData.append('file', this.state.file[0]);
+
+    let picture = await axios.post('/api/uploadBlogPicture', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
     let blogInfo = {
       blogInfo: {
-        title: event.target.title.value,
-        author: event.target.author.value,
-        description: event.target.description.value,
-        blogPic: event.target.blogPic.value,
-        blogPost: event.target.blogPost.value,
+        title,
+        author,
+        description,
+        blogPic: picture.data.Location,
+        blogPost,
         date: new Date(),
       },
       user: this.props.user.id,
       artist: chosenArtist[0].id
     }
+
     this.props.submitForm(blogInfo)
-    this.props.history.push(`/allblogs/`)
+    this.props.history.push(`/`)
   }
 
   render() {
@@ -56,8 +81,8 @@ export class NewBlog extends Component {
           <input name="description" type="text" required placeholder="Description" />
         </div>
         <div>
-          <label>Image File Name</label>
-          <input name="blogPic" type="text" required placeholder="NAME.jpg" />
+          <label>Upload Image</label>
+          <input name="blogPic" type="file" required onChange={this.handleFileUpload} />
         </div>
         <div>
           <label>Artist</label>

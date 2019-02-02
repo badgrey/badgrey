@@ -118,7 +118,7 @@ export class Blog extends Component {
         </div>
         <div className="blogPicDescription">
           <div className="singleBlogBannerDiv">
-            <img className="singleBlogBanner" src={require(`../../public/images/blogs/${this.props.chosenBlog[0].blogPic}.jpg`)} />
+            <img className="singleBlogBanner" src={this.props.chosenBlog[0].blogPic} />
           </div>
           <h5>{this.props.chosenBlog[0].description}</h5>
         </div>
