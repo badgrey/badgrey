@@ -31,7 +31,7 @@ const BlogHomePage = (props) => (
             <Link className="homeSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
               <div className="homeSingleBlog">
                 <div className="singleBlogPic">
-                  <img src={`url${(props.blogs[index].blogPic)}`} />
+                  <img src={props.blogs[index].blogPic} />
                 </div>
                 <div className="singleBlogInfo">
                   <h1>{blog.title}</h1>

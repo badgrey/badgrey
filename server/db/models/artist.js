@@ -14,7 +14,8 @@ const Artist = db.define('artist', {
   },
   imageURL: {
    type: Sequelize.STRING,
-   allowNull: false
+   allowNull: false,
+   unique: true
   },
   soundcloudURL: {
     type: Sequelize.STRING
@@ -29,6 +30,11 @@ const Artist = db.define('artist', {
   stateAbbrev: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  fileKey: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
   }
 }, {
  getterMethods: {

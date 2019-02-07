@@ -70,7 +70,11 @@ const genreOptions = [
 export class EditArtist extends Component {
   constructor(props) {
     super(props);
-    this.submit = this.submit.bind(this);
+    this.submit = this.submit.bind(this)
+    this.state = {
+      changePic: false,
+      file: null
+    }
   }
 
   //if you are not admin you are redirected to home
@@ -78,6 +82,16 @@ export class EditArtist extends Component {
     if (!this.props.isAdmin) {
       this.props.history.push('/')
     }
+  }
+
+  handleChange = () => {
+    this.setState({changePic: !this.state.changePic})
+  }
+
+  //changes state to file name
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files})
+    console.log(this.state.file)
   }
 
   //submit form info to backend
@@ -153,10 +167,18 @@ export class EditArtist extends Component {
                 <label>Youtube ID</label>
                 <input name="youtubeID" defaultValue={this.props.chosenArtist[0].youtubeID} />
               </div>
-              <div>
-                <label>Image File Name</label>
-                <input name="imageURL" type="text" required defaultValue={this.props.chosenArtist[0].imageURL} />
-              </div>
+              {
+                !this.state.changePic ?
+                <div>
+                  <label>Image File</label>
+                  <button onClick={this.handleChange}>Change Image</button>
+                </div>
+                :
+                <div>
+                  <label>Upload Image</label>
+                  <input name="imageURL" type="file" required onChange={this.handleFileUpload} />
+                </div>
+              }
             </div>
           <button type="submit">Submit</button>
         </form>
@@ -169,7 +191,8 @@ export class EditArtist extends Component {
 const mapState = ({artists, user}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
-      return artist.name.split(' ').join('') === ownProps.match.params.artist
+      let targetArtist = ownProps.match.params.artist.split('_')[0]
+      return artist.name.split(' ').join('') === targetArtist
     }),
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
