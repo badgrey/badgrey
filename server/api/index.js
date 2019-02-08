@@ -12,6 +12,9 @@ router.use('/interview', require('./interview'))
 router.use('/originalcontent', require('./originalcontent'))
 router.use('/uploadBlogPicture', require('./uploadBlogPicture'))
 router.use('/uploadArtistPicture', require('./uploadArtistPicture'))
+router.use('/deleteArtistPicture', require('./deleteArtistPicture'))
+router.use('/deleteBlogPicture', require('./deleteBlogPicture'))
+
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

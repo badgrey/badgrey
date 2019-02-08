@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {editCurrentBlog} from '../store'
+import axios from 'axios'
 
 export class EditBlog extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      changePic: false,
+      file: null
+    }
     this.submit = this.submit.bind(this)
   }
 
@@ -16,16 +21,54 @@ export class EditBlog extends Component {
     }
   }
 
+  handleChange = () => {
+    this.setState({changePic: !this.state.changePic})
+  }
+
+  //changes state to file name
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files})
+    console.log(event.target.files[0].name)
+  }
+
   //submit all info to backend to edit blog
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
-    let blogInfo = {
-        title: event.target.title.value,
-        author: event.target.author.value,
-        description: event.target.description.value,
-        blogPic: event.target.blogPic.value,
-        blogPost: event.target.blogPost.value,
+    let title = event.target.title.value
+    let author = event.target.author.value
+    let description = event.target.description.value
+    let blogPost = event.target.blogPost.value
+    let blogInfo
+
+    if (this.state.changePic) {
+
+      await axios.post('/api/deleteBlogPicture', {name: this.props.chosenBlog[0].fileKey})
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+
+      let picture = await axios.post('/api/uploadBlogPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      blogInfo = {
+        title,
+        author,
+        description,
+        blogPic: picture.data.Location,
+        blogPost,
       }
+    } else {
+      blogInfo = {
+          title: event.target.title.value,
+          author: event.target.author.value,
+          description: event.target.description.value,
+          blogPic: this.props.chosenBlog[0].blogPic,
+          blogPost: event.target.blogPost.value,
+        }
+
+    }
+
     this.props.submitForm(this.props.chosenBlog[0].id, blogInfo)
     this.props.history.push(`/allblogs/${this.props.chosenBlog[0].id}`)
   }
@@ -47,10 +90,18 @@ export class EditBlog extends Component {
             <label>Description</label>
             <input name="description" type="text" required defaultValue={this.props.chosenBlog[0].description} />
           </div>
-          <div>
-            <label>Image File Name</label>
-            <input name="blogPic" type="text" required defaultValue={this.props.chosenBlog[0].blogPic} />
-          </div>
+          {
+            !this.state.changePic ?
+            <div>
+              <label>Image File</label>
+              <button onClick={this.handleChange}>Change Image</button>
+            </div>
+            :
+            <div>
+              <label>Upload Image</label>
+              <input name="blogPic" type="file" required onChange={this.handleFileUpload} />
+            </div>
+          }
           <div>
             <label>Blog Post</label>
             <textarea name="blogPost" defaultValue={this.props.chosenBlog[0].blogPost} />

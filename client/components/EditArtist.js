@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {editCurrentArtist} from '../store'
+import axios from 'axios'
 
 //state and genre options for drop down
 const stateOptions = [
@@ -91,34 +92,79 @@ export class EditArtist extends Component {
   //changes state to file name
   handleFileUpload = (event) => {
     this.setState({file: event.target.files})
-    console.log(this.state.file)
+    console.log(event.target.files[0].name)
   }
 
   //submit form info to backend
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
     const urlName = event.target.name.value.split(' ').join('')
     let artistInfo;
-    if (event.target.youtubeID.value !== '') {
-      artistInfo = {
-        name: event.target.name.value,
-        city: event.target.city.value,
-        imageURL: event.target.imageURL.value,
-        soundcloudURL: event.target.soundcloudURL.value,
-        youtubeID: event.target.youtubeID.value.split(' '),
-        genre: event.target.genre.value,
-        stateAbbrev: event.target.stateAbbrev.value
+    let name = event.target.name.value
+    let city = event.target.city.value
+    let soundcloudURL = event.target.soundcloudURL.value
+    let youtubeID = event.target.youtubeID.value.split(' ')
+    let genre = event.target.genre.value
+    let stateAbbrev = event.target.stateAbbrev.value
+    let picture
+
+    if (this.state.changePic) {
+      await axios.post('/api/deleteArtistPicture', {name: this.props.chosenArtist[0].fileKey})
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+      picture = await axios.post('/api/uploadArtistPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      let key = picture.data.Location.split('/')
+      if (youtubeID !== '') {
+        artistInfo = {
+          name,
+          city,
+          imageURL: picture.data.Location,
+          soundcloudURL,
+          youtubeID,
+          genre,
+          stateAbbrev,
+          fileKey: key[key.length]
+        }
+      } else {
+        artistInfo = {
+          name,
+          city,
+          imageURL: picture.data.Location,
+          soundcloudURL,
+          genre,
+          stateAbbrev,
+          fileKey: key[key.length]
+        }
       }
     } else {
-      artistInfo = {
-        name: event.target.name.value,
-        city: event.target.city.value,
-        imageURL: event.target.imageURL.value,
-        soundcloudURL: event.target.soundcloudURL.value,
-        genre: event.target.genre.value,
-        stateAbbrev: event.target.stateAbbrev.value
+      if (youtubeID !== '') {
+        artistInfo = {
+          name,
+          city,
+          imageURL: this.props.chosenArtist[0].imageURL,
+          soundcloudURL,
+          youtubeID,
+          genre,
+          stateAbbrev,
+          fileKey: this.props.chosenArtist[0].fileKey
+        }
+      } else {
+        artistInfo = {
+          name,
+          city,
+          imageURL: this.props.chosenArtist[0].imageURL,
+          soundcloudURL,
+          genre,
+          stateAbbrev,
+          fileKey: this.props.chosenArtist[0].fileKey
+        }
       }
     }
+
     //submits then pushes new route to new artists page
     this.props.submitForm(this.props.chosenArtist[0].id, artistInfo)
     this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName + `_${this.props.chosenArtist[0].id}`}`)

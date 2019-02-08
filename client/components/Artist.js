@@ -4,6 +4,7 @@ import '../../public/style.css'
 import {YoutubePlayer} from './index'
 import {fetchArtists, deleteCurrentArtist, fetchSavedArtists, addNewSavedArtist, fetchBlogs, fetchArtistComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentArtist, dislikeCurrentArtist, fetchInterviews, deleteError} from '../store'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 //individual artist page component
 export class Artist extends Component{
@@ -34,7 +35,8 @@ export class Artist extends Component{
   }
 
   //deletes artist
-  deleteArtist() {
+  async deleteArtist() {
+    await axios.post('/api/deleteArtistPicture', {name: this.props.chosenArtist[0].fileKey})
     const state = this.props.chosenArtist[0].stateAbbrev
     this.props.delete(this.props.chosenArtist[0].id)
     this.props.history.push(`/discover/${state}`)
