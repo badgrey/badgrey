@@ -27,6 +27,11 @@ const Blog = db.define('blog', {
   blogPost: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  fileKey: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
   }
 })
 

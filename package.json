@@ -46,6 +46,7 @@
     "prop-types": "^15.5.8",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-infinite": "^0.13.0",
     "react-redux": "^5.0.7",
     "react-resize-image": "^1.0.4",
     "react-router-dom": "^4.1.1",
