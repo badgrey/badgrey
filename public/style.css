@@ -48,6 +48,7 @@ form div {
   }
 }
 
+
 /* Map Styles */
 
 path {
@@ -423,6 +424,7 @@ nav a {
 
 .artistsDiv {
   margin-top: 40px;
+  height: 1000px;
 }
 
 .title {
@@ -448,13 +450,17 @@ nav a {
 }
 
 .artistPic:hover {
+  transform: scale(1.2);
+}
+
+.artistPic img:hover {
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
   color:whitesmoke;
-  transform: scale(1.2);
 }
 .artistPic:hover .artistName {
   opacity: 1;
+  z-index: 10;
 }
 
 .artistPic img {
@@ -505,9 +511,6 @@ nav a {
 
   .artistsDiv {
     width: 32em;
-  }
-  .state {
-    margin-left: 0px;
   }
   .artistPic {
     height: 85px;

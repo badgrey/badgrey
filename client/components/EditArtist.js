@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {editCurrentArtist} from '../store'
+import axios from 'axios'
 
 //state and genre options for drop down
 const stateOptions = [
@@ -70,7 +71,11 @@ const genreOptions = [
 export class EditArtist extends Component {
   constructor(props) {
     super(props);
-    this.submit = this.submit.bind(this);
+    this.submit = this.submit.bind(this)
+    this.state = {
+      changePic: false,
+      file: null
+    }
   }
 
   //if you are not admin you are redirected to home
@@ -80,31 +85,86 @@ export class EditArtist extends Component {
     }
   }
 
+  handleChange = () => {
+    this.setState({changePic: !this.state.changePic})
+  }
+
+  //changes state to file name
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files})
+    console.log(event.target.files[0].name)
+  }
+
   //submit form info to backend
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
     const urlName = event.target.name.value.split(' ').join('')
     let artistInfo;
-    if (event.target.youtubeID.value !== '') {
-      artistInfo = {
-        name: event.target.name.value,
-        city: event.target.city.value,
-        imageURL: event.target.imageURL.value,
-        soundcloudURL: event.target.soundcloudURL.value,
-        youtubeID: event.target.youtubeID.value.split(' '),
-        genre: event.target.genre.value,
-        stateAbbrev: event.target.stateAbbrev.value
+    let name = event.target.name.value
+    let city = event.target.city.value
+    let soundcloudURL = event.target.soundcloudURL.value
+    let youtubeID = event.target.youtubeID.value.split(' ')
+    let genre = event.target.genre.value
+    let stateAbbrev = event.target.stateAbbrev.value
+    let picture
+
+    if (this.state.changePic) {
+      await axios.post('/api/deleteArtistPicture', {name: this.props.chosenArtist[0].fileKey})
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+      picture = await axios.post('/api/uploadArtistPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      let key = picture.data.Location.split('/')
+      if (youtubeID !== '') {
+        artistInfo = {
+          name,
+          city,
+          imageURL: picture.data.Location,
+          soundcloudURL,
+          youtubeID,
+          genre,
+          stateAbbrev,
+          fileKey: key[key.length]
+        }
+      } else {
+        artistInfo = {
+          name,
+          city,
+          imageURL: picture.data.Location,
+          soundcloudURL,
+          genre,
+          stateAbbrev,
+          fileKey: key[key.length]
+        }
       }
     } else {
-      artistInfo = {
-        name: event.target.name.value,
-        city: event.target.city.value,
-        imageURL: event.target.imageURL.value,
-        soundcloudURL: event.target.soundcloudURL.value,
-        genre: event.target.genre.value,
-        stateAbbrev: event.target.stateAbbrev.value
+      if (youtubeID !== '') {
+        artistInfo = {
+          name,
+          city,
+          imageURL: this.props.chosenArtist[0].imageURL,
+          soundcloudURL,
+          youtubeID,
+          genre,
+          stateAbbrev,
+          fileKey: this.props.chosenArtist[0].fileKey
+        }
+      } else {
+        artistInfo = {
+          name,
+          city,
+          imageURL: this.props.chosenArtist[0].imageURL,
+          soundcloudURL,
+          genre,
+          stateAbbrev,
+          fileKey: this.props.chosenArtist[0].fileKey
+        }
       }
     }
+
     //submits then pushes new route to new artists page
     this.props.submitForm(this.props.chosenArtist[0].id, artistInfo)
     this.props.history.push(`/discover/${artistInfo.stateAbbrev}/${urlName + `_${this.props.chosenArtist[0].id}`}`)
@@ -153,10 +213,18 @@ export class EditArtist extends Component {
                 <label>Youtube ID</label>
                 <input name="youtubeID" defaultValue={this.props.chosenArtist[0].youtubeID} />
               </div>
-              <div>
-                <label>Image File Name</label>
-                <input name="imageURL" type="text" required defaultValue={this.props.chosenArtist[0].imageURL} />
-              </div>
+              {
+                !this.state.changePic ?
+                <div>
+                  <label>Image File</label>
+                  <button onClick={this.handleChange}>Change Image</button>
+                </div>
+                :
+                <div>
+                  <label>Upload Image</label>
+                  <input name="imageURL" type="file" required onChange={this.handleFileUpload} />
+                </div>
+              }
             </div>
           <button type="submit">Submit</button>
         </form>
@@ -169,7 +237,8 @@ export class EditArtist extends Component {
 const mapState = ({artists, user}, ownProps) => {
   return {
     chosenArtist: artists.filter((artist) => {
-      return artist.name.split(' ').join('') === ownProps.match.params.artist
+      let targetArtist = ownProps.match.params.artist.split('_')[0]
+      return artist.name.split(' ').join('') === targetArtist
     }),
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1

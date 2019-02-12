@@ -2,10 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../../public/style.css'
+import LazyLoad from 'react-lazyload'
 import {fetchArtists, fetchSavedArtists, fetchBlogs} from '../store'
 
 
-//componnt for all artists page
+//component for all artists page
 export class AllArtists extends Component{
 
   constructor(props) {
@@ -65,7 +66,9 @@ export class AllArtists extends Component{
                   <div className="artistName">
                     <div className="artistNameText">{artist.name}</div>
                   </div>
-                  <img src={artist.imageURL} />
+                  <LazyLoad height={200}>
+                    <img src={artist.imageURL} />
+                  </LazyLoad>
                 </Link>
               </div>
           ))

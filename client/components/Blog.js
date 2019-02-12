@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import '../../public/style.css'
 import {fetchBlogs, deleteCurrentBlog, fetchArtists, fetchSavedArtists, fetchComments, createNewComment, deleteCurrentComment, likeCurrentComment, dislikeCurrentComment, likeCurrentBlog, dislikeCurrentBlog, deleteError} from '../store'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
 export class Blog extends Component {
@@ -30,7 +31,8 @@ export class Blog extends Component {
   }
 
   //deletes blog
-  deleteBlog() {
+  async deleteBlog() {
+    await axios.post('/api/deleteBlogPicture', {name: this.props.chosenBlog[0].fileKey})
     this.props.delete(this.props.chosenBlog[0].id)
     this.props.history.push('/allblogs')
   }

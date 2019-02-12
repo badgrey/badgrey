@@ -120,7 +120,6 @@ export class NewArtist extends Component {
     if (!dup) {
       const formData = new FormData();
       formData.append('file', this.state.file[0]);
-      console.log(formData, 'WHAT THE FUCK IS THIS')
       picture = await axios.post('/api/uploadArtistPicture', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
