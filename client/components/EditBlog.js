@@ -39,24 +39,26 @@ export class EditBlog extends Component {
     let description = event.target.description.value
     let blogPost = event.target.blogPost.value
     let blogInfo
+    let picture
 
     if (this.state.changePic) {
 
       await axios.post('/api/deleteBlogPicture', {name: this.props.chosenBlog[0].fileKey})
       const formData = new FormData();
-      formData.append('file', this.state.file[0]);
-
-      let picture = await axios.post('/api/uploadBlogPicture', formData, {
+      formData.append('file', this.state.file[0])
+      picture = await axios.post('/api/uploadBlogPicture', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
+      let key = picture.data.Location.split('/')
       blogInfo = {
         title,
         author,
         description,
         blogPic: picture.data.Location,
         blogPost,
+        fileKey: key[key.length - 1]
       }
     } else {
       blogInfo = {
@@ -65,6 +67,7 @@ export class EditBlog extends Component {
           description: event.target.description.value,
           blogPic: this.props.chosenBlog[0].blogPic,
           blogPost: event.target.blogPost.value,
+          fileKey: this.props.chosenBlog[0].fileKey
         }
 
     }

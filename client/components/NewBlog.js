@@ -46,6 +46,7 @@ export class NewBlog extends Component {
         'Content-Type': 'multipart/form-data'
       }
     })
+    let key = picture.data.Location.split('/')
     let blogInfo = {
       blogInfo: {
         title,
@@ -54,6 +55,7 @@ export class NewBlog extends Component {
         blogPic: picture.data.Location,
         blogPost,
         date: new Date(),
+        fileKey: key[key.length - 1]
       },
       user: this.props.user.id,
       artist: chosenArtist[0].id
