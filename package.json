@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build-client": "webpack",
+    "build-client": "webpack --config webpack.prod.js",
     "build-client-watch": "webpack -w",
     "deploy": "script/deploy",
     "lint": "eslint ./ --ignore-path .gitignore",
@@ -70,6 +70,7 @@
     "babel-eslint": "^8.0.1",
     "babel-loader": "^8.0.0-beta.2",
     "chai": "^3.5.0",
+    "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^0.28.11",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
@@ -77,6 +78,7 @@
     "eslint-config-fullstack": "^3.0.0",
     "eslint-plugin-react": "^7.4.0",
     "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
     "mocha": "^3.3.0",
     "nodemon": "^1.12.1",
     "react-test-renderer": "^16.0.0",
@@ -86,6 +88,7 @@
     "supertest": "^3.0.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.0.1",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-merge": "^4.2.1"
   }
 }
