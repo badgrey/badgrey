@@ -11,7 +11,7 @@ html {
 
 #app{
   background: no-repeat center url('./images/websitebackground.png');
-  background-size: 90%;
+  background-size: 80%;
   background-attachment: fixed;
 }
 
@@ -1015,7 +1015,7 @@ nav a {
 /* Artist Form Creation Styles */
 
 #newArtistForm {
-  height: 60vh;
+  height: 70vh;
 }
 
 #newInterviewForm {
@@ -1025,13 +1025,19 @@ nav a {
 .form {
   margin:3em 0 0 0;
   width: 50vw;
-  height: 55vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   border: 1.2px solid black;
   border-radius: 4px;
+}
+
+.viewMoreButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4em;
 }
 
 .outerForm {
@@ -1575,7 +1581,8 @@ nav a {
   font-size: 11px;
 }
 .mainBlogInfo h3 {
-  font-size: 14px;
+  font-size: 18px;
+  width: 27em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1591,8 +1598,16 @@ nav a {
     margin-top: .2em;
     margin-right: 1em;
   }
+  .mainBlogInfo h3 {
+    font-size: 10px;
+    width: 11px;
+  }
+  .mainBlogInfo h2
   .homeSingleBlog {
     height: 13em;
+  }
+  .mainBlogInfo h4 {
+    font-size: 8px;
   }
   .singleBlogPic {
     width: 50%;
@@ -1636,6 +1651,21 @@ nav a {
     height: 3em;
     font-size: 1.2em;
   }
+  .mainBlogInfo h2 {
+    font-size: 14px;
+  }
+  .mainBlogInfo h3 {
+    font-size: 15px;
+    width: 23em;
+}
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .mainBlogInfo h3 {
+    font-size: 18px;
+    width: 28em;
+  }
+
 }
 
 @media only screen and (min-width: 1800px) {

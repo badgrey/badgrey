@@ -37,6 +37,7 @@ export class NewBlog extends Component {
     let author = event.target.author.value
     let description = event.target.description.value
     let blogPost = event.target.blogPost.value
+    let spotifyURL = event.target.spotify.value
 
     const formData = new FormData();
     formData.append('file', this.state.file[0]);
@@ -54,6 +55,7 @@ export class NewBlog extends Component {
         description,
         blogPic: picture.data.Location,
         blogPost,
+        spotifyURL,
         date: new Date(),
         fileKey: key[key.length - 1]
       },
@@ -81,6 +83,10 @@ export class NewBlog extends Component {
         <div>
           <label>Description</label>
           <input name="description" type="text" required placeholder="Description" />
+        </div>
+        <div>
+          <label>Spotify URL</label>
+          <input name="spotify" type="text" required placeholder="Spotify URL" />
         </div>
         <div>
           <label>Upload Image</label>

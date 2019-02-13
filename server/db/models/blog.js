@@ -32,6 +32,9 @@ const Blog = db.define('blog', {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
+  },
+  spotifyURL: {
+    type: Sequelize.STRING
   }
 })
 

@@ -38,6 +38,7 @@ export class EditBlog extends Component {
     let author = event.target.author.value
     let description = event.target.description.value
     let blogPost = event.target.blogPost.value
+    let spotifyURL = event.target.spotify.value
     let blogInfo
     let picture
 
@@ -58,15 +59,17 @@ export class EditBlog extends Component {
         description,
         blogPic: picture.data.Location,
         blogPost,
+        spotifyURL,
         fileKey: key[key.length - 1]
       }
     } else {
       blogInfo = {
-          title: event.target.title.value,
-          author: event.target.author.value,
-          description: event.target.description.value,
+          title,
+          author,
+          description,
+          spotifyURL,
           blogPic: this.props.chosenBlog[0].blogPic,
-          blogPost: event.target.blogPost.value,
+          blogPost,
           fileKey: this.props.chosenBlog[0].fileKey
         }
 
@@ -92,6 +95,10 @@ export class EditBlog extends Component {
           <div>
             <label>Description</label>
             <input name="description" type="text" required defaultValue={this.props.chosenBlog[0].description} />
+          </div>
+          <div>
+            <label>Spotify URL</label>
+            <input name="spotify" type="text" required placeholder="Spotify URL" />
           </div>
           {
             !this.state.changePic ?

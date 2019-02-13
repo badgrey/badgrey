@@ -134,7 +134,7 @@ export class Artist extends Component{
               //displays admin buttons for edit or delete if admin
               !this.props.isLoggedIn && !this.props.isAdmin ? null :
               <div className="adminButtons">
-                <Link id="editButton"to={`/edit/${this.props.match.params.artist}`}>
+                <Link id="editButton" to={`/edit/${this.props.match.params.artist}`}>
                   <button className="editdelete">Edit Artist Info</button>
                 </Link>
                 <button className="editdelete" onClick={this.deleteArtist} >DELETE ARTIST</button>
