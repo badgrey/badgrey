@@ -1572,6 +1572,7 @@ nav a {
   color: white;
   margin-top: 5em;
   margin-right: 2em;
+  margin-left: 2em;
 }
 
 .mainBlogInfo h1 {
@@ -1597,6 +1598,7 @@ nav a {
   .mainBlogInfo {
     margin-top: .2em;
     margin-right: 1em;
+    margin-left: 1em;
   }
   .mainBlogInfo h3 {
     font-size: 10px;
@@ -1676,9 +1678,6 @@ nav a {
   .mainBlogPic {
     width: 53em;
     height: 45em;
-  }
-  .mainBlogInfo {
-    margin-right: 0em;
   }
   .mainBlogInfo h1 {
     font-size: 6em;
