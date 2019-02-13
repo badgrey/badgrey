@@ -122,7 +122,6 @@ export class Blog extends Component {
           <div className="singleBlogBannerDiv">
             <img className="singleBlogBanner" src={this.props.chosenBlog[0].blogPic} />
           </div>
-          <h5>{this.props.chosenBlog[0].description}</h5>
         </div>
         <div className="blogPost">
         {
@@ -132,6 +131,7 @@ export class Blog extends Component {
            )
          })
         }
+        <iframe src={this.props.chosenBlog[0].spotifyURL} width="600" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media" />
         </div>
         <div className="commentContainer">
             <form onSubmit={this.postComment} id="form" className="commentForm">

@@ -11,7 +11,7 @@ html {
 
 #app{
   background: no-repeat center url('./images/websitebackground.png');
-  background-size: 90%;
+  background-size: 80%;
   background-attachment: fixed;
 }
 
@@ -1015,7 +1015,7 @@ nav a {
 /* Artist Form Creation Styles */
 
 #newArtistForm {
-  height: 60vh;
+  height: 70vh;
 }
 
 #newInterviewForm {
@@ -1025,13 +1025,19 @@ nav a {
 .form {
   margin:3em 0 0 0;
   width: 50vw;
-  height: 55vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   border: 1.2px solid black;
   border-radius: 4px;
+}
+
+.viewMoreButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4em;
 }
 
 .outerForm {
@@ -1192,6 +1198,7 @@ nav a {
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  height: 100vh;
 }
 
 .editEmail {
@@ -1301,17 +1308,21 @@ nav a {
   transform: scale(1.2);
 }
 
+.noSavedContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
 .noSaved {
-  align-items: center;
   text-align: center;
   border: solid black;
   height: 126px;
-  width: 445px;
+  width: 50%;
   margin-top: 74px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 356px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1323,21 +1334,20 @@ nav a {
     height: 19px;
   }
   .noSaved {
-    width: 420px;
-    margin-left: 0;
+    height: 180px;
   }
 }
 @media only screen and (min-width: 600px) and (max-width:900px) {
-  .noSaved {
+  /* .noSaved {
     margin-left: 19em;
-  }
+  } */
 }
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .noSaved {
     height: 15em;
     width: 39em;
     margin-top: 74px;
-    margin-left: 35em;
+    /* margin-left: 35em; */
   }
   .noSaved h2{
     font-size: 2.5em;
@@ -1356,7 +1366,7 @@ nav a {
     height: 30em;
     width: 74em;
     margin-top: 74px;
-    margin-left: 56em;
+    /* margin-left: 56em; */
   }
   .noSaved h2 {
     font-size: 4em;
@@ -1566,6 +1576,7 @@ nav a {
   color: white;
   margin-top: 5em;
   margin-right: 2em;
+  margin-left: 2em;
 }
 
 .mainBlogInfo h1 {
@@ -1575,7 +1586,8 @@ nav a {
   font-size: 11px;
 }
 .mainBlogInfo h3 {
-  font-size: 14px;
+  font-size: 18px;
+  width: 27em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1590,9 +1602,18 @@ nav a {
   .mainBlogInfo {
     margin-top: .2em;
     margin-right: 1em;
+    margin-left: 1em;
   }
+  .mainBlogInfo h3 {
+    font-size: 10px;
+    width: 11px;
+  }
+  .mainBlogInfo h2
   .homeSingleBlog {
     height: 13em;
+  }
+  .mainBlogInfo h4 {
+    font-size: 8px;
   }
   .singleBlogPic {
     width: 50%;
@@ -1636,6 +1657,21 @@ nav a {
     height: 3em;
     font-size: 1.2em;
   }
+  .mainBlogInfo h2 {
+    font-size: 14px;
+  }
+  .mainBlogInfo h3 {
+    font-size: 15px;
+    width: 23em;
+}
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .mainBlogInfo h3 {
+    font-size: 18px;
+    width: 28em;
+  }
+
 }
 
 @media only screen and (min-width: 1800px) {
@@ -1646,9 +1682,6 @@ nav a {
   .mainBlogPic {
     width: 53em;
     height: 45em;
-  }
-  .mainBlogInfo {
-    margin-right: 0em;
   }
   .mainBlogInfo h1 {
     font-size: 6em;
@@ -2448,6 +2481,10 @@ nav a {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.submitContainerDiv {
+  height: 100vh;
 }
 
 .submitContainer h3 h4 h5 h6{

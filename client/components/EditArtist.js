@@ -127,7 +127,7 @@ export class EditArtist extends Component {
           youtubeID,
           genre,
           stateAbbrev,
-          fileKey: key[key.length]
+          fileKey: key[key.length - 1]
         }
       } else {
         artistInfo = {
@@ -137,7 +137,7 @@ export class EditArtist extends Component {
           soundcloudURL,
           genre,
           stateAbbrev,
-          fileKey: key[key.length]
+          fileKey: key[key.length - 1]
         }
       }
     } else {

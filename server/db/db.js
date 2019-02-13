@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize')
-const pkg = require('../../package.json')
+//const pkg = require('../../package.json')
+require('../../secrets')
 
-const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
+//const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
 //creation of the database and connecting it to Amazon RDS
 
-const db = new Sequelize('badgrey', 'mlisonek98', 'itachi98', {
+const db = new Sequelize(process.env.DBNAME, process.env.DBUSER, process.env.DBPASSWORD, {
   host: 'badgreyinstance.cg2sibkvqrfx.us-east-2.rds.amazonaws.com',
   port: '5432',
   logging: console.log(),

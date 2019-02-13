@@ -20,6 +20,10 @@ const Artist = db.define('artist', {
   soundcloudURL: {
     type: Sequelize.STRING
   },
+  spotifyURL: {
+    type: Sequelize.STRING,
+    defaultValue: ''
+  },
   youtubeID: {
     type: Sequelize.ARRAY(Sequelize.TEXT)
   },

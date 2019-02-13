@@ -126,6 +126,7 @@ export class NewArtist extends Component {
         }
       })
     }
+    let key = picture.data.Location.split('/')
 
 
     if (youtubeID) {
@@ -136,7 +137,8 @@ export class NewArtist extends Component {
         soundcloudURL,
         youtubeID,
         genre,
-        stateAbbrev
+        stateAbbrev,
+        fileKey: key[key.length - 1]
       }
     } else {
       artistInfo = {
@@ -145,7 +147,8 @@ export class NewArtist extends Component {
         imageURL: picture.data.Location,
         soundcloudURL,
         genre,
-        stateAbbrev
+        stateAbbrev,
+        fileKey: key[key.length - 1]
       }
     }
 

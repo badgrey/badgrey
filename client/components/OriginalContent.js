@@ -56,6 +56,7 @@ export class OriginalContent extends Component {
             //maps over all youtube ids and displays original content
             this.props.originalcontent.map((oc) => {
               return (
+
                 <div key={oc.id} className="singleoc">
                     <YoutubePlayer ytID={oc.youtubeId} />
                     <div className="likesDislikes">
@@ -78,6 +79,9 @@ export class OriginalContent extends Component {
               )
             })
           }
+        </div>
+        <div className="viewMoreButton">
+          <button className="allArtistsButton" onClick={() => window.open('https://www.youtube.com/channel/UCcGcK4KeoexHv2A4cf54LOQ/featured', '_blank')}>View More</button>
         </div>
       </div>
     )
