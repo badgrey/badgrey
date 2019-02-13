@@ -1198,6 +1198,7 @@ nav a {
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  height: 100vh;
 }
 
 .editEmail {
@@ -1307,17 +1308,21 @@ nav a {
   transform: scale(1.2);
 }
 
+.noSavedContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
 .noSaved {
-  align-items: center;
   text-align: center;
   border: solid black;
   height: 126px;
-  width: 445px;
+  width: 50%;
   margin-top: 74px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 356px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1329,21 +1334,20 @@ nav a {
     height: 19px;
   }
   .noSaved {
-    width: 420px;
-    margin-left: 0;
+    height: 180px;
   }
 }
 @media only screen and (min-width: 600px) and (max-width:900px) {
-  .noSaved {
+  /* .noSaved {
     margin-left: 19em;
-  }
+  } */
 }
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .noSaved {
     height: 15em;
     width: 39em;
     margin-top: 74px;
-    margin-left: 35em;
+    /* margin-left: 35em; */
   }
   .noSaved h2{
     font-size: 2.5em;
@@ -1362,7 +1366,7 @@ nav a {
     height: 30em;
     width: 74em;
     margin-top: 74px;
-    margin-left: 56em;
+    /* margin-left: 56em; */
   }
   .noSaved h2 {
     font-size: 4em;
@@ -2477,6 +2481,10 @@ nav a {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.submitContainerDiv {
+  height: 100vh;
 }
 
 .submitContainer h3 h4 h5 h6{

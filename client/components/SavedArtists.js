@@ -48,9 +48,11 @@ export class SavedArtists extends Component{
     return (
       //if there are no saved artists after loading data display message saying no saved artists
       this.props.savedArtists.length === 0 ?
-      <div className="noSaved">
-        <h2>You Don't Have Any Saved Artists!</h2>
-        <h6>If you add some they will show up here so you can check them out later</h6>
+      <div className="noSavedContainer">
+        <div className="noSaved">
+          <h2>You Don't Have Any Saved Artists!</h2>
+          <h6>If you add some they will show up here so you can check them out later</h6>
+        </div>
       </div>
       :
       <div className="savedArtistsDiv">
