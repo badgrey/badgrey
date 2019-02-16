@@ -1453,12 +1453,6 @@ nav a {
   justify-content: center;
 }
 
-.scrolltoload {
-  margin: 0;
-  text-align: center;
-  font-family: 'ABeeZee', sans-serif;
-}
-
 .artistSearch form {
   display: flex;
   margin-bottom: 31px;
