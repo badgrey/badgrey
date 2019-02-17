@@ -14,8 +14,8 @@ notifications:
 install:
   - npm i -g npm@5.7.1 # delete once 5.7.X is out of "pre-release"
   - npm ci             # faster, goes only from package-lock
-# before_script:
-#   - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+before_script:
+  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
 before_deploy:
    - npm run build-client # make the bundle
@@ -25,4 +25,4 @@ before_deploy:
    provider: heroku
    app: badgrey # see README
    api_key:
-     secure: "Q41teBmyBLY58wxwCJI6jxqJSL6Mz5ZjJskd0GdmGf4IjPf+B6elNMhiC/qkNx2Zg5Clc4XhMwfV7SjZNTn4w965/+Hfwm1FlfoalKcWzeuIZ5L58QTde1AxZKw7dJLYJrLX8UiCc4d/Po1NYqLcvZaREgBo3O46PSRGwzT6gfiDMNL7Lo/zbUmey1O1fJierVhV+43q1jKElZ9Cju3Z5sogdHFY0atV7vJRm2plppIahHSKXKaOk7sMRmOYAY2iJHKHDBPBPmENsvdLcbJTHVgA6jTMkAk+sR0hwjfMDavtsnqasIqGZyt8p82oQyXN5B/SgM/+xSYsYTIn+HOiG2+BlfuTHrFgWVu06kMlKkafWqEACsczaFoPoxfyev+wU+UgjsMObofIcfyzuqHrHX5FSpjn0b/IPmUlIRjf4YAqAJ6OlakvbQTlXZK+7UXLxtrmGf2LAqspG4EUK5L5+vUlnNq7NytY529njV8D3haUlsFNbwEi5G9PQ1Kr9NGvpYGKNxeBB1IGcXFsgHA5gGAtcXDM1EkKCCZ4RxG6jv8L1cv+7uDkpWZpmpasGpfdRfSfDjaSFqn0PvosdbJGsyw5hSgFb1jmtTbOhQUKiX//fZsa1agOChZfsMeBnEP33vQzAbtpjk/KAjEgX8hwH7+fqKh/6a/3OSf0Vd9/NRw=" # see README
+     secure: "EViPGIF+XTTGwmCtZh2vDXo/7/CWoVRL8YglbAZVzz7noDzY0Tk6352cwo9sNYY+W8wB1Pfbbk2btx6Akhjonphc6xVCxyZdcEGUS0BoO5uil9qhvsOd/2C9TfkpoYVQcnPF632dyYrjEfjMTOa7r7s3OaUi2ep+FHiMIscC9kMlEbwjL4Qd0GQ1RBuiZMp/9lKHNHsRLoFIPa48hjaHz8Nkh9xyKKCROegxVHNeVYcWrcvJ1tRXTV3+vvdYp5bYJHUVJ+Q6+VSapU4Tj8P2EEFRcHr9f+TjoOKdqdgBehgu35oVbqUUj6Nm5WM73fzI4+ek0y4twVv2OteChYsRrTkh1jfD91QQRVMVmblcMyOZcx9y/DuVES68Y93it/ohGbAZ/sYTfW+y3vSnGVkvz8M7fXUhzNCXU0oMjhipurLBVSEt+qyVKPeAg1f7aiv5wzuh/aGQ8uRqCGRwZ7MD6t9utMpcCjN4HFuPSAbs13q2rcEwPqHYYugbDlW1tN5C/WfTcVd6fL2NqqVEj0YPUlZzoaqpBZlejeVf+FNT71wNqAvtimnGT3vBa0BbM9fVAUJGzdmHtcaU+gzWNgGnQUL1VReulPeQiPzGbkk8JAET6N6eVNLTn/r6PWOQxQt84QlsF/iiW7agOP3D6oNGf6/ll93UymVEiLouXnjQdsY=" # see README
