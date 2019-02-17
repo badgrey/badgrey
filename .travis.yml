@@ -25,4 +25,4 @@ before_deploy:
    provider: heroku
    app: badgrey # see README
    api_key:
-     secure: process.env.TRAVISKEY # see README
+     secure: "EViPGIF+XTTGwmCtZh2vDXo/7/CWoVRL8YglbAZVzz7noDzY0Tk6352cwo9sNYY+W8wB1Pfbbk2btx6Akhjonphc6xVCxyZdcEGUS0BoO5uil9qhvsOd/2C9TfkpoYVQcnPF632dyYrjEfjMTOa7r7s3OaUi2ep+FHiMIscC9kMlEbwjL4Qd0GQ1RBuiZMp/9lKHNHsRLoFIPa48hjaHz8Nkh9xyKKCROegxVHNeVYcWrcvJ1tRXTV3+vvdYp5bYJHUVJ+Q6+VSapU4Tj8P2EEFRcHr9f+TjoOKdqdgBehgu35oVbqUUj6Nm5WM73fzI4+ek0y4twVv2OteChYsRrTkh1jfD91QQRVMVmblcMyOZcx9y/DuVES68Y93it/ohGbAZ/sYTfW+y3vSnGVkvz8M7fXUhzNCXU0oMjhipurLBVSEt+qyVKPeAg1f7aiv5wzuh/aGQ8uRqCGRwZ7MD6t9utMpcCjN4HFuPSAbs13q2rcEwPqHYYugbDlW1tN5C/WfTcVd6fL2NqqVEj0YPUlZzoaqpBZlejeVf+FNT71wNqAvtimnGT3vBa0BbM9fVAUJGzdmHtcaU+gzWNgGnQUL1VReulPeQiPzGbkk8JAET6N6eVNLTn/r6PWOQxQt84QlsF/iiW7agOP3D6oNGf6/ll93UymVEiLouXnjQdsY=" # see README
