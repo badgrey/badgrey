@@ -75,9 +75,8 @@ path:hover {
 
 .allArtistsButton {
   margin-top: 40px;
-  width: 208px;
-  height: 70px;
-  border-radius: 5px;
+  width: 150px;
+  height: 50px;
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
@@ -124,7 +123,7 @@ path:hover {
 
 @media only screen and (max-width: 600px) {
   .discover {
-    width: 32em;
+    width: 100%;
   }
   .Map {
     margin-top: -15px;
@@ -198,8 +197,8 @@ path:hover {
     height: 0px;
   }
   .allArtistsButton {
-    width: 246px;
-    height: 91px;
+    width: 150px;
+    height: 50px;
     font-size: 1.7em;
   }
   .globe {
@@ -274,6 +273,7 @@ path:hover {
   height: 100px;
   width: 100px;
   cursor: pointer;
+  margin-left: 2em;
 }
 .badGreyWolfLogo {
   height: 100px;
@@ -325,21 +325,21 @@ nav a {
 
 @media only screen and (max-width: 340px) {
   .navbar {
-    width: 32em;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 400px) {
   .navbar {
-    width: 32em;
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .navbar {
-    width: 32em;
+    width: 100%;
   }
   .nav {
-    width: 32em;
+    width: 100%;
   }
   .badgrey {
     height: 90px;
@@ -427,6 +427,11 @@ nav a {
   height: 1000px;
 }
 
+.scrolltoload {
+  text-align: center;
+  margin: 0px;
+}
+
 .title {
   text-align: center;
   margin-top: 40px;
@@ -511,7 +516,7 @@ nav a {
 @media only screen and (max-width: 600px) {
 
   .artistsDiv {
-    width: 32em;
+    width: 100%;
   }
   .artistPic {
     height: 85px;
@@ -720,7 +725,6 @@ nav a {
   background-color: black;
   color: white;
   width: 9em;
-  border-radius: 4px;
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
@@ -767,7 +771,7 @@ nav a {
     font-size: 1em;
   }
   .artistHeader {
-    width: 29em;
+    width: 100%;
     margin-left: -3em;
   }
   .artistNameHeader {
@@ -917,6 +921,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #Alternative:hover {
   background-image: url('./images/genres/Alternative.jpg');
@@ -924,6 +929,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #Cloud:hover {
   background-image: url('./images/genres/Cloud.jpg');
@@ -931,6 +937,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #Conscious:hover {
   background-image: url('./images/genres/Conscious.jpg');
@@ -938,6 +945,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #Experimental:hover {
   background-image: url('./images/genres/Experimental.jpg');
@@ -945,6 +953,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #Instrumental:hover {
   background-image: url('./images/genres/Instrumental.jpg');
@@ -952,6 +961,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #Pop:hover {
   background-image: url('./images/genres/Pop.jpg');
@@ -959,6 +969,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #JazzSoul:hover {
   background-image: url('./images/genres/JazzSoul.png');
@@ -966,6 +977,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #RB:hover {
   background-image: url('./images/genres/R&B.jpg');
@@ -973,6 +985,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 #OldSchool:hover {
   background-image: url('./images/genres/Old\ School.jpg');
@@ -980,6 +993,7 @@ nav a {
   background-repeat: no-repeat;
   background-position: center center;
   transform: scale(1.2);
+  color: whitesmoke;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1062,7 +1076,6 @@ nav a {
   background-color: black;
   color: white;
   width: 9em;
-  border-radius: 4px;
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
@@ -1328,7 +1341,7 @@ nav a {
 
 @media only screen and (max-width: 600px) {
   .savedArtistsDiv {
-    width: 32em;
+    width: 100%;
   }
   .savedArtistsButton {
     width: 22px;
@@ -1419,7 +1432,6 @@ nav a {
   margin-top: 13px;
   width: 49px;
   height: 22px;
-  border-radius: 5px;
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
@@ -1435,7 +1447,6 @@ nav a {
   margin-top: 13px;
   width: 82px;
   height: 52px;
-  border-radius: 5px;
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
@@ -1478,9 +1489,8 @@ nav a {
 
 .allBlogsButton {
   margin-top: 40px;
-  width: 208px;
-  height: 70px;
-  border-radius: 5px;
+  width: 150px;
+  height: 50px;
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
@@ -1605,10 +1615,13 @@ nav a {
     margin-right: 1em;
     margin-left: 1em;
   }
+  .mainBlogInfo h1 {
+    font-size: 2em;
+  }
   .mainBlogInfo h3 {
     font-size: 10px;
-    width: 11px;
-  }
+    width: 100%;
+    }
   .mainBlogInfo h2
   .homeSingleBlog {
     height: 13em;
@@ -1764,7 +1777,7 @@ nav a {
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
-    width: 30em;
+    width: 100%;
   }
 
 }
@@ -1995,7 +2008,7 @@ nav a {
 
   .blogContainer{
     margin: 0px;
-    width: 30em;
+    width: 100%;
   }
 
   .blogHeader {
@@ -2182,7 +2195,6 @@ nav a {
   background-color: black;
   color: white;
   width: 9em;
-  border-radius: 4px;
   height: 36px;
   transition: 0.3s;
   border: 1px solid black;
@@ -2196,7 +2208,7 @@ nav a {
 }
 @media only screen and (max-width: 600px) {
   .allInterviewsContainerDiv {
-    width: 31em;
+    width: 100%;
   }
   .rightSingleInterviewInfo p {
     font-size: .7em;
@@ -2327,7 +2339,7 @@ nav a {
 
 @media only screen and (max-width: 600px) {
   .singleInterviewContainer {
-    width: 32em;
+    width: 100%;
     height: 142em;
   }
   .interviewHeader {
@@ -2435,7 +2447,7 @@ nav a {
 
 @media only screen and (max-width: 600px) {
   .OCcontainerDiv {
-    width: 33em;
+    width: 100%;
   }
   .singleoc iframe {
     width: 400px;
@@ -2494,7 +2506,7 @@ nav a {
 
 @media only screen and (max-width: 600px) {
   .submitContainerDiv {
-    width: 32em;
+    width: 100%;
   }
 }
 
