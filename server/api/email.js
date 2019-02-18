@@ -32,7 +32,7 @@ router.post('/', (req, res, next) => {
   const emailBody = mailGenerator.generate(createdOrderEmail);
 
   const mailOptions = {
-    from: process.env.EMAIL_FROM,
+    from: 'Bad Grey',
     to: req.body.email,
     subject: 'Welcome to Bad Grey - Underground Everywhere',
     text: `Please Enter The Following Code to Complete Your Sign Up with Us: ${req.body.rand}`,
