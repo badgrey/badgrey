@@ -51,6 +51,7 @@ export class AllArtists extends Component{
       this.props.artists.length === 0 ? null :
       <div className="artistsDiv">
         <h1 className="title">All Artists</h1>
+        <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
           <form>
             <label className="searchLabel" >Search Artist</label>

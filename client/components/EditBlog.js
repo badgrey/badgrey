@@ -98,7 +98,7 @@ export class EditBlog extends Component {
           </div>
           <div>
             <label>Spotify URL</label>
-            <input name="spotify" type="text" required placeholder="Spotify URL" />
+            <input name="spotify" type="text" required defaultValue={this.props.chosenBlog[0].spotifyURL} />
           </div>
           {
             !this.state.changePic ?

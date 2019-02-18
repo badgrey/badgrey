@@ -44,7 +44,7 @@ export class OriginalContent extends Component {
       :
       <div className="OCcontainerDiv">
         <div className="OCheader">
-          <h1>Bad Grey Films</h1>
+          <h1>Music Videos</h1>
           <form className="newOC" onSubmit={this.submit}>
             <label>Add Original Content</label>
             <input name="oc" type="text" required placeholder="Youtube ID" />

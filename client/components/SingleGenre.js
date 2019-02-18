@@ -49,6 +49,7 @@ export class SingleGenre extends Component{
       this.props.genreArtists.length === 0 ? null :
       <div className="artistsDiv">
         <h1 className="title">{this.props.genreArtists[0].genre} Artists</h1>
+        <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
           <form>
             <label className="searchLabel">Search Artist</label>
