@@ -1198,22 +1198,21 @@ nav a {
     height: 70vh;
   }
   .form h2 {
-    font-size: 5em;
-    height: 2em;
+    font-size: 3em;
   }
   .loginSignupLabel {
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 20px;
   }
   .form input {
-    height: 3em;
-    width: 18em;
-    font-size: 3em;
+    height: 1.2em;
+    width: 9em;
+    font-size: 2em;
   }
   .form button {
-    width: 8em;
-    height: 3em;
-    font-size: 3em;
+    width: 7em;
+    height: 2em;
+    font-size: 2em;
   }
   .form h4 {
     font-size: 2em;

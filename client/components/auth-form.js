@@ -39,6 +39,7 @@ export class AuthForm extends Component {
         if ((this.props.error.error === undefined)) {
           this.setState({checking: true})
         }
+        document.getElementsByClassName('form').reset()
       }
       if (formName === 'login') {
         try {
