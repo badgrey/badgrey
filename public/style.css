@@ -80,7 +80,7 @@ path:hover {
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
-  font-size: 1.3em;
+  font-size: 1em;
   font-family: 'ABeeZee', sans-serif;
   cursor: pointer;
 }
@@ -160,7 +160,7 @@ path:hover {
     margin-top: 75px;
     width: 170px;
     height: 70px;
-    font-size: 1.4em;
+    font-size: 1em;
   }
   .allArtistsButton {
     margin-top: 32px;
@@ -199,7 +199,7 @@ path:hover {
   .allArtistsButton {
     width: 150px;
     height: 50px;
-    font-size: 1.7em;
+    font-size: 1.3em;
   }
   .globe {
     border-radius: 98px;
@@ -218,7 +218,7 @@ path:hover {
     margin-top: 80px;
   }
   .discover h1 {
-    font-size: 5em;
+    font-size: 3em;
   }
   .allAndGlobe {
     margin-top: 5em;
@@ -227,27 +227,27 @@ path:hover {
     height: 0px;
   }
   .allArtistsButton {
-    width: 308px;
-    height: 145px;
-    font-size: 2.7em;
+    width: 208px;
+    height: 65px;
+    font-size: 1.7em;
   }
   .globe {
     border: solid black 6px;
     padding: 17px;
     border-radius: 191px;
-    height: 400px;
-    width: 400px;
+    height: 200px;
+    width: 200px;
   }
   .globeLabel {
     font-size: 2.8em;
     margin-top: 11px;
   }
   .Map {
-    margin-top: 28em;
+    margin-top: 8em;
   }
   .Map svg {
     height: 86em;
-    width: 137em;
+    width: 92em;
   }
 }
 
@@ -273,7 +273,7 @@ path:hover {
   height: 100px;
   width: 100px;
   cursor: pointer;
-  margin-left: 2em;
+  margin-left: 1.5em;
 }
 .badGreyWolfLogo {
   height: 100px;
@@ -321,6 +321,10 @@ nav a {
   margin-left: 22em;
   color: whitesmoke;
   margin-right: 41px;
+}
+
+.singleNavOption:hover {
+  color: grey;
 }
 
 @media only screen and (max-width: 340px) {
@@ -397,26 +401,23 @@ nav a {
 
 @media only screen and (min-width: 1800px) {
   .navbar {
-    height: 17em;
-    width: 183em;
+    height: 10.5em;
+    width: 100%;
   }
   .badGreyTextLogo {
-    height: 260px;
-    width: 260px;
+    height: 160px;
+    width: 160px;
   }
   .badGreyWolfLogo {
-    height: 260px;
-    width: 260px;
+    height: 160px;
+    width: 160px;
   }
   .navOptions {
     margin-top: -27px;
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .navList {
-    margin-top: 5em;
-    margin-left: 22em;
-    margin-right: 58px;
-    font-size: 2.4em;
+    font-size: 1.15m;
   }
 }
 
@@ -433,6 +434,11 @@ nav a {
 }
 
 .title {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'ABeeZee', sans-serif;
+}
+.artistCity {
   text-align: center;
   margin-top: 40px;
   font-family: 'ABeeZee', sans-serif;
@@ -563,6 +569,9 @@ nav a {
   .title {
     font-size: 3em;
   }
+  .artistCity {
+    font-size: 1.5em;
+  }
   .artistSearch form {
     margin-left: 8em;
   }
@@ -586,13 +595,18 @@ nav a {
 
 @media only screen and (min-width: 1800px) {
   .title {
-    font-size: 5em;
+    font-size: 4em;
   }
-  .artistSearch {
-    font-size: 3em;
+  .scrolltoload {
+    font-size: 1.3em
   }
+  .artistSearch input {
+    font-size: 1.5em;
+  }
+
   .searchLabel {
     margin-top: 16px;
+    font-size: .5em;
   }
   .artistSearch form {
     margin-bottom: 78px;
@@ -600,18 +614,18 @@ nav a {
     margin-left: 8em;
   }
   .artistPic {
-    width: 380px;
-    height: 380px;
+    width: 280px;
+    height: 280px;
   }
   .artistNameText {
-    width: 189px
+    margin-top: 50%;
+    font-size: 2em;
   }
   .artistName {
-    margin-top: 153px;
-    margin-left: 98px;
-    margin-right: 50px;
-    margin-bottom: 124px;
-    font-size: 34px;
+    width: 280px;
+    height: 280px;
+    margin: 0px;
+    text-align: center;
   }
   .noArtists {
     height: 32em;
@@ -835,7 +849,7 @@ nav a {
     height: 7em;
   }
   .addToSavedButton {
-    font-size: 1.7em;
+    font-size: 1.2em;
   }
 
   .artistLogos {
@@ -851,17 +865,20 @@ nav a {
   .artistHeader {
     margin-bottom: 30em;
   }
+  .artistCity {
+    font-size: 2em;
+  }
   .artistLogos {
-    height: 280px;
-    width: 280px;
+    height: 180px;
+    width: 180px;
   }
   .addToSavedButton {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   .genreLink {
-    grid-template-rows: 220px;
-    grid-template-columns: 220px;
-    font-size: 2.5em;
+    grid-template-rows: 150px;
+    grid-template-columns: 150px;
+    font-size: 1.5em;
     height: 7em;
     line-height: 1.5;
   }
@@ -1022,8 +1039,8 @@ nav a {
     font-size: 2.8em;
   }
   .genreGrid {
-    grid-template-rows: 24em 24em;
-    grid-template-columns: 24em 24em 24em 24em 24em;
+    grid-template-rows: 17em 17em;
+    grid-template-columns: 17em 17em 17em 17em 17em;
   }
 }
 
@@ -1294,6 +1311,7 @@ nav a {
 /* SAVED ARTISTS STYLES */
 
 .savedArtistsDiv {
+  height: 100vh;
   margin-top: 2em;
 }
 
@@ -1494,7 +1512,7 @@ nav a {
   color: whitesmoke;
   background-color: black;
   transition: 0.3s;
-  font-size: 1.3em;
+  font-size: 1em;
   font-family: 'ABeeZee', sans-serif;
   cursor: pointer;
   margin-bottom: 3em;
@@ -1658,7 +1676,7 @@ nav a {
     margin-top: 0px;
     width: 6em;
     height: 2em;
-    font-size: 1.2em;
+    font-size: 1em;
   }
 }
 
@@ -1669,7 +1687,7 @@ nav a {
   .allBlogsButton {
     width: 8em;
     height: 3em;
-    font-size: 1.2em;
+    font-size: 1em;
   }
   .mainBlogInfo h2 {
     font-size: 14px;
@@ -1731,7 +1749,7 @@ nav a {
   .allBlogsButton {
     width: 308px;
     height: 145px;
-    font-size: 2.7em;
+    font-size: 1.7em;
   }
 }
 
@@ -2090,15 +2108,15 @@ nav a {
     font-size: 2.4em;
   }
   .likeDislikeButton {
-    height: 67px;
-    width: 85px;
+    height: 47px;
+    width: 53px;
   }
   .likeDislikeImage {
-    height: 67px;
-    width: 67px;
+    height: 37px;
+    width: 37px;
   }
   .likesDislikes p {
-    font-size: 2.4em;
+    font-size: 2.3em;
   }
   .artistProfile {
     grid-template-rows: 2em;
@@ -2117,14 +2135,14 @@ nav a {
     font-size: 2.3em;
   }
   .commentForm label {
-    font-size: 2.2em;
+    font-size: 1.2em;
     margin-top: 1em;
     margin-bottom: .5em;
   }
   .commentForm button {
-    width: 5em;
+    width: 4em;
     height: 2em;
-    font-size: 2.4em;
+    font-size: 1.4em;
   }
   .commentForm textarea {
     height: 7em;
@@ -2252,19 +2270,19 @@ nav a {
 @media only screen and (min-width: 1800px) {
 
   .allInterviewsHeader h1 {
-    font-size: 6em;
+    font-size: 4em;
   }
   .rightSingleInterviewInfo h1 {
-    font-size: 4em;
+    font-size: 2.5em;
   }
   .leftSingleInterviewInfo h1 {
-    font-size: 4em;
+    font-size: 2.5em;
   }
   .rightSingleInterviewInfo p {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   .leftSingleInterviewInfo p {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   .singleInterviewPic {
     height: 25em;
@@ -2272,8 +2290,8 @@ nav a {
   }
   .interviewButton {
     width: 7em;
-    height: 68px;
-    font-size: 2.5em;
+    height: 2em;
+    font-size: 1.5em;
   }
 }
 
@@ -2388,32 +2406,37 @@ nav a {
 
 @media only screen and (min-width: 1800px) {
   .interviewHeader {
-    height: 31em;
+    height: 14em;
   }
   .interviewHeader h1 {
-    font-size: 6em;
+    font-size: 4em;
   }
   .interviewHeader p {
-    font-size: 2.3em;
+    font-size: 1.3em;
   }
   .interviewQuestionText {
-    font-size: 2.3em;
+    font-size: 1.3em;
   }
   .interviewAnswer {
-    font-size: 2.3em;
+    font-size: 1.6em;
   }
   .interviewLikesDislikes p {
     font-size: 2.3em;
   }
   .interviewQuestion img {
-    height: 10em;
+    height: 5em;
+    width: 5em;
   }
   .interviewSoundcloud {
     height: 18em;
   }
   .interviewSoundcloud iframe {
-    width: 129em;
-    height: 18em;
+    width: 115em;
+    height: 12em;
+  }
+  .interviewContent {
+    margin-right: 8em;
+    margin-left: 8em;
   }
 }
 
@@ -2463,7 +2486,7 @@ nav a {
 
 @media only screen and (min-width: 1800px) {
   .OCheader h1 {
-    font-size: 7em;
+    font-size: 4em;
   }
   .newOC {
     font-size: 3em;
