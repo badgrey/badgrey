@@ -87,7 +87,7 @@ export class Artist extends Component{
           </Link>
           <div className="artistNameHeader">
             <h1 className="title">{this.props.chosenArtist[0].name}</h1>
-            <h3 className="title">{this.props.chosenArtist[0].city}</h3>
+            <h3 className="artistCity">{this.props.chosenArtist[0].city}</h3>
             {
               //depending if artist is saved or not will display a button to save them or just "saved"
               this.props.isSaved ?
