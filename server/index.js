@@ -9,7 +9,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
-const sslRedirect = require('heroku-ssl-redirect');
+const sslRedirect = require('heroku-ssl-redirect')
 const app = express()
 module.exports = app
 
@@ -47,6 +47,7 @@ const createApp = () => {
   app.use(passport.session())
 
   // auth and api routes
+  app.use(sslRedirect())
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
@@ -64,7 +65,6 @@ const createApp = () => {
     }
   })
 
-  app.use(sslRedirect())
 
   // sends index.html
   app.use('*', (req, res) => {
