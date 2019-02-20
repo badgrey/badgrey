@@ -1723,6 +1723,7 @@ nav a {
   }
   .mainBlogInfo h3 {
     font-size: 1.4em;
+    width: 100%;
   }
   .mainBlogInfo h4 {
     font-size: 1.5em;
