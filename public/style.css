@@ -323,7 +323,11 @@ nav a {
   margin-right: 41px;
 }
 
-.singleNavOption:hover {
+.navList a:hover {
+  color: grey;
+}
+
+.singleNavOption a:hover {
   color: grey;
 }
 
@@ -417,7 +421,7 @@ nav a {
     font-size: 1.5em;
   }
   .navList {
-    font-size: 1.15m;
+    font-size: 1.5em;
   }
 }
 
@@ -605,8 +609,8 @@ nav a {
   }
 
   .searchLabel {
-    margin-top: 16px;
-    font-size: .5em;
+    margin-top: 8px;
+    font-size: 1.5em;
   }
   .artistSearch form {
     margin-bottom: 78px;
@@ -1527,7 +1531,7 @@ nav a {
   background-color: black;
   color: whitesmoke;
   margin-bottom: 3em;
-  height: 31em;
+  height: 27em;
   width: 77em;
 }
 
@@ -1548,6 +1552,7 @@ nav a {
   justify-content: space-between;
   background-color: black;
   color: whitesmoke;
+  height: 100%;
 }
 
 .singleBlogInfo {
@@ -1556,6 +1561,11 @@ nav a {
   margin-top: 3em;
   margin-right: 1em;
   margin-left: 1em;
+  width: 50%;
+}
+
+.singleBlogInfo h1 {
+  font-size: 1.5em;
 }
 
 .singleBlogInfo h2 {
@@ -1563,12 +1573,12 @@ nav a {
 }
 
 .singleBlogInfo h3 {
-  font-size: 15px;
+  font-size: .9em;
 }
 
 .singleBlogPic {
-  width: 416px;
-  height: 334px;
+  width: 50%;
+  height: 100%;
   display: inline-block;
   overflow: hidden;
   transition: 0.3s;
@@ -1583,11 +1593,12 @@ nav a {
 .mainBlog {
   display: flex;
   justify-content: space-between;
+  height: 100%;
 }
 
 .mainBlogPic {
-  width: 616px;
-  height: 434px;
+  width: 50%;
+  height: 100%;
   display: inline-block;
   overflow: hidden;
   transition: 0.3s;
@@ -1605,6 +1616,7 @@ nav a {
   margin-top: 5em;
   margin-right: 2em;
   margin-left: 2em;
+  width: 50%;
 }
 
 .mainBlogInfo h1 {
@@ -1694,15 +1706,7 @@ nav a {
   .mainBlogInfo h3 {
     font-size: 15px;
     width: 23em;
-}
-}
-
-@media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .mainBlogInfo h3 {
-    font-size: 18px;
-    width: 28em;
   }
-
 }
 
 @media only screen and (min-width: 1800px) {
@@ -1710,40 +1714,31 @@ nav a {
     height: 45em;
     width: 95em;
   }
-  .mainBlogPic {
-    width: 53em;
-    height: 45em;
-  }
+
   .mainBlogInfo h1 {
-    font-size: 6em;
-  }
-  .mainBlogInfo h2 {
-    font-size: 2.3em;
-  }
-  .mainBlogInfo h3 {
-    font-size: 2em;
-  }
-  .mainBlogInfo h4 {
-    font-size: 2.5em;
-  }
-  .homeSingleBlog {
-    height: 35em;
-  }
-  .singleBlogPic {
-    width: 36em;
-    height: 35em;
-  }
-  .singleBlogInfo h1 {
     font-size: 4em;
   }
+  .mainBlogInfo h2 {
+    font-size: 1.2em;
+  }
+  .mainBlogInfo h3 {
+    font-size: 1.4em;
+  }
+  .mainBlogInfo h4 {
+    font-size: 1.5em;
+  }
+
+  .singleBlogInfo h1 {
+    font-size: 1.5em;
+  }
   .singleBlogInfo h2 {
-    font-size: 2.1em;
+    font-size: 1.1em;
   }
   .singleBlogInfo h3 {
-    font-size: 1.8em;
+    font-size: 1.2em;
   }
   .singleBlogInfo h4 {
-    font-size: 2.2em;
+    font-size: 1.2em;
   }
   .allBlogsButton {
     width: 308px;
@@ -1801,13 +1796,18 @@ nav a {
 
 @media only screen and (min-width: 1800px) {
   .allBlogsDiv h1 {
-    font-size: 5em;
+    font-size: 3em;
   }
   .blogList {
     width: 100%;
   }
   .allSingleBlogLink {
     width: 60em;
+  }
+  .allBlogsButton {
+    width: 208px;
+    height: 65px;
+    font-size: 1.7em;
   }
 }
 
@@ -1896,6 +1896,8 @@ nav a {
 .blogPost {
   margin-top: 40px;
   text-align: center;
+  margin-left: 5em;
+  margin-right: 5em;
 }
 
 .blogPostText {
@@ -2101,10 +2103,10 @@ nav a {
 @media only screen and (min-width: 1800px) {
 
   .blogTitle {
-    font-size: 4em;
+    font-size: 3em;
   }
   .blogAuthor {
-    font-size: 2.4em;
+    font-size: 1.4em;
   }
   .likeDislikeButton {
     height: 47px;
@@ -2118,10 +2120,10 @@ nav a {
     font-size: 2.3em;
   }
   .artistProfile {
-    grid-template-rows: 2em;
+    grid-template-rows: 1em;
     grid-template-columns: 8em;
-    height: 2em;
-    font-size: 2.4em;
+    height: 50%;
+    font-size: 1.4em;
   }
   .singleBlogBannerDiv {
     width: 82em;
@@ -2131,7 +2133,7 @@ nav a {
     font-size: 2.4em;
   }
   .blogPost {
-    font-size: 2.3em;
+    font-size: 1.3em;
   }
   .commentForm label {
     font-size: 1.2em;
@@ -2144,11 +2146,11 @@ nav a {
     font-size: 1.4em;
   }
   .commentForm textarea {
-    height: 7em;
+    height: 4em;
     width: 37em;
   }
   .singleComment p {
-    font-size: 2.4em;
+    font-size: 1.4em;
   }
 }
 
