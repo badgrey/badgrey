@@ -48,7 +48,7 @@ const BlogHomePage = (props) => (
     </div>
     <div>
       <Link to="/allBlogs">
-        <button className="allBlogsButton">All Blogs</button>
+        <button className="allBlogsButton">More</button>
       </Link>
     </div>
   </div>

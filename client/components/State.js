@@ -42,7 +42,7 @@ export class State extends Component{
   }
 
   render() {
-    const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
+    const artists = this.props.stateArtists.filter((artist) => artist.name.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       //if there are no artists in this state load informative message
       this.props.stateArtists.length === 0 ?
@@ -54,11 +54,11 @@ export class State extends Component{
       </div>
       :
       <div className="artistsDiv">
-        <h1 className="title">{this.props.stateArtists[0].stateFullName} Artists</h1>
+        <h1 className="title">{this.props.stateArtists[0].stateFullName}</h1>
         <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
           <form>
-            <label className="searchLabel">Search Artist</label>
+            <label className="searchLabel">Search Artists</label>
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>
