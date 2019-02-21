@@ -44,7 +44,7 @@ export class SavedArtists extends Component{
   }
 
   render() {
-    const artists = this.props.savedArtists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
+    const artists = this.props.savedArtists.filter((artist) => artist.name.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       //if there are no saved artists after loading data display message saying no saved artists
       this.props.savedArtists.length === 0 ?
@@ -56,10 +56,10 @@ export class SavedArtists extends Component{
       </div>
       :
       <div className="savedArtistsDiv">
-        <h1 className="title">Saved Artists</h1>
+        <h1 className="title">Saved</h1>
         <div className="artistSearch">
           <form>
-            <label className="searchLabel">Search Artist</label>
+            <label className="searchLabel">Search Artists</label>
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>

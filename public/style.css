@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=ABeeZee');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 html, body {
   margin: 0px;
@@ -22,7 +22,7 @@ html {
 }
 
 body h1 h2 h3 h4 Link a p div button{
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 a {
@@ -39,7 +39,7 @@ form div {
 }
 
 #app {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
@@ -66,7 +66,7 @@ path:hover {
   margin-top: 20px;
 }
 .discover h1 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 .Map {
   display: flex;
@@ -81,7 +81,7 @@ path:hover {
   background-color: black;
   transition: 0.3s;
   font-size: 1em;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
   cursor: pointer;
 }
 
@@ -273,7 +273,7 @@ path:hover {
   height: 100px;
   width: 100px;
   cursor: pointer;
-  margin-left: 1.5em;
+  margin-left: 1em;
 }
 .badGreyWolfLogo {
   height: 100px;
@@ -440,12 +440,12 @@ nav a {
 .title {
   text-align: center;
   margin-top: 40px;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 .artistCity {
   text-align: center;
   margin-top: 40px;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 .state{
   display: flex;
@@ -468,7 +468,7 @@ nav a {
   transform: scale(1.2);
 }
 
-.artistPic img:hover {
+.artistPic:hover img {
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
   color:whitesmoke;
@@ -485,17 +485,19 @@ nav a {
 }
 
 .artistName {
+  width: 150px;
+  height: 150px;
   opacity: 0;
   text-align: center;
   position: absolute;
-  margin-top: 50px;
-  margin-left: 52px;
-  margin-right: 50px;
-  margin-bottom: 124px;
   font-size: 15px;
   color: white;
   transition: 0.3s;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
+}
+
+.artistNameText {
+  margin-top: 20px;
 }
 
 .noArtistsContainer {
@@ -516,11 +518,11 @@ nav a {
 
 .noArtists h2{
   font-size: 2em;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 .noArtists h6 {
   font-size: 1.2em;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1089,7 +1091,7 @@ nav a {
   background-color: black;
   color: whitesmoke;
   padding-top: 13px;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: lighter;
 }
 
@@ -1243,11 +1245,11 @@ nav a {
   cursor: pointer;
 }
 .editEmail h1 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .editEmail h3 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .editPassword {
@@ -1260,7 +1262,7 @@ nav a {
 }
 
 .editPassword h1 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .changePassError {
@@ -1516,7 +1518,7 @@ nav a {
   background-color: black;
   transition: 0.3s;
   font-size: 1em;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
   cursor: pointer;
   margin-bottom: 3em;
 }
@@ -1566,14 +1568,17 @@ nav a {
 
 .singleBlogInfo h1 {
   font-size: 1.5em;
+  font-family: 'Oswald', sans-serif;
 }
 
 .singleBlogInfo h2 {
   font-size: 13px;
+  font-family: 'Oswald', sans-serif;
 }
 
 .singleBlogInfo h3 {
   font-size: .9em;
+  font-family: 'Oswald', sans-serif;
 }
 
 .singleBlogPic {
@@ -1621,13 +1626,16 @@ nav a {
 
 .mainBlogInfo h1 {
   font-size: 45px;
+  font-family: 'Oswald', sans-serif;
 }
 .mainBlogInfo h2 {
   font-size: 11px;
+  font-family: 'Oswald', sans-serif;
 }
 .mainBlogInfo h3 {
   font-size: 18px;
   width: 27em;
+  font-family: 'Oswald', sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1758,7 +1766,7 @@ nav a {
   margin-top: 30px;
 }
 .allBlogsDiv h1 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .blogsList {
@@ -1842,16 +1850,16 @@ nav a {
 
 .blogNameHeader h3 {
   margin-top: 0px;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .blogTitle{
   margin-bottom: 2em;
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .blogAuthor {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .artistProfile {
@@ -2167,6 +2175,10 @@ nav a {
   margin-top: 3em;
 }
 
+.allInterviewsHeader {
+  font-family: 'Oswald', sans-serif;
+}
+
 .allInterviewsContainer {
   display:flex;
   flex-direction: column;
@@ -2189,6 +2201,11 @@ nav a {
   flex-direction: column;
   justify-content: space-between;
   margin-right: 15px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.rightSingleInterview h1 {
+  font-family: 'Oswald', sans-serif;
 }
 
 .leftSingleInterviewInfo {
@@ -2196,6 +2213,11 @@ nav a {
   flex-direction: column;
   justify-content: space-between;
   margin-left: 15px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.leftSingleInterview h1 {
+  font-family: 'Oswald', sans-serif;
 }
 
 .singleInterviewPic {
@@ -2219,6 +2241,7 @@ nav a {
   transition: 0.3s;
   border: 1px solid black;
   cursor: pointer;
+  font-family: 'Oswald', sans-serif;
 }
 
 .interviewButton:hover {
@@ -2310,10 +2333,12 @@ nav a {
   margin-right: 10em;
   margin-left: 10em;
   align-items: center;
+  font-family: 'Oswald', sans-serif;
 }
 
 .interviewHeader h1 {
   margin-bottom: 1.3em;
+  font-family: 'Oswald', sans-serif;
 }
 
 .interviewLikesDislikes {
@@ -2334,19 +2359,23 @@ nav a {
   flex-direction: column;
   margin-left: 3em;
   margin-right: 3em;
+  font-family: 'Oswald', sans-serif;
 }
 
 .interviewQuestion {
   display: flex;
+  font-family: 'Oswald', sans-serif;
 }
 .interviewAnswer {
   margin-top: 1em;
+  font-family: 'Oswald', sans-serif;
 }
 
 .interviewQuestionText {
   margin-top: 1em;
   color: slategray;
   font-weight: bold;
+  font-family: 'Oswald', sans-serif;
 }
 
 .interviewCommentContainer {
@@ -2454,7 +2483,7 @@ nav a {
 }
 
 .OCheader h1 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .OCcontainer {
@@ -2511,7 +2540,7 @@ nav a {
 }
 
 .submitHeader h1 {
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .submitContainer {
@@ -2526,7 +2555,7 @@ nav a {
 }
 
 .submitContainer h3 h4 h5 h6{
-  font-family: 'ABeeZee', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 @media only screen and (max-width: 600px) {

@@ -46,15 +46,15 @@ export class AllArtists extends Component{
   }
 
   render() {
-    const artists = this.props.artists.filter((artist) => artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
+    const artists = this.props.artists.filter((artist) => artist.name.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       this.props.artists.length === 0 ? null :
       <div className="artistsDiv">
-        <h1 className="title">All Artists</h1>
+        <h1 className="title">All</h1>
         <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
           <form>
-            <label className="searchLabel" >Search Artist</label>
+            <label className="searchLabel" >Search Artists</label>
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>
