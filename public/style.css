@@ -523,6 +523,7 @@ nav a {
   display: flex;
   justify-content: center;
   height: 100vh;
+  margin-top: 7em;
 }
 .noArtists {
   text-align: center;
@@ -579,6 +580,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .noArtistsContainer {
+    margin-top: 10em;
+  }
   .artistsDiv {
     margin-top: 10em;
   }
@@ -614,6 +618,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
+  .noArtistsContainer {
+    margin-top: 10em;
+  }
   .artistsDiv {
     margin-top: 10em;
   }
