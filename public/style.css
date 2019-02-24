@@ -507,21 +507,13 @@ nav a {
 }
 .noArtists {
   text-align: center;
-  border: solid black;
   height: 13em;
   width: 47em;
   margin-top: 74px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-.noArtists h2{
-  font-size: 2em;
-  font-family: 'Oswald', sans-serif;
-}
-.noArtists h6 {
-  font-size: 1.2em;
+.noArtists h1{
+  font-size: 3em;
   font-family: 'Oswald', sans-serif;
 }
 
@@ -637,12 +629,8 @@ nav a {
     height: 32em;
     width: 92em;
   }
-  .noArtists h6 {
-    font-size: 2.2em;
-    line-height: 2em;
-  }
   .noArtists h2 {
-    font-size: 4em;
+    font-size: 3em;
   }
 }
 
