@@ -20,6 +20,7 @@ export class Blog extends Component {
 
   //loads comments and gets data upon arriving to page if not done already
   componentDidMount () {
+    window.scroll(0, 0)
     // eslint-disable-next-line radix
     const id = parseInt(this.props.match.params.id)
     if (this.props.artists === []) {

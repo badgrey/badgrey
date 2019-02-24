@@ -17,6 +17,7 @@ export class AllBlogs extends Component {
   }
   //see All artists componenet for comments regarding lines 18-40
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }

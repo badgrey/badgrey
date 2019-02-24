@@ -19,6 +19,7 @@ export class State extends Component{
 
   //load data if no artists
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }
@@ -48,8 +49,7 @@ export class State extends Component{
       this.props.stateArtists.length === 0 ?
       <div className="noArtistsContainer">
         <div className="noArtists">
-          <h2>We Do Not Know Of Any Artists From This State</h2>
-          <h6>If You Are An Artist From This Area Or Know Of One, Please Contact Us Through The Submit Button At The Top Of The Page</h6>
+          <h1>Searching...</h1>
         </div>
       </div>
       :

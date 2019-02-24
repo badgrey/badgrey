@@ -22,6 +22,7 @@ export class Artist extends Component{
 
   //getting initial data and comments for specific user when getting to page
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.chosenArtist === []) {
       this.props.loadInitialData()
     }

@@ -21,6 +21,7 @@ export class AllArtists extends Component{
 
   //load all data if user is visiting this page for the first time
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }

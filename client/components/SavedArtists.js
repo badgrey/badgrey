@@ -24,6 +24,7 @@ export class SavedArtists extends Component{
 
   //loads info
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
