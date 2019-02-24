@@ -30,6 +30,7 @@ export class Interview extends Component {
 
   //loads data and specific interview comments
   componentDidMount() {
+    window.scroll(0, 0)
     if (this.props.artists === []) {
       this.props.loadInitialData();
     }

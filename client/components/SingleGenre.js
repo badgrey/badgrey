@@ -19,6 +19,7 @@ export class SingleGenre extends Component{
 
   //if no genre artists fetch data
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.genreArtists === []) {
       this.props.loadInitialData()
     }

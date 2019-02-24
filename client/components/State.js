@@ -19,6 +19,7 @@ export class State extends Component{
 
   //load data if no artists
   componentDidMount () {
+    window.scroll(0, 0)
     if (this.props.stateArtists === []) {
       this.props.loadInitialData()
     }

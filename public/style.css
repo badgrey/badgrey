@@ -63,7 +63,7 @@ path:hover {
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 7em;
 }
 .discover h1 {
   font-family: 'Oswald', sans-serif;
@@ -187,7 +187,7 @@ path:hover {
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .discover {
-    margin-top: 45px;
+    margin-top: 10em;
   }
   .discover h1 {
     font-size: 3em;
@@ -215,7 +215,7 @@ path:hover {
 
 @media only screen and (min-width: 1800px) {
   .discover {
-    margin-top: 80px;
+    margin-top: 10em;
   }
   .discover h1 {
     font-size: 3em;
@@ -251,6 +251,21 @@ path:hover {
   }
 }
 
+/* Footer Styles */
+
+.footerDiv {
+  text-align: center;
+}
+
+.footerDiv h6 {
+  font-size: 1em;
+}
+
+@media only screen and (min-width: 1400px) {
+  .footerDiv h6 {
+    font-size: 1.5em;
+  }
+}
 
 
 /* NAVBAR STYLES */
@@ -261,6 +276,10 @@ path:hover {
   text-align: center;
   height: 104px;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .navOptions {
@@ -428,7 +447,7 @@ nav a {
 /* State Artists Styles */
 
 .artistsDiv {
-  margin-top: 40px;
+  margin-top: 7em;
   height: 1000px;
 }
 
@@ -560,6 +579,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .artistsDiv {
+    margin-top: 10em;
+  }
   .artistPic {
     height: 180px;
     width: 180px;
@@ -592,6 +614,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
+  .artistsDiv {
+    margin-top: 10em;
+  }
   .title {
     font-size: 4em;
   }
@@ -638,7 +663,7 @@ nav a {
 
 .artistContainer {
   text-align: -webkit-center;
-  margin-top: 3em;
+  margin-top: 7em;
 }
 
 .artistHeader {
@@ -838,6 +863,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .artistContainer {
+    margin-top: 10em;
+  }
   .genreLink {
     font-size: 1.5em;
     height: 7em;
@@ -856,6 +884,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
+  .artistContainer {
+    margin-top: 10em;
+  }
   .artistHeader {
     margin-bottom: 30em;
   }
@@ -1070,6 +1101,7 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 7em;
 }
 
 .form h2 {
@@ -1161,6 +1193,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .outerForm {
+    margin-top: 10em;
+  }
   .form {
     width: 65vw;
   }
@@ -1188,6 +1223,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
+  .outerForm {
+    margin-top: 10em;
+  }
   .form {
     height: 70vh;
   }
@@ -1221,7 +1259,7 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 7em;
   height: 100vh;
 }
 
@@ -1283,6 +1321,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) {
+  .outerAccountForm {
+    margin-top: 10em;
+  }
   .editEmail h1 {
     font-size: 4em;
   }
@@ -1305,7 +1346,7 @@ nav a {
 
 .savedArtistsDiv {
   height: 100vh;
-  margin-top: 2em;
+  margin-top: 7em;
 }
 
 .savedArtists {
@@ -1337,6 +1378,7 @@ nav a {
   height: 100vh;
   display: flex;
   justify-content: center;
+  margin-top: 7em;
 }
 
 .noSaved {
@@ -1368,6 +1410,12 @@ nav a {
   } */
 }
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .savedArtistsDiv {
+    margin-top: 10em;
+  }
+  .noSavedContainer {
+    margin-top: 10em;
+  }
   .noSaved {
     height: 15em;
     width: 39em;
@@ -1381,7 +1429,14 @@ nav a {
     font-size: 1.1em;
   }
 }
+
 @media only screen and (min-width: 1800px) {
+  .savedArtistsDiv {
+    margin-top: 10em;
+  }
+  .noSavedContainer {
+    margin-top: 10em;
+  }
   .savedArtistsButton {
     width: 62px;
     height: 69px;
@@ -1751,7 +1806,7 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 7em;
 }
 .allBlogsDiv h1 {
   font-family: 'Oswald', sans-serif;
@@ -1791,7 +1846,16 @@ nav a {
 
 }
 
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .allBlogsDiv {
+    margin-top: 10em;
+  }
+}
+
 @media only screen and (min-width: 1800px) {
+  .allBlogsDiv {
+    margin-top: 10em;
+  }
   .allBlogsDiv h1 {
     font-size: 3em;
   }
@@ -1813,6 +1877,7 @@ nav a {
 .blogContainer {
   margin-left: 8em;
   margin-right: 8em;
+  margin-top: 7em;
 }
 
 .blogHeader {
@@ -2050,6 +2115,9 @@ nav a {
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
 
+  .blogContainer {
+    margin-top: 10em;
+  }
   .blogTitle {
     font-size: 3em;
   }
@@ -2099,6 +2167,9 @@ nav a {
 }
 @media only screen and (min-width: 1800px) {
 
+  .blogContainer {
+    margin-top: 10em;
+  }
   .blogTitle {
     font-size: 3em;
   }
@@ -2165,6 +2236,10 @@ nav a {
 
 .allInterviewsHeader {
   font-family: 'Oswald', sans-serif;
+}
+
+.allInterviewsContainerDiv {
+  margin-top: 7em;
 }
 
 .allInterviewsContainer {
@@ -2255,6 +2330,9 @@ nav a {
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
 
+  .allInterviewsContainerDiv {
+    margin-top: 10em;
+  }
   .allInterviewsHeader h1 {
     font-size: 3em;
   }
@@ -2281,7 +2359,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
-
+  .allInterviewsContainerDiv {
+    margin-top: 10em;
+  }
   .allInterviewsHeader h1 {
     font-size: 4em;
   }
@@ -2474,6 +2554,10 @@ nav a {
   font-family: 'Oswald', sans-serif;
 }
 
+.OCcontainerDiv {
+  margin-top: 7em;
+}
+
 .OCcontainer {
   display: flex;
   flex-wrap: wrap;
@@ -2497,6 +2581,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .OCcontainerDiv {
+    margin-top: 10em;
+  }
   .OCheader h1 {
     font-size: 3.5em;
   }
@@ -2504,6 +2591,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
+  .OCcontainerDiv {
+    margin-top: 10em;
+  }
   .OCheader h1 {
     font-size: 4em;
   }
@@ -2540,6 +2630,7 @@ nav a {
 
 .submitContainerDiv {
   height: 100vh;
+  margin-top: 7em;
 }
 
 .submitContainer h3 h4 h5 h6{
@@ -2553,6 +2644,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .submitContainerDiv {
+    margin-top: 10em;
+  }
   .submitHeader h1 {
     font-size: 3em;
   }
@@ -2571,6 +2665,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
+  .submitContainerDiv {
+    margin-top: 10em;
+  }
   .submitHeader h1 {
     font-size: 6em;
   }
