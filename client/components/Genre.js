@@ -7,12 +7,18 @@ export const Genre = () => {
   return (
     <div className="genreGrid">
       {
-        genres.map((genre) => (
+        genres.map((genre) => {
           //maps out the genre array to a grid, and replaces the spaces and symbols in genre with blan space
-          <Link to={`/discover/genre/${genre}`} className="genreName" id={genre.replace(/[\s/>&]/g, '')} key={genre}>
-            {genre}
-          </Link>
-        ))
+          let current = genre;
+          if (genre === 'Jazz / Soul') {
+            current = 'JazzSoul'
+          }
+          return (
+            <Link to={`/discover/genre/${current}`} className="genreName" id={current} key={current}>
+              {genre}
+            </Link>
+          )
+        })
       }
     </div>
   )
