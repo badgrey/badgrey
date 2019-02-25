@@ -30,7 +30,7 @@ export class OriginalContent extends Component {
 
   render() {
     return (
-      !this.props.originalcontent.length ?
+      !this.props.originalcontent.length && this.props.isAdmin ?
       <div className="OCcontainerDiv">
         <div className="OCheader">
           <h1>Bad Grey Films</h1>
@@ -45,11 +45,16 @@ export class OriginalContent extends Component {
       <div className="OCcontainerDiv">
         <div className="OCheader">
           <h1>Music Videos</h1>
+      {
+        this.props.isAdmin ?
           <form className="newOC" onSubmit={this.submit}>
             <label>Add Original Content</label>
             <input name="oc" type="text" required placeholder="Youtube ID" />
             <button type="submit">Submit</button>
           </form>
+        :
+        null
+      }
         </div>
         <div className="OCcontainer">
           {
