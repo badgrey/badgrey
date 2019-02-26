@@ -10,11 +10,18 @@ export const Genre = () => {
         genres.map((genre) => {
           //maps out the genre array to a grid, and replaces the spaces and symbols in genre with blan space
           let current = genre;
+          let id = genre
           if (genre === 'Jazz / Soul') {
             current = 'JazzSoul'
+            id = 'JazzSoul'
+          } else if(genre === 'R&B') {
+            id = 'RB'
+          } else if (genre === 'Old School') {
+            id = 'OldSchool'
           }
+
           return (
-            <Link to={`/discover/genre/${current}`} className="genreName" id={current} key={current}>
+            <Link to={`/discover/genre/${current}`} className="genreName" id={id} key={current}>
               {genre}
             </Link>
           )
