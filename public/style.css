@@ -21,6 +21,14 @@ html {
   }
 }
 
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  body {
+    width: 100%
+  }
+}
+
+
+
 body h1 h2 h3 h4 Link a p div button{
   font-family: 'Oswald', sans-serif;
 }
@@ -392,10 +400,11 @@ nav a {
 
 @media only screen and (min-width: 600px) and (max-width:900px) {
   .navbar {
-    width: 68em;
+    width: 100%;
   }
   .navList {
-    margin-left: 21em;
+    margin-left: 2em;
+    margin-right: 0;
 }
 }
 
@@ -853,10 +862,7 @@ nav a {
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .artistContainer {
-    margin-top: 2em;
-  }
-  .artistHeader {
-    margin-left: 6em;
+    margin-top: 7em;
   }
   .soundcloudAndYoutube {
     flex-direction: column;
@@ -1056,6 +1062,14 @@ nav a {
     font-size: 10px;
   }
 }
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .genreGrid {
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+  }
+}
+
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .genreGrid {
@@ -1270,6 +1284,7 @@ nav a {
   align-items: center;
   margin-top: 7em;
   height: 100vh;
+  width: 100%;
 }
 
 .editEmail {
@@ -1314,23 +1329,7 @@ nav a {
   animation: fadeinout 2s linear forwards;
 }
 
-@media only screen and (max-width: 600px) {
-  .outerAccountForm {
-    width: 31em;
-  }
-}
-@media only screen and (min-width: 600px) and (max-width:900px) {
-  .outerAccountForm {
-    width: 69em;
-  }
-}
-@media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .outerAccountForm {
-    width: 104em;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1800px) {
   .outerAccountForm {
     margin-top: 10em;
   }
@@ -1415,9 +1414,9 @@ nav a {
   }
 }
 @media only screen and (min-width: 600px) and (max-width:900px) {
-  /* .noSaved {
-    margin-left: 19em;
-  } */
+  .noSaved {
+    height: 12em;
+  }
 }
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .savedArtistsDiv {
@@ -1754,25 +1753,40 @@ nav a {
 
 @media only screen and (min-width: 600px) and (max-width:1100px) {
   .mainBlogDiv {
-    width: 59em;
+    width: 100%;
+    height: 19em;
+  }
+  .blogsDisplay {
+    margin-left: 3em;
+    margin-right: 3em;
   }
   .allBlogsButton {
     width: 8em;
     height: 3em;
     font-size: 1em;
   }
+  .mainBlogInfo h1 {
+    font-size: 2em;
+  }
   .mainBlogInfo h2 {
     font-size: 14px;
   }
   .mainBlogInfo h3 {
     font-size: 15px;
-    width: 23em;
+    width: 100%;
+  }
+  .singleBlogDiv {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .homeSingleBlogLink {
+    width: 100%;
   }
 }
 
 @media only screen and (min-width: 1800px) {
   .mainBlogDiv {
-    height: 45em;
+    height: 32em;
     width: 95em;
   }
 
@@ -2106,6 +2120,9 @@ nav a {
     width: 100%;
   }
 
+  .blogPost iframe {
+    width: 100%;
+  }
   .blogHeader {
     display: flex;
     flex-direction: column-reverse;
@@ -2126,6 +2143,13 @@ nav a {
   }
 
 }
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .blogPost iframe {
+    width: 100%;
+  }
+}
+
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
 
@@ -2405,6 +2429,10 @@ nav a {
 }
 
 /* Single Interview Styles */
+
+.singleInterviewContainer {
+  margin-top: 7em;
+}
 
 .interviewHeader {
   margin-top: 3em;
