@@ -368,8 +368,8 @@ nav a {
     margin-top: 13px;
   }
   .badGreyWolfLogo {
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
     margin-top: 10px;
   }
   .navOptions {
@@ -1767,7 +1767,7 @@ nav a {
   }
   .homeSingleBlogLink {
     width: 100%;
-    height: 19em;
+    height: 100%;
   }
 }
 
