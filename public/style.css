@@ -1751,6 +1751,9 @@ nav a {
     height: 3em;
     font-size: 1em;
   }
+  .mainBlogInfo {
+    margin-top: 2em;
+  }
   .mainBlogInfo h1 {
     font-size: 2em;
   }
