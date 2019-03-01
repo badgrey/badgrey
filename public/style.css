@@ -1140,7 +1140,7 @@ nav a {
 }
 
 .form input {
-  border: 1px solid black;
+  border: solid;
   border-radius: 4px;
   height: 25px;
 }
@@ -1176,21 +1176,13 @@ nav a {
 }
 
 
-@media only screen and (max-width: 400px) {
-  .outerForm {
-    width: 27em;
-  }
-  .loginBorder {
-    width: 27em;
-  }
-}
 @media only screen and (max-width: 600px) {
   .outerForm {
-    width: 30em;
+    width: 100%;
   }
   .form {
-    width: 81vw;
-    height: 84vh;
+    width: 90%;
+    height: 55vh;
   }
   .loginBorder {
     width: 30em;
@@ -1678,12 +1670,8 @@ nav a {
 
 @media only screen and (max-width: 600px) {
   .mainBlogDiv {
-    height: 21em;
-    width: 25em;
-  }
-  .mainBlogPic {
-    width: 34em;
-    height: 21em;
+    height: 15em;
+    width: 90%;
   }
   .mainBlogInfo {
     margin-top: .2em;
@@ -1691,18 +1679,22 @@ nav a {
     margin-left: 1em;
   }
   .mainBlogInfo h1 {
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .mainBlogInfo h3 {
     font-size: 10px;
     width: 100%;
     }
-  .mainBlogInfo h2
   .homeSingleBlog {
     height: 13em;
   }
   .mainBlogInfo h4 {
     font-size: 8px;
+  }
+  .singleBlogDiv {
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
   }
   .singleBlogPic {
     width: 50%;
@@ -1750,6 +1742,9 @@ nav a {
     width: 8em;
     height: 3em;
     font-size: 1em;
+  }
+  .mainBlogInfo {
+    margin-top: 2em;
   }
   .mainBlogInfo h1 {
     font-size: 2em;
