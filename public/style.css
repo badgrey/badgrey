@@ -368,8 +368,8 @@ nav a {
     margin-top: 13px;
   }
   .badGreyWolfLogo {
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
     margin-top: 10px;
   }
   .navOptions {
@@ -1687,7 +1687,7 @@ nav a {
     width: 100%;
     }
   .homeSingleBlog {
-    height: 13em;
+    height: 100%;
   }
   .mainBlogInfo h4 {
     font-size: 8px;
@@ -1767,7 +1767,7 @@ nav a {
   }
   .homeSingleBlogLink {
     width: 100%;
-    height: 19em;
+    height: 100%;
   }
 }
 
@@ -2113,7 +2113,6 @@ nav a {
     margin: 0px;
     width: 100%;
   }
-
   .blogPost iframe {
     width: 100%;
   }
@@ -2137,6 +2136,15 @@ nav a {
   }
   .commentContainer {
     margin-left: 1em;
+  }
+
+  .likeDislikeButton {
+    height: 35px;
+    width: 35px;
+  }
+  .likeDislikeImage {
+    height: 30px;
+    width: 30px;
   }
 }
 
