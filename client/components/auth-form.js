@@ -116,7 +116,8 @@ export class AuthForm extends Component {
         </form>
       </div>
       :
-      <div className="loginBorder" onSubmit={this.completeSignUp}>
+      <div className="outerForm" onSubmit={this.completeSignUp}>
+
           <form className="form">
             <h2>Enter Code Below</h2>
             <h4>It Was Emailed To You</h4>

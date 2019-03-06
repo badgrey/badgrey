@@ -56,12 +56,12 @@ class Navbar extends Component {
               {
                 this.props.isAdmin ?
                 <div>
-                  <div onClick={this.renderDropDown}>
+                  <div onClick={this.renderDropDown} onMouseEnter={this.renderDropDown}>
                     <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
                   </div>
                   {
                     this.state.clicked === false ? null :
-                  <div className="navOptions">
+                  <div className="navOptions" onMouseLeave={this.renderDropDown}>
                     <div className="singleNavOption">
                       <Link to="/newArtist">
                         Add Artist
@@ -102,12 +102,12 @@ class Navbar extends Component {
                 </div>
                     :
                     <div className="navOptions">
-                      <div onClick={this.renderDropDown}>
+                      <div onClick={this.renderDropDown} onMouseEnter={this.renderDropDown}>
                         <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
                       </div>
                     {
                       this.state.clicked === false ? null :
-                      <div>
+                      <div onMouseLeave={this.renderDropDown}>
                         <div className="singleNavOption">
                           <Link to="/account">
                           Account
@@ -132,12 +132,12 @@ class Navbar extends Component {
           ) : (
             <div className="navLinks">
               <div>
-                <div onClick={this.renderDropDown}>
+                <div onClick={this.renderDropDown} onMouseEnter={this.renderDropDown} >
                   <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
                 </div>
               {
                 this.state.clicked === false ? null :
-                <div className="navOptions">
+                <div className="navOptions" onMouseLeave={this.renderDropDown}>
                     {/* The navbar will show these links before you log in */}
                   <div className="singleNavOption">
                     <Link to="/login">
