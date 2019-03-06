@@ -1090,7 +1090,7 @@ nav a {
 }
 
 .form {
-  margin:3em 0 0 0;
+  margin: 3em 0 0 0;
   width: 50vw;
   height: 70vh;
   display: flex;
@@ -1144,11 +1144,6 @@ nav a {
   border: solid;
   border-radius: 4px;
   height: 25px;
-}
-
-.loginBorder {
-  display: flex;
-  justify-content: center;
 }
 
 .loginError {
