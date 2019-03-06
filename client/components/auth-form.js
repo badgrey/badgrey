@@ -39,7 +39,7 @@ export class AuthForm extends Component {
         if ((this.props.error.error === undefined)) {
           this.setState({checking: true})
         }
-        document.getElementsByClassName('form').reset()
+        document.getElementById('codeForm').reset()
       }
       if (formName === 'login') {
         try {
@@ -74,7 +74,7 @@ export class AuthForm extends Component {
     return (
       !this.state.checking ?
       <div className="outerForm">
-        <form className="form" onSubmit={this.sendEmail} name={name}>
+        <form  className="form" onSubmit={this.sendEmail} name={name}>
           <h2>{this.props.displayName} Below</h2>
           <div>
             <label className="loginSignupLabel">Username</label>
@@ -117,8 +117,7 @@ export class AuthForm extends Component {
       </div>
       :
       <div className="outerForm" onSubmit={this.completeSignUp}>
-
-          <form className="form">
+          <form id="codeForm" className="form">
             <h2>Enter Code Below</h2>
             <h4>It Was Emailed To You</h4>
             <div>
