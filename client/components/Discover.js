@@ -201,7 +201,7 @@ export class Discover extends Component {
   render() {
     return (
       <div className="discover">
-        <BlogHomePage blogs={this.props.blogs.slice(0, 3)} />
+        <BlogHomePage blogs={this.props.blogs.slice(0, 5)} />
         {
           //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
           this.props.match.path === '/discover' ?
