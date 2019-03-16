@@ -73,7 +73,7 @@ export class NewBlog extends Component {
       <form className="form" id="newArtistForm" onSubmit={this.submit} >
         <div>
           <label>Title</label>
-          <input name="title" type="text" required placeholder="Title" className="formInput" />
+          <input maxLength="50" name="title" type="text" required placeholder="Title" className="formInput" />
         </div>
         <div>
           <label>Author</label>

@@ -111,10 +111,10 @@ export class Blog extends Component {
               :
               null
             }
-              <Link className="artistProfile" to={`/discover/${this.props.chosenBlog[0].artist.stateAbbrev}/${this.props.chosenBlog[0].artist.name.split(' ').join('') + `_${this.props.chosenBlog[0].artist.id}`}`}>
-                <div className="artistProfileLinkText">
+              <Link className="blogToArtistLink" to={`/discover/${this.props.chosenBlog[0].artist.stateAbbrev}/${this.props.chosenBlog[0].artist.name.split(' ').join('') + `_${this.props.chosenBlog[0].artist.id}`}`}>
+                <button className="blogToArtistButton">
                 {this.props.chosenBlog[0].artist.name}
-                </div>
+                </button>
               </Link>
             </div>
           </div>
