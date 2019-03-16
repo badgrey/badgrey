@@ -82,7 +82,6 @@ path:hover {
 .allArtistsButton:hover {
   background-color: whitesmoke;
   color: black;
-  transform: scale(1.2);
 }
 
 .genreDiv {
@@ -129,7 +128,6 @@ path:hover {
   .allArtistsButton {
     width: 7em;
     height: 3em;
-    font-size: 1em;
   }
   .globe {
     height: 90px;
@@ -150,12 +148,7 @@ path:hover {
   .allAndGlobe{
     margin-top: 20px;
   }
-  .allArtistsButton {
-    margin-top: 75px;
-    width: 170px;
-    height: 70px;
-    font-size: 1em;
-  }
+
   .allArtistsButton {
     margin-top: 32px;
     width: 139px;
@@ -736,16 +729,16 @@ nav a {
   margin: 3em 20px 0 0;
   padding: 5px;
   text-decoration: none;
-  color: black;
+  color: whitesmoke;
+  background-color: black;
   transition: 0.3s;
-  height: 125px;
+  height: 130px;
   cursor: pointer;
 }
 
 .genreLink:hover {
-  background-color: black;
-  color: whitesmoke;
-  transform: scale(1.2);
+  background-color: whitesmoke;
+  color: black;
 }
 
 
@@ -1552,7 +1545,6 @@ nav a {
 .allBlogsButton:hover {
   background-color: whitesmoke;
   color: black;
-  transform: scale(1.2);
 }
 
 .mainBlogDiv {
@@ -1563,15 +1555,20 @@ nav a {
   width: 75%;
 }
 
+.mainBlogDiv:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .singleBlogDiv {
   display: flex;
   justify-content: space-evenly;
-  width: 87%;
+  width: 77%;
   flex-wrap: wrap;
 }
 
+
 .homeSingleBlogLink {
-  width: 40%;
+  width: 48%;
   margin-bottom: 1em;
   cursor: pointer;
 }
@@ -1584,6 +1581,9 @@ nav a {
   height: 100%;
 }
 
+.homeSingleBlog:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
 .singleBlogInfo {
   text-align: center;
   color: white;
@@ -1943,18 +1943,24 @@ nav a {
   font-family: 'Oswald', sans-serif;
 }
 
-.artistProfile {
-  display: inline-grid;
-  grid-template-rows: 30px;
-  grid-template-columns: 120px;
-  align-items: center;
-  border: 2px solid black;
-  padding: 5px;
-  text-decoration: none;
-  color: black;
+.blogToArtistLink {
+  height: 0;
+}
+
+.blogToArtistButton {
+  width: 150px;
+  height: 50px;
+  color: whitesmoke;
+  background-color: black;
   transition: 0.3s;
-  height: 40px;
+  font-size: 1em;
+  font-family: 'Oswald', sans-serif;
   cursor: pointer;
+}
+
+.blogToArtistButton:hover {
+  background-color: whitesmoke;
+  color: black;
 }
 
 .artistProfile:hover {
@@ -1972,7 +1978,7 @@ nav a {
 .singleBlogBannerDiv {
   margin-top: 2em;
   width: 43em;
-  height: 23em;
+  height: 30em;
   display: inline-block;
   overflow: hidden;
 }
@@ -2132,6 +2138,7 @@ nav a {
   }
   .singleBlogBannerDiv {
     width: 29em;
+    height: 25em;
   }
 
   .blogNameHeader h5 {
@@ -2152,6 +2159,11 @@ nav a {
   .likeDislikeImage {
     height: 30px;
     width: 30px;
+  }
+
+  .blogToArtistButton {
+    width: 7em;
+    height: 3em;
   }
 }
 
@@ -2196,6 +2208,7 @@ nav a {
   }
   .singleBlogBannerDiv {
     width: 55em;
+    height: 40em;
   }
   .blogPicDescription h5 {
     font-size: 1.4em;
@@ -2244,7 +2257,7 @@ nav a {
   }
   .singleBlogBannerDiv {
     width: 82em;
-    height: 41em;
+    height: 56em;
   }
   .blogPicDescription h5 {
     font-size: 2.4em;
@@ -2361,8 +2374,8 @@ nav a {
 .interviewButton:hover {
   background-color: whitesmoke;
   color: black;
-  transform: scale(1.05);
 }
+
 @media only screen and (max-width: 600px) {
   .allInterviewsContainerDiv {
     width: 100%;
