@@ -20,23 +20,27 @@ class Submit extends Component {
     return (
       <div className="outerForm">
           <form  className="form" onSubmit={this.submit} name={name}>
-            <h2>Want To Be Featured On Bad Grey></h2>
+            <h2>Want To Be Featured On Bad Grey?</h2>
             <h4>Fill Out The Information Below</h4>
-            <div>
-              <label className="loginSignupLabel">Your Name</label>
-              <input className="loginInput" name="name" type="text" />
+            <div className="topInputs">
+              <div>
+                <label className="loginSignupLabel">Your Name</label>
+                <input className="loginInput" name="name" type="text" />
+              </div>
+              <div>
+                <label className="loginSignupLabel">Your Home City</label>
+                <input className="loginInput" name="city" type="text" />
+              </div>
             </div>
-            <div>
-              <label className="loginSignupLabel" htmlFor="email">Your Home City</label>
-              <input className="loginInput" name="city" type="text" />
-            </div>
-            <div>
-              <label className="loginSignupLabel" htmlFor="password">Link To Your Soundcloud</label>
-              <input className="loginInput" name="soundcloud" type="password" />
-            </div>
-            <div>
-              <label className="loginSignupLabel" htmlFor="password">Link To Your Music Video</label>
-              <input className="loginInput" name="youtube" type="password" />
+            <div className="bottomInputs">
+              <div>
+                <label className="loginSignupLabel">Link To Your Soundcloud</label>
+                <input className="loginInput" name="soundcloud" />
+              </div>
+              <div>
+                <label className="loginSignupLabel">Link To Your Music Video</label>
+                <input className="loginInput" name="youtube" />
+              </div>
             </div>
             <div>
               <button type="submit">Send</button>

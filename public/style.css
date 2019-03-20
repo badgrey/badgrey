@@ -1118,6 +1118,11 @@ nav a {
   font-weight: lighter;
 }
 
+.form h4 {
+  margin-top: -40px;
+  color: whitesmoke;
+}
+
 .form button {
   background-color: black;
   color: white;
@@ -1173,12 +1178,21 @@ nav a {
     width: 90%;
     height: 55vh;
   }
+  .form h2 {
+    height: 15%;
+  }
   .loginBorder {
     width: 30em;
   }
   .loginError {
     margin-top: 85vh;
     margin-right: 25px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .form h2: {
+    height: 15%;
   }
 }
 
@@ -2701,76 +2715,22 @@ nav a {
 
 /* Submit Styles */
 
-.submitHeader {
-  margin-top: 3em;
-  text-align: center;
-  padding-top: 2em;
-}
-
-.submitHeader h1 {
-  font-family: 'Oswald', sans-serif;
-}
-
-.submitContainer {
-  margin-top: 2em;
+.topInputs {
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  justify-content: space-between;
 }
 
-.submitContainerDiv {
-  height: 100vh;
-  margin-top: 7em;
+.bottomInputs {
+  display: flex;
+  justify-content: space-between;
 }
 
-.submitContainer h3 h4 h5 h6{
-  font-family: 'Oswald', sans-serif;
-}
 
 @media only screen and (max-width: 600px) {
-  .submitContainerDiv {
-    width: 100%;
+  .topInputs {
+    flex-direction: column;
   }
-}
-
-@media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .submitContainerDiv {
-    margin-top: 10em;
-  }
-  .submitHeader h1 {
-    font-size: 3em;
-  }
-  .submitContainer h4 {
-    font-size: 2em;
-  }
-  .submitContainer h3 {
-    font-size: 2.6em;
-  }
-  .submitContainer h5 {
-    font-size: 1.7em;
-  }
-  .submitContainer h6 {
-    font-size: 1.4em;
-  }
-}
-
-@media only screen and (min-width: 1800px) {
-  .submitContainerDiv {
-    margin-top: 10em;
-  }
-  .submitHeader h1 {
-    font-size: 6em;
-  }
-  .submitContainer h4 {
-    font-size: 3.4em;
-  }
-  .submitContainer h3 {
-    font-size: 4em;
-  }
-  .submitContainer h5 {
-    font-size: 3.2em;
-  }
-  .submitContainer h6 {
-    font-size: 2.7em;
+  .bottomInputs {
+    flex-direction: column;
   }
 }
