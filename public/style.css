@@ -1144,6 +1144,10 @@ nav a {
   height: 25px;
 }
 
+.loginSignupRoute h4{
+  color: black;
+}
+
 .loginError {
   position: absolute;
   width: 180px;
