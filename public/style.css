@@ -1180,7 +1180,7 @@ nav a {
   }
   .form {
     width: 90%;
-    height: 55vh;
+    height: 70vh;
   }
   .form h2 {
     height: 15%;
@@ -1195,6 +1195,9 @@ nav a {
 }
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
+  .form {
+    width: 90%;
+  }
   .form h2 {
     height: 15%;
   }
@@ -1209,14 +1212,14 @@ nav a {
   }
   .form h2 {
     font-size: 3em;
-    height: 3em;
+    height: 4em;
   }
   .loginSignupLabel {
     font-size: 2.5em;
     margin-bottom: 20px;
   }
   .form input {
-    height: 1.5em;
+    height: 1.2em;
     width: 10em;
     font-size: 2.5em;
   }
@@ -1791,8 +1794,8 @@ nav a {
     height: 30em;
   }
   .mainBlogDiv {
-    height: 41em;
-    width: 116em;
+    height: 32em;
+    width: 86em;
   }
 
   .mainBlogInfo h1 {
