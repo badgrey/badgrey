@@ -1118,6 +1118,11 @@ nav a {
   font-weight: lighter;
 }
 
+.form h4 {
+  margin-top: -40px;
+  color: whitesmoke;
+}
+
 .form button {
   background-color: black;
   color: white;
@@ -1137,6 +1142,10 @@ nav a {
   border: solid;
   border-radius: 4px;
   height: 25px;
+}
+
+.loginSignupRoute h4{
+  color: black;
 }
 
 .loginError {
@@ -1173,12 +1182,21 @@ nav a {
     width: 90%;
     height: 55vh;
   }
+  .form h2 {
+    height: 15%;
+  }
   .loginBorder {
     width: 30em;
   }
   .loginError {
     margin-top: 85vh;
     margin-right: 25px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .form h2 {
+    height: 15%;
   }
 }
 
@@ -1198,16 +1216,13 @@ nav a {
     margin-bottom: 20px;
   }
   .form input {
-    height: 2em;
-    width: 13em;
+    height: 1.5em;
+    width: 10em;
     font-size: 2.5em;
   }
   .form button {
     width: 10em;
     height: 70px;
-    font-size: 2em;
-  }
-  .form h4 {
     font-size: 2em;
   }
 }
@@ -1234,9 +1249,6 @@ nav a {
   .form button {
     width: 7em;
     height: 2em;
-    font-size: 2em;
-  }
-  .form h4 {
     font-size: 2em;
   }
 }
@@ -1401,7 +1413,7 @@ nav a {
   .noSaved h2{
     font-size: 2.5em;
   }
-  .noSaved h6 {
+  .noSaved h5 {
     font-size: 1.1em;
   }
 }
@@ -1427,7 +1439,7 @@ nav a {
   .noSaved h2 {
     font-size: 4em;
   }
-  .noSaved h6 {
+  .noSaved h5 {
     font-size: 2em;
   }
 }
@@ -1779,8 +1791,8 @@ nav a {
     height: 30em;
   }
   .mainBlogDiv {
-    height: 35em;
-    width: 103em;
+    height: 41em;
+    width: 116em;
   }
 
   .mainBlogInfo h1 {
@@ -2701,76 +2713,38 @@ nav a {
 
 /* Submit Styles */
 
-.submitHeader {
-  margin-top: 3em;
-  text-align: center;
-  padding-top: 2em;
-}
-
-.submitHeader h1 {
-  font-family: 'Oswald', sans-serif;
-}
-
-.submitContainer {
-  margin-top: 2em;
+.topInputs {
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  justify-content: space-between;
 }
 
-.submitContainerDiv {
-  height: 100vh;
-  margin-top: 7em;
+.bottomInputs {
+  display: flex;
+  justify-content: space-between;
 }
 
-.submitContainer h3 h4 h5 h6{
-  font-family: 'Oswald', sans-serif;
-}
 
 @media only screen and (max-width: 600px) {
-  .submitContainerDiv {
-    width: 100%;
+  .topInputs {
+    flex-direction: column;
+  }
+  .bottomInputs {
+    flex-direction: column;
   }
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .submitContainerDiv {
-    margin-top: 10em;
-  }
-  .submitHeader h1 {
-    font-size: 3em;
-  }
-  .submitContainer h4 {
+  .form h4{
+    margin-top: -3em;
+    margin-bottom: 2em;
     font-size: 2em;
-  }
-  .submitContainer h3 {
-    font-size: 2.6em;
-  }
-  .submitContainer h5 {
-    font-size: 1.7em;
-  }
-  .submitContainer h6 {
-    font-size: 1.4em;
   }
 }
 
 @media only screen and (min-width: 1800px) {
-  .submitContainerDiv {
-    margin-top: 10em;
-  }
-  .submitHeader h1 {
-    font-size: 6em;
-  }
-  .submitContainer h4 {
-    font-size: 3.4em;
-  }
-  .submitContainer h3 {
-    font-size: 4em;
-  }
-  .submitContainer h5 {
-    font-size: 3.2em;
-  }
-  .submitContainer h6 {
-    font-size: 2.7em;
+  .form h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
   }
 }

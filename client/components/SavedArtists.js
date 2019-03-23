@@ -52,7 +52,7 @@ export class SavedArtists extends Component{
       <div className="noSavedContainer">
         <div className="noSaved">
           <h2>You Don't Have Any Saved Artists!</h2>
-          <h6>If you add some they will show up here so you can check them out later</h6>
+          <h5>If you add some they will show up here so you can check them out later</h5>
         </div>
       </div>
       :

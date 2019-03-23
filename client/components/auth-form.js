@@ -94,11 +94,11 @@ export class AuthForm extends Component {
           {
             //will switch depending on name of form
             this.props.name !== 'login' ?
-            <div>
+            <div className="loginSignupRoute">
               <h4>Already Have An Account? <Link to="/login">Login</Link></h4>
             </div>
             :
-            <div>
+            <div className="loginSignupRoute">
               <h4>New To Us? <Link to="/signup">Sign Up</Link></h4>
             </div>
           }
