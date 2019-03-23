@@ -47,6 +47,7 @@ export class AllBlogs extends Component {
     return (
       <div className="allBlogsDiv">
         <h1 className="allBlogsh1">All</h1>
+        <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
           <form>
             <label className="searchLabel" >Search Artist</label>
