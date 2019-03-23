@@ -1195,7 +1195,7 @@ nav a {
 }
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .form h2: {
+  .form h2 {
     height: 15%;
   }
 }
@@ -1216,16 +1216,13 @@ nav a {
     margin-bottom: 20px;
   }
   .form input {
-    height: 2em;
-    width: 13em;
+    height: 1.5em;
+    width: 10em;
     font-size: 2.5em;
   }
   .form button {
     width: 10em;
     height: 70px;
-    font-size: 2em;
-  }
-  .form h4 {
     font-size: 2em;
   }
 }
@@ -1252,9 +1249,6 @@ nav a {
   .form button {
     width: 7em;
     height: 2em;
-    font-size: 2em;
-  }
-  .form h4 {
     font-size: 2em;
   }
 }
@@ -1419,7 +1413,7 @@ nav a {
   .noSaved h2{
     font-size: 2.5em;
   }
-  .noSaved h6 {
+  .noSaved h5 {
     font-size: 1.1em;
   }
 }
@@ -1445,7 +1439,7 @@ nav a {
   .noSaved h2 {
     font-size: 4em;
   }
-  .noSaved h6 {
+  .noSaved h5 {
     font-size: 2em;
   }
 }
@@ -1797,8 +1791,8 @@ nav a {
     height: 30em;
   }
   .mainBlogDiv {
-    height: 35em;
-    width: 103em;
+    height: 41em;
+    width: 116em;
   }
 
   .mainBlogInfo h1 {
@@ -2736,5 +2730,21 @@ nav a {
   }
   .bottomInputs {
     flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .form h4{
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .form h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
   }
 }

@@ -6,6 +6,10 @@ import '../../public/style.css';
 //for now static submit page with information how to reach us
 class Submit extends Component {
 
+  state = {
+    sent: false
+  }
+
   submit = async (evt) => {
     evt.preventDefault();
     const info = {
@@ -15,11 +19,22 @@ class Submit extends Component {
       youtube: evt.target.youtube.value
     }
     await axios.post('/api/submit', info)
+    document.getElementById('submitform').reset()
+    this.setState({sent: true})
   }
+
   render(){
     return (
+      this.state.sent ?
+      <div className="noSavedContainer">
+        <div className="noSaved">
+          <h2>Thank You For Submitting</h2>
+          <h5>We Will Check You Out And See If You Are A Good Fit For Bad Grey</h5>
+        </div>
+      </div>
+      :
       <div className="outerForm">
-          <form  className="form" onSubmit={this.submit} name={name}>
+          <form  id="submitform" className="form" onSubmit={this.submit} name={name}>
             <h2>Want To Be Featured On Bad Grey?</h2>
             <h4>Fill Out The Information Below</h4>
             <div className="topInputs">
