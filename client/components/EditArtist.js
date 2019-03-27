@@ -92,7 +92,6 @@ export class EditArtist extends Component {
   //changes state to file name
   handleFileUpload = (event) => {
     this.setState({file: event.target.files})
-    console.log(event.target.files[0].name)
   }
 
   //submit form info to backend

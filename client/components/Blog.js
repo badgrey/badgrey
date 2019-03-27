@@ -26,7 +26,7 @@ export class Blog extends Component {
     if (this.props.artists === []) {
       this.props.loadInitialData()
     }
-    if (this.props.comments.length === 0) {
+    if (this.props.comments.length === 0 || id !== this.props.comments[0].blogId) {
       this.props.getBlogComments(id)
     }
   }
