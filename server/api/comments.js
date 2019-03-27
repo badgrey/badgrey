@@ -6,6 +6,7 @@ module.exports = router
 
 //gets all comments for a specific blog
 router.get('/blog/:id', asyncHandler(async (req, res, next) => {
+  console.log('HERE', req.params)
   const comments = await Comment.findAll({
     where: {
       blogId: req.params.id
