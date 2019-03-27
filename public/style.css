@@ -789,11 +789,14 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: left;
+  text-align: left;
+  margin-left: 6em;
 }
 
 @media only screen and (max-width: 600px) {
   .artistCommentContainer {
     margin-top: 38em;
+    margin-left: 3em;
   }
   .artistNameHeader h1 {
     font-size: 1.3em;
@@ -854,6 +857,7 @@ nav a {
   }
   .artistCommentContainer {
     margin-top: 40em;
+    margin-left: 8em;
   }
 }
 
@@ -875,6 +879,7 @@ nav a {
   }
   .artistCommentContainer {
     margin-top: 20em;
+    margin-left: 10em;
   }
 }
 
@@ -915,6 +920,7 @@ nav a {
   }
   .artistCommentContainer {
     margin-top: 48em;
+    margin-left: 20em;
   }
   .artistLikesDislikes p {
     font-size: 2.5em;

@@ -27,7 +27,6 @@ export class Blog extends Component {
       this.props.loadInitialData()
     }
     if (this.props.comments.length === 0 || id !== this.props.comments[0].blogId) {
-      console.log('here')
       this.props.getBlogComments(id)
     }
   }

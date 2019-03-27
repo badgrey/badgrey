@@ -81,8 +81,6 @@ export class SingleGenre extends Component{
 const mapState = ({artists, user, savedArtists}, ownProps) => {
   return {
     genreArtists: artists.filter((artist) => {
-      console.log(artist.genre, artist.genre.split(' / ').join(''), ownProps.match.params)
-
       return artist.genre.split(' / ').join('') === ownProps.match.params.genre
     }),
     artists: artists.sort((artistA, artistB) => {
