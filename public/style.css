@@ -106,12 +106,10 @@ path:hover {
   font-size: 1.2em;
 }
 
-.internationalLink {
-  transition: 0.3s;
-}
+
 
 .internationalLink:hover {
-  transform: scale(1.2);
+  opacity: .5;
 }
 
 @media only screen and (max-width: 600px) {
@@ -2019,6 +2017,7 @@ nav a {
 
 .blogPostText {
   margin-bottom: 40px;
+  font-size: 17px;
 }
 
 .commentContainer {
@@ -2146,6 +2145,10 @@ nav a {
     margin: 0px;
     width: 100%;
   }
+  .blogPost {
+    margin-left: 3em;
+    margin-right: 3em;
+  }
   .blogPost iframe {
     width: 100%;
   }
@@ -2234,8 +2237,8 @@ nav a {
   .blogPicDescription h5 {
     font-size: 1.4em;
   }
-  .blogPost {
-    font-size: 1.3em;
+  .blogPostText {
+    font-size: 1.7em;
   }
   .commentForm label {
     font-size: 1.2em;
