@@ -210,16 +210,15 @@ export class Discover extends Component {
     } else if (window.matchMedia('(min-width: 600px)').matches && window.matchMedia('(max-width: 900px)').matches) {
       scrollto = 1500
     } else if (window.matchMedia('(min-width: 1400px)').matches && window.matchMedia('(max-width: 1800px)').matches) {
-      scrollto = 1050
+      scrollto = 1100
     } else if (window.matchMedia('(max-width: 1800px)').matches) {
-      scrollto = 1150
+      scrollto = 1420
     }
     return scrollto
   }
 
   render() {
     let scrollto = this.setScroll()
-    console.log(scrollto)
     return (
       <div className="discover">
         <BlogHomePage blogs={this.props.blogs.slice(0, 5)} />
