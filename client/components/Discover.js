@@ -192,10 +192,6 @@ export class Discover extends Component {
     this.saved()
   }
 
-  componentDidMount () {
-
-  }
-
   saved() {
     if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
       this.props.loadInitialData()
@@ -211,7 +207,7 @@ export class Discover extends Component {
       scrollto = 1500
     } else if (window.matchMedia('(min-width: 1400px)').matches && window.matchMedia('(max-width: 1800px)').matches) {
       scrollto = 1100
-    } else if (window.matchMedia('(max-width: 1800px)').matches) {
+    } else if (window.matchMedia('(min-width: 1800px)').matches) {
       scrollto = 1420
     }
     return scrollto
@@ -219,6 +215,7 @@ export class Discover extends Component {
 
   render() {
     let scrollto = this.setScroll()
+    console.log(scrollto)
     return (
       <div className="discover">
         <BlogHomePage blogs={this.props.blogs.slice(0, 5)} />
