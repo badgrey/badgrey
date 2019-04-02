@@ -15,6 +15,7 @@ export class Discover extends Component {
       savedCheck: true
     }
     this.saved = this.saved.bind(this)
+    this.scrollto = null
   }
 
   //changes route based on state clicked
@@ -191,6 +192,10 @@ export class Discover extends Component {
     this.saved()
   }
 
+  componentDidMount () {
+
+  }
+
   saved() {
     if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
       this.props.loadInitialData()
@@ -198,14 +203,30 @@ export class Discover extends Component {
     }
   }
 
+  setScroll = () => {
+    let scrollto = 1000
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      scrollto = 1100
+    } else if (window.matchMedia('(min-width: 600px)').matches && window.matchMedia('(max-width: 900px)').matches) {
+      scrollto = 1500
+    } else if (window.matchMedia('(min-width: 1400px)').matches && window.matchMedia('(max-width: 1800px)').matches) {
+      scrollto = 1050
+    } else if (window.matchMedia('(max-width: 1800px)').matches) {
+      scrollto = 1150
+    }
+    return scrollto
+  }
+
   render() {
+    let scrollto = this.setScroll()
+    console.log(scrollto)
     return (
       <div className="discover">
         <BlogHomePage blogs={this.props.blogs.slice(0, 5)} />
         {
           //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
           this.props.match.path === '/discover' ?
-          window.scroll(0, 1200) :
+          window.scroll(0, scrollto) :
           null
         }
         <h1>Discover Below</h1>
