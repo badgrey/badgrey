@@ -215,7 +215,6 @@ export class Discover extends Component {
 
   render() {
     let scrollto = this.setScroll()
-    console.log(scrollto)
     return (
       <div className="discover">
         <BlogHomePage blogs={this.props.blogs.slice(0, 5)} />
