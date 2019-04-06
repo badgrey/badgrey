@@ -285,6 +285,18 @@ path:hover {
   cursor: pointer;
 }
 
+.barmenuPic {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  filter: invert(1);
+  margin-top: 1.5em;
+}
+
+.barmenuPic:hover {
+  opacity: 0.50;
+}
+
 .badGreyTextLogo:hover {
   opacity: 0.50;
 }
@@ -309,6 +321,12 @@ nav a {
 .navLinks {
   display: flex;
   justify-content: space-between;
+}
+
+.mobileNavLinks {
+  display: flex;
+  justify-content: center;
+  width: 7em;
 }
 
 .navList a{
