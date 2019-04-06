@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import '../../public/style.css'
 
-class Navbar extends Component {
+class MobileNavbar extends Component {
 
   constructor() {
     super()
@@ -34,34 +34,40 @@ class Navbar extends Component {
             <img className="badGreyTextLogo" src={require('../../public/images/badGreyTextLogoWhite.png')} />
           </Link>
         </div>
-        <div className="navList">
-          <Link to="/discover">
-            Discover
-          </Link>
-          <Link to="/interviews">
-            Interviews
-          </Link>
-          <Link to="/originalcontent">
-            Original Content
-          </Link>
-          <Link to="/submit">
-            Submit
-          </Link>
-        </div>
         <nav>
         {/* The navbar will show these links after you log in */}
           {this.props.isLoggedIn ? (
-            <div className="navLinks">
+            <div className="mobileNavLinks">
               <div>
               {
                 this.props.isAdmin ?
                 <div>
                   <div onClick={this.renderDropDown}>
-                    <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                    <img className="barmenuPic" src={require('../../public/images/barmenu.png')} />
                   </div>
                   {
                     this.state.clicked === false ? null :
                   <div className="navOptions">
+                    <div className="singleNavOption">
+                      <Link to="/discover">
+                        Discover
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/interviews">
+                      Interviews
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/originalcontent">
+                        Original Content
+                      </Link>
+                    </div>
+                    <div className="singleNavOption">
+                      <Link to="/submit">
+                        Submit
+                      </Link>
+                    </div>
                     <div className="singleNavOption">
                       <Link to="/newArtist">
                         Add Artist
@@ -103,11 +109,31 @@ class Navbar extends Component {
                     :
                     <div className="navOptions">
                       <div onClick={this.renderDropDown}>
-                        <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                        <img className="barmenuPic" src={require('../../public/images/barmenu.png')} />
                       </div>
                     {
                       this.state.clicked === false ? null :
                       <div>
+                        <div className="singleNavOption">
+                          <Link to="/discover">
+                            Discover
+                          </Link>
+                        </div>
+                        <div className="singleNavOption">
+                          <Link to="/interviews">
+                          Interviews
+                          </Link>
+                        </div>
+                        <div className="singleNavOption">
+                          <Link to="/originalcontent">
+                            Original Content
+                          </Link>
+                        </div>
+                        <div className="singleNavOption">
+                          <Link to="/submit">
+                            Submit
+                          </Link>
+                        </div>
                         <div className="singleNavOption">
                           <Link to="/account">
                           Account
@@ -130,15 +156,35 @@ class Navbar extends Component {
               </div>
             </div>
           ) : (
-            <div className="navLinks">
+            <div className="mobileNavLinks">
               <div>
                 <div onClick={this.renderDropDown}>
-                  <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                  <img className="barmenuPic" src={require('../../public/images/barmenu.png')} />
                 </div>
               {
                 this.state.clicked === false ? null :
                 <div className="navOptions">
                     {/* The navbar will show these links before you log in */}
+                  <div className="singleNavOption">
+                     <Link to="/discover">
+                      Discover
+                    </Link>
+                  </div>
+                  <div className="singleNavOption">
+                    <Link to="/interviews">
+                     Interviews
+                    </Link>
+                  </div>
+                  <div className="singleNavOption">
+                    <Link to="/originalcontent">
+                      Original Content
+                    </Link>
+                  </div>
+                  <div className="singleNavOption">
+                    <Link to="/submit">
+                      Submit
+                    </Link>
+                  </div>
                   <div className="singleNavOption">
                     <Link to="/login">
                       Login
@@ -178,12 +224,12 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState, mapDispatch)(MobileNavbar)
 
 /**
  * PROP TYPES
  */
-Navbar.propTypes = {
+MobileNavbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
 }

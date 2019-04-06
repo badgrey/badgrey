@@ -4,6 +4,7 @@
  * having to figure out which file they belong to
  */
 export {default as Navbar} from './navbar'
+export {default as MobileNavbar} from './MobileNavbar'
 export {Login, Signup} from './auth-form'
 export {default as Discover} from './Discover'
 export {default as State} from './State'
