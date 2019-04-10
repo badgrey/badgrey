@@ -132,7 +132,7 @@ export class Blog extends Component {
            )
          })
         }
-        <iframe src={this.props.chosenBlog[0].spotifyURL} width="600" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media" />
+        <iframe className={blogIframe} src={this.props.chosenBlog[0].spotifyURL} width="600" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media" />
         </div>
         <div className="commentContainer">
             <form onSubmit={this.postComment} id="form" className="commentForm">
