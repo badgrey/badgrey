@@ -2134,6 +2134,10 @@ nav a {
   transform: scale(1.2);
 }
 
+.blogIframe {
+  height: 25em;
+}
+
 .commentPostError {
   width: 207px;
   border-radius: 4px;
@@ -2182,7 +2186,9 @@ nav a {
     width: 29em;
     height: 25em;
   }
-
+  .blogIframe {
+    height: 15em;
+  }
   .blogNameHeader h5 {
     font-size: .9em;
     margin-top: auto;
@@ -2212,6 +2218,9 @@ nav a {
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .blogPost iframe {
     width: 100%;
+  }
+  .blogIframe {
+    height: 20em;
   }
 }
 
@@ -2306,6 +2315,9 @@ nav a {
   }
   .blogPost {
     font-size: 1.3em;
+  }
+  .blogIframe {
+    width: 40em;
   }
   .commentForm label {
     font-size: 1.2em;

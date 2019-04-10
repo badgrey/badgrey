@@ -38,9 +38,9 @@ class Navbar extends Component {
           <Link to="/discover">
             Discover
           </Link>
-          <Link to="/interviews">
+          {/*<Link to="/interviews">
             Interviews
-          </Link>
+          </Link>*/}
           <Link to="/originalcontent">
             Original Content
           </Link>
@@ -72,11 +72,11 @@ class Navbar extends Component {
                         Add Blog
                       </Link>
                     </div>
-                    <div className="singleNavOption">
+                    {/*<div className="singleNavOption">
                       <Link to="/newInterview">
                         Add Interview
                       </Link>
-                    </div>
+                  </div>*/}
                     <div className="singleNavOption">
                       <Link to="/account">
                       Account
