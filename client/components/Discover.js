@@ -224,7 +224,7 @@ export class Discover extends Component {
           window.scroll(0, scrollto) :
           null
         }
-        <h1>Discover Below</h1>
+        <h1>Discover</h1>
         <div className="allAndGlobe">
           <Link className="allArtistsLink" to="/discover/all">
             <button className="allArtistsButton" >View All Artists</button>

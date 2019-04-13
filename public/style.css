@@ -285,12 +285,16 @@ path:hover {
   cursor: pointer;
 }
 
+.menuContainer {
+  width: 6em;
+}
 .barmenuPic {
-  height: 50px;
-  width: 50px;
   cursor: pointer;
   filter: invert(1);
-  margin-top: 1.5em;
+  margin-top: 3em;
+  margin-right: .5em;
+  height: 60px;
+  width: 60px;
 }
 
 .barmenuPic:hover {
@@ -353,17 +357,6 @@ nav a {
   color: grey;
 }
 
-@media only screen and (max-width: 340px) {
-  .navbar {
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .navbar {
-    width: 100%;
-  }
-}
-
 @media only screen and (max-width: 600px) {
   .navbar {
     width: 100%;
@@ -380,6 +373,11 @@ nav a {
     height: 80px;
     width: 80px;
     margin-top: 10px;
+  }
+  .barmenuPic {
+    height: 50px;
+    width: 50px;
+    margin-top: 1.5em;
   }
   .navOptions {
     position: relative;
@@ -411,6 +409,9 @@ nav a {
     height: 160px;
     width: 160px;
   }
+  .barmenuPic {
+    margin-top: 6em;
+  }
   .navList {
     margin-top: 111px;
     margin-left: 19em;
@@ -440,11 +441,19 @@ nav a {
     width: 160px;
   }
   .navOptions {
-    margin-top: -27px;
+    margin-top: -20px;
     font-size: 1.5em;
   }
   .navList {
     font-size: 1.5em;
+  }
+  .menuContainer {
+    width: 11em;
+  }
+  .barmenuPic {
+    margin-top: 4em;
+    height: 80px;
+    width: 80px;
   }
 }
 

@@ -38,9 +38,9 @@ class Navbar extends Component {
           <Link to="/discover">
             Discover
           </Link>
-          {/*<Link to="/interviews">
+          <Link to="/interviews">
             Interviews
-          </Link>*/}
+          </Link>
           <Link to="/originalcontent">
             Original Content
           </Link>
@@ -56,8 +56,8 @@ class Navbar extends Component {
               {
                 this.props.isAdmin ?
                 <div>
-                  <div onClick={this.renderDropDown}>
-                    <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                  <div className="menuContainer" onClick={this.renderDropDown}>
+                    <img className="barmenuPic" src={require('../../public/images/barmenu.png')} />
                   </div>
                   {
                     this.state.clicked === false ? null :
@@ -72,11 +72,11 @@ class Navbar extends Component {
                         Add Blog
                       </Link>
                     </div>
-                    {/*<div className="singleNavOption">
+                    <div className="singleNavOption">
                       <Link to="/newInterview">
                         Add Interview
                       </Link>
-                  </div>*/}
+                  </div>
                     <div className="singleNavOption">
                       <Link to="/account">
                       Account
@@ -102,8 +102,8 @@ class Navbar extends Component {
                 </div>
                     :
                     <div className="navOptions">
-                      <div onClick={this.renderDropDown}>
-                        <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                      <div className="menuContainer" onClick={this.renderDropDown}>
+                        <img className="barmenuPic" src={require('../../public/images/barmenu.png')} />
                       </div>
                     {
                       this.state.clicked === false ? null :
@@ -132,8 +132,8 @@ class Navbar extends Component {
           ) : (
             <div className="navLinks">
               <div>
-                <div onClick={this.renderDropDown}>
-                  <img className="badGreyWolfLogo" src={require('../../public/images/badGreyWolfLogo.png')} />
+                <div className="menuContainer" onClick={this.renderDropDown}>
+                  <img className="barmenuPic" src={require('../../public/images/barmenu.png')} />
                 </div>
               {
                 this.state.clicked === false ? null :
