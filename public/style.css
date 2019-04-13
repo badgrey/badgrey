@@ -381,6 +381,7 @@ nav a {
   }
   .navOptions {
     position: relative;
+    margin-top: 10px;
   }
   .navList {
     display: flex;
@@ -410,7 +411,7 @@ nav a {
     width: 160px;
   }
   .barmenuPic {
-    margin-top: 6em;
+    margin-top: 5em;
   }
   .navList {
     margin-top: 111px;
@@ -423,7 +424,7 @@ nav a {
     width: 160px;
   }
   .navOptions {
-    margin-top: -17px;
+    margin-top: -2px;
   }
 }
 
@@ -451,9 +452,12 @@ nav a {
     width: 11em;
   }
   .barmenuPic {
-    margin-top: 4em;
+    margin-top: 3em;
     height: 80px;
     width: 80px;
+  }
+  .navOptions {
+    margin-top: 18px;
   }
 }
 
