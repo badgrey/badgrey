@@ -290,11 +290,10 @@ path:hover {
 }
 .barmenuPic {
   cursor: pointer;
-  filter: invert(1);
-  margin-top: 3em;
+  margin-top: 1em;
   margin-right: .5em;
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
 }
 
 .barmenuPic:hover {
@@ -375,8 +374,8 @@ nav a {
     margin-top: 10px;
   }
   .barmenuPic {
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     margin-top: 1.5em;
   }
   .navOptions {
@@ -399,7 +398,14 @@ nav a {
   .navList {
     margin-left: 2em;
     margin-right: 0;
-}
+  }
+  .navOption {
+    margin-top: 5px;
+  }
+  .barmenuPic {
+    height: 80px;
+    width: 80px;
+  }
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
@@ -411,7 +417,7 @@ nav a {
     width: 160px;
   }
   .barmenuPic {
-    margin-top: 5em;
+    margin-top: 3em;
   }
   .navList {
     margin-top: 111px;
@@ -424,7 +430,7 @@ nav a {
     width: 160px;
   }
   .navOptions {
-    margin-top: -2px;
+    margin-top: 15px;
   }
 }
 
@@ -452,12 +458,12 @@ nav a {
     width: 11em;
   }
   .barmenuPic {
-    margin-top: 3em;
-    height: 80px;
-    width: 80px;
+    margin-top: 1em;
+    height: 140px;
+    width: 140px;
   }
   .navOptions {
-    margin-top: 18px;
+    margin-top: -.5em;
   }
 }
 
@@ -576,6 +582,7 @@ nav a {
   }
   .artistNameText {
     width: 49px;
+    margin-top: 5px;
   }
   .noArtistsContainer {
     width: 32em;
@@ -1752,6 +1759,7 @@ nav a {
     margin-right: 0em;
     margin-left: 0em;
     width: 50%;
+    padding: 10px;
   }
   .singleBlogInfo h1 {
     font-size: 1em;
@@ -2042,8 +2050,8 @@ nav a {
 .blogPost {
   margin-top: 40px;
   text-align: center;
-  margin-left: 5em;
-  margin-right: 5em;
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
 .blogPostText {
@@ -2232,6 +2240,10 @@ nav a {
   .blogPost iframe {
     width: 100%;
   }
+  .blogPost {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .blogIframe {
     height: 20em;
   }
@@ -2276,6 +2288,10 @@ nav a {
   }
   .blogPicDescription h5 {
     font-size: 1.4em;
+  }
+  .blogPost {
+    margin-right: 6em;
+    margin-left: 6em;
   }
   .blogPostText {
     font-size: 1.7em;
@@ -2327,7 +2343,9 @@ nav a {
     font-size: 2.4em;
   }
   .blogPost {
-    font-size: 1.3em;
+    margin-right: 10em;
+    margin-left: 10em;
+    font-size: 1.7em;
   }
   .blogIframe {
     width: 40em;
@@ -2457,10 +2475,10 @@ nav a {
     margin-bottom: 2em
   }
   .rightSingleInterviewInfo p {
-    font-size: .7em;
+    display: none;
   }
   .leftSingleInterviewInfo p {
-    font-size: .7em;
+    display: none;
   }
   .singleInterviewPic {
     width: 70em;
@@ -2602,11 +2620,11 @@ nav a {
 @media only screen and (max-width: 600px) {
   .singleInterviewContainer {
     width: 100%;
-    height: 142em;
+    height: 100%;
   }
   .interviewHeader {
     margin-bottom: 2em;
-    height: 20em;
+    height: 12em;
     margin-right: 4em;
     margin-left: 4em;
   }
@@ -2632,6 +2650,13 @@ nav a {
   .interviewHeader {
     height: 15em;
   }
+  .interviewSoundcloud iframe {
+    width: 70%;
+  }
+  .interviewContent {
+    margin-left: 8em;
+    margin-right: 8em;
+  }
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
@@ -2646,12 +2671,18 @@ nav a {
   }
   .interviewHeader p {
     font-size: 1.3em;
+    margin-right: 10em;
+    margin-left: 10em;
   }
   .interviewQuestionText {
     font-size: 1.3em;
   }
   .interviewAnswer {
     font-size: 1.3em;
+  }
+  .interviewContent {
+    margin-right: 18em;
+    margin-left: 18em;
   }
 }
 
@@ -2667,6 +2698,8 @@ nav a {
   }
   .interviewHeader p {
     font-size: 1.3em;
+    margin-right: 10em;
+    margin-left: 10em;
   }
   .interviewQuestionText {
     font-size: 1.3em;
@@ -2685,12 +2718,12 @@ nav a {
     height: 18em;
   }
   .interviewSoundcloud iframe {
-    width: 115em;
+    width: 90em;
     height: 12em;
   }
   .interviewContent {
-    margin-right: 8em;
-    margin-left: 8em;
+    margin-right: 18em;
+    margin-left: 18em;
   }
 }
 
