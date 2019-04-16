@@ -139,7 +139,7 @@ export class Interview extends Component {
                 if (index % 2 === 0) {
                   return (
                     <div key={content.id} className="interviewQuestion">
-                      <img src={require('../../public/images/interviews/interviewWolfLogo.png')} />
+                      <img className="interviewWolf" src={require('../../public/images/interviews/interviewWolfLogo.png')} />
                       <p className="interviewQuestionText">{content}</p>
                     </div>
                   )

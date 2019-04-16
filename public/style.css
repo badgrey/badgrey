@@ -2572,6 +2572,11 @@ nav a {
   font-family: 'Oswald', sans-serif;
 }
 
+.interviewHeader p {
+  margin-left: 10em;
+  margin-right: 10em;
+}
+
 .interviewLikesDislikes {
   display: flex;
   justify-content: center;
@@ -2581,6 +2586,11 @@ nav a {
 .interviewSoundcloud {
   display: flex;
   justify-content: center;
+  width: 80%;
+}
+
+.interviewSoundcloud iframe {
+  width: 70%;
 }
 
 .interviewContent {
@@ -2596,17 +2606,19 @@ nav a {
 .interviewQuestion {
   display: flex;
   font-family: 'Oswald', sans-serif;
+  align-items: 'center';
 }
 .interviewAnswer {
   margin-top: 1em;
   font-family: 'Oswald', sans-serif;
+  font-size: 17px;
 }
 
 .interviewQuestionText {
-  margin-top: 1em;
   color: slategray;
   font-weight: bold;
   font-family: 'Oswald', sans-serif;
+  font-size: 17px;
 }
 
 .interviewCommentContainer {
@@ -2629,26 +2641,35 @@ nav a {
     margin-left: 4em;
   }
   .interviewHeader p {
-    font-size: .8em;
+    font-size: 15em;
+    margin-left: 0;
+    margin-right: 0;
   }
   .interviewSoundcloud iframe {
     width: 28em;
   }
   .interviewQuestionText {
-    font-size: 11px;
+    font-size: 17px;
   }
   .interviewAnswer {
-    font-size: 11px;
+    font-size: 17px;
   }
   .interviewCommentContainer {
     margin-left: 1em;
   }
-
+  .interviewWolf {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 @media only screen and (min-width: 600px) and (max-width:1100px) {
   .interviewHeader {
     height: 15em;
+  }
+  .interviewHeader p {
+    margin-left: 0;
+    margin-right: 0;
   }
   .interviewSoundcloud iframe {
     width: 70%;
