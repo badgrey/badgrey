@@ -2586,7 +2586,6 @@ nav a {
 .interviewSoundcloud {
   display: flex;
   justify-content: center;
-  width: 80%;
 }
 
 .interviewSoundcloud iframe {
@@ -2646,7 +2645,7 @@ nav a {
     margin-right: 0;
   }
   .interviewSoundcloud iframe {
-    width: 28em;
+    width: 80%;
   }
   .interviewQuestionText {
     font-size: 17px;
