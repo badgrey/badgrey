@@ -153,7 +153,7 @@ export class Interview extends Component {
         </div>
         <div className="interviewCommentContainer">
           <form onSubmit={this.postComment} id="form" className="commentForm">
-            <label>Comment Here</label>
+            <label>Comment</label>
             <textarea name="comment" type="text" required />
             <button type="submit">Post</button>
           </form>
