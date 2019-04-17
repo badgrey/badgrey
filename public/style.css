@@ -2393,8 +2393,8 @@ nav a {
 .allInterviewsContainer {
   display:flex;
   flex-direction: column;
-  margin-left: 3em;
-  margin-right: 3em;
+  margin-left: 16em;
+  margin-right: 16em;
   margin-top: 7em;
 }
 
@@ -2433,7 +2433,7 @@ nav a {
 }
 
 .singleInterviewPic {
-  height: 10em;
+  height: 13em;
   width: 35em;
   display: inline-block;
   overflow: hidden;
@@ -2467,6 +2467,11 @@ nav a {
   }
   .allInterviewsContainer {
     margin-top: 2em;
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+  .singleInterviewPic {
+    height: 10em;
   }
   .rightSingleInterview {
     margin-bottom: 2em
@@ -2483,7 +2488,13 @@ nav a {
   .singleInterviewPic {
     width: 70em;
   }
+}
 
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .allInterviewsContainer {
+    margin-left: 8em;
+    margin-right: 8em;
+  }
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
@@ -2519,6 +2530,10 @@ nav a {
 @media only screen and (min-width: 1800px) {
   .allInterviewsContainerDiv {
     margin-top: 10em;
+  }
+  .allInterviewsContainer {
+    margin-left: 27em;
+    margin-right: 27em;
   }
   .allInterviewsHeader h1 {
     font-size: 4em;
@@ -2575,6 +2590,7 @@ nav a {
 .interviewHeader p {
   margin-left: 10em;
   margin-right: 10em;
+  font-size: 17px;
 }
 
 .interviewLikesDislikes {
@@ -2644,7 +2660,7 @@ nav a {
     margin-left: 4em;
   }
   .interviewHeader p {
-    font-size: 15px;
+    font-size: 13px;
     margin-left: 0;
     margin-right: 0;
   }
@@ -2661,8 +2677,7 @@ nav a {
     margin-left: 1em;
   }
   .interviewWolf {
-    height: 50px;
-    width: 50px;
+    display: none;
   }
 }
 
@@ -2673,6 +2688,7 @@ nav a {
   .interviewHeader p {
     margin-left: 0;
     margin-right: 0;
+    font-size: 14px;
   }
   .interviewSoundcloud iframe {
     width: 70%;
