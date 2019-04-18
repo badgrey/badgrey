@@ -2575,8 +2575,8 @@ nav a {
   text-align: center;
   margin-bottom: 5em;
   height: 10em;
-  margin-right: 10em;
-  margin-left: 10em;
+  margin-right: 7em;
+  margin-left: 7em;
   align-items: center;
   font-family: 'Oswald', sans-serif;
   padding-top: 2em;
@@ -2588,8 +2588,8 @@ nav a {
 }
 
 .interviewHeader p {
-  margin-left: 10em;
-  margin-right: 10em;
+  margin-left: 6em;
+  margin-right: 6em;
   font-size: 17px;
 }
 
@@ -2688,7 +2688,7 @@ nav a {
   .interviewHeader p {
     margin-left: 0;
     margin-right: 0;
-    font-size: 14px;
+    font-size: 17px;
   }
   .interviewSoundcloud iframe {
     width: 70%;

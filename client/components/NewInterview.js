@@ -47,7 +47,7 @@ export class NewInterview extends Component {
         <form className="form" id="newInterviewForm" onSubmit={this.submit} >
           <div>
             <label>Description</label>
-            <textarea name="description" type="text" required placeholder="Description" className="formInput" />
+            <textarea name="description" maxLength="375" type="text" required placeholder="Description" className="formInput" />
           </div>
           <div>
             <label>Target Artist</label>
