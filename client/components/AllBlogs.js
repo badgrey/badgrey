@@ -62,15 +62,12 @@ export class AllBlogs extends Component {
                 <LazyLoad key={blog.id} height={200}>
                 <Link className="allSingleBlogLink" to={`/allblogs/${blog.id}`}>
                   <div className="homeSingleBlog">
-                    <div className="singleBlogPic">
-                      <img src={blog.blogPic} />
-                    </div>
                     <div className="singleBlogInfo">
-                      <h1>{blog.title}</h1>
-                      <h2>By {blog.author}</h2>
-                      <h3>{blog.description}</h3>
-                      <h4>{blog.date}</h4>
+                      <p className="singleBlogTitle">{blog.title}</p>
+                      <p>By {blog.author}</p>
+                      <p>{blog.date}</p>
                     </div>
+                    <img src={blog.blogPic} />
                   </div>
                 </Link>
                 </LazyLoad>

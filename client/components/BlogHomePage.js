@@ -16,7 +16,6 @@ const BlogHomePage = (props) => (
             <div className="mainBlogInfo">
               <h1>{props.blogs[0].title}</h1>
               <h2>By {props.blogs[0].author}</h2>
-              <h3>{props.blogs[0].description}</h3>
               <h4>{props.blogs[0].date}</h4>
             </div>
           </div>
@@ -30,15 +29,12 @@ const BlogHomePage = (props) => (
             index === 0 ? null :
             <Link className="homeSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
               <div className="homeSingleBlog">
-                <div className="singleBlogPic">
-                  <img src={props.blogs[index].blogPic} />
-                </div>
                 <div className="singleBlogInfo">
-                  <h1>{blog.title}</h1>
-                  <h2>By {blog.author}</h2>
-                  <h3>{blog.description}</h3>
-                  <h4>{blog.date}</h4>
+                  <p className="singleBlogTitle">{blog.title}</p>
+                  <p className="noneOnMobile">By {blog.author}</p>
+                  <p className="noneOnMobile">{blog.date}</p>
                 </div>
+                <img src={props.blogs[index].blogPic} />
               </div>
             </Link>
           )
