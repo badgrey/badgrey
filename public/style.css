@@ -1728,7 +1728,7 @@ nav a {
     margin-left: 1em;
   }
   .mainBlogInfo h1 {
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .homeSingleBlogLink {
     height: 45%;
@@ -1774,6 +1774,12 @@ nav a {
     width: 6em;
     height: 2em;
     font-size: 1em;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) and (min-height: 800px){
+  .singleBlogInfo {
+    height: 21%;
   }
 }
 
@@ -1833,6 +1839,18 @@ nav a {
   }
 }
 
+@media only screen and (min-width: 900px) and (max-width: 1400px) and (min-height: 800px){
+  .singleBlogInfo {
+    height: 26%;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px){
+  .homeSingleBlogLink {
+    height: 24em;
+  }
+}
+
 @media only screen and (min-width: 1800px) {
 
   .homeSingleBlogLink {
@@ -1859,17 +1877,9 @@ nav a {
   .singleBlogDiv {
     width: 65%;
   }
-  .singleBlogInfo h1 {
-    font-size: 2.5em;
-  }
-  .singleBlogInfo h2 {
-    font-size: 1.1em;
-  }
-  .singleBlogInfo h3 {
-    font-size: 1.2em;
-  }
-  .singleBlogInfo h4 {
-    font-size: 1.2em;
+  .singleBlogInfo {
+    width: 20%;
+    height: 34%;
   }
   .allBlogsButton {
     width: 308px;
@@ -2669,7 +2679,7 @@ nav a {
   }
   .interviewHeader {
     margin-bottom: 5em;
-    height: 20em;
+    height: 15em;
     margin-right: 4em;
     margin-left: 4em;
   }
