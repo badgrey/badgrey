@@ -1850,6 +1850,9 @@ nav a {
   .homeSingleBlogLink {
     height: 24em;
   }
+  .singleBlogInfo {
+    height: 27%;
+  }
 }
 
 @media only screen and (min-width: 1800px) {
