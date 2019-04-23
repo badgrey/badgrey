@@ -63,8 +63,7 @@ export class AllBlogs extends Component {
                 <Link className="allSingleBlogLink" to={`/allblogs/${blog.id}`}>
                   <div className="homeSingleBlog">
                     <div className="singleBlogInfo">
-                      <p className="singleBlogTitle">{blog.title}</p>
-                      <p>By {blog.author}</p>
+                      <p className="noneOnMobile">By {blog.author}</p>
                       <p>{blog.date}</p>
                     </div>
                     <img src={blog.blogPic} />
