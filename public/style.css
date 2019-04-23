@@ -1740,7 +1740,7 @@ nav a {
     height: 100%;
   }
   .homeSingleBlog img {
-    height: 12em;
+    height: 11em;
   }
   .singleBlogDiv {
     justify-content: space-around;
@@ -2875,6 +2875,9 @@ nav a {
 
 
 @media only screen and (max-width: 600px) {
+  #submitform {
+    height: 77vh;
+  }
   .topInputs {
     flex-direction: column;
   }
