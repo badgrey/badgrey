@@ -1898,7 +1898,7 @@ nav a {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  width: 75%;
+  width: 80%;
 }
 
 .singleBlogLink {
@@ -1912,6 +1912,10 @@ nav a {
 .allSingleBlogLink {
   margin-bottom: 3em;
   cursor: pointer;
+  margin-bottom: 3em;
+  cursor: pointer;
+  width: 47%;
+  height: 21em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1922,13 +1926,22 @@ nav a {
     margin-top: 4em;
     width: 100%;
   }
-  .blogList {
-    margin: 0;
-    flex-direction: column;
+  .blogsList {
     width: 90%;
   }
   .allSingleBlogLink {
-    height: 13em;
+    width: 45%;
+    height: 12em;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+  .blogsList {
+    width: 90%;
+  }
+  .allSingleBlogLink {
+    width: 45%;
   }
 }
 
