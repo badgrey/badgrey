@@ -2178,7 +2178,9 @@ nav a {
 }
 
 .blogIframe {
-  height: 28em;
+  height: 448px;
+  width: 512px;
+  margin-left: -2.5em;
 }
 
 .commentPostError {
@@ -2230,7 +2232,9 @@ nav a {
     height: 25em;
   }
   .blogIframe {
-    height: 18em;
+    height: 200px;
+    width: 355px;
+    margin-left: 0;
   }
   .blogNameHeader h5 {
     font-size: .9em;
@@ -2268,6 +2272,7 @@ nav a {
   }
   .blogIframe {
     height: 26em;
+    margin-left: 0;
   }
 }
 
