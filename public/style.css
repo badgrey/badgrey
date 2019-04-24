@@ -1970,7 +1970,8 @@ nav a {
     width: 100%;
   }
   .allSingleBlogLink {
-    height: 24em;
+    height: 29em;
+    width: 40%;
   }
   .allBlogsButton {
     width: 208px;
