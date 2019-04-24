@@ -1611,10 +1611,10 @@ nav a {
   margin-bottom: 1em;
   height: 27em;
   width: 71%;
-  transition: opacity 0.3s ease-out;
-  -moz-transition: opacity .3s ease-out;
-  -webkit-transition: opacity .3s ease-out;
-  -o-transition: opacity .3s ease-out;
+  transition: 0.3s ease-out;
+  -moz-transition: .3s ease-out;
+  -webkit-transition: .3s ease-out;
+  -o-transition: .3s ease-out;
 }
 
 .mainBlogDiv:hover {
@@ -2178,7 +2178,7 @@ nav a {
 }
 
 .blogIframe {
-  height: 20em;
+  height: 28em;
 }
 
 .commentPostError {
@@ -2230,7 +2230,7 @@ nav a {
     height: 25em;
   }
   .blogIframe {
-    height: 15em;
+    height: 18em;
   }
   .blogNameHeader h5 {
     font-size: .9em;
@@ -2267,7 +2267,7 @@ nav a {
     margin-right: 0;
   }
   .blogIframe {
-    height: 20em;
+    height: 26em;
   }
 }
 

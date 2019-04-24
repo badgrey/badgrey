@@ -32,7 +32,7 @@ const BlogHomePage = (props) => (
                 <div className="singleBlogInfo">
                   <p className="singleBlogTitle">{blog.title}</p>
                   <p className="noneOnMobile">By {blog.author}</p>
-                  <p>{blog.date}</p>
+                  <p className="noneOnMobile">{blog.date}</p>
                 </div>
                 <img src={props.blogs[index].blogPic} />
               </div>
