@@ -1733,6 +1733,9 @@ nav a {
   .mainBlogInfo h2 {
     font-size: 11px;
   }
+  .mainBlogInfo h4 {
+    font-size: 9px;
+  }
   .homeSingleBlogLink {
     height: 45%;
     width: 45%;
