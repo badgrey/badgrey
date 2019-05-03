@@ -16,6 +16,7 @@ const BlogHomePage = (props) => (
             <div className="mainBlogInfo">
               <h1>{props.blogs[0].title}</h1>
               <h2>By {props.blogs[0].author}</h2>
+              <h2>{props.blogs[0].description}</h2>
               <h4>{props.blogs[0].date}</h4>
             </div>
           </div>
