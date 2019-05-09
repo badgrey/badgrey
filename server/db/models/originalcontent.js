@@ -5,6 +5,9 @@ const OriginalContent = db.define('originalContent', {
   youtubeId: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  contentType: {
+    type: Sequelize.STRING
   }
 })
 
