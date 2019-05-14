@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchOriginalContent } from '../store'
 import {YoutubePlayer} from './index'
+import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalContent, likeCurrentOriginalContent, dislikeCurrentOriginalContent} from '../store'
 
 export class OriginalContentType extends Component {
 
   componentDidMount() {
       this.props.loadContent(this.props.match.params.type)
-
   }
 
   render() {
-    console.log(this.props.content)
     return (
       !this.props.content.length && this.props.isAdmin ?
       <div className="OCcontainerDiv">
@@ -90,7 +88,11 @@ const mapState = ({originalcontent, user}, ownProps) => {
 }
 
 const mapDispatch = () => dispatch  => ({
-  loadContent: (type) => dispatch(fetchOriginalContent(type))
+  loadContent: (type) => dispatch(fetchOriginalContent(type)),
+  submitContent: (oc) => dispatch(createNewOriginalContent(oc)),
+  delete: (id) => dispatch(deleteCurrentOriginalContent(id)),
+  likeOC: (oc) => dispatch(likeCurrentOriginalContent(oc)),
+  dislikeOC: (oc) => dispatch(dislikeCurrentOriginalContent(oc))
 })
 
 export default connect(mapState, mapDispatch)(OriginalContentType)

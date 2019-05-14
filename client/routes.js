@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview, NewInterview, OriginalContent, OriginalContentType, Submit} from './components'
-import {me, fetchArtists, fetchBlogs, fetchInterviews, fetchOriginalContent} from './store'
+import {me, fetchArtists, fetchBlogs, fetchInterviews} from './store'
 
 /**
  * COMPONENT
