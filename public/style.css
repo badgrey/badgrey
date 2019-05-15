@@ -2869,6 +2869,9 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) {
+  .ocSelectorContainer {
+    height: 48em;
+  }
   .ocSelectorHeader {
     margin-top: 10em;
   }
