@@ -2868,6 +2868,20 @@ nav a {
   }
 }
 
+@media only screen and (min-width: 1400px) {
+  .ocSelectorHeader {
+    margin-top: 10em;
+  }
+  .ocOption {
+    width: 26em;
+    height: 32em;
+  }
+  .ocOptionTextContainer {
+    top: 50%;
+    width: 14em;
+  }
+}
+
 /* Original Content Type Styles */
 
 .OCheader {
