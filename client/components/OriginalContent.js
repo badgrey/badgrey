@@ -1,129 +1,34 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import '../../public/style.css'
-import {YoutubePlayer} from './index'
-import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalContent, likeCurrentOriginalContent, dislikeCurrentOriginalContent} from '../store'
 
-export class OriginalContent extends Component {
-  constructor(props) {
-    super(props)
-
-    this.submit = this.submit.bind(this)
-  }
-
-  //gets original content
-  componentDidMount() {
-    if (!this.props.originalcontent.length){
-      this.props.getOriginalContent()
-    }
-  }
-
-  //submits new youtube id to backend
-  submit(event) {
-    event.preventDefault()
-    let info = {
-      youtubeId: event.target.oc.value
-    }
-    this.props.submitContent(info)
-    //this.props.history.push('/')
-  }
-
-  render() {
-    return (
-      !this.props.originalcontent.length && this.props.isAdmin ?
-      <div className="OCcontainerDiv">
-        <div className="OCheader">
-          <h1>Bad Grey Films</h1>
-          <form className="newOC" onSubmit={this.submit}>
-            <label>Add Original Content</label>
-            <input name="oc" type="text" required placeholder="Youtube ID" />
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+const OriginalContent = () => {
+  return (
+    <div className="ocSelectorContainer">
+      <div className="ocSelectorHeader">
+        <h1>Original Content</h1>
       </div>
-      :
-      <div className="OCcontainerDiv">
-        <div className="OCheader">
-          <h1>Music Videos</h1>
-      {
-        this.props.isAdmin ?
-          <form className="newOC" onSubmit={this.submit}>
-            <label>Add Original Content</label>
-            <input name="oc" type="text" required placeholder="Youtube ID" />
-            <button type="submit">Submit</button>
-          </form>
-        :
-        null
-      }
-        </div>
-        <div className="OCcontainer">
-          {
-            //maps over all youtube ids and displays original content
-            this.props.originalcontent.map((oc) => {
-              return (
-
-                <div key={oc.id} className="singleoc">
-                    <YoutubePlayer ytID={oc.youtubeId} />
-                    <div className="likesDislikes">
-                      <button className="likeDislikeButton" onClick={() => this.props.likeOC({oc, user: this.props.user})}>
-                        <img className="likeDislikeImage" src={require('../../public/images/like.png')} />
-                      </button>
-                      <p>{oc.OriginalContentLikes.length}</p>
-                      <button className="likeDislikeButton" onClick={() => this.props.dislikeOC({oc, user: this.props.user})}>
-                        <img className="likeDislikeImage" src={require('../../public/images/dislike.png')} />
-                      </button>
-                      <p>{oc.OriginalContentDislikes.length}</p>
-                    </div>
-                    {
-                      !this.props.isAdmin ? null :
-                      <button
-                      className="savedArtistsButton" onClick={() => {this.props.delete(oc.id)
-                      }}>X</button>
-                    }
-                </div>
-              )
-            })
-          }
-        </div>
-        <div className="viewMoreButton">
-          <button className="allArtistsButton" onClick={() => window.open('https://www.youtube.com/channel/UCcGcK4KeoexHv2A4cf54LOQ/featured', '_blank')}>View More</button>
-        </div>
+      <div className="ocSelectorOptions">
+      <div>
+      <Link className="ocOption" to="/originalcontent/MusicVideo">
+      <div className="ocOptionTextContainer">
+      <div className="ocOptionText">Music Videos</div>
       </div>
-    )
-  }
+      <img src="https://s3.us-east-2.amazonaws.com/badgrey-other/MusicVideos.png" />
+      </Link>
+      </div>
+      <div>
+        <Link className="ocOption" to="/originalcontent/HelloMyNameIs">
+          <div className="ocOptionTextContainer">
+            <div className="ocOptionText">Hello My Name Is...</div>
+          </div>
+          <img src="https://s3.us-east-2.amazonaws.com/badgrey-other/HelloMyNameIs.png" />
+        </Link>
+      </div>
+      </div>
+    </div>
+  )
 }
 
 
-const mapState = ({originalcontent, user}, ownProps) => {
-  return {
-    originalcontent: originalcontent.sort((ocA, ocB) => {
-      if (ocA.createdAt < ocB.createdAt) return 1
-      if (ocA.createdAt > ocB.createdAt) return -1
-      return 0
-    }),
-    user,
-    isAdmin: user.isAdmin
-  }
-}
-
-const mapDispatch = (dispatch) => {
-  return {
-    getOriginalContent() {
-      dispatch(fetchOriginalContent())
-    },
-    submitContent(oc) {
-      dispatch(createNewOriginalContent(oc))
-    },
-    delete(id) {
-      dispatch(deleteCurrentOriginalContent(id))
-    },
-    likeOC(oc) {
-      dispatch(likeCurrentOriginalContent(oc))
-    },
-    dislikeOC(oc) {
-      dispatch(dislikeCurrentOriginalContent(oc))
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(OriginalContent)
+export default OriginalContent

@@ -50,9 +50,9 @@ export default function reducer (ocs = [], action){
 
 //THUNK CREATORS
 
-export const fetchOriginalContent = () => async (dispatch) => {
+export const fetchOriginalContent = (type) => async (dispatch) => {
   try {
-    const ocs = await axios.get('/api/originalcontent')
+    const ocs = await axios.get(`/api/originalcontent/${type}`)
     return dispatch(getOriginalContent(ocs.data));
   }
   catch (err) {
