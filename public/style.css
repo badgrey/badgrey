@@ -2858,6 +2858,16 @@ nav a {
   height: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  .ocOption {
+    width: 13em;
+  }
+  .ocOptionTextContainer {
+    font-size: 18px;
+    opacity: 1;
+  }
+}
+
 /* Original Content Type Styles */
 
 .OCheader {
