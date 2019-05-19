@@ -2819,19 +2819,21 @@ nav a {
 .ocSelectorOptions {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
+  margin-left: 11em;
+  margin-right: 11em;
 }
 
 .ocOption {
-  width: 20em;
-  height: 25em;
+  width: 25em;
+  height: 30em;
   display: inline-block;
   overflow: hidden;
   transition: 0.3s;
   cursor: pointer;
 }
 .ocOptionTextContainer {
-  width: 10em;
+  width: 13em;
   opacity: 0;
   text-align: center;
   position: absolute;
@@ -2859,14 +2861,35 @@ nav a {
 }
 
 @media only screen and (max-width: 600px) {
+  .ocSelectorOptions {
+    margin-left: 0;
+    margin-right: 0;
+  }
   .ocOption {
-    width: 13em;
+    width: 16em;
+    height: 22em;
   }
   .ocOptionTextContainer {
+    width: 12em;
     font-size: 18px;
     opacity: 1;
   }
 }
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .ocSelectorOptions {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+  .ocOption {
+    width: 18em;
+    height: 23em;
+  }
+  .ocOptionTextContainer {
+    width: 10em;
+    top: 50%;
+  }
+}
+
 
 @media only screen and (min-width: 1400px) {
   .ocSelectorContainer {

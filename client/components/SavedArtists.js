@@ -57,7 +57,7 @@ export class SavedArtists extends Component{
       </div>
       :
       <div className="savedArtistsDiv">
-        <h1 className="title">Saved</h1>
+        <h1 className="title">SAVED</h1>
         <div className="artistSearch">
           <form>
             <label className="searchLabel">Search Artists</label>

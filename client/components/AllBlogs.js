@@ -46,7 +46,7 @@ export class AllBlogs extends Component {
     const blogs = this.props.blogs.filter((blog) => blog.artist.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
     return (
       <div className="allBlogsDiv">
-        <h1 className="allBlogsh1">All</h1>
+        <h1 className="allBlogsh1">ALL</h1>
         <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
           <form>

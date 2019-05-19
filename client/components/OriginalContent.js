@@ -6,7 +6,7 @@ const OriginalContent = () => {
   return (
     <div className="ocSelectorContainer">
       <div className="ocSelectorHeader">
-        <h1>Original Content</h1>
+        <h1>ORIGINAL CONTENT</h1>
       </div>
       <div className="ocSelectorOptions">
       <div>
