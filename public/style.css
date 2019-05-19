@@ -2866,13 +2866,13 @@ nav a {
     margin-right: 0;
   }
   .ocOption {
-    width: 16em;
-    height: 22em;
+    width: 15em;
+    height: 21em;
   }
   .ocOptionTextContainer {
     width: 12em;
     font-size: 18px;
-    opacity: 1;
+    top: 50%;
   }
 }
 @media only screen and (min-width: 600px) and (max-width: 900px) {
