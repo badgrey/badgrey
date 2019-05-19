@@ -18,7 +18,6 @@ export class AllInterviews extends Component {
 
   //see AllArtists componenet for comments regarding lines 20-41
   componentDidMount () {
-    console.log('hello')
     window.scroll(0, 0)
     if (this.props.artists === []) {
       this.props.loadInitialData()
@@ -47,7 +46,7 @@ export class AllInterviews extends Component {
     return (
       <div className="allInterviewsContainerDiv">
         <div className="allInterviewsHeader">
-          <h1>Interviews</h1>
+          <h1>INTERVIEWS</h1>
         </div>
         <div className="artistSearch">
           <form>

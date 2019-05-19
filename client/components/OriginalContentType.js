@@ -34,7 +34,7 @@ export class OriginalContentType extends Component {
       :
       <div className="OCcontainerDiv">
         <div className="OCheader">
-          <h1>{this.props.match.params.type === 'MusicVideo' ? 'Music Videos' : 'Hello My Name Is...'}</h1>
+          <h1>{this.props.match.params.type === 'MusicVideo' ? 'MUSIC VIDEOS' : 'HELLO MY NAME IS...'}</h1>
       {
         this.props.isAdmin ?
           <form className="newOC" onSubmit={this.submit}>
