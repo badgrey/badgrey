@@ -136,10 +136,10 @@ export class EditBlog extends Component {
 //chosen blog gotten from route
 const mapState = ({blogs, user}, ownProps) => {
   return {
-    chosenBlog: blogs.filter((blog) => {
+    chosenBlog: blogs.blogs.filter((blog) => {
       return '' + blog.id === ownProps.match.params.id
     }),
-    blogs,
+    blogs: blogs.blogs,
     user,
     isAdmin: user.isAdmin,
     isBlogger: user.isBlogger

@@ -42,7 +42,7 @@ export class NewBlog extends Component {
 
     const formData = new FormData();
     formData.append('file', this.state.file[0]);
-
+    console.log(this.state)
     let picture = await axios.post('/api/uploadBlogPicture', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
