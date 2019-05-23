@@ -34,7 +34,7 @@ export class Blog extends Component {
   //deletes blog
   async deleteBlog() {
     await axios.post('/api/deleteBlogPicture', {name: this.props.chosenBlog[0].fileKey})
-    this.props.delete(this.props.chosenBlog[0].id)
+    this.props.delete(this.props.chosenBlog[0].id, this.props.chosenBlog[0].spotlight)
     this.props.history.push('/allblogs')
   }
 
@@ -203,8 +203,8 @@ const mapState = ({artists, blogs, user, savedArtists, comments, error}, ownProp
       if (artistA.name > artistB.name) return 1
       return 0
     }),
-    blogs,
-    chosenBlog: blogs.filter((blog) => {
+    blogs: blogs.blogs,
+    chosenBlog: blogs.blogs.filter((blog) => {
       return '' + blog.id === ownProps.match.params.id
     }),
     isLoggedIn: !!user.id,
@@ -229,8 +229,8 @@ const mapDispatch = (dispatch) => {
     fetchSaved() {
       dispatch(fetchSavedArtists())
     },
-    delete (id) {
-      dispatch(deleteCurrentBlog(id))
+    delete (id, spotlight) {
+      dispatch(deleteCurrentBlog(id, spotlight))
     },
     getBlogComments (id) {
       dispatch(fetchComments(id))

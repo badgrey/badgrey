@@ -8,16 +8,16 @@ const BlogHomePage = (props) => (
   <div className="blogsHomeContainer">
     <div className="blogsDisplay">
       <div className="mainBlogDiv">
-        <Link className="mainBlogLink" to={`/allblogs/${props.blogs[0].id}`}>
+        <Link className="mainBlogLink" to={`/allblogs/${props.spotlight.id}`}>
           <div className="mainBlog">
             <div className="mainBlogPic">
-              <img src={props.blogs[0].blogPic} />
+              <img src={props.spotlight.blogPic} />
             </div>
             <div className="mainBlogInfo">
-              <h1>{props.blogs[0].title}</h1>
-              <h2 className="noneOnMobile">By {props.blogs[0].author}</h2>
-              <h2>{props.blogs[0].description}</h2>
-              <h4>{props.blogs[0].date}</h4>
+              <h1>{props.spotlight.title}</h1>
+              <h2 className="noneOnMobile">By {props.spotlight.author}</h2>
+              <h2>{props.spotlight.description}</h2>
+              <h4>{props.spotlight.date}</h4>
             </div>
           </div>
         </Link>
@@ -27,7 +27,6 @@ const BlogHomePage = (props) => (
         //above is the most recent blog the bottom maps out the other two
         props.blogs.map((blog, index) => {
           return (
-            index === 0 ? null :
             <Link className="homeSingleBlogLink" key={blog.id} to={`/allblogs/${blog.id}`}>
               <div className="homeSingleBlog">
                 <div className="singleBlogInfo">

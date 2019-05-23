@@ -38,6 +38,7 @@ export class EditBlog extends Component {
     let description = event.target.description.value
     let blogPost = event.target.blogPost.value
     let spotifyURL = event.target.spotify.value
+    let spotlight = event.target.spotlight.value === 'No' ? false : true
     let blogInfo
     let picture
 
@@ -59,7 +60,8 @@ export class EditBlog extends Component {
         blogPic: picture.data.Location,
         blogPost,
         spotifyURL,
-        fileKey: key[key.length - 1]
+        fileKey: key[key.length - 1],
+        spotlight
       }
     } else {
       blogInfo = {
@@ -69,7 +71,8 @@ export class EditBlog extends Component {
           spotifyURL,
           blogPic: this.props.chosenBlog[0].blogPic,
           blogPost,
-          fileKey: this.props.chosenBlog[0].fileKey
+          fileKey: this.props.chosenBlog[0].fileKey,
+          spotlight
         }
 
     }
@@ -115,6 +118,13 @@ export class EditBlog extends Component {
             <label>Blog Post</label>
             <textarea name="blogPost" defaultValue={this.props.chosenBlog[0].blogPost} />
           </div>
+          <div>
+            <label>Spotlight Blog?</label>
+            <select name="spotlight" defaultValue={this.props.chosenBlog[0].spotlight ? 'Yes' : 'No'} type="text" required>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+        </div>
         </div>
         <button type="submit">Submit</button>
       </form>

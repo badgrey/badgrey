@@ -217,7 +217,7 @@ export class Discover extends Component {
     let scrollto = this.setScroll()
     return (
       <div className="discover">
-        <BlogHomePage blogs={this.props.blogs.slice(0, 5)} />
+        <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
         {
           //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
           this.props.match.path === '/discover' ?
@@ -256,11 +256,9 @@ const mapState = (state, ownProps) => {
     user: state.user,
     isLoggedIn: !!state.user.id,
     savedArtists: state.savedArtists,
-    blogs: state.blogs.sort((blogA, blogB) => {
-      if (blogA.createdAt < blogB.createdAt) return 1
-      if (blogA.createdAt > blogB.createdAt) return -1
-      return 0
-    })
+    blogs: state.blogs.blogs,
+    spotlight: state.blogs.spotlight[0],
+    nonSpotlight: state.blogs.nonSpotlight.slice(0, 4)
   }
 }
 

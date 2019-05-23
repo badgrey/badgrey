@@ -35,6 +35,10 @@ const Blog = db.define('blog', {
   },
   spotifyURL: {
     type: Sequelize.STRING
+  },
+  spotlight: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

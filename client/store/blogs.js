@@ -15,44 +15,112 @@ const DISLIKE_BLOG = 'DISLIKE_BLOG'
  * ACTION CREATORS
  */
 
-const getBlogs = blogs => ({type: GET_BLOGS, blogs})
-const newBlog = blog => ({type: CREATE_NEW_BLOG, blog})
-const editBlog = blog => ({type: EDIT_BLOG, blog})
-const deleteBlog = id => ({type: DELETE_BLOG, id})
+const getBlogs = blogs => ({
+  type: GET_BLOGS,
+  payload: blogs
+})
+const newBlog = blog => ({
+  type: CREATE_NEW_BLOG,
+  payload: blog
+})
+const editBlog = blog => ({
+  type: EDIT_BLOG,
+  payload: blog
+})
+const deleteBlog = (id, spotlight) => ({
+  type: DELETE_BLOG,
+  payload: {
+    id,
+    spotlight
+  }
+})
 const likeBlog = blog => ({type: LIKE_BLOG, blog})
 const dislikeBlog = blog => ({type: DISLIKE_BLOG, blog})
 
 //REDUCER
-export default function reducer (blogs = [], action){
+
+const initialState = {
+  blogs: [],
+  spotlight: [],
+  nonSpotlight: []
+}
+// eslint-disable-next-line complexity
+export default function reducer (state = initialState, action){
 
   switch (action.type) {
 
     case GET_BLOGS:
-      return action.blogs
-
+      return {
+        ...state,
+        blogs: action.payload.blogs,
+        spotlight: action.payload.spotlight,
+        nonSpotlight: action.payload.nonSpotlight
+      }
     case CREATE_NEW_BLOG:
-      return [...blogs, action.blog]
-
+      return action.payload.blog.spotlight ?
+       {
+        ...state,
+        blogs: [action.payload.blog, ...state.blogs],
+        spotlight: [action.payload.blog, ...state.nonSpotlight]
+      }
+      :
+      {
+        ...state,
+        blogs: [action.payload.blog, ...state.blogs],
+        nonSpotlight: [action.payload.blog, ...state.spotlight]
+      }
     case EDIT_BLOG:
-      return blogs.map(blog => (
-        action.blog.id === blog.id ? action.blog : blog
-      ))
+      return action.payload.blog.spotlight ?
+      {
+        ...state,
+        blogs: state.blogs.map(blog => (
+          action.payload.blog.id === blog.id ? action.blog : blog
+        )),
+        spotlight: state.spotlight.map(blog => (
+          action.payload.blog.id === blog.id ? action.blog : blog
+        ))
+      }
+      :
+      {
+        ...state,
+        blogs: state.blogs.map(blog => (
+          action.payload.blog.id === blog.id ? action.blog : blog
+        )),
+        spotlight: state.spotlight.map(blog => (
+          action.payload.blog.id === blog.id ? action.blog : blog
+        ))
+      }
 
     case DELETE_BLOG:
-      return blogs.filter(blog => blog.id !== action.id)
-
+      return action.payload.spotlight ?
+      {
+        ...state,
+        blogs: state.blogs.filter(blog => blog.id !== action.payload.id),
+        spotlight: state.spotlight.filter(blog => blog.id !== action.payload.id)
+      }
+      :
+      {
+        ...state,
+        blogs: state.blogs.filter(blog => blog.id !== action.payload.id),
+        nonSpotlight: state.nonSpotlight.filter(blog => blog.id !== action.payload.id)
+      }
     case LIKE_BLOG:
-      return blogs.map(blog => (
+      return {
+        ...state,
+        blogs: state.blogs.map(blog => (
         action.blog.id === blog.id ? action.blog : blog
       ))
+      }
 
     case DISLIKE_BLOG:
-      return blogs.map(blog => (
+      return {
+        ...state,
+        blogs: state.blogs.map(blog => (
         action.blog.id === blog.id ? action.blog : blog
       ))
-
+      }
     default:
-      return blogs
+      return state
   }
 }
 
@@ -60,8 +128,27 @@ export default function reducer (blogs = [], action){
 
 export const fetchBlogs = () => async (dispatch) => {
   try {
-    const blogs = await axios.get('/api/blog')
-    return dispatch(getBlogs(blogs.data));
+    let response = {
+      blogs: [],
+      spotlight: [],
+      nonSpotlight: []
+    }
+    let { data } = await axios.get('/api/blog')
+    data = data.sort((blogA, blogB) => {
+      if (blogA.createdAt < blogB.createdAt) return 1
+      if (blogA.createdAt > blogB.createdAt) return -1
+      return 0
+    })
+    for (let i = 0; i < data.length; i++) {
+      response.blogs.push(data[i])
+      if (data[i].spotlight === true) {
+        response.spotlight.push(data[i])
+      } else {
+        response.nonSpotlight.push(data[i])
+      }
+    }
+
+    return dispatch(getBlogs(response));
   }
   catch (err) {
     console.log(err)
@@ -88,10 +175,10 @@ export const editCurrentBlog = (id, blog) => async (dispatch) => {
   }
 }
 
-export const deleteCurrentBlog = (id) => async (dispatch) => {
+export const deleteCurrentBlog = (id, spotlight) => async (dispatch) => {
   try {
     const deletedBlog = await axios.delete(`/api/blog/delete/${id}`)
-    return dispatch(deleteBlog(id))
+    return dispatch(deleteBlog(id, spotlight))
   }
   catch (err) {
     console.log(err)
