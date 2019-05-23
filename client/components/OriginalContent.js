@@ -11,18 +11,12 @@ const OriginalContent = () => {
       <div className="ocSelectorOptions">
       <div>
       <Link className="ocOption" to="/originalcontent/MusicVideo">
-      <div className="ocOptionTextContainer">
-      <div className="ocOptionText">Music Videos</div>
-      </div>
-      <img src="https://s3.us-east-2.amazonaws.com/badgrey-other/MusicVideos.png" />
+        <img src="https://s3.us-east-2.amazonaws.com/badgrey-other/hmni.png" />
       </Link>
       </div>
       <div>
         <Link className="ocOption" to="/originalcontent/HelloMyNameIs">
-          <div className="ocOptionTextContainer">
-            <div className="ocOptionText">Hello My Name Is...</div>
-          </div>
-          <img src="https://s3.us-east-2.amazonaws.com/badgrey-other/HelloMyNameIs.png" />
+          <img src="https://s3.us-east-2.amazonaws.com/badgrey-other/musicvideos.png" />
         </Link>
       </div>
       </div>

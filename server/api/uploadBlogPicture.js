@@ -43,9 +43,8 @@ router.post('/', (request, response) => {
         const fileName = `${files.file[0].originalFilename}${timestamp}-lg`
         const data = await uploadBlogFile(buffer, fileName, type)
         return response.status(200).send(data)
-      } catch (error) {
-        return response.status(400).send(error)
+      } catch (err) {
+        return response.status(400).send(err)
       }
     })
 })
-

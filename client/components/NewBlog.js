@@ -38,10 +38,10 @@ export class NewBlog extends Component {
     let description = event.target.description.value
     let blogPost = event.target.blogPost.value
     let spotifyURL = event.target.spotify.value
+    let spotlight = event.target.spotlight.value === 'No' ? false : true
 
     const formData = new FormData();
     formData.append('file', this.state.file[0]);
-
     let picture = await axios.post('/api/uploadBlogPicture', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -57,7 +57,8 @@ export class NewBlog extends Component {
         blogPost,
         spotifyURL,
         date: new Date(),
-        fileKey: key[key.length - 1]
+        fileKey: key[key.length - 1],
+        spotlight
       },
       user: this.props.user.id,
       artist: chosenArtist[0].id
@@ -108,6 +109,13 @@ export class NewBlog extends Component {
         <div>
           <label>Blog Post</label>
           <textarea name="blogPost" required placeholder="Post" />
+        </div>
+        <div>
+            <label>spotlight Blog?</label>
+            <select name="spotlight" type="text" required>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
         </div>
         </div>
         <button type="submit">Submit</button>
