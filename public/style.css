@@ -2863,8 +2863,8 @@ nav a {
 @media only screen and (max-width: 600px) {
   .ocSelectorOptions {
     justify-content: center;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 3em;
+    margin-right: 3em;
   }
   .ocOption {
     width: 15.5em;
