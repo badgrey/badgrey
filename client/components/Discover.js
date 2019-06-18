@@ -4,7 +4,7 @@ import USAMap from 'react-usa-map'
 import '../../public/style.css'
 import Genre from './Genre'
 import BlogHomePage from './BlogHomePage'
-import {fetchSavedArtists, fetchBlogs} from '../store'
+import {FeaturedContent} from './FeaturedContent'
 import {Link} from 'react-router-dom'
 
 export class Discover extends Component {
@@ -217,7 +217,10 @@ export class Discover extends Component {
     let scrollto = this.setScroll()
     return (
       <div className="discover">
-        <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
+        <div className="topContainer">
+          <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
+          <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
+        </div>
         {
           //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
           this.props.match.path === '/discover' ?
@@ -246,31 +249,24 @@ export class Discover extends Component {
 }
 
 
-const mapState = (state, ownProps) => {
+const mapState = ({artists, user, savedArtists, blogs, originalcontent, interviews}, ownProps) => {
   return {
-    artists: state.artists.sort((artistA, artistB) => {
+    artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1
       if (artistA.name > artistB.name) return 1
       return 0
     }),
-    user: state.user,
-    isLoggedIn: !!state.user.id,
-    savedArtists: state.savedArtists,
-    blogs: state.blogs.blogs,
-    spotlight: state.blogs.spotlight[0],
-    nonSpotlight: state.blogs.nonSpotlight.slice(0, 4)
+    user: user,
+    isLoggedIn: !!user.id,
+    savedArtists: savedArtists,
+    blogs: blogs.blogs,
+    spotlight: blogs.spotlight[0],
+    nonSpotlight: blogs.nonSpotlight.slice(0, 4),
+    videos: originalcontent.slice(0, 2),
+    interview: interviews[0]
   }
 }
 
 
-const mapDispatch = (dispatch) => {
-  return {
-    loadInitialData () {
-      dispatch(fetchSavedArtists())
-      dispatch(fetchBlogs())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Discover)
+export default connect(mapState)(Discover)
 

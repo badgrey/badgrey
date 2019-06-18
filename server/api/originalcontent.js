@@ -6,15 +6,20 @@ module.exports = router
 
 //gets all original content and returns likes and dislikes
 router.get('/:type', asyncHandler(async (req, res, next) => {
-  const originalContent = await OriginalContent.findAll({
-    where: {
-      contentType: req.params.type
-    },
-    include: [
-      {model: User, as: 'OriginalContentLikes'},
-      {model: User, as: 'OriginalContentDislikes'}
-    ]
-  })
+  let originalContent
+  if (req.params.type !== undefined) {
+    originalContent = await OriginalContent.findAll()
+  } else {
+    originalContent = await OriginalContent.findAll({
+      where: {
+        contentType: req.params.type
+      },
+      include: [
+        {model: User, as: 'OriginalContentLikes'},
+        {model: User, as: 'OriginalContentDislikes'}
+      ]
+    })
+  }
   res.json(originalContent)
 }))
 

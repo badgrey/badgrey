@@ -52,8 +52,13 @@ export default function reducer (ocs = [], action){
 
 export const fetchOriginalContent = (type) => async (dispatch) => {
   try {
-    const ocs = await axios.get(`/api/originalcontent/${type}`)
-    return dispatch(getOriginalContent(ocs.data));
+    let { data } = await axios.get(`/api/originalcontent/${type}`)
+    data = data.sort((videoA, videoB) => {
+      if (videoA.createdAt < videoB.createdAt) return 1
+      if (videoA.createdAt > videoB.createdAt) return -1
+      return 0
+    })
+    return dispatch(getOriginalContent(data));
   }
   catch (err) {
     console.log(err)

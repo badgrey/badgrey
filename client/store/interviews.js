@@ -52,8 +52,13 @@ export default function reducer (interviews = [], action){
 
 export const fetchInterviews = () => async (dispatch) => {
   try {
-    const interviews = await axios.get('/api/interview')
-    return dispatch(getInterviews(interviews.data));
+    let { data } = await axios.get('/api/interview')
+    data = data.sort((interviewA, interviewB) => {
+      if (interviewA.createdAt < interviewB.createdAt) return 1
+      if (interviewA.createdAt > interviewB.createdAt) return -1
+      return 0
+    })
+    return dispatch(getInterviews(data));
   }
   catch (err) {
     console.log(err)
