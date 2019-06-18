@@ -15,7 +15,7 @@ const BlogHomePage = (props) => (
             </div>
             <div className="mainBlogInfo">
               <h1>{props.spotlight.title}</h1>
-              <h2 className="noneOnMobile">By {props.spotlight.author}</h2>
+              <h2>By {props.spotlight.author}</h2>
               <h2>{props.spotlight.description}</h2>
               <h4>{props.spotlight.date}</h4>
             </div>
