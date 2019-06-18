@@ -1636,7 +1636,8 @@ nav a {
     width: 90%;
   }
   .homeInterviewPic {
-    height: 10em
+    height: 10em;
+    margin-top: 2em;
   }
   .homeInterviewInfo {
     max-width: 65%;
