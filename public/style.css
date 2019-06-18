@@ -1635,6 +1635,15 @@ nav a {
   .homeInterview {
     width: 90%;
   }
+  .homeInterviewPic {
+    height: 10em
+  }
+  .homeInterviewInfo {
+    max-width: 65%;
+  }
+  .homeInterviewInfo p {
+    font-size: 12px;
+  }
 }
 
 
@@ -1648,6 +1657,19 @@ nav a {
   }
   .homeInterview {
     width: 75%;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .singleVideo {
+    margin-bottom: 5em;
+  }
+  .singleVideo iframe{
+    height: 27.5em;
+  }
+  .homeInterviewPic {
+    width: 14em;
+    height: 17em;
   }
 }
 
@@ -1841,7 +1863,7 @@ nav a {
     justify-content: space-around;
   }
   .singleBlogInfo {
-    margin-top: 3%;
+    margin-top: 4%;
     margin-right: 0em;
     margin-left: 3%;
     width: 30%;
@@ -1932,7 +1954,7 @@ nav a {
 }
 @media only screen and (max-width: 900px) and (min-height: 800px){
   .singleBlogInfo {
-    height: 21%;
+    height: 17%;
   }
 }
 
@@ -1958,7 +1980,7 @@ nav a {
   }
   .mainBlogDiv {
     height: 32em;
-    width: 86em;
+    width: 81em;
   }
 
   .mainBlogInfo h1 {
@@ -1975,7 +1997,7 @@ nav a {
     font-size: 1.5em;
   }
   .singleBlogDiv {
-    width: 65%;
+    width: 100%;
   }
   .singleBlogInfo {
     width: 20%;
