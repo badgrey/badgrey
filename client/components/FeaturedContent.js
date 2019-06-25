@@ -17,7 +17,7 @@ export const FeaturedContent = ({videos, interview}) => {
       })
     }
       <div key={interview.id} className="homeInterview">
-      <h1>{interview.artist.name}</h1>
+      <h1 className="homeInterviewTitle">{interview.artist.name}</h1>
         <div className="homeInterviewPic">
           <img src={interview.artist.imageURL} />
         </div>
