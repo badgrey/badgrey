@@ -262,7 +262,7 @@ const mapState = ({artists, user, savedArtists, blogs, originalcontent, intervie
     blogs: blogs.blogs,
     spotlight: blogs.spotlight[0],
     nonSpotlight: blogs.nonSpotlight.slice(0, 4),
-    videos: originalcontent.slice(0, 2),
+    videos: originalcontent.slice(0, 3),
     interview: interviews[0]
   }
 }
