@@ -1581,7 +1581,7 @@ nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  width: 20%;
 }
 
 .singleVideo {
@@ -1591,25 +1591,17 @@ nav a {
 
 .singleVideo iframe {
   width: 100%;
-  height: 18.5em;
+  height: 9.5em;
 }
 
 .homeInterview {
   display: flex;
   width: 90%;
-  justify-content: flex-end;
-  height: 25%;
+  justify-content: space-between;
+  height: 30%;
   margin-top: 1em;
-}
-
-.homeInterviewInfo {
-  display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  text-align: right;
-  max-width: 70%;
-  margin-right: 1em;
+  align-items: center;
 }
 
 .homeInterviewPic {
@@ -1627,23 +1619,7 @@ nav a {
 
 @media only screen and (max-width: 600px) {
   .featuredContentContainer {
-    width: 100%
-  }
-  .singleVideo iframe {
-    width: 100%;
-  }
-  .homeInterview {
-    width: 90%;
-  }
-  .homeInterviewPic {
-    height: 10em;
-    margin-top: 2em;
-  }
-  .homeInterviewInfo {
-    max-width: 65%;
-  }
-  .homeInterviewInfo p {
-    font-size: 12px;
+    display: none;
   }
 }
 
@@ -1651,26 +1627,41 @@ nav a {
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .featuredContentContainer {
-    width: 100%
+    display: none;
   }
-  .singleVideo iframe {
-    width: 61%;
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1800px){
+  .featuredContentContainer {
+    width: 15%
   }
-  .homeInterview {
-    width: 75%;
+  .featuredContentTitle {
+    margin-bottom: 2em;
+  }
+  .singleVideo {
+    margin-bottom: 2em;
+  }
+  .singleVideo iframe{
+    height: 10.5em;
   }
 }
 
 @media only screen and (min-width: 1800px) {
+  .featuredContentContainer {
+    width: 15%
+  }
+  .featuredContentTitle {
+    margin-bottom: 5em;
+  }
   .singleVideo {
     margin-bottom: 5em;
   }
   .singleVideo iframe{
-    height: 27.5em;
+    height: 10.5em;
   }
   .homeInterviewPic {
-    width: 14em;
-    height: 17em;
+    width: 13em;
+    height: 14em;
   }
 }
 
@@ -1689,7 +1680,7 @@ nav a {
 }
 
 .blogsHomeContainer {
-  width: 60%;
+  width: 80%;
 }
 
 .allBlogsButton {
@@ -1714,7 +1705,7 @@ nav a {
   background-color: black;
   color: whitesmoke;
   margin-bottom: 1em;
-  height: 21em;
+  height: 25em;
   width: 90%;
   transition: 0.3s ease-out;
   -moz-transition: .3s ease-out;
@@ -1767,7 +1758,7 @@ nav a {
   color: whitesmoke;
   margin-top: 2%;
   margin-left: 3%;
-  width: 19%;
+  width: 28%;
   height: 35%;
   padding: 2em;
   transition: opacity 0.3s ease-out;
@@ -1809,11 +1800,11 @@ nav a {
 }
 
 .mainBlogInfo h1 {
-  font-size: 30px;
+  font-size: 35px;
   font-family: 'Oswald', sans-serif;
 }
 .mainBlogInfo h2 {
-  font-size: 13px;
+  font-size: 17px;
   font-family: 'Oswald', sans-serif;
 }
 .mainBlogInfo h3 {
@@ -1966,18 +1957,37 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px){
+  .blogsHomeContainer {
+    width: 85%;
+  }
+  .mainBlogDiv {
+    height: 28em;
+    width: 80%;
+  }
+  .mainBlogInfo h1 {
+    font-size: 3em;
+  }
+  .mainBlogInfo h2 {
+    font-size: 1.2em;
+  }
   .homeSingleBlogLink {
     height: 24em;
+    width: 40%;
   }
   .singleBlogInfo {
-    height: 27%;
+    height: 29%;
+    width: 24%;
   }
 }
 
 @media only screen and (min-width: 1800px) {
 
+  .blogsHomeContainer {
+    width: 85%
+  }
+
   .homeSingleBlogLink {
-    height: 30em;
+    height: 22em;
   }
   .mainBlogDiv {
     height: 32em;
@@ -1998,11 +2008,12 @@ nav a {
     font-size: 1.5em;
   }
   .singleBlogDiv {
-    width: 100%;
+    width: 90%;
   }
   .singleBlogInfo {
-    width: 20%;
-    height: 34%;
+    width: 21%;
+    height: 25%;
+    margin-left: 2%;
   }
   .allBlogsButton {
     width: 308px;
