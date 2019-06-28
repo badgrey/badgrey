@@ -8,7 +8,12 @@ module.exports = router
 router.get('/:type', asyncHandler(async (req, res, next) => {
   let originalContent
   if (req.params.type !== undefined) {
-    originalContent = await OriginalContent.findAll()
+    originalContent = await OriginalContent.findAll({
+      include: [
+        {model: User, as: 'OriginalContentLikes'},
+        {model: User, as: 'OriginalContentDislikes'}
+      ]
+    })
   } else {
     originalContent = await OriginalContent.findAll({
       where: {
