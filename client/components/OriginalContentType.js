@@ -5,8 +5,8 @@ import {fetchOriginalContent, createNewOriginalContent, deleteCurrentOriginalCon
 
 export class OriginalContentType extends Component {
 
-  componentDidMount() {
-      this.props.loadContent(this.props.match.params.type)
+  async componentDidMount() {
+      await this.props.loadContent(this.props.match.params.type)
   }
 
   submit = (event) => {
@@ -86,11 +86,7 @@ export class OriginalContentType extends Component {
 
 const mapState = ({originalcontent, user}, ownProps) => {
   return {
-    content: originalcontent.sort((ocA, ocB) => {
-      if (ocA.createdAt < ocB.createdAt) return 1
-      if (ocA.createdAt > ocB.createdAt) return -1
-      return 0
-    }),
+    content: originalcontent.filter(oc => oc.contentType === ownProps.match.params.type).slice(0, 5),
     user,
     isAdmin: user.isAdmin
   }
