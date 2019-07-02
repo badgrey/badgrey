@@ -1587,7 +1587,7 @@ nav a {
 }
 
 .featuredContentTitle {
-  margin-top: 2em !important;
+  margin-top: 1em !important;
   margin-bottom: 2em;
 }
 
@@ -1642,9 +1642,6 @@ nav a {
   .featuredContentContainer {
     width: 20%;
   }
-  .featuredContentTitle {
-    margin-top: 1em !important;
-  }
   .singleVideo {
     margin-bottom: 2em;
   }
@@ -1657,9 +1654,6 @@ nav a {
   .featuredContentContainer {
     width: 15%;
     margin-left: 7em;
-  }
-  .featuredContentTitle {
-    margin-top: 1em !important;
   }
   .singleVideo {
     margin-bottom: 5em;

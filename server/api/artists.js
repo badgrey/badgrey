@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Artist, User} = require('../db/models')
+const {Artist, User, Blog} = require('../db/models')
 const asyncHandler = require('express-async-handler')
 const { isAdmin, isLoggedIn } = require('../permissions')
 module.exports = router
@@ -11,7 +11,8 @@ router.get('/', asyncHandler(async (req, res, next) => {
     include: [
       {model: User},
       {model: User, as: 'ArtistLikes'},
-      {model: User, as: 'ArtistDislikes'}
+      {model: User, as: 'ArtistDislikes'},
+      {model: Blog}
     ]
   })
   res.json(artists)
