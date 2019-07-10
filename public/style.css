@@ -933,6 +933,14 @@ nav a {
   }
   .singleRelatedBlog {
     margin-bottom: 1em;
+    flex-direction: column;
+  }
+  .relatedBlogPic {
+    width: 16em;
+    width: 16em;
+  }
+  .singleBlogInfo h6 {
+    margin-top: 10px;
   }
 }
 
@@ -2175,6 +2183,10 @@ nav a {
   .allBlogsDiv {
     margin-top: 10em;
   }
+  .allSingleBlogLink {
+    width: 34%;
+    height: 24em;
+  }
 }
 
 @media only screen and (min-width: 1800px) {
@@ -2188,8 +2200,8 @@ nav a {
     width: 100%;
   }
   .allSingleBlogLink {
-    height: 29em;
-    width: 40%;
+    height: 25em;
+    width: 29%;
   }
   .allBlogsButton {
     width: 208px;
