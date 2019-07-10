@@ -707,7 +707,7 @@ nav a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 7em;
+  margin-bottom: 2em;
 }
 
 .artistNameHeader h1{
@@ -746,15 +746,13 @@ nav a {
 .soundcloudAndYoutube {
   display: flex;
   justify-content: space-evenly;
-  height: 380px;
-  margin-top: 50px;
+  margin-top: 5em;
 }
 
 .youtube {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 595px;
 }
 
 .genreLink {
@@ -822,7 +820,7 @@ nav a {
   transform: scale(1.2);
 }
 .artistCommentContainer {
-  margin-top: 17em;
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -985,9 +983,7 @@ nav a {
   .artistContainer {
     margin-top: 10em;
   }
-  .artistHeader {
-    margin-bottom: 30em;
-  }
+
   .artistCity {
     font-size: 2em;
   }
@@ -1006,22 +1002,34 @@ nav a {
     line-height: 1.5;
   }
   .soundcloud {
-    margin-top: -25em;
+    margin-top: 5em;
   }
   .soundcloud iframe {
     height: 1300px;
     width: 800px;
   }
+  .youtube {
+    height: auto;
+    margin-top: 5em;
+  }
+
   .youtube iframe {
     height: 640px;
     width: 890px;
   }
   .artistCommentContainer {
-    margin-top: 48em;
+    margin-top: 1em;
     margin-left: 20em;
   }
   .artistLikesDislikes p {
     font-size: 2.5em;
+  }
+  .singleRelatedBlog {
+    width: auto;
+  }
+  .relatedBlogPic {
+    height: 16em;
+    width: 16em;
   }
 }
 
