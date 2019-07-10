@@ -696,7 +696,7 @@ nav a {
   }
 }
 
-/* Individual Artist Styles */
+/* Single Artist Styles */
 
 .artistContainer {
   text-align: -webkit-center;
@@ -830,9 +830,61 @@ nav a {
   margin-left: 6em;
 }
 
+.relatedBlogsContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  margin-left: 2em;
+  margin-right: 2em;
+  border: solid black;
+  padding: 1em;
+}
+
+.singleRelatedBlog {
+  display: flex;
+  width: 26em;
+  justify-content: space-around;
+}
+
+.relatedBlogPic {
+  height: 13em;
+  width: 12em;
+  display: inline-block;
+  overflow: hidden;
+}
+
+
+.relatedBlogPic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.relatedBlogButton {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
+
+.singleRelatedBlogInfo {
+  margin: 5px auto;
+  max-width: 50%;
+}
+.singleRelatedBlogInfo h6{
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .artistCommentContainer {
-    margin-top: 38em;
+    margin-top: 5em;
     margin-left: 3em;
   }
   .artistNameHeader h1 {
@@ -865,18 +917,24 @@ nav a {
     margin-right: -5em;
   }
   .soundcloudAndYoutube {
-    height: 372px;
-    margin-top: 17em;
+    height: auto;
+    margin-top: 5em;
     flex-direction: column;
   }
   .soundcloud {
-    margin-bottom: 21em
+    margin-bottom: 5em
   }
   .soundcloud iframe {
     width: 28em;
   }
   .youtube iframe {
     width: 28em;
+  }
+  .relatedBlogsContainer {
+    flex-direction: column-reverse;
+  }
+  .singleRelatedBlog {
+    margin-bottom: 1em;
   }
 }
 
@@ -886,15 +944,18 @@ nav a {
   }
   .soundcloudAndYoutube {
     flex-direction: column;
-    margin-top: 18em;
     margin-right: -1em;
+    height: auto;
   }
   .soundcloud {
-    margin-bottom: 22em;
+    margin-bottom: 5em;
   }
   .artistCommentContainer {
-    margin-top: 40em;
+    margin-top: 5em;
     margin-left: 8em;
+  }
+  .relatedBlogsContainer {
+    flex-wrap: wrap;
   }
 }
 
@@ -2071,7 +2132,7 @@ nav a {
   cursor: pointer;
   margin-bottom: 3em;
   cursor: pointer;
-  width: 47%;
+  width: 36%;
   height: 21em;
 }
 

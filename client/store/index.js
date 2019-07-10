@@ -18,7 +18,7 @@ import originalcontent from './originalcontent'
 const reducer = combineReducers({user, artists, error, email, savedArtists, allusers, blogs, comments, interviews, originalcontent})
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
-  createLogger({collapsed: true})
+  process.env.NODE_ENV === 'production' ? null : createLogger({collapsed: true})
 ))
 const store = createStore(reducer, middleware)
 
