@@ -930,10 +930,14 @@ nav a {
   }
   .relatedBlogsContainer {
     flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
   }
   .singleRelatedBlog {
     margin-bottom: 1em;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .relatedBlogPic {
     width: 16em;
