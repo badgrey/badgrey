@@ -42,7 +42,7 @@ router.post('/', (req, res, next) => {
 
   transporter.sendMail(mailOptions, function(err, response) {
     if (err) {
-      console.log(err)
+      console.error(err)
     } else {
       console.log('Success!', { success: response });
       res.status(201).send('Success')

@@ -11,10 +11,6 @@ export class Discover extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      savedCheck: true
-    }
-    this.saved = this.saved.bind(this)
     this.scrollto = null
   }
 
@@ -185,17 +181,6 @@ export class Discover extends Component {
       WY: {
         fill: 'black'
       }
-    }
-  }
-
-  componentDidUpdate () {
-    this.saved()
-  }
-
-  saved() {
-    if (this.props.isLoggedIn && this.props.savedArtists.length === 0 && this.state.savedCheck) {
-      this.props.loadInitialData()
-      this.setState({savedCheck: false})
     }
   }
 

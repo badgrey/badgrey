@@ -42,7 +42,7 @@ export const fetchSavedArtists = () => async (dispatch) => {
     return dispatch(getSavedArtists(artists.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -55,7 +55,7 @@ export const addNewSavedArtist = (id) => async (dispatch) => {
     return dispatch(addSavedArtist(newCreatedArtist.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -65,6 +65,6 @@ export const deleteCurrentSavedArtist = (id) => async (dispatch) => {
     return dispatch(deleteSavedArtist(id))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

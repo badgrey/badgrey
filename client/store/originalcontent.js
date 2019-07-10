@@ -61,7 +61,7 @@ export const fetchOriginalContent = (type) => async (dispatch) => {
     return dispatch(getOriginalContent(data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -71,7 +71,7 @@ export const createNewOriginalContent = (oc) => async (dispatch) => {
     return dispatch(newOriginalContent(newCreatedOriginalContent.data[0]));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -81,7 +81,7 @@ export const deleteCurrentOriginalContent = (id) => async (dispatch) => {
     return dispatch(deleteOriginalContent(id))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -91,7 +91,7 @@ export const likeCurrentOriginalContent = (oc) => async (dispatch) => {
     return dispatch(likeOriginalContent(likedOc.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -101,6 +101,6 @@ export const dislikeCurrentOriginalContent = (oc) => async (dispatch) => {
     return dispatch(dislikeOriginalContent(dislikedOc.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

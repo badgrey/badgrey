@@ -47,7 +47,7 @@ export const logout = () =>
         dispatch(removeUser())
         history.push('/login')
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
 
 export const editCurrentUser = (id, user) =>
 async (dispatch) => {
@@ -57,7 +57,7 @@ async (dispatch) => {
     return updatedUser;
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 

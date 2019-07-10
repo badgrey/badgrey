@@ -45,7 +45,7 @@ export class AuthForm extends Component {
         try {
           this.props.handleSubmitLogin(evt.target.username.value, evt.target.email.value, evt.target.password.value, formName)
         } catch (err) {
-          console.log(err)
+          console.error(err)
         }
       }
   }

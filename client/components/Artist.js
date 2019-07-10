@@ -148,6 +148,29 @@ export class Artist extends Component{
             </div>
           </Link>
         </div>
+        {
+          this.props.chosenArtist[0].blogs.length === 0 ? null :
+          <div className="relatedBlogsContainer">
+            {
+              this.props.chosenArtist[0].blogs.slice(-3).map(blog => {
+                return (
+                  <div key={blog.id} className="singleRelatedBlog">
+                  <div className="relatedBlogPic">
+                    <img src={blog.blogPic} />
+                  </div>
+                    <div className="singleRelatedBlogInfo">
+                      <h6>{blog.title}</h6>
+                      <Link to={`/allblogs/${blog.id}`}>
+                        <button className="relatedBlogButton">Read More</button>
+                      </Link>
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
+
+        }
         <div className="soundcloudAndYoutube">
           <div className="soundcloud">
             <iframe width="500" height="500" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay" src={this.props.chosenArtist[0].soundcloudURL} />
