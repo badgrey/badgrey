@@ -64,7 +64,7 @@ export const fetchArtists = () => async (dispatch) => {
     return dispatch(getArtists(artists.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -74,7 +74,7 @@ export const createNewArtist = (artist) => async (dispatch) => {
     return dispatch(newArtist(newCreatedArtist.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -84,7 +84,7 @@ export const editCurrentArtist = (id, artist) => async (dispatch) => {
     return dispatch(editArtist(editedArtist.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -94,7 +94,7 @@ export const deleteCurrentArtist = (id) => async (dispatch) => {
     return dispatch(deleteArtist(id))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -107,7 +107,7 @@ export const likeCurrentArtist = (artist) => async (dispatch) => {
     return dispatch(likeArtist(likedArtist.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -120,6 +120,6 @@ export const dislikeCurrentArtist = (artist) => async (dispatch) => {
     return dispatch(dislikeArtist(dislikedArtist.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

@@ -152,7 +152,7 @@ export class Artist extends Component{
           this.props.chosenArtist[0].blogs.length === 0 ? null :
           <div className="relatedBlogsContainer">
             {
-              this.props.chosenArtist[0].blogs.slice(0, 3).map(blog => {
+              this.props.chosenArtist[0].blogs.slice(-3).map(blog => {
                 return (
                   <div key={blog.id} className="singleRelatedBlog">
                   <div className="relatedBlogPic">

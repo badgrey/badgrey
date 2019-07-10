@@ -42,6 +42,6 @@ export const sendConfirmEmail = (info) => async (dispatch) => {
       return dispatch(sendEmail(newEmail.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

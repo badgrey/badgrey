@@ -151,7 +151,7 @@ export const fetchBlogs = () => async (dispatch) => {
     return dispatch(getBlogs(response));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -161,7 +161,7 @@ export const createNewBlog = (blog) => async (dispatch) => {
     return dispatch(newBlog(newCreatedBlog.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -171,7 +171,7 @@ export const editCurrentBlog = (id, blog) => async (dispatch) => {
     return dispatch(editBlog(editedBlog.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -181,7 +181,7 @@ export const deleteCurrentBlog = (id, spotlight) => async (dispatch) => {
     return dispatch(deleteBlog(id, spotlight))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -194,7 +194,7 @@ export const likeCurrentBlog = (blog) => async (dispatch) => {
     return dispatch(likeBlog(likedBlog.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -207,6 +207,6 @@ export const dislikeCurrentBlog = (blog) => async (dispatch) => {
     return dispatch(dislikeBlog(dislikedBlog.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

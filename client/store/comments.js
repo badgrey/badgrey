@@ -58,7 +58,7 @@ export const fetchComments = (id) => async (dispatch) => {
     return dispatch(getComments(comments.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -68,7 +68,7 @@ export const fetchArtistComments = (id) => async (dispatch) => {
     return dispatch(getComments(comments.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -78,7 +78,7 @@ export const fetchInterviewComments = (id) => async (dispatch) => {
     return dispatch(getComments(comments.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -92,7 +92,7 @@ export const createNewComment = (comment) => async (dispatch) => {
     return dispatch(newComment(newCreatedComment.data[0]));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -102,7 +102,7 @@ export const deleteCurrentComment = (id) => async (dispatch) => {
     return dispatch(deleteComment(id))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -115,7 +115,7 @@ export const likeCurrentComment = (comment) => async (dispatch) => {
     return dispatch(likeComment(likedComment.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -128,6 +128,6 @@ export const dislikeCurrentComment = (comment) => async (dispatch) => {
     return dispatch(dislikeComment(dislikedComment.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

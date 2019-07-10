@@ -61,7 +61,7 @@ export const fetchInterviews = () => async (dispatch) => {
     return dispatch(getInterviews(data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -71,7 +71,7 @@ export const createNewInterview = (interview) => async (dispatch) => {
     return dispatch(newInterview(newCreatedInterview.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -81,7 +81,7 @@ export const deleteCurrentInterview = (id) => async (dispatch) => {
     return dispatch(deleteInterview(id))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -91,7 +91,7 @@ export const likeCurrentInterview = (interview) => async (dispatch) => {
     return dispatch(likeInterview(likedInterview.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -101,6 +101,6 @@ export const dislikeCurrentInterview = (interview) => async (dispatch) => {
     return dispatch(dislikeInterview(dislikedInterview.data[0]))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }

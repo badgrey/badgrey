@@ -45,7 +45,7 @@ export const fetchUsers = () => async (dispatch) => {
     return dispatch(getAllUsers(users.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -55,7 +55,7 @@ export const editSingleUser = (id, user) => async (dispatch) => {
     return dispatch(editUser(editedUser.data));
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -65,6 +65,6 @@ export const deleteCurrentUser = (id) => async (dispatch) => {
     return dispatch(deleteUser(id))
   }
   catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
