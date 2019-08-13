@@ -86,7 +86,7 @@ export class OriginalContentType extends Component {
 
 const mapState = ({originalcontent, user}, ownProps) => {
   return {
-    content: originalcontent.filter(oc => oc.contentType === ownProps.match.params.type).slice(0, 5),
+    content: originalcontent.filter(oc => oc.contentType === ownProps.match.params.type).slice(0, 6),
     user,
     isAdmin: user.isAdmin
   }
