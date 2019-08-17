@@ -6,7 +6,7 @@ export const FeaturedContent = ({videos, interview}) => {
   return (
     videos.length === 0 || !interview ? null :
     <div className="featuredContentContainer">
-    <h1 className="featuredContentTitle">New Videos</h1>
+    <h1 className="featuredContentTitle">NEW VIDEOS</h1>
     {
       videos.map(video => {
         return (
@@ -17,7 +17,7 @@ export const FeaturedContent = ({videos, interview}) => {
       })
     }
       <div key={interview.id} className="homeInterview">
-      <h2 className="homeInterviewTitle">Interview:</h2>
+      <h2 className="homeInterviewTitle">INTERVIEW:</h2>
       <h1 className="homeInterviewTitle">{interview.artist.name}</h1>
         <div className="homeInterviewPic">
           <img src={interview.artist.imageURL} />

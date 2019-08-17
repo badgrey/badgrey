@@ -871,6 +871,11 @@ nav a {
   font-family: 'Oswald', sans-serif;
 }
 
+.relatedBlogButton:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
 .singleRelatedBlogInfo {
   margin: 5px auto;
   max-width: 50%;
@@ -1726,6 +1731,9 @@ nav a {
   .featuredContentContainer {
     width: 20%;
   }
+  .featuredContentTitle {
+    margin-bottom: 1em;
+  }
   .singleVideo {
     margin-bottom: 2em;
   }
@@ -1739,14 +1747,17 @@ nav a {
     width: 15%;
     margin-left: 7em;
   }
+  .featuredContentTitle {
+    margin-bottom: 1em;
+  }
   .singleVideo {
-    margin-bottom: 5em;
+    margin-bottom: 3em;
   }
   .singleVideo iframe{
     height: 10.5em;
   }
   .homeInterview {
-    margin-top: -2em;
+    margin-top: 2em;
     height: 30%;
   }
   .homeInterviewPic {
