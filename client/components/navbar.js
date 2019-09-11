@@ -31,7 +31,7 @@ class Navbar extends Component {
       <div className="navbar">
         <div>
           <Link to="/">
-            <img className="badGreyTextLogo" src={require('../../public/images/badGreyTextLogoWhite.png')} />
+            <img className="badGreyTextLogo" src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyTextLogo.png" />
           </Link>
         </div>
         <div className="navList">
