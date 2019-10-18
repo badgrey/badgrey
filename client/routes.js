@@ -28,8 +28,8 @@ class Routes extends Component {
         <Route exact path="/discover/:state/:artist" component={Artist} />
         <Route exact path="/allblogs" component={AllBlogs} />
         <Route exact path="/allblogs/:id" component={Blog} />
-        <Route exact path="/interviews" component={AllInterviews} />
-        <Route exact path="/interviews/:interview" component={Interview} />
+        {/*<Route exact path="/interviews" component={AllInterviews} />*/}
+        {/*<Route exact path="/interviews/:interview" component={Interview} />*/}
         <Route exact path="/originalcontent" component={OriginalContent} />
         <Route exact path="/originalcontent/:type" component={OriginalContentType}/>
         <Route exact path="/submit" component={Submit} />
@@ -44,7 +44,7 @@ class Routes extends Component {
               <Route exact path="/users" component={AllUsers} />
               <Route exact path="/newBlog" component={NewBlog} />
               <Route exact path="/editblog/:id" component={EditBlog} />
-              <Route exact path="/newInterview" component={NewInterview} />
+              {/*<Route exact path="/newInterview" component={NewInterview} />*/}
             </Switch>
         }
         {/* Displays our Login component as a fallback */}

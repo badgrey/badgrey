@@ -203,7 +203,7 @@ export class Discover extends Component {
     return (
       <div className="discover">
         <div className="bannerContainer">
-          <img className="bannerImage" src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png" />
+          <img className="bannerImage" src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png" style={{cursor: 'pointer'}} onClick={() => window.open('https://www.youtube.com/watch?v=4JW5YuEN8K4', '_blank')} />
         </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
@@ -250,7 +250,7 @@ const mapState = ({artists, user, savedArtists, blogs, originalcontent, intervie
     blogs: blogs.blogs,
     spotlight: blogs.spotlight[0],
     nonSpotlight: blogs.nonSpotlight.slice(0, 4),
-    videos: originalcontent.slice(0, 3),
+    videos: originalcontent.slice(0, 5),
     interview: interviews[0]
   }
 }
