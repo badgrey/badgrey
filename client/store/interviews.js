@@ -51,56 +51,57 @@ export default function reducer (interviews = [], action){
 //THUNK CREATORS
 
 export const fetchInterviews = () => async (dispatch) => {
-  try {
-    let { data } = await axios.get('/api/interview')
-    data = data.sort((interviewA, interviewB) => {
-      if (interviewA.createdAt < interviewB.createdAt) return 1
-      if (interviewA.createdAt > interviewB.createdAt) return -1
-      return 0
-    })
-    return dispatch(getInterviews(data));
-  }
-  catch (err) {
-    console.error(err)
-  }
+  // try {
+  //   let { data } = await axios.get('/api/interview')
+  //   data = data.sort((interviewA, interviewB) => {
+  //     if (interviewA.createdAt < interviewB.createdAt) return 1
+  //     if (interviewA.createdAt > interviewB.createdAt) return -1
+  //     return 0
+  //   })
+  //   return dispatch(getInterviews(data));
+  // }
+  // catch (err) {
+  //   console.error(err)
+  // }
 }
 
 export const createNewInterview = (interview) => async (dispatch) => {
-  try {
-    const newCreatedInterview = await axios.post('/api/interview/admin', interview)
-    return dispatch(newInterview(newCreatedInterview.data));
-  }
-  catch (err) {
-    console.error(err)
-  }
+
+  // try {
+  //   const newCreatedInterview = await axios.post('/api/interview/admin', interview)
+  //   return dispatch(newInterview(newCreatedInterview.data));
+  // }
+  // catch (err) {
+  //   console.error(err)
+  // }
 }
 
 export const deleteCurrentInterview = (id) => async (dispatch) => {
-  try {
-    const deletedInterview = await axios.delete(`/api/interview/admin/${id}`)
-    return dispatch(deleteInterview(id))
-  }
-  catch (err) {
-    console.error(err)
-  }
+  // try {
+  //   const deletedInterview = await axios.delete(`/api/interview/admin/${id}`)
+  //   return dispatch(deleteInterview(id))
+  // }
+  // catch (err) {
+  //   console.error(err)
+  // }
 }
 
 export const likeCurrentInterview = (interview) => async (dispatch) => {
-  try {
-    const likedInterview = await axios.post('/api/interview/like', interview)
-    return dispatch(likeInterview(likedInterview.data[0]))
-  }
-  catch (err) {
-    console.error(err)
-  }
+  // try {
+  //   const likedInterview = await axios.post('/api/interview/like', interview)
+  //   return dispatch(likeInterview(likedInterview.data[0]))
+  // }
+  // catch (err) {
+  //   console.error(err)
+  // }
 }
 
 export const dislikeCurrentInterview = (interview) => async (dispatch) => {
-  try {
-    const dislikedInterview = await axios.post('/api/interview/dislike', interview)
-    return dispatch(dislikeInterview(dislikedInterview.data[0]))
-  }
-  catch (err) {
-    console.error(err)
-  }
+  // try {
+  //   const dislikedInterview = await axios.post('/api/interview/dislike', interview)
+  //   return dispatch(dislikeInterview(dislikedInterview.data[0]))
+  // }
+  // catch (err) {
+  //   console.error(err)
+  // }
 }

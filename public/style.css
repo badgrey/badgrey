@@ -43,6 +43,30 @@ form div {
   font-family: 'Oswald', sans-serif;
 }
 
+.bannerContainer {
+  display: flex;
+  justify-content: center;
+  height: 20em;
+  margin-top: 5em;
+}
+
+.bannerImage {
+  object-fit: cover;
+  height: 100%;
+  width: 83%;
+}
+
+@media only screen and (max-width: 600px) {
+  .bannerContainer {
+    height: 12em;
+  }
+
+  .bannerImage {
+    width: 93%;
+  }
+}
+
+
 /* Map Styles */
 
 path {
@@ -1682,7 +1706,7 @@ nav a {
 
 .singleVideo {
   width: 90%;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
 }
 
 .singleVideo iframe {

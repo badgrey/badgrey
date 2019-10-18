@@ -53,11 +53,13 @@ class MobileNavbar extends Component {
                         Discover
                       </Link>
                     </div>
+                    {/*
                     <div className="singleNavOption">
                       <Link to="/interviews">
                       Interviews
                       </Link>
-                  </div>
+                    </div>
+                    */}
                     <div className="singleNavOption">
                       <Link to="/originalcontent">
                         Original Content
@@ -78,11 +80,13 @@ class MobileNavbar extends Component {
                         Add Blog
                       </Link>
                     </div>
+                    {/*
                     <div className="singleNavOption">
                       <Link to="/newInterview">
                         Add Interview
                       </Link>
                     </div>
+                    */}
                     <div className="singleNavOption">
                       <Link to="/account">
                       Account
@@ -119,11 +123,13 @@ class MobileNavbar extends Component {
                             Discover
                           </Link>
                         </div>
+                        {/*
                         <div className="singleNavOption">
                           <Link to="/interviews">
                           Interviews
                           </Link>
-                      </div>
+                        </div>
+                        */}
                         <div className="singleNavOption">
                           <Link to="/originalcontent">
                             Original Content
@@ -170,11 +176,13 @@ class MobileNavbar extends Component {
                       Discover
                     </Link>
                   </div>
+                  {/*
                   <div className="singleNavOption">
                       <Link to="/interviews">
                       Interviews
                       </Link>
                   </div>
+                  */}
                   <div className="singleNavOption">
                     <Link to="/originalcontent">
                       Original Content
