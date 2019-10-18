@@ -202,6 +202,9 @@ export class Discover extends Component {
     let scrollto = this.setScroll()
     return (
       <div className="discover">
+        <div className="bannerContainer">
+          <img className="bannerImage" src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png" />
+        </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
           <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
