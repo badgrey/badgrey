@@ -62,7 +62,8 @@ form div {
   }
 
   .bannerImage {
-    width: 93%;
+    width: 80%;
+    height: 80%;
   }
 }
 
@@ -1941,6 +1942,7 @@ nav a {
 @media only screen and (max-width: 600px) {
   .topContainer {
     flex-direction: column;
+    margin-top: 0;
   }
   .blogsHomeContainer {
     width: 100%;
