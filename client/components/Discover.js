@@ -207,7 +207,7 @@ export class Discover extends Component {
   }
 
   fakeInfinite = () => {
-    if (window.pageYOffset >= document.body.scrollHeight / 2) window.scrollTo(0, 0)
+    if (window.pageYOffset + 50 >= document.body.scrollHeight / 2) window.scrollTo(0, 0)
   }
 
 
@@ -222,7 +222,7 @@ export class Discover extends Component {
         </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
-    {/*<FeaturedContent videos={this.props.videos} interview={this.props.interview} />*/}
+          <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
         </div>
         {
           //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
@@ -253,7 +253,7 @@ export class Discover extends Component {
         </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
-      {/*<FeaturedContent videos={this.props.videos} interview={this.props.interview} />*/}
+          <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
         </div>
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
