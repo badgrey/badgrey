@@ -14,13 +14,13 @@ export class Discover extends Component {
     this.scrollto = null
   }
 
-  // componentDidMount() {
-  //   window.onscroll = this.fakeInfinite
-  // }
+  componentDidMount() {
+    window.onscroll = this.fakeInfinite
+  }
 
-  // componentWillUnmount () {
-  //   window.onscroll = null
-  // }
+  componentWillUnmount () {
+    window.onscroll = null
+  }
 
   //changes route based on state clicked
   clickToState = (event) => {
@@ -222,7 +222,7 @@ export class Discover extends Component {
         </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
-          <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
+    {/*<FeaturedContent videos={this.props.videos} interview={this.props.interview} />*/}
         </div>
         {
           //scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
@@ -253,7 +253,7 @@ export class Discover extends Component {
         </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
-          <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
+      {/*<FeaturedContent videos={this.props.videos} interview={this.props.interview} />*/}
         </div>
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
