@@ -14,13 +14,13 @@ export class Discover extends Component {
     this.scrollto = null
   }
 
-  componentDidMount() {
-    window.onscroll = this.fakeInfinite
-  }
+  // componentDidMount() {
+  //   window.onscroll = this.fakeInfinite
+  // }
 
-  componentWillUnmount () {
-    window.onscroll = null
-  }
+  // componentWillUnmount () {
+  //   window.onscroll = null
+  // }
 
   //changes route based on state clicked
   clickToState = (event) => {
