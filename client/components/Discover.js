@@ -14,13 +14,13 @@ export class Discover extends Component {
     this.scrollto = null
   }
 
-  // componentDidMount() {
-  //   window.onscroll = this.fakeInfinite
-  // }
+  componentDidMount() {
+    window.onscroll = this.fakeInfinite
+  }
 
-  // componentWillUnmount () {
-  //   window.onscroll = null
-  // }
+  componentWillUnmount () {
+    window.onscroll = null
+  }
 
   //changes route based on state clicked
   clickToState = (event) => {
@@ -207,7 +207,7 @@ export class Discover extends Component {
   }
 
   fakeInfinite = () => {
-    if (window.pageYOffset >= document.body.scrollHeight / 2) window.scrollTo(0, 0)
+    if (window.pageYOffset + 50 >= document.body.scrollHeight / 2) window.scrollTo(0, 0)
   }
 
 

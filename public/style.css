@@ -6,9 +6,9 @@ html, body {
   border: 0px;
   width: 100%;
 }
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 #app{
   background: no-repeat center url('./images/websitebackground.png');
