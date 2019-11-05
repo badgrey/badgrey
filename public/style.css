@@ -67,6 +67,17 @@ form div {
   }
 }
 
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .bannerImage {
+    object-fit: contain;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .bannerContainer {
+    height: 24em;
+  }
+}
+
 
 /* Map Styles */
 
