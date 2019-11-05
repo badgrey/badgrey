@@ -14,6 +14,14 @@ export class Discover extends Component {
     this.scrollto = null
   }
 
+  componentDidMount() {
+    window.onscroll = this.fakeInfinite
+  }
+
+  componentWillUnmount () {
+    window.onscroll = null
+  }
+
   //changes route based on state clicked
   clickToState = (event) => {
     const stateName = event.target.dataset.name
@@ -185,18 +193,23 @@ export class Discover extends Component {
   }
 
   setScroll = () => {
-    let scrollto = 1000
+    let scrollto = 1420
     if (window.matchMedia('(max-width: 600px)').matches) {
-      scrollto = 1100
+      scrollto = 900
     } else if (window.matchMedia('(min-width: 600px)').matches && window.matchMedia('(max-width: 900px)').matches) {
-      scrollto = 1500
+      scrollto = 1200
     } else if (window.matchMedia('(min-width: 1400px)').matches && window.matchMedia('(max-width: 1800px)').matches) {
-      scrollto = 1100
+      scrollto = 1570
     } else if (window.matchMedia('(min-width: 1800px)').matches) {
-      scrollto = 1420
+      scrollto = 1700
     }
     return scrollto
   }
+
+  fakeInfinite = () => {
+    if (window.pageYOffset >= document.body.scrollHeight / 2) window.scrollTo(0, 0)
+  }
+
 
   render() {
     let scrollto = this.setScroll()
@@ -217,6 +230,31 @@ export class Discover extends Component {
           window.scroll(0, scrollto) :
           null
         }
+        <h1>DISCOVER</h1>
+        <div className="allAndGlobe">
+          <Link className="allArtistsLink" to="/discover/all">
+            <button className="allArtistsButton" >View All Artists</button>
+          </Link>
+          <Link className="internationalLink" to="/discover/International">
+            <img className="globe" src={require('../../public/images/states/International.png')} />
+            <label className="globeLabel" >International</label>
+          </Link>
+        </div>
+        <div className="Map">
+          <USAMap title="Choose Region" width={869} height={503} customize={this.statesCustomConfig()} onClick={this.clickToState} />
+        </div>
+        <div className="genreDiv">
+          <Genre />
+        </div>
+        <div className="bannerContainer">
+          <img
+          className="bannerImage"
+          style={{cursor: 'pointer'}} src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png" onClick={() => window.open('https://www.youtube.com/watch?v=Z_7ckkRcGW0', '_blank')} />
+        </div>
+        <div className="topContainer">
+          <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
+          <FeaturedContent videos={this.props.videos} interview={this.props.interview} />
+        </div>
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
           <Link className="allArtistsLink" to="/discover/all">
