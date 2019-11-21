@@ -184,6 +184,11 @@ class MobileNavbar extends Component {
                   </div>
                   */}
                   <div className="singleNavOption">
+                    <Link to="/TheBricks/Chapters/1">
+                      The Bricks
+                    </Link>
+                  </div>
+                  <div className="singleNavOption">
                     <Link to="/originalcontent">
                       Original Content
                     </Link>

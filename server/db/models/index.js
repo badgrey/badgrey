@@ -4,6 +4,8 @@ const Blog = require('./blog')
 const Comment = require('./comment')
 const Interview = require('./interview')
 const OriginalContent = require('./originalcontent')
+const BricksVolume = require('./bricksVolume')
+const BricksChapter = require('./bricksChapter')
 
 //Setting model associations here and exporting them
 
@@ -35,6 +37,10 @@ User.hasMany(Comment)
 Interview.belongsTo(Artist)
 Artist.hasOne(Interview)
 
+//setting associtation of bricks volume to bricks chapter
+BricksChapter.belongsTo(BricksVolume)
+BricksVolume.hasMany(BricksChapter)
+
 //setting up new tables for likes and dislikes through associations between users and everytihng else
 Comment.belongsToMany(User, {through: 'Like_Comment', as: 'Likes'})
 Comment.belongsToMany(User, {through: 'Dislike_Comment', as: 'Dislikes'})
@@ -57,5 +63,7 @@ module.exports = {
   Blog,
   Comment,
   Interview,
-  OriginalContent
+  OriginalContent,
+  BricksChapter,
+  BricksVolume
 }
