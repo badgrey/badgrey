@@ -21,14 +21,17 @@ User.hasMany(Blog)
 Blog.belongsTo(Artist)
 Artist.hasMany(Blog)
 
-//setting up comment association with artists and blogs and interviews
+//setting up comment association with artists and blogs and interviews and Bricks
 Comment.belongsTo(Blog)
 Blog.hasMany(Comment)
 Comment.belongsTo(Artist)
 Artist.hasMany(Comment)
 Comment.belongsTo(Interview)
 Interview.hasMany(Comment)
-
+Comment.belongsTo(BricksVolume)
+BricksVolume.hasMany(Comment)
+Comment.belongsTo(BricksChapter)
+BricksChapter.hasMany(Comment)
 //setting association between user and comment
 Comment.belongsTo(User)
 User.hasMany(Comment)
