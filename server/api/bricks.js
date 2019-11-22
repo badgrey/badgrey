@@ -3,7 +3,7 @@ const {BricksVolume, BricksChapter} = require('../db/models')
 const asyncHandler = require('express-async-handler')
 module.exports = router
 
-router.get('/volume', asyncHandler(async (req, res, next) => {
+router.get('/', asyncHandler(async (req, res, next) => {
   const volumes = await BricksVolume.findAll()
   res.json(volumes)
 }))

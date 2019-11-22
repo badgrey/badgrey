@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview, NewInterview, OriginalContent, OriginalContentType, Submit, BricksChapter} from './components'
+import {Login, Signup, Discover, State, Artist, SingleGenre, NewArtist, EditArtist, EditUser, SavedArtists, AllUsers, AllArtists, AllBlogs, Blog, EditBlog, NewBlog, AllInterviews, Interview, NewInterview, OriginalContent, OriginalContentType, Submit, AllBricksVolumes, BricksChapter} from './components'
 import {me, fetchArtists, fetchBlogs, fetchInterviews, fetchOriginalContent } from './store'
 
 /**
@@ -33,6 +33,7 @@ class Routes extends Component {
         <Route exact path="/originalcontent" component={OriginalContent} />
         <Route exact path="/originalcontent/:type" component={OriginalContentType}/>
         <Route exact path="/submit" component={Submit} />
+        <Route exact path="/TheBricks" component={AllBricksVolumes} />
         <Route exact path ="/TheBricks/Chapters/:id" component={BricksChapter} />
         {
           isLoggedIn &&
