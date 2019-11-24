@@ -9,17 +9,23 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/volume/:id', asyncHandler(async (req, res, next) => {
+  console.log('MADE IT')
   const volume = await BricksVolume.findById(req.params.id, {
     include: [
       {model: BricksChapter},
     ]})
+    console.log(volume)
   res.json(volume)
 }))
 
 
-router.get('/chapter/:id', asyncHandler(async (req, res, next) => {
-  const artists = await BricksChapter.findById(req.params.id)
-  res.json(artists)
+router.get('/chapter/:name', asyncHandler(async (req, res, next) => {
+  const chapter = await BricksChapter.findOne({
+    where: {
+      title: req.params.name
+    }
+  })
+  res.json(chapter)
 }))
 
 // router.post('/volume', asyncHandler(async (req, res, next) => {

@@ -1,16 +1,35 @@
-import React from 'react';
-import axios from 'axios'
+import React, {PureComponent} from 'react';
+import {loadChapter} from '../store/theBricks'
+import {connect} from 'react-redux'
 
-const test = async () => {
-  await axios.post('/api/bricks/chapter/')
-  console.log('made it!')
-}
-const BricksChapter = props => {
-  return (
-    <div style={{marginTop: '20em'}}>
-      <button onClick={test}>test</button>
-    </div>
-  )
+
+class BricksChapter extends PureComponent {
+
+  async componentDidMount() {
+    await this.props.loadChapter(this.props.match.params.name.split('_').join(' '))
+  }
+
+  render () {
+    return (
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        {
+          this.props.chapter && this.props.chapter.pages.map(page => (
+            <div key={page}>
+              <img src={page} />
+            </div>
+          ))
+        }
+      </div>
+    )
+  }
 }
 
-export default BricksChapter
+const mapState = state => ({
+  chapter: state.theBricks.chapter
+})
+
+const mapDispatch = dispatch => ({
+  loadChapter: (name) => dispatch(loadChapter(name))
+})
+
+export default connect(mapState, mapDispatch)(BricksChapter)

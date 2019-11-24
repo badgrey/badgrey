@@ -5,6 +5,7 @@ const BricksChapter = db.define('BricksChapter', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true
   },
   coverImage: {
     type: Sequelize.STRING,
