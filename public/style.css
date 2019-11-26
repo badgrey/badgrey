@@ -3300,3 +3300,75 @@ nav a {
     font-size: 2em;
   }
 }
+
+/* ALL BRICKS VOLUMES STYLES */
+.allBricksVolumesRoot {
+  display: flex;
+  justify-content: center;
+  height: 100vh
+}
+
+.allVolumesSingleVolume {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  transition: 1.4s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.allVolumesSingleTitle {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  color: whitesmoke;
+  left: 100%;
+  animation: slide 1s forwards;
+  transition: .5s ease;
+}
+
+.allVolumesSingleImage {
+  transition: 0.4s;
+}
+
+.allVolumesSingleDescription {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  color: whitesmoke;
+  right: 100%;
+  animation: slide 1s forwards;
+  transition: .5s ease;
+}
+
+.allVolumesSingleVolume:hover img{
+  -webkit-filter: brightness(60%);
+  text-shadow: 0 0 3px whitesmoke;
+  transform: scale(1.09)
+}
+
+.allVolumesSingleVolume:hover .allVolumesSingleTitle{
+  opacity: 1;
+  left: 0;
+}
+
+.allVolumesSingleVolume:hover .allVolumesSingleDescription{
+  opacity: 1;
+  right: 0;
+}
+
+@media only screen and (min-width: 1800px) {
+  .allBricksVolumesRoot  {
+    margin-top: 10.5em;
+  }
+  .allVolumesSingleImage {
+    height: 25em;
+  }
+  .allVolumesSingleTitle {
+    top: 20%
+  }
+  .allVolumesSingleDescription {
+    top: -25%
+  }
+}

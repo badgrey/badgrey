@@ -15,13 +15,13 @@ class AllBricksVolumes extends PureComponent {
   render() {
     return (
       this.props.volumes.length && (
-      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div className="allBricksVolumesRoot" >
         {
           this.props.volumes.map(vol => (
-            <div key={vol.id} onClick={() => this.handleVolumeClick(vol.id)} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h2>{vol.title}</h2>
-              <img src={vol.coverImage} />
-              <p>{vol.description}</p>
+            <div className="allVolumesSingleVolume" key={vol.id} onClick={() => this.handleVolumeClick(vol.id)}>
+              <h2 className="allVolumesSingleTitle">{vol.title}</h2>
+              <img className="allVolumesSingleImage" src={vol.coverImage} />
+              <p className="allVolumesSingleDescription">{vol.description}</p>
             </div>
           ))
         }
