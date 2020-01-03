@@ -3305,7 +3305,9 @@ nav a {
 .allBricksVolumesRoot {
   display: flex;
   justify-content: center;
-  height: 100vh
+  height: 100vh;
+  margin-top: 7.5em;
+
 }
 
 .allVolumesSingleVolume {
@@ -3324,12 +3326,15 @@ nav a {
   opacity: 0;
   color: whitesmoke;
   left: 100%;
+  top: 15%;
   animation: slide 1s forwards;
   transition: .5s ease;
 }
 
 .allVolumesSingleImage {
   transition: 0.4s;
+  height: 26em;
+  width: 21em;
 }
 
 .allVolumesSingleDescription {
@@ -3345,7 +3350,6 @@ nav a {
 .allVolumesSingleVolume:hover img{
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
-  transform: scale(1.09)
 }
 
 .allVolumesSingleVolume:hover .allVolumesSingleTitle{
