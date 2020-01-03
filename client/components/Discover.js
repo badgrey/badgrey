@@ -218,7 +218,7 @@ export class Discover extends Component {
         <div className="bannerContainer">
           <img
           className="bannerImage"
-          style={{cursor: 'pointer'}} src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png" onClick={() => window.open('https://www.youtube.com/watch?v=Z_7ckkRcGW0', '_blank')} />
+          style={{cursor: 'pointer'}} src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg" onClick={() => window.open('https://www.youtube.com/watch?v=izHkSruuvRw', '_blank')} />
         </div>
         <div className="topContainer">
           <BlogHomePage spotlight={this.props.spotlight} blogs={this.props.nonSpotlight} />
