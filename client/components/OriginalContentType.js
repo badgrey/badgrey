@@ -13,7 +13,7 @@ export class OriginalContentType extends Component {
     event.preventDefault()
     let info = {
       youtubeId: event.target.oc.value,
-      contentType: this.props.match.params.type === 'MusicVideo' ? 'MusicVideo' : 'HelloMyNameIs'
+      contentType: this.props.match.params.type === 'MusicVideo' ? 'MusicVideo' : 'CitySounds'
     }
     this.props.submitContent(info)
   }
@@ -34,7 +34,7 @@ export class OriginalContentType extends Component {
       :
       <div className="OCcontainerDiv">
         <div className="OCheader">
-          <h1>{this.props.match.params.type === 'MusicVideo' ? 'MUSIC VIDEOS' : 'HELLO MY NAME IS...'}</h1>
+          <h1>{this.props.match.params.type === 'MusicVideo' ? 'MUSIC VIDEOS' : 'CITY SOUNDS'}</h1>
       {
         this.props.isAdmin ?
           <form className="newOC" onSubmit={this.submit}>
