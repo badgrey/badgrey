@@ -31,7 +31,7 @@ class Routes extends Component {
         {/*<Route exact path="/interviews" component={AllInterviews} />*/}
         {/*<Route exact path="/interviews/:interview" component={Interview} />*/}
         <Route exact path="/originalcontent" component={OriginalContent} />
-        <Route exact path="/originalcontent/:type" component={OriginalContentType}/>
+        <Route exact path="/originalcontent/:type" component={OriginalContentType} />
         <Route exact path="/submit" component={Submit} />
         <Route exact path="/TheBricks" component={AllBricksVolumes} />
         <Route exact path ="/TheBricks/Chapter/:name" component={BricksChapter} />

@@ -229,10 +229,10 @@ export class Discover extends Component {
           <img
             className="bannerImage"
             style={{ cursor: 'pointer' }}
-            src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
             onClick={() =>
               window.open(
-                'https://www.youtube.com/watch?v=Z_7ckkRcGW0',
+                'https://www.youtube.com/watch?v=izHkSruuvRw',
                 '_blank'
               )
             }
@@ -281,10 +281,10 @@ export class Discover extends Component {
           <img
             className="bannerImage"
             style={{ cursor: 'pointer' }}
-            src="https://badgrey-other.s3.us-east-2.amazonaws.com/carverBanner.png"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
             onClick={() =>
               window.open(
-                'https://www.youtube.com/watch?v=Z_7ckkRcGW0',
+                'https://www.youtube.com/watch?v=izHkSruuvRw',
                 '_blank'
               )
             }
