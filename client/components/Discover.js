@@ -346,7 +346,9 @@ const mapState = (
     blogs: blogs.blogs,
     spotlight: blogs.spotlight[0],
     nonSpotlight: blogs.nonSpotlight.slice(0, 4),
-    videos: originalcontent.slice(0, 5),
+    videos: originalcontent
+      .filter(content => content.contentType === 'MusicVideo')
+      .slice(0, 5),
     interview: interviews[0]
   };
 };

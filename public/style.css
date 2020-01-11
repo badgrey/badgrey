@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
-html, body {
+html,
+body {
   margin: 0px;
   padding: 0px;
   border: 0px;
@@ -10,7 +11,7 @@ html, body {
   scroll-behavior: smooth;
 } */
 
-#app{
+#app {
   background: no-repeat center url('./images/websitebackground.png');
   background-size: 80%;
   background-attachment: fixed;
@@ -22,7 +23,7 @@ html, body {
   }
 }
 
-body h1 h2 h3 h4 Link a p div button{
+body h1 h2 h3 h4 link a p div button {
   font-family: 'Oswald', sans-serif;
 }
 
@@ -78,14 +79,13 @@ form div {
   }
 }
 
-
 /* Map Styles */
 
 path {
   pointer-events: all;
 }
 path:hover {
-  opacity: 0.50;
+  opacity: 0.5;
   cursor: pointer;
 }
 .discover {
@@ -142,10 +142,8 @@ path:hover {
   font-size: 1.2em;
 }
 
-
-
 .internationalLink:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 @media only screen and (max-width: 600px) {
@@ -172,14 +170,14 @@ path:hover {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width:900px) {
+@media only screen and (min-width: 600px) and (max-width: 900px) {
   .genreDiv {
     margin-top: -20px;
   }
   .Map {
     margin-top: 40px;
   }
-  .allAndGlobe{
+  .allAndGlobe {
     margin-top: 20px;
   }
 
@@ -288,7 +286,6 @@ path:hover {
   }
 }
 
-
 /* NAVBAR STYLES */
 .navbar {
   display: flex;
@@ -328,21 +325,21 @@ path:hover {
 .barmenuPic {
   cursor: pointer;
   margin-top: 1em;
-  margin-right: .5em;
+  margin-right: 0.5em;
   height: 80px;
   width: 80px;
 }
 
 .barmenuPic:hover {
-  opacity: 0.50;
+  opacity: 0.5;
 }
 
 .badGreyTextLogo:hover {
-  opacity: 0.50;
+  opacity: 0.5;
 }
 
 .badGreyWolfLogo:hover {
-  opacity: 0.50;
+  opacity: 0.5;
 }
 
 .badgrey {
@@ -369,7 +366,7 @@ nav a {
   width: 7em;
 }
 
-.navList a{
+.navList a {
   color: whitesmoke;
   cursor: pointer;
 }
@@ -425,10 +422,9 @@ nav a {
     justify-content: space-between;
     margin: 0px;
   }
-
 }
 
-@media only screen and (min-width: 600px) and (max-width:900px) {
+@media only screen and (min-width: 600px) and (max-width: 900px) {
   .navbar {
     width: 100%;
   }
@@ -500,7 +496,7 @@ nav a {
     width: 140px;
   }
   .navOptions {
-    margin-top: -.5em;
+    margin-top: -0.5em;
   }
 }
 
@@ -527,7 +523,7 @@ nav a {
   margin-top: 40px;
   font-family: 'Oswald', sans-serif;
 }
-.state{
+.state {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -551,7 +547,7 @@ nav a {
 .artistPic:hover img {
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
-  color:whitesmoke;
+  color: whitesmoke;
 }
 .artistPic:hover .artistName {
   opacity: 1;
@@ -593,13 +589,12 @@ nav a {
   margin-top: 74px;
 }
 
-.noArtists h1{
+.noArtists h1 {
   font-size: 3em;
   font-family: 'Oswald', sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
-
   .state {
     margin: 0px;
     width: 98%;
@@ -680,7 +675,6 @@ nav a {
   .artistNameText {
     width: 130px;
   }
-
 }
 
 @media only screen and (min-width: 1800px) {
@@ -694,7 +688,7 @@ nav a {
     font-size: 4em;
   }
   .scrolltoload {
-    font-size: 1.3em
+    font-size: 1.3em;
   }
   .artistSearch input {
     font-size: 1.5em;
@@ -746,11 +740,11 @@ nav a {
   margin-bottom: 2em;
 }
 
-.artistNameHeader h1{
+.artistNameHeader h1 {
   margin-bottom: 0;
 }
 
-.artistNameHeader h3{
+.artistNameHeader h3 {
   margin-top: 0px;
   margin-bottom: 2em;
 }
@@ -777,7 +771,6 @@ nav a {
 .artistLogos:hover {
   transform: scale(1.2);
 }
-
 
 .soundcloudAndYoutube {
   display: flex;
@@ -811,8 +804,6 @@ nav a {
   background-color: whitesmoke;
   color: black;
 }
-
-
 
 .adminButtons {
   display: flex;
@@ -889,7 +880,6 @@ nav a {
   overflow: hidden;
 }
 
-
 .relatedBlogPic img {
   object-fit: cover;
   width: 100%;
@@ -916,7 +906,7 @@ nav a {
   margin: 5px auto;
   max-width: 50%;
 }
-.singleRelatedBlogInfo h6{
+.singleRelatedBlogInfo h6 {
   font-size: 20px;
   margin-bottom: 15px;
 }
@@ -961,7 +951,7 @@ nav a {
     flex-direction: column;
   }
   .soundcloud {
-    margin-bottom: 5em
+    margin-bottom: 5em;
   }
   .soundcloud iframe {
     width: 28em;
@@ -1116,7 +1106,16 @@ nav a {
   cursor: pointer;
 }
 
-#Trap #Alternative #Cloud #Conscious #Experimental #Instrumental #Pop #JazzSoul #RB #OldSchool {
+#Trap
+  #Alternative
+  #Cloud
+  #Conscious
+  #Experimental
+  #Instrumental
+  #Pop
+  #JazzSoul
+  #RB
+  #OldSchool {
   transition: 0.3s;
 }
 
@@ -1202,7 +1201,7 @@ nav a {
 }
 
 @media only screen and (max-width: 600px) {
-  .genreGrid{
+  .genreGrid {
     grid-template-columns: 70px 70px 70px 70px 70px;
     grid-template-rows: 70px 70px;
   }
@@ -1217,7 +1216,6 @@ nav a {
     grid-template-columns: 100px 100px 100px 100px 100px;
   }
 }
-
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .genreGrid {
@@ -1312,7 +1310,7 @@ nav a {
   height: 25px;
 }
 
-.loginSignupRoute h4{
+.loginSignupRoute h4 {
   color: black;
 }
 
@@ -1320,7 +1318,7 @@ nav a {
   position: absolute;
   width: 180px;
   border-radius: 4px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   color: whitesmoke;
   text-align: center;
   font-size: 20px;
@@ -1337,10 +1335,9 @@ nav a {
   85%,
   65%,
   50% {
-    opacity: 1
+    opacity: 1;
   }
 }
-
 
 @media only screen and (max-width: 600px) {
   .outerForm {
@@ -1424,8 +1421,6 @@ nav a {
   }
 }
 
-
-
 /* Edit User Styles */
 
 .outerAccountForm {
@@ -1470,7 +1465,7 @@ nav a {
   position: absolute;
   width: 180px;
   border-radius: 4px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   color: whitesmoke;
   text-align: center;
   font-size: 20px;
@@ -1563,7 +1558,7 @@ nav a {
     height: 180px;
   }
 }
-@media only screen and (min-width: 600px) and (max-width:900px) {
+@media only screen and (min-width: 600px) and (max-width: 900px) {
   /* .noSaved {
     margin-left: 19em;
   } */
@@ -1581,7 +1576,7 @@ nav a {
     margin-top: 74px;
     /* margin-left: 35em; */
   }
-  .noSaved h2{
+  .noSaved h2 {
     font-size: 2.5em;
   }
   .noSaved h5 {
@@ -1614,7 +1609,6 @@ nav a {
     font-size: 2em;
   }
 }
-
 
 /* All Users Styles */
 
@@ -1763,7 +1757,7 @@ nav a {
   }
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 1800px){
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .featuredContentContainer {
     width: 20%;
   }
@@ -1773,7 +1767,7 @@ nav a {
   .singleVideo {
     margin-bottom: 2em;
   }
-  .singleVideo iframe{
+  .singleVideo iframe {
     height: 10.5em;
   }
 }
@@ -1789,7 +1783,7 @@ nav a {
   .singleVideo {
     margin-bottom: 3em;
   }
-  .singleVideo iframe{
+  .singleVideo iframe {
     height: 10.5em;
   }
   .homeInterview {
@@ -1846,9 +1840,9 @@ nav a {
   height: 25em;
   width: 90%;
   transition: 0.3s ease-out;
-  -moz-transition: .3s ease-out;
-  -webkit-transition: .3s ease-out;
-  -o-transition: .3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  -webkit-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
 }
 
 .mainBlogDiv:hover {
@@ -1861,7 +1855,6 @@ nav a {
   width: 97%;
   flex-wrap: wrap;
 }
-
 
 .homeSingleBlogLink {
   width: 48%;
@@ -1883,7 +1876,7 @@ nav a {
   object-fit: cover;
 }
 
-.homeSingleBlog:hover .singleBlogInfo{
+.homeSingleBlog:hover .singleBlogInfo {
   opacity: 0;
 }
 .singleBlogInfo {
@@ -1900,13 +1893,13 @@ nav a {
   height: 35%;
   padding: 2em;
   transition: opacity 0.3s ease-out;
-  -moz-transition: opacity .3s ease-out;
-  -webkit-transition: opacity .3s ease-out;
-  -o-transition: opacity .3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -webkit-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
 }
 
 .singleBlogTitle {
-  font-size: 20px
+  font-size: 20px;
 }
 
 .mainBlog {
@@ -1934,7 +1927,6 @@ nav a {
   color: white;
   width: 50%;
   padding: 1em;
-
 }
 
 .mainBlogInfo h1 {
@@ -1963,7 +1955,7 @@ nav a {
     width: 90%;
   }
   .mainBlogInfo {
-    margin-top: .2em;
+    margin-top: 0.2em;
     margin-right: 1em;
     margin-left: 1em;
   }
@@ -2003,7 +1995,7 @@ nav a {
     align-items: center;
   }
   .singleBlogTitle {
-    font-size: 15px
+    font-size: 15px;
   }
   .noneOnMobile {
     display: none;
@@ -2016,8 +2008,6 @@ nav a {
     font-size: 1em;
   }
 }
-
-
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .topContainer {
@@ -2084,19 +2074,19 @@ nav a {
     display: none;
   }
 }
-@media only screen and (max-width: 900px) and (min-height: 800px){
+@media only screen and (max-width: 900px) and (min-height: 800px) {
   .singleBlogInfo {
     height: 17%;
   }
 }
 
-@media only screen and (min-width: 900px) and (max-width: 1400px) and (min-height: 800px){
+@media only screen and (min-width: 900px) and (max-width: 1400px) and (min-height: 800px) {
   .singleBlogInfo {
     height: 24%;
   }
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 1800px){
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .blogsHomeContainer {
     width: 85%;
   }
@@ -2111,7 +2101,7 @@ nav a {
     font-size: 1.2em;
   }
   .homeSingleBlogLink {
-    height: 24em;
+    height: 20em;
     width: 40%;
   }
   .singleBlogInfo {
@@ -2121,12 +2111,11 @@ nav a {
 }
 
 @media only screen and (min-width: 1800px) {
-
   .topContainer {
     margin-bottom: 6em;
   }
   .blogsHomeContainer {
-    width: 85%
+    width: 85%;
   }
 
   .homeSingleBlogLink {
@@ -2165,7 +2154,6 @@ nav a {
     font-size: 1.7em;
   }
 }
-
 
 /* All Blogs Styles */
 
@@ -2224,7 +2212,6 @@ nav a {
 }
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-
   .blogsList {
     width: 90%;
   }
@@ -2299,7 +2286,7 @@ nav a {
   font-family: 'Oswald', sans-serif;
 }
 
-.blogTitle{
+.blogTitle {
   margin-bottom: 2em;
   font-family: 'Oswald', sans-serif;
 }
@@ -2407,11 +2394,11 @@ nav a {
   cursor: pointer;
 }
 
-.likeDislikeButton{
+.likeDislikeButton {
   background-color: Transparent;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   border: none;
-  cursor:pointer;
+  cursor: pointer;
   overflow: hidden;
   height: 30px;
   width: 37px;
@@ -2439,7 +2426,6 @@ nav a {
   margin-top: 0px;
   margin-left: 6px;
 }
-
 
 .authorLink {
   display: inline-grid;
@@ -2487,13 +2473,12 @@ nav a {
   85%,
   65%,
   50% {
-    opacity: 1
+    opacity: 1;
   }
 }
 
 @media only screen and (max-width: 600px) {
-
-  .blogContainer{
+  .blogContainer {
     margin: 0px;
     width: 100%;
   }
@@ -2522,7 +2507,7 @@ nav a {
     margin-left: 0;
   }
   .blogNameHeader h5 {
-    font-size: .9em;
+    font-size: 0.9em;
     margin-top: auto;
   }
   .blogNameHeader h3 {
@@ -2561,9 +2546,7 @@ nav a {
   }
 }
 
-
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-
   .blogContainer {
     margin-top: 10em;
   }
@@ -2620,7 +2603,6 @@ nav a {
   }
 }
 @media only screen and (min-width: 1800px) {
-
   .blogContainer {
     margin-top: 10em;
   }
@@ -2665,7 +2647,7 @@ nav a {
   .commentForm label {
     font-size: 1.2em;
     margin-top: 1em;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
   .commentForm button {
     width: 4em;
@@ -2680,9 +2662,6 @@ nav a {
     font-size: 1.4em;
   }
 }
-
-
-
 
 /* All Interviews Styles */
 
@@ -2703,7 +2682,7 @@ nav a {
 }
 
 .allInterviewsContainer {
-  display:flex;
+  display: flex;
   flex-direction: column;
   margin-left: 16em;
   margin-right: 16em;
@@ -2712,7 +2691,7 @@ nav a {
 
 .rightSingleInterview {
   display: flex;
-  text-align: right
+  text-align: right;
 }
 
 .leftSingleInterview {
@@ -2786,10 +2765,10 @@ nav a {
     height: 10em;
   }
   .rightSingleInterview {
-    margin-bottom: 2em
+    margin-bottom: 2em;
   }
   .leftSingleInterview {
-    margin-bottom: 2em
+    margin-bottom: 2em;
   }
   .rightSingleInterviewInfo p {
     display: none;
@@ -2810,7 +2789,6 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-
   .allInterviewsContainerDiv {
     margin-top: 10em;
   }
@@ -2993,7 +2971,7 @@ nav a {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-width:1100px) {
+@media only screen and (min-width: 600px) and (max-width: 1100px) {
   .interviewHeader {
     height: 15em;
   }
@@ -3125,7 +3103,7 @@ nav a {
 .ocOption:hover img {
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
-  color:whitesmoke;
+  color: whitesmoke;
 }
 .ocOption:hover .ocOptionTextContainer {
   opacity: 1;
@@ -3170,7 +3148,6 @@ nav a {
   }
 }
 
-
 @media only screen and (min-width: 1400px) {
   .ocSelectorContainer {
     height: 48em;
@@ -3178,7 +3155,7 @@ nav a {
   .ocSelectorHeader {
     margin-top: 10em;
   }
-  .ocSelectorHeader h1{
+  .ocSelectorHeader h1 {
     font-size: 3.5em;
   }
   .ocOption {
@@ -3240,7 +3217,6 @@ nav a {
   .OCheader h1 {
     font-size: 3.5em;
   }
-
 }
 
 @media only screen and (min-width: 1800px) {
@@ -3275,7 +3251,6 @@ nav a {
   justify-content: space-between;
 }
 
-
 @media only screen and (max-width: 600px) {
   #submitform {
     height: 77vh;
@@ -3289,7 +3264,7 @@ nav a {
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .form h4{
+  .form h4 {
     margin-top: -3em;
     margin-bottom: 2em;
     font-size: 2em;
