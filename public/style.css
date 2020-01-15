@@ -3279,16 +3279,15 @@ nav a {
   }
 }
 
-/* ALL BRICKS VOLUMES STYLES */
-.allBricksVolumesRoot {
+/* ALL BRICKS CHAPTERS STYLES */
+.allBricksChaptersRoot {
   display: flex;
   justify-content: center;
   height: 100vh;
   margin-top: 7.5em;
-
 }
 
-.allVolumesSingleVolume {
+.allChaptersSingleChapter {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -3298,7 +3297,7 @@ nav a {
   cursor: pointer;
   overflow: hidden;
 }
-.allVolumesSingleTitle {
+.allChaptersSingleTitle {
   position: relative;
   z-index: 1;
   opacity: 0;
@@ -3306,51 +3305,51 @@ nav a {
   left: 100%;
   top: 15%;
   animation: slide 1s forwards;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
 
-.allVolumesSingleImage {
+.allChaptersSingleImage {
   transition: 0.4s;
   height: 26em;
   width: 21em;
 }
 
-.allVolumesSingleDescription {
+.allChaptersSingleDescription {
   position: relative;
   z-index: 1;
   opacity: 0;
   color: whitesmoke;
   right: 100%;
   animation: slide 1s forwards;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
 
-.allVolumesSingleVolume:hover img{
+.allChaptersSingleChapter:hover img {
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
 }
 
-.allVolumesSingleVolume:hover .allVolumesSingleTitle{
+.allChaptersSingleChapter:hover .allChaptersSingleTitle {
   opacity: 1;
   left: 0;
 }
 
-.allVolumesSingleVolume:hover .allVolumesSingleDescription{
+.allChaptersSingleChapter:hover .allChaptersSingleDescription {
   opacity: 1;
   right: 0;
 }
 
 @media only screen and (min-width: 1800px) {
-  .allBricksVolumesRoot  {
+  .allBricksChaptersRoot {
     margin-top: 10.5em;
   }
-  .allVolumesSingleImage {
+  .allChaptersSingleImage {
     height: 25em;
   }
-  .allVolumesSingleTitle {
-    top: 20%
+  .allChaptersSingleTitle {
+    top: 20%;
   }
-  .allVolumesSingleDescription {
-    top: -25%
+  .allChaptersSingleDescription {
+    top: -25%;
   }
 }
