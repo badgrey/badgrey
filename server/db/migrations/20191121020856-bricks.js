@@ -2,7 +2,13 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('BricksVolume', {
+    return queryInterface.createTable('BricksChapter', {
+      id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
       title: {
         type: Sequelize.STRING,
         allowNull: false
@@ -15,10 +21,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       }
-    })
+    });
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('BricksVolume')
+  down: queryInterface => {
+    return queryInterface.dropTable('BricksChapter');
   }
 };

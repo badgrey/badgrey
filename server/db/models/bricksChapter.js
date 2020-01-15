@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 const BricksChapter = db.define('BricksChapter', {
   title: {
@@ -7,14 +7,14 @@ const BricksChapter = db.define('BricksChapter', {
     allowNull: false,
     unique: true
   },
-  coverImage: {
+  description: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  pages: {
-    type: Sequelize.ARRAY((Sequelize.TEXT)),
+  coverImage: {
+    type: Sequelize.STRING,
     allowNull: false
   }
-})
+});
 
-module.exports = BricksChapter
+module.exports = BricksChapter;
