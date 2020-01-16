@@ -3282,9 +3282,10 @@ nav a {
 /* ALL BRICKS CHAPTERS STYLES */
 .allBricksChaptersRoot {
   display: flex;
-  justify-content: center;
-  height: 100vh;
-  margin-top: 7.5em;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  margin-top: 10.5em;
 }
 
 .allChaptersSingleChapter {
@@ -3296,16 +3297,18 @@ nav a {
   transition: 1.4s;
   cursor: pointer;
   overflow: hidden;
+  margin: 20px;
 }
 .allChaptersSingleTitle {
-  position: relative;
+  position: fixed;
   z-index: 1;
   opacity: 0;
   color: whitesmoke;
-  left: 100%;
-  top: 15%;
+  margin-top: -5%;
+  margin-left: 50%;
   animation: slide 1s forwards;
   transition: 0.5s ease;
+  pointer-events: none;
 }
 
 .allChaptersSingleImage {
@@ -3315,13 +3318,15 @@ nav a {
 }
 
 .allChaptersSingleDescription {
-  position: relative;
+  position: fixed;
   z-index: 1;
   opacity: 0;
   color: whitesmoke;
-  right: 100%;
+  margin-left: -50%;
+  margin-top: 10%;
   animation: slide 1s forwards;
   transition: 0.5s ease;
+  pointer-events: none;
 }
 
 .allChaptersSingleChapter:hover img {
@@ -3331,12 +3336,12 @@ nav a {
 
 .allChaptersSingleChapter:hover .allChaptersSingleTitle {
   opacity: 1;
-  left: 0;
+  margin-left: 0;
 }
 
 .allChaptersSingleChapter:hover .allChaptersSingleDescription {
   opacity: 1;
-  right: 0;
+  margin-left: 0;
 }
 
 @media only screen and (min-width: 1800px) {
