@@ -545,6 +545,7 @@ nav a {
 }
 
 .artistPic:hover img {
+  filter: brightness(60%);
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
   color: whitesmoke;
@@ -3101,6 +3102,7 @@ nav a {
 }
 
 .ocOption:hover img {
+  filter: brightness(60%);
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
   color: whitesmoke;
@@ -3330,6 +3332,7 @@ nav a {
 }
 
 .allChaptersSingleChapter:hover img {
+  filter: brightness(60%);
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
 }
