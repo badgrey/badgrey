@@ -216,8 +216,9 @@ export class Discover extends Component {
   };
 
   fakeInfinite = () => {
-    if (window.pageYOffset + 50 >= document.body.scrollHeight / 2)
+    if (window.pageYOffset + 50 >= document.body.scrollHeight / 2) {
       window.scrollTo(0, 0);
+    }
   };
 
   render() {

@@ -12,10 +12,11 @@ import blogs from './blogs'
 import comments from './comments'
 import interviews from './interviews'
 import originalcontent from './originalcontent'
+import theBricks from './theBricks'
 
 //importing all individual reducers and putting them in a combined reducer
 
-const reducer = combineReducers({user, artists, error, email, savedArtists, allusers, blogs, comments, interviews, originalcontent})
+const reducer = combineReducers({user, artists, error, email, savedArtists, allusers, blogs, comments, interviews, originalcontent, theBricks})
 const middleware =  process.env.NODE_ENV === 'production' ? composeWithDevTools(applyMiddleware(
   thunkMiddleware))
   :
@@ -37,4 +38,5 @@ export * from './blogs'
 export * from './comments'
 export * from './interviews'
 export * from './originalcontent'
+export * from './theBricks'
 

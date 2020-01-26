@@ -37,7 +37,7 @@ export default function reducer (users = [], action){
   }
 }
 
-//THUNK CREATORS
+//THUNKS
 
 export const fetchUsers = () => async (dispatch) => {
   try {
