@@ -3366,14 +3366,26 @@ nav a {
 }
 
 @media only screen and (max-width: 600px) {
-  .singleChapterPage img {
-    height: 50%;
-  }
   .allBricksChaptersRoot {
     margin-top: 7em;
   }
   .allChaptersSingleTitle {
     font-size: 20px;
+  }
+  .allChaptersSingleTitle {
+    opacity: 1;
+    margin-left: 0;
+    margin-top: -20%;
+    position: absolute;
+  }
+  .allChaptersSingleDescription {
+    opacity: 1;
+    margin-left: 0;
+    margin-top: 20%;
+    position: absolute;
+  }
+  .singleChapterPage img {
+    height: 50%;
   }
 }
 
@@ -3384,7 +3396,18 @@ nav a {
   .singleChapterContainer {
     margin-top: 7em;
   }
-
+  .allChaptersSingleTitle {
+    opacity: 1;
+    margin-left: 0;
+    margin-top: -15%;
+    position: absolute;
+  }
+  .allChaptersSingleDescription {
+    opacity: 1;
+    margin-left: 0;
+    margin-top: 15%;
+    position: absolute;
+  }
   .allChaptersSingleTitle {
     font-size: 20px;
   }
