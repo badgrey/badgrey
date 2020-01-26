@@ -28,7 +28,7 @@ deploy:
   on: 
     branch: master
   prodivder: heroku
-  app: badgrey
+  app: badgrey-dev
   script: script/deploy_dev
   on:
     branch: develop
