@@ -24,5 +24,14 @@ deploy:
   skip_cleanup: true # prevents travis from deleting the build
   provider: heroku
   app: badgrey # see README
+  script: script/deploy_prod
+  on: 
+    branch: master
+  prodivder: heroku
+  app: badgrey
+  script: script/deploy_dev
+  on:
+    branch: develop
   api_key:
     secure: "l85fFNRZd3KpNZ4G4Xk9zKJkLXPd5Q4UdAkZfquzmiFVAu7VE4nOw5BnMHtdx5VdpHt8grBV/QWcBJ83jPGVtUmaAl7HjX0xq3Cf3RKCcIf+55iehkyyzUa1ZDmzHZogfn9jU5mE5gjKnImvYUyOtiOLLsogfWqG9VxEgf7EjmeA4l34T4jKxQwQPjlPSZJfNMAWVWFtojvSL9w/W8DVN8tuNJvAvcUQspE72kEQEgGxXaYCQf5PlcwatZmrOxriKGTbTjb5iRz7J8e/F6ZXWL8et+U8WeRWIZUxmAa3OjPdBrGZzBuY9PWEkvu+JDe3Amq2kKnkyedcY2j1iK1tLqFuCbThdsaLFS14beWs6Zw4iDqorEoEabzaXMzv8Z5qtx+uy15sBZ5e9C0NTT4FnYt9M9unbPyDyUnBvai02gaO6LfskJoYrREOIIxvsZB/8wUxMnxyHNIOKDiZRupZ2L+F1tq8xLd20gzizfV6PzZeOhtO2qU913rCcHxuNKLSr8x31mKhflwalTqY7Iry4a3miN2Iqm50d9YDX+ccIMeI1A6EMzZVZ9yqikZi4xspxg/FkmN4X1P7V0Caig36wn6I0AlzkXm4sfCOVuTwr2HDHCYbMAKx7isZxBCrKHIWE8B7Y/Uyyg3lHaVAD9rTJNLaTssG5CIRDr1NTFUtICM=" # see README
+
