@@ -17,26 +17,20 @@ class AllBricksChapters extends PureComponent {
       this.props.chapters.length && (
         <div className="allBricksChaptersRoot">
           {this.props.chapters.map(chapter => (
-            // new Array(20).fill(null).map((chapter, i) => (
             <div
               className="allChaptersSingleChapter"
-              key={this.props.chapters[0].id}
-              onClick={() =>
-                this.handleChapterClick(
-                  this.props.chapters[0].id,
-                  this.props.chapters[0].title
-                )
-              }
+              key={chapter.id}
+              onClick={() => this.handleChapterClick(chapter.id, chapter.title)}
             >
               <div className="allChaptersSingleTitle">
-                <div>{this.props.chapters[0].title}</div>
+                <div>{chapter.title}</div>
               </div>
               <img
                 className="allChaptersSingleImage"
-                src={this.props.chapters[0].coverImage}
+                src={chapter.coverImage}
               />
               <p className="allChaptersSingleDescription">
-                {this.props.chapters[0].description}
+                {chapter.description}
               </p>
             </div>
           ))}

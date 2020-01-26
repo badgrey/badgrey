@@ -45,7 +45,7 @@ export const loadSingleChapter = id => async dispatch => {
 
 const initBricksState = {
   chapters: [],
-  selectedChapter: {}
+  singleChapter: []
 };
 
 export default function reducer(state = initBricksState, action) {
@@ -58,7 +58,7 @@ export default function reducer(state = initBricksState, action) {
     case GET_SINGLE_CHAPTER:
       return {
         ...state,
-        selectedChapter: action.payload
+        singleChapter: action.payload
       };
     default:
       return state;

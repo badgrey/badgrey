@@ -11,11 +11,26 @@ class BricksChapter extends PureComponent {
 
   render() {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        {this.props.chapter &&
-          this.props.chapter.pages.map(page => (
-            <div key={page}>
-              <img src={page} />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          marginTop: '10.5em'
+        }}
+      >
+        {!!this.props.chapter.length &&
+          this.props.chapter.map(page => (
+            <div
+              key={page.id}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%'
+              }}
+            >
+              <img style={{ width: '60%' }} src={page.pageImage} />
             </div>
           ))}
       </div>
@@ -24,7 +39,7 @@ class BricksChapter extends PureComponent {
 }
 
 const mapState = state => ({
-  chapter: state.theBricks.chapter
+  chapter: state.theBricks.singleChapter
 });
 
 const mapDispatch = dispatch => ({
