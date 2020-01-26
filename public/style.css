@@ -3311,7 +3311,7 @@ nav a {
   animation: slide 1s forwards;
   transition: 0.5s ease;
   pointer-events: none;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .allChaptersSingleImage {
@@ -3348,10 +3348,61 @@ nav a {
   margin-left: 0;
 }
 
-@media only screen and (min-width: 1800px) {
-  .allBricksChaptersRoot {
-    margin-top: 10.5em;
+.singleChapterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10.5em;
+}
+
+.singleChapterPage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.singleChapterPage img {
+  width: 60%;
+}
+
+@media only screen and (max-width: 600px) {
+  .singleChapterPage img {
+    height: 50%;
   }
+  .allBricksChaptersRoot {
+    margin-top: 7em;
+  }
+  .allChaptersSingleTitle {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .allBricksChaptersRoot {
+    margin-top: 7em;
+  }
+  .singleChapterContainer {
+    margin-top: 7em;
+  }
+
+  .allChaptersSingleTitle {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1300px) {
+  .allBricksChaptersRoot {
+    margin-top: 7em;
+  }
+  .singleChapterContainer {
+    margin-top: 7em;
+  }
+  .allChaptersSingleTitle {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
   .allChaptersSingleImage {
     height: 25em;
   }

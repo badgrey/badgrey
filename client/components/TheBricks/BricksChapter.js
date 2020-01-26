@@ -11,26 +11,11 @@ class BricksChapter extends PureComponent {
 
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          marginTop: '10.5em'
-        }}
-      >
+      <div className="singleChapterContainer">
         {!!this.props.chapter.length &&
           this.props.chapter.map(page => (
-            <div
-              key={page.id}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                width: '100%',
-                height: '100%'
-              }}
-            >
-              <img style={{ width: '60%' }} src={page.pageImage} />
+            <div key={page.id} className="singleChapterPage">
+              <img src={page.pageImage} />
             </div>
           ))}
       </div>
