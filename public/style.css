@@ -60,6 +60,7 @@ form div {
 @media only screen and (max-width: 600px) {
   .bannerContainer {
     height: 12em;
+    margin-top: 3em;
   }
 
   .bannerImage {
@@ -1946,6 +1947,7 @@ nav a {
 @media only screen and (max-width: 600px) {
   .topContainer {
     flex-direction: column;
+    margin-top: 2em;
   }
   .blogsHomeContainer {
     width: 100%;
