@@ -221,6 +221,13 @@ export class Discover extends Component {
     }
   };
 
+  viewAllArtists = () => {
+    this.props.history.push('/discover/all');
+  };
+
+  viewGlobalArtists = () => {
+    this.props.history.push('/discover/International');
+  };
   render() {
     let scrollto = this.setScroll();
     return (
@@ -254,16 +261,19 @@ export class Discover extends Component {
           : null}
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
-          <Link className="allArtistsLink" to="/discover/all">
-            <button className="allArtistsButton">View All Artists</button>
-          </Link>
-          <Link className="internationalLink" to="/discover/International">
+          <div className="allArtistsLink">
+            <button onClick={this.viewAllArtists} className="allArtistsButton">
+              View All Artists
+            </button>
+          </div>
+          <div className="internationalLink">
             <img
               className="globe"
               src={require('../../public/images/states/International.png')}
+              onClick={this.viewGlobalArtists}
             />
             <label className="globeLabel">International</label>
-          </Link>
+          </div>
         </div>
         <div className="Map">
           <USAMap
@@ -302,16 +312,19 @@ export class Discover extends Component {
         </div>
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
-          <Link className="allArtistsLink" to="/discover/all">
-            <button className="allArtistsButton">View All Artists</button>
-          </Link>
-          <Link className="internationalLink" to="/discover/International">
+          <div className="allArtistsLink">
+            <button className="allArtistsButton" onClick={this.viewAllArtists}>
+              View All Artists
+            </button>
+          </div>
+          <div className="internationalLink">
             <img
               className="globe"
               src={require('../../public/images/states/International.png')}
+              onClick={this.viewGlobalArtists}
             />
             <label className="globeLabel">International</label>
-          </Link>
+          </div>
         </div>
         <div className="Map">
           <USAMap
