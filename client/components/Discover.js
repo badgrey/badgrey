@@ -5,7 +5,6 @@ import '../../public/style.css';
 import Genre from './Genre';
 import BlogHomePage from './BlogHomePage';
 import { FeaturedContent } from './FeaturedContent';
-import { Link } from 'react-router-dom';
 import { statesCustomConfig } from '../utils/states';
 
 export class Discover extends Component {
@@ -186,10 +185,14 @@ export class Discover extends Component {
   }
 }
 
-const mapState = (
-  { artists, user, savedArtists, blogs, originalcontent, interviews },
-  ownProps
-) => {
+const mapState = ({
+  artists,
+  user,
+  savedArtists,
+  blogs,
+  originalcontent,
+  interviews
+}) => {
   return {
     artists: artists.sort((artistA, artistB) => {
       if (artistA.name < artistB.name) return -1;
