@@ -152,7 +152,7 @@ path:hover {
     width: 100%;
   }
   .Map {
-    margin-top: -15px;
+    margin-top: -5em;
     margin-bottom: -156px;
   }
   .allAndGlobe a {
@@ -175,13 +175,9 @@ path:hover {
   .genreDiv {
     margin-top: -20px;
   }
-  .Map {
-    margin-top: 40px;
-  }
   .allAndGlobe {
     margin-top: 20px;
   }
-
   .allArtistsButton {
     margin-top: 32px;
     width: 139px;
@@ -229,7 +225,6 @@ path:hover {
   .Map svg {
     height: 661px;
     width: 1081px;
-    margin-top: 13em;
   }
 }
 
