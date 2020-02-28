@@ -61,7 +61,7 @@ class MobileNavbar extends Component {
                     </div>
                     */}
                         <div className="singleNavOption">
-                          <div>Shop</div>
+                          <a href="https://www.badgrey.shop/">Shop</a>
                         </div>
                         {/*<div className="singleNavOption">
                           <Link to="/TheBricks">The Bricks</Link>
@@ -168,7 +168,7 @@ class MobileNavbar extends Component {
                   </div>
                   */}
                     <div className="singleNavOption">
-                      <a>Shop</a>
+                      <a href="https://www.badgrey.shop/">Shop</a>
                     </div>
                     {/*<div className="singleNavOption">
                   <Link to="/TheBricks">The Bricks</Link>
