@@ -1,37 +1,32 @@
 language: node_js
 node_js:
-  - node # uses most recent stable node version
+  - node
 services:
-  - postgresql # starts up postgres
+  - postgresql
 addons:
-  postgresql: '9.6' # highest available postgres version on Travis
-dist: trusty # uses trusty environment
-sudo: false # when on trusty, uses Docker containers for speed
+  postgresql: '9.6'
+dist: trusty
+sudo: false
 notifications:
   email:
-    on_success: change # default: change (only when going from broken to fixed)
-    on_failure: always # default: always (which is annoying, as it should be)
+    on_success: change
+    on_failure: always
 install:
-  - npm i -g npm@5.7.1 # delete once 5.7.X is out of "pre-release"
-  - npm ci             # faster, goes only from package-lock
+  - npm i -g npm@5.7.1
+  - npm ci
 before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
-
+  - psql -c 'create database "boilermaker-test";' -U postgres
 before_deploy:
-   - npm run build-client # make the bundle
-   - rm -rf node_modules # omit from the tarball, since we skip cleanup
+  - npm run build-client
+  - rm -rf node_modules
 deploy:
-  skip_cleanup: true # prevents travis from deleting the build
+  skip_cleanup: true
   provider: heroku
-  app: 
-    master: badgrey # see README
+  app:
+    master: badgrey
     develop: badgrey-dev
-  on: 
-    branch: master
-    script: script/deploy_prod
   on:
     branch: develop
     script: script/deploy_dev
   api_key:
-    secure: "l85fFNRZd3KpNZ4G4Xk9zKJkLXPd5Q4UdAkZfquzmiFVAu7VE4nOw5BnMHtdx5VdpHt8grBV/QWcBJ83jPGVtUmaAl7HjX0xq3Cf3RKCcIf+55iehkyyzUa1ZDmzHZogfn9jU5mE5gjKnImvYUyOtiOLLsogfWqG9VxEgf7EjmeA4l34T4jKxQwQPjlPSZJfNMAWVWFtojvSL9w/W8DVN8tuNJvAvcUQspE72kEQEgGxXaYCQf5PlcwatZmrOxriKGTbTjb5iRz7J8e/F6ZXWL8et+U8WeRWIZUxmAa3OjPdBrGZzBuY9PWEkvu+JDe3Amq2kKnkyedcY2j1iK1tLqFuCbThdsaLFS14beWs6Zw4iDqorEoEabzaXMzv8Z5qtx+uy15sBZ5e9C0NTT4FnYt9M9unbPyDyUnBvai02gaO6LfskJoYrREOIIxvsZB/8wUxMnxyHNIOKDiZRupZ2L+F1tq8xLd20gzizfV6PzZeOhtO2qU913rCcHxuNKLSr8x31mKhflwalTqY7Iry4a3miN2Iqm50d9YDX+ccIMeI1A6EMzZVZ9yqikZi4xspxg/FkmN4X1P7V0Caig36wn6I0AlzkXm4sfCOVuTwr2HDHCYbMAKx7isZxBCrKHIWE8B7Y/Uyyg3lHaVAD9rTJNLaTssG5CIRDr1NTFUtICM=" # see README
-
+    secure: m8xSkkBAff8WnJ8xdTI448uvO+27olaaVTdHE9MtLnEYpmy+P4pyxTcnuC87vll2ctZxptitIWZFunlFXLrjNpkccwe0aEmLP9lKxQaM7lKliLKAVV4YOhJJcg0zzNHlDlQmwD2XL384cjUGgpCx2fXJgd4E8sM+ckqiciThyz8yspWhow8e+N4DYfM2PIkmJhpMEnaSLICXMNjHoPIPagLtmM93Fj6c+c+eujs91C8vWjqk+rH9c0gJyNJuSvBQEutjh5ZyGR/Ff+bKp1MsL7MeMTbZCEQVP521jW4iTm4FzgcQ1fnacxHvzo0NAORXhT2caWwyWwYm6hKMl1sXu30eehFUIKoVdlObj4Ti9oyHuhYDtJs0TN2H2hFH3ZgpR/VJAm5dE97tfANfesSqT0Y3dXky4EaI6lvbSoxJBP0A3moaRh1Pj1ApUMTu3SEaRJ6V3jHj6crDX/0TlVr9Jo95vuJo4PZKGNXxFVSbCw1ZUhoceJAkUhv8hqJzjVPOSlAXC9hx11jlrvHwuXR/Xh+19TmezVvrVsURF/7EOZoJoQyc8u5i/EDJu9F7mJeKoWUdvv6gdV7zqTcPD/yNfFy+zXbvT7XSpL7I+WDfwUxk/4pSNLE2enA2+rc9ByBoYGTY/W4cLtZ0uJuKwd0uZDB7mCoEyvb9W2ZWCCfNFN8=
