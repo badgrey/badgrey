@@ -24,9 +24,9 @@ import {
   // NewInterview,
   OriginalContent,
   OriginalContentType,
-  Submit,
-  AllBricksChapters,
-  BricksChapter
+  Submit
+  // AllBricksChapters,
+  // BricksChapter
 } from './components';
 import {
   me,
@@ -68,8 +68,8 @@ class Routes extends Component {
           component={OriginalContentType}
         />
         <Route exact path="/submit" component={Submit} />
-        <Route exact path="/TheBricks" component={AllBricksChapters} />
-        <Route exact path="/TheBricks/:name" component={BricksChapter} />
+        {/*<Route exact path="/TheBricks" component={AllBricksChapters} />
+    <Route exact path="/TheBricks/:name" component={BricksChapter} />*/}
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
