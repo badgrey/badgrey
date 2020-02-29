@@ -24,10 +24,11 @@ deploy:
   provider: heroku
   app:
     master: badgrey
-    develop: badgrey-dev
   on:
     branch: master
     script: script/deploy_prod
+  app:
+    develop: badgrey-dev
   on:
     branch: develop
     script: script/deploy_dev
