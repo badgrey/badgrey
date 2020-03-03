@@ -17,6 +17,7 @@ module.exports = app;
 this file is where we import middleware, route the routes, sync the db, and start the server.
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets');
+
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) =>
@@ -83,9 +84,7 @@ const createApp = () => {
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`)
-  );
+  app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
 };
 
 const syncDb = () => db.sync();
