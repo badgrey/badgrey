@@ -22,9 +22,9 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: heroku
-  app: badgrey
+  app: 
+    master: badgrey
   on:
-    repo: badgrey/badgrey
     branch: master
     script: script/deploy_prod
   app:
