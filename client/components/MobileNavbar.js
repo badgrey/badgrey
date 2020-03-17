@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
-import '../../public/style.css';
+import '../../public/style.scss';
 
 class MobileNavbar extends Component {
   constructor() {

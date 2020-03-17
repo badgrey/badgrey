@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../../public/style.css'
+import '../../public/style.scss';
 import {
   fetchArtists,
   fetchSavedArtists,
@@ -30,11 +30,11 @@ export class Interview extends Component {
 
   //loads data and specific interview comments
   componentDidMount() {
-    window.scroll(0, 0)
+    window.scroll(0, 0);
     if (this.props.artists === []) {
       this.props.loadInitialData();
     }
-    const id = parseInt(this.props.match.params.interview);
+    const id = +this.props.match.params.interview;
     this.props.getInterviewComments(id);
   }
 
@@ -78,9 +78,8 @@ export class Interview extends Component {
         <div className="interviewHeader">
           <h1>{this.props.chosenInterview[0].artist.name}</h1>
           <p>{this.props.chosenInterview[0].description}</p>
-          {
-            //show admin buttons if admin
-            !this.props.isLoggedIn && !this.props.isAdmin ? null : (
+          {//show admin buttons if admin
+          !this.props.isLoggedIn && !this.props.isAdmin ? null : (
             <div className="adminButtons">
               <button className="editdelete" onClick={this.deleteInterview}>
                 DELETE Interview
@@ -134,22 +133,25 @@ export class Interview extends Component {
           </div>
         </div>
         <div className="interviewContent">
-            {
-              this.props.chosenInterview[0].interview.map((content, index) => {
-                if (index % 2 === 0) {
-                  return (
-                    <div key={content.id} className="interviewQuestion">
-                      <img className="interviewWolf" src={require('../../public/images/interviews/interviewWolfLogo.png')} />
-                      <p className="interviewQuestionText">{content}</p>
-                    </div>
-                  )
-                } else {
-                  return (
-                    <p key={content.id} className="interviewAnswer">{content}</p>
-                  )
-                }
-              })
+          {this.props.chosenInterview[0].interview.map((content, index) => {
+            if (index % 2 === 0) {
+              return (
+                <div key={content.id} className="interviewQuestion">
+                  <img
+                    className="interviewWolf"
+                    src={require('../../public/images/interviews/interviewWolfLogo.png')}
+                  />
+                  <p className="interviewQuestionText">{content}</p>
+                </div>
+              );
+            } else {
+              return (
+                <p key={content.id} className="interviewAnswer">
+                  {content}
+                </p>
+              );
             }
+          })}
         </div>
         <div className="interviewCommentContainer">
           <form onSubmit={this.postComment} id="form" className="commentForm">
@@ -232,9 +234,7 @@ const mapState = (
       return 0;
     }),
     chosenInterview: interviews.filter(interview => {
-      return (
-        interview.id === parseInt(ownProps.match.params.interview)
-      );
+      return interview.id === +ownProps.match.params.interview;
     })
   };
 };
@@ -275,7 +275,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(
-  mapState,
-  mapDispatch
-)(Interview);
+export default connect(mapState, mapDispatch)(Interview);

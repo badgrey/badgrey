@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import USAMap from 'react-usa-map';
-import '../../public/style.css';
+import '../../public/styles/index.scss';
 import Genre from './Genre';
 import BlogHomePage from './BlogHomePage';
 import { FeaturedContent } from './FeaturedContent';
@@ -77,7 +77,6 @@ export class Discover extends Component {
         <div className="bannerContainer">
           <img
             className="bannerImage"
-            style={{ cursor: 'pointer' }}
             src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
             onClick={() =>
               window.open(
@@ -103,7 +102,7 @@ export class Discover extends Component {
           : null}
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
-          <div className="allArtistsLink">
+          <div>
             <button onClick={this.viewAllArtists} className="allArtistsButton">
               View All Artists
             </button>
@@ -117,7 +116,7 @@ export class Discover extends Component {
             <label className="globeLabel">International</label>
           </div>
         </div>
-        <div className="Map">
+        <div className="map">
           <USAMap
             title="Choose Region"
             width={869}
@@ -154,7 +153,7 @@ export class Discover extends Component {
         </div>
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
-          <div className="allArtistsLink">
+          <div>
             <button className="allArtistsButton" onClick={this.viewAllArtists}>
               View All Artists
             </button>
@@ -168,7 +167,7 @@ export class Discover extends Component {
             <label className="globeLabel">International</label>
           </div>
         </div>
-        <div className="Map">
+        <div className="map">
           <USAMap
             title="Choose Region"
             width={869}
