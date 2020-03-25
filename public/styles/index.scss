@@ -44,6 +44,13 @@ path:hover {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 900px) {
+  .noneOnMobile {
+    display: none;
+  }
+}
+
 @import './discover.scss';
 @import './footer.scss';
 @import './artists/allArtists.scss';
+@import './blogs/allBlogs.scss';

@@ -1,0 +1,226 @@
+.allBlogsDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7em;
+}
+.allBlogsDiv h1 {
+  font-family: 'Oswald', sans-serif;
+}
+
+.allBlogsh1 {
+  padding-top: 2em;
+}
+
+.scrolltoload {
+  text-align: center;
+  margin: 0px;
+}
+
+.artistSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.artistSearch form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
+
+.searchLabel {
+  margin-right: 20px;
+}
+
+.blogsList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.allSingleBlogLink {
+  margin-bottom: 3em;
+  cursor: pointer;
+  margin-bottom: 3em;
+  cursor: pointer;
+  width: 36%;
+  height: 21em;
+}
+
+.allSingleBlog {
+  display: inline-block;
+  overflow: hidden;
+  width: 90%;
+  height: 100%;
+}
+
+.allSingleBlog img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.allSingleBlog:hover .allSingleBlogInfo {
+  opacity: 0;
+}
+
+.allSingleBlogInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  position: absolute;
+  background-color: black;
+  color: whitesmoke;
+  margin-top: 2%;
+  margin-left: 1.5%;
+  width: 22%;
+  height: 35%;
+  padding: 2em;
+  transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -webkit-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+}
+
+.allSingleBlogTitle {
+  font-size: 20px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .allBlogsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4em;
+    width: 100%;
+  }
+  .blogsList {
+    width: 90%;
+  }
+  .allSingleBlogLink {
+    width: 45%;
+    height: 12em;
+  }
+  .allSingleBlog {
+    width: 100%;
+    height: 100%;
+  }
+  .allSingleBlog img {
+    height: 10em;
+  }
+  .allSingleBlogInfo h6 {
+    margin-top: 10px;
+  }
+  .allSingleBlogInfo {
+    margin-top: 4%;
+    margin-right: 0em;
+    margin-left: 4%;
+    width: 30%;
+    padding: 10px;
+    height: 19%;
+    align-items: center;
+  }
+  .allSingleBlogTitle {
+    font-size: 15px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .blogsList {
+    width: 90%;
+  }
+  .allSingleBlogLink {
+    width: 45%;
+  }
+  .allSingleBlog {
+    width: 100%;
+    height: 100%;
+  }
+  .allSingleBlog img {
+    height: 100%;
+  }
+  .allSingleBlogInfo {
+    margin-top: 3%;
+    margin-left: 7%;
+    height: 24%;
+    width: 27%;
+  }
+  .allSingleBlogTitle {
+    font-size: 18px;
+  }
+}
+
+//TODO
+
+@media only screen and (min-width: 900px) and (max-width: 1400px) and (min-height: 800px) {
+  .allSingleBlogInfo {
+    height: 24%;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .allBlogsDiv {
+    margin-top: 10em;
+  }
+  .artistSearch form {
+    margin-left: 8em;
+  }
+  .artistSearch {
+    font-size: 1.3em;
+  }
+  .searchLabel {
+    margin-top: 4px;
+  }
+  .allSingleBlogLink {
+    width: 34%;
+    height: 20em;
+  }
+  .allSingleBlogLink {
+    height: 20em;
+    width: 29%;
+  }
+  .allSingleBlogInfo {
+    height: 29%;
+    width: 18%;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .allBlogsDiv {
+    margin-top: 10em;
+  }
+  .allBlogsDiv h1 {
+    font-size: 3em;
+  }
+  .scrolltoload {
+    font-size: 1.3em;
+  }
+  .artistSearch input {
+    font-size: 1.5em;
+  }
+
+  .searchLabel {
+    margin-top: 8px;
+    font-size: 1.5em;
+  }
+  .artistSearch form {
+    margin-bottom: 78px;
+    margin-top: 51px;
+    margin-left: 8em;
+  }
+  .allSingleBlogLink {
+    height: 25em;
+    width: 29%;
+  }
+  .allSingleBlogInfo {
+    width: 18%;
+    height: 25%;
+    margin-left: 1.5%;
+  }
+}

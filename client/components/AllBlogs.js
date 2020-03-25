@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../public/style.scss';
+import '../../public/styles/index.scss';
 import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../store';
 import LazyLoad from 'react-lazyload';
 
@@ -64,9 +64,9 @@ export class AllBlogs extends Component {
             return (
               <LazyLoad key={blog.id} height={200}>
                 <Link className="allSingleBlogLink" to={`/allblogs/${blog.id}`}>
-                  <div className="homeSingleBlog">
-                    <div className="singleBlogInfo">
-                      <p className="singleBlogTitle">{blog.title}</p>
+                  <div className="allSingleBlog">
+                    <div className="allSingleBlogInfo">
+                      <p className="allSingleBlogTitle">{blog.title}</p>
                       <p className="noneOnMobile">By {blog.author}</p>
                       <p className="noneOnMobile">{blog.date}</p>
                     </div>
