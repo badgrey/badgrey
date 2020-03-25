@@ -1,4 +1,4 @@
-.artistsDiv {
+.allArtistsRoot {
   margin-top: 7em;
   height: 100%;
 }
@@ -28,7 +28,7 @@
   margin-right: 20px;
 }
 
-.state {
+.allArtistsContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -36,7 +36,7 @@
   margin-right: 9em;
 }
 
-.artistPic {
+.allArtistPic {
   width: 150px;
   height: 150px;
   display: inline-block;
@@ -45,28 +45,28 @@
   cursor: pointer;
 }
 
-.artistPic:hover {
+.allArtistPic:hover {
   transform: scale(1.2);
 }
 
-.artistPic:hover img {
+.allArtistPic:hover img {
   filter: brightness(60%);
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
   color: whitesmoke;
 }
-.artistPic:hover .artistName {
+.allArtistPic:hover .allArtistName {
   opacity: 1;
   z-index: 10;
 }
 
-.artistPic img {
+.allArtistPic img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.artistName {
+.allArtistName {
   width: 150px;
   height: 150px;
   opacity: 0;
@@ -78,30 +78,30 @@
   font-family: 'Oswald', sans-serif;
 }
 
-.artistNameText {
+.allArtistNameText {
   margin-top: 20px;
 }
 
 //Mobile
 @media only screen and (max-width: 600px) {
-  .artistsDiv {
+  .allArtistsRoot {
     width: 100%;
   }
-  .state {
+  .allArtistsContainer {
     margin: 0px;
     width: 98%;
   }
-  .artistPic {
+  .allArtistPic {
     height: 85px;
     width: 85px;
   }
-  .artistName {
+  .allArtistName {
     opacity: 1;
     margin-top: 30px;
     margin-left: 22px;
     font-size: 7px;
   }
-  .artistNameText {
+  .allArtistNameText {
     width: 49px;
     margin-top: 5px;
   }
@@ -109,22 +109,22 @@
 
 //iPad;
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .state {
+  .allArtistsContainer {
     margin-left: 5em;
     margin-right: 5em;
   }
-  .artistName {
+  .allArtistName {
     opacity: 1;
     margin-left: 28px;
   }
-  .artistNameText {
+  .allArtistNameText {
     width: 92px;
   }
 }
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .artistsDiv {
+  .allArtistsRoot {
     margin-top: 10em;
   }
   .title {
@@ -142,24 +142,24 @@
   .searchLabel {
     margin-top: 4px;
   }
-  .artistPic {
+  .allArtistPic {
     height: 180px;
     width: 180px;
   }
-  .artistName {
+  .allArtistName {
     margin-top: 76px;
     margin-left: 22px;
     margin-right: 50px;
     font-size: 20px;
   }
-  .artistNameText {
+  .allArtistNameText {
     width: 130px;
   }
 }
 
 //Dektop
 @media only screen and (min-width: 1800px) {
-  .artistsDiv {
+  .allArtistsRoot {
     margin-top: 10em;
   }
   .title {
@@ -180,15 +180,15 @@
     margin-top: 51px;
     margin-left: 8em;
   }
-  .artistPic {
+  .allArtistPic {
     width: 280px;
     height: 280px;
   }
-  .artistNameText {
+  .allArtistNameText {
     margin-top: 50%;
     font-size: 2em;
   }
-  .artistName {
+  .allArtistName {
     width: 280px;
     height: 280px;
     margin: 0px;

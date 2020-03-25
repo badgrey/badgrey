@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../../public/style.scss';
+import '../../public/styles/index.scss';
 import { YoutubePlayer } from './index';
 import {
   fetchArtists,
@@ -103,25 +103,25 @@ export class Artist extends Component {
       this.renderErrorMessage();
     }
     return this.props.chosenArtist.length === 0 ? null : (
-      <div className="artistContainer">
+      <div className="artistRoot">
         <div className="artistHeader">
           <Link
-            className="stateLink"
+            className="artistStateLink"
             to={`/discover/${this.props.chosenArtist[0].stateAbbrev}`}
           >
             <img
-              className="artistLogos"
+              className="artistStateImage"
               src={require(`../../public/images/states/${this.props.chosenArtist[0].stateAbbrev}.png`)}
             />
           </Link>
           <div className="artistNameHeader">
-            <h1 className="title">{this.props.chosenArtist[0].name}</h1>
+            <h1 className="artistTitle">{this.props.chosenArtist[0].name}</h1>
             <h3 className="artistCity">{this.props.chosenArtist[0].city}</h3>
             {//depending if artist is saved or not will display a button to save them or just "saved"
             this.props.isSaved ? (
               <div>Saved</div>
             ) : (
-              <button className="addToSavedButton" onClick={this.saveArtist}>
+              <button className="artistSaveButton" onClick={this.saveArtist}>
                 + Save +
               </button>
             )}
@@ -135,7 +135,7 @@ export class Artist extends Component {
               : null}
             <div className="artistLikesDislikes">
               <button
-                className="likeDislikeButton"
+                className="artistLikeDislikeButton"
                 onClick={() =>
                   this.props.likeArtist({
                     artist: this.props.chosenArtist[0],
@@ -144,13 +144,13 @@ export class Artist extends Component {
                 }
               >
                 <img
-                  className="likeDislikeImage"
+                  className="artistLikeDislikeImage"
                   src={require('../../public/images/like.png')}
                 />
               </button>
               <p>{this.props.chosenArtist[0].ArtistLikes.length}</p>
               <button
-                className="likeDislikeButton"
+                className="artistLikeDislikeButton"
                 onClick={() =>
                   this.props.dislikeArtist({
                     artist: this.props.chosenArtist[0],
@@ -159,7 +159,7 @@ export class Artist extends Component {
                 }
               >
                 <img
-                  className="likeDislikeImage"
+                  className="artistLikeDislikeImage"
                   src={require('../../public/images/dislike.png')}
                 />
               </button>
@@ -175,14 +175,17 @@ export class Artist extends Component {
               : null}
             {//displays admin buttons for edit or delete if admin
             !this.props.isLoggedIn && !this.props.isAdmin ? null : (
-              <div className="adminButtons">
+              <div className="artistAdminButtons">
                 <Link
-                  id="editButton"
+                  className="artistEditLink"
                   to={`/edit/${this.props.match.params.artist}`}
                 >
-                  <button className="editdelete">Edit Artist Info</button>
+                  <button className="artistEditdelete">Edit Artist Info</button>
                 </Link>
-                <button className="editdelete" onClick={this.deleteArtist}>
+                <button
+                  className="artistEditdelete"
+                  onClick={this.deleteArtist}
+                >
                   DELETE ARTIST
                 </button>
               </div>
@@ -190,25 +193,25 @@ export class Artist extends Component {
           </div>
           <Link
             to={`/discover/genre/${this.props.chosenArtist[0].genre}`}
-            className="genreLink"
+            className="artistGenreLink"
           >
-            <div className="genreLinkText">
-              More {this.props.chosenArtist[0].genre} Artists
-            </div>
+            <div>More {this.props.chosenArtist[0].genre} Artists</div>
           </Link>
         </div>
         {this.props.chosenArtist[0].blogs.length === 0 ? null : (
-          <div className="relatedBlogsContainer">
+          <div className="artistRelatedBlogsContainer">
             {this.props.chosenArtist[0].blogs.slice(-3).map(blog => {
               return (
-                <div key={blog.id} className="singleRelatedBlog">
-                  <div className="relatedBlogPic">
+                <div key={blog.id} className="artistSingleRelatedBlog">
+                  <div className="artistRelatedBlogPic">
                     <img src={blog.blogPic} />
                   </div>
-                  <div className="singleRelatedBlogInfo">
+                  <div className="artistSingleRelatedBlogInfo">
                     <h6>{blog.title}</h6>
                     <Link to={`/allblogs/${blog.id}`}>
-                      <button className="relatedBlogButton">Read More</button>
+                      <button className="artistRelatedBlogButton">
+                        Read More
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -216,8 +219,8 @@ export class Artist extends Component {
             })}
           </div>
         )}
-        <div className="soundcloudAndYoutube">
-          <div className="soundcloud">
+        <div className="artistSoundcloudAndYoutube">
+          <div className="artistSoundcloud">
             <iframe
               width="500"
               height="500"
@@ -228,7 +231,7 @@ export class Artist extends Component {
               src={this.props.chosenArtist[0].soundcloudURL}
             />
           </div>
-          <div className="youtube">
+          <div className="artistYoutube">
             {//maps through youtube ids and puts up youtube video for each artist
             this.props.chosenArtist[0].youtubeID.map(id => {
               return <YoutubePlayer key={id} ytID={id} />;
@@ -236,7 +239,11 @@ export class Artist extends Component {
           </div>
         </div>
         <div className="artistCommentContainer">
-          <form onSubmit={this.postComment} id="form" className="commentForm">
+          <form
+            onSubmit={this.postComment}
+            id="form"
+            className="artistCommentForm"
+          >
             <label>Comment</label>
             <textarea name="comment" type="text" required />
             <button type="submit">Post</button>
@@ -249,12 +256,12 @@ export class Artist extends Component {
                 )
               : null}
           </form>
-          <div className="commentList">
+          <div className="artistCommentList">
             {//mapping over all artist comments
             this.props.comments.map(comment => {
               return (
-                <div className="singleComment" key={comment.id}>
-                  <p className="commentUser">{comment.user.username}</p>
+                <div className="artistSingleComment" key={comment.id}>
+                  <p>{comment.user.username}</p>
                   <p>{comment.comment}</p>
                   <div className="likesDislikes">
                     <button

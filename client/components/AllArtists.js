@@ -53,7 +53,7 @@ export class AllArtists extends Component {
       artist.name.toLowerCase().includes(this.state.search.toLowerCase())
     );
     return this.props.artists.length === 0 ? null : (
-      <div className="artistsDiv">
+      <div className="allArtistsRoot">
         <h1 className="title">ALL</h1>
         <h6 className="scrolltoload">Scroll to Load More</h6>
         <div className="artistSearch">
@@ -62,18 +62,18 @@ export class AllArtists extends Component {
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>
-        <div className="state">
+        <div className="allArtistsContainer">
           {artists.map(artist => (
             //mapping over every artist and returning picture with link to artists page
             <div key={artist.id}>
               <Link
-                className="artistPic"
+                className="allArtistPic"
                 to={`/discover/${artist.stateAbbrev}/${artist.name
                   .split(' ')
                   .join('') + `_${artist.id}`}`}
               >
-                <div className="artistName">
-                  <div className="artistNameText">{artist.name}</div>
+                <div className="allArtistName">
+                  <div className="allArtistNameText">{artist.name}</div>
                 </div>
                 <LazyLoad height={200}>
                   <img src={artist.imageURL} />

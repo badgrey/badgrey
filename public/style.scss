@@ -568,62 +568,6 @@ nav a {
   margin-left: 6em;
 }
 
-.relatedBlogsContainer {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-  align-items: center;
-  height: auto;
-  margin-left: 2em;
-  margin-right: 2em;
-  border: solid black;
-  padding: 1em;
-}
-
-.singleRelatedBlog {
-  display: flex;
-  width: 26em;
-  justify-content: space-around;
-}
-
-.relatedBlogPic {
-  height: 13em;
-  width: 12em;
-  display: inline-block;
-  overflow: hidden;
-}
-
-.relatedBlogPic img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.relatedBlogButton {
-  background-color: black;
-  color: white;
-  width: 9em;
-  height: 36px;
-  transition: 0.3s;
-  border: 1px solid black;
-  cursor: pointer;
-  font-family: 'Oswald', sans-serif;
-}
-
-.relatedBlogButton:hover {
-  background-color: whitesmoke;
-  color: black;
-}
-
-.singleRelatedBlogInfo {
-  margin: 5px auto;
-  max-width: 50%;
-}
-.singleRelatedBlogInfo h6 {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
 @media only screen and (max-width: 600px) {
   .artistCommentContainer {
     margin-top: 5em;
