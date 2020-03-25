@@ -1,0 +1,74 @@
+.allUsers {
+  text-align: center;
+  margin-top: 15px;
+}
+.searchLabel {
+  margin-right: 20px;
+}
+.users {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 49px;
+}
+.singleUser {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 144px;
+  width: 180px;
+}
+.userViewButton {
+  margin-top: 13px;
+  width: 49px;
+  height: 22px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+}
+.userViewButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+.userButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.userButtonsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.userButton {
+  margin-top: 13px;
+  width: 82px;
+  height: 52px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+}
+.userButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .searchLabel {
+    margin-top: 4px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .searchLabel {
+    margin-top: 8px;
+    font-size: 1.5em;
+  }
+}
