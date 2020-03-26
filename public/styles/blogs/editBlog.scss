@@ -1,10 +1,10 @@
-.outerEditArtistForm {
+.outerEditBlogForm {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 7em;
 }
-.editArtistForm {
+.editBlogForm {
   margin: 3em 0 0 0;
   width: 50vw;
   height: 70vh;
@@ -15,7 +15,7 @@
   border: 1.2px solid black;
   border-radius: 4px;
 }
-.editArtistForm h2 {
+.editBlogForm h2 {
   margin-top: 0px;
   width: 100%;
   height: 22%;
@@ -25,11 +25,11 @@
   font-family: 'Oswald', sans-serif;
   font-weight: lighter;
 }
-.editArtistForm h4 {
+.editBlogForm h4 {
   margin-top: -40px;
   color: whitesmoke;
 }
-.editArtistForm button {
+.editBlogForm button {
   background-color: black;
   color: white;
   width: 9em;
@@ -38,11 +38,11 @@
   border: 1px solid black;
   cursor: pointer;
 }
-.editArtistForm button:hover {
+.editBlogForm button:hover {
   background-color: whitesmoke;
   color: black;
 }
-.editArtistForm input {
+.editBlogForm input {
   border: solid;
   border-radius: 4px;
   height: 25px;
@@ -50,51 +50,51 @@
 
 //Mobile
 @media only screen and (max-width: 600px) {
-  .outerEditArtistForm {
+  .outerEditBlogForm {
     width: 100%;
   }
-  .editArtistForm {
+  .editBlogForm {
     width: 90%;
     height: 70vh;
   }
-  .editArtistForm h2 {
+  .editBlogForm h2 {
     height: 15%;
   }
 }
 
 //iPad
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .editArtistForm {
+  .editBlogForm {
     width: 90%;
   }
-  .editArtistForm h2 {
+  .editBlogForm h2 {
     height: 15%;
   }
 }
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .outerEditArtistForm {
+  .outerEditBlogForm {
     margin-top: 10em;
   }
-  .editArtistForm {
+  .editBlogForm {
     width: 65vw;
   }
-  .editArtistForm h2 {
+  .editBlogForm h2 {
     font-size: 3em;
     height: 4em;
   }
-  .editArtistForm h4 {
+  .editBlogForm h4 {
     margin-top: -3em;
     margin-bottom: 2em;
     font-size: 2em;
   }
-  .editArtistForm input {
+  .editBlogForm input {
     height: 1.2em;
     width: 10em;
     font-size: 1.5em;
   }
-  .editArtistForm button {
+  .editBlogForm button {
     width: 7em;
     height: 3em;
     font-size: 1.5em;
@@ -103,26 +103,26 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .outerEditArtistForm {
+  .outerEditBlogForm {
     margin-top: 10em;
   }
-  .editArtistForm {
+  .editBlogForm {
     height: 70vh;
   }
-  .editArtistForm h2 {
+  .editBlogForm h2 {
     font-size: 3em;
   }
-  .editArtistForm h4 {
+  .editBlogForm h4 {
     margin-top: -3em;
     margin-bottom: 2em;
     font-size: 2em;
   }
-  .editArtistForm input {
+  .editBlogForm input {
     height: 1.2em;
     width: 9em;
     font-size: 2em;
   }
-  .editArtistForm button {
+  .editBlogForm button {
     width: 7em;
     height: 2em;
     font-size: 2em;

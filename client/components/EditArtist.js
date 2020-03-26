@@ -139,11 +139,7 @@ export class EditArtist extends Component {
   render() {
     return (
       <div className="outerEditArtistForm">
-        <form
-          className="editArtistForm"
-          id="editArtistForm"
-          onSubmit={this.submit}
-        >
+        <form className="editArtistForm" onSubmit={this.submit}>
           <div>
             <label>Artist Name</label>
             <input
