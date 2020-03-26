@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../../public/style.scss';
+import '../../public/styles/index.scss';
 import {
   fetchBlogs,
   deleteCurrentBlog,
@@ -102,14 +102,14 @@ export class Blog extends Component {
           <div className="blogNameHeader">
             {//shows admin buttons if admin
             !this.props.isLoggedIn && !this.props.isAdmin ? null : (
-              <div className="adminButtons">
+              <div className="blogAdminButtons">
                 <Link
-                  id="editButton"
+                  id="blogEditButton"
                   to={`/editBlog/${this.props.match.params.id}`}
                 >
-                  <button className="editdelete">Edit Blog</button>
+                  <button className="blogEditdelete">Edit Blog</button>
                 </Link>
-                <button className="editdelete" onClick={this.deleteBlog}>
+                <button className="blogEditdelete" onClick={this.deleteBlog}>
                   DELETE BLOG
                 </button>
               </div>
@@ -119,9 +119,9 @@ export class Blog extends Component {
               <h3 className="blogAuthor">
                 By {this.props.chosenBlog[0].author}
               </h3>
-              <div className="likesDislikes">
+              <div className="blogLikesDislikes">
                 <button
-                  className="likeDislikeButton"
+                  className="blogLikeDislikeButton"
                   onClick={() =>
                     this.props.likeBlog({
                       blog: this.props.chosenBlog[0],
@@ -130,13 +130,13 @@ export class Blog extends Component {
                   }
                 >
                   <img
-                    className="likeDislikeImage"
+                    className="blogLikeDislikeImage"
                     src={require('../../public/images/like.png')}
                   />
                 </button>
                 <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
                 <button
-                  className="likeDislikeButton"
+                  className="blogLikeDislikeButton"
                   onClick={() =>
                     this.props.dislikeBlog({
                       blog: this.props.chosenBlog[0],
@@ -145,7 +145,7 @@ export class Blog extends Component {
                   }
                 >
                   <img
-                    className="likeDislikeImage"
+                    className="blogLikeDislikeImage"
                     src={require('../../public/images/dislike.png')}
                   />
                 </button>
@@ -174,9 +174,9 @@ export class Blog extends Component {
           </div>
         </div>
         <div className="blogPicDescription">
-          <div className="singleBlogBannerDiv">
+          <div className="blogBannerDiv">
             <img
-              className="singleBlogBanner"
+              className="blogBanner"
               src={this.props.chosenBlog[0].blogPic}
             />
           </div>
@@ -199,8 +199,12 @@ export class Blog extends Component {
             allow="encrypted-media"
           />
         </div>
-        <div className="commentContainer">
-          <form onSubmit={this.postComment} id="form" className="commentForm">
+        <div className="blogCommentContainer">
+          <form
+            onSubmit={this.postComment}
+            id="form"
+            className="blogCommentForm"
+          >
             <label>Comment</label>
             <textarea name="comment" type="text" required />
             <button type="submit">Post</button>
@@ -213,16 +217,16 @@ export class Blog extends Component {
                 )
               : null}
           </form>
-          <div className="commentList">
+          <div className="blogCommentList">
             {//maps over specific blogs comments
             this.props.comments.map(comment => {
               return (
-                <div className="singleComment" key={comment.id}>
-                  <p className="commentUser">{comment.user.username}</p>
+                <div className="blogSingleComment" key={comment.id}>
+                  <p>{comment.user.username}</p>
                   <p>{comment.comment}</p>
-                  <div className="likesDislikes">
+                  <div className="blogLikesDislikes">
                     <button
-                      className="likeDislikeButton"
+                      className="blogLikeDislikeButton"
                       onClick={() =>
                         this.props.likeComment({
                           comment,
@@ -231,13 +235,13 @@ export class Blog extends Component {
                       }
                     >
                       <img
-                        className="likeDislikeImage"
+                        className="blogLikeDislikeImage"
                         src={require('../../public/images/like.png')}
                       />
                     </button>
                     <p>{comment.Likes.length}</p>
                     <button
-                      className="likeDislikeButton"
+                      className="blogLikeDislikeButton"
                       onClick={() =>
                         this.props.dislikeComment({
                           comment,
@@ -246,7 +250,7 @@ export class Blog extends Component {
                       }
                     >
                       <img
-                        className="likeDislikeImage"
+                        className="blogLikeDislikeImage"
                         src={require('../../public/images/dislike.png')}
                       />
                     </button>
