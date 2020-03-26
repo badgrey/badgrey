@@ -46,6 +46,16 @@ path:hover {
   animation: fadeinout 2s linear forwards;
   position: absolute;
 }
+input:focus {
+  outline-offset: 0;
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
 
 @media only screen and (max-width: 900px) {
   .noneOnMobile {
@@ -59,3 +69,4 @@ path:hover {
 @import './artists/artist.scss';
 @import './blogs/allBlogs.scss';
 @import './allUsers.scss';
+@import './authForm.scss';
