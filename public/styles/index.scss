@@ -56,6 +56,12 @@ textarea:focus {
 button:focus {
   outline: none;
 }
+nav a {
+  display: inline-block;
+  margin: 1em;
+  color: ghostwhite;
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 900px) {
   .noneOnMobile {
@@ -78,3 +84,4 @@ button:focus {
 @import './featuredContent.scss';
 @import './genre.scss';
 @import './mobileNavbar.scss';
+@import './navbar.scss';

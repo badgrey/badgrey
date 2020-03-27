@@ -1,0 +1,151 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #141210;
+  text-align: center;
+  height: 104px;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.navWolfLogo {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  margin-left: 1em;
+}
+.navWolfLogo:hover {
+  opacity: 0.5;
+}
+.navList a {
+  color: whitesmoke;
+  cursor: pointer;
+}
+.navList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 0.8;
+  margin-top: 78px;
+  margin-left: 22em;
+  color: whitesmoke;
+  margin-right: 41px;
+}
+.navList a:hover {
+  color: grey;
+}
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+}
+.navMenuContainer {
+  width: 6em;
+}
+.barmenuPic {
+  cursor: pointer;
+  margin-top: 1em;
+  margin-right: 0.5em;
+  height: 80px;
+  width: 80px;
+}
+.barmenuPic:hover {
+  opacity: 0.5;
+}
+.navOptions {
+  background-color: #141210;
+  margin-top: -1px;
+  position: relative;
+}
+.singleNavOption a:hover {
+  color: grey;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .navbar {
+    width: 100%;
+  }
+  .navList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0px;
+  }
+  .barmenuPic {
+    height: 70px;
+    width: 70px;
+    margin-top: 1.5em;
+  }
+  .navOptions {
+    position: relative;
+    margin-top: 5px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .navbar {
+    width: 100%;
+  }
+  .navList {
+    margin-left: 2em;
+    margin-right: 0;
+  }
+  .barmenuPic {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .navbar {
+    height: 148px;
+  }
+  .navWolfLogo {
+    height: 160px;
+    width: 160px;
+  }
+  .navList {
+    margin-top: 111px;
+    margin-left: 19em;
+    margin-right: 1em;
+    font-size: 1.5em;
+  }
+  .barmenuPic {
+    margin-top: 3em;
+  }
+  .navOptions {
+    margin-top: 15px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .navbar {
+    height: 10.5em;
+    width: 100%;
+  }
+  .navWolfLogo {
+    height: 160px;
+    width: 160px;
+  }
+  .navList {
+    font-size: 1.5em;
+  }
+  .navMenuContainer {
+    width: 11em;
+  }
+  .barmenuPic {
+    margin-top: 1em;
+    height: 140px;
+    width: 140px;
+  }
+  .navOptions {
+    margin-top: -0.5em;
+    font-size: 1.5em;
+  }
+}
