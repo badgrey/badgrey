@@ -1,0 +1,197 @@
+.allArtistsRoot {
+  margin-top: 7em;
+  height: 100%;
+}
+.title {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 2em;
+}
+.scrolltoload {
+  text-align: center;
+  margin: 0px;
+}
+
+.artistSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.artistSearch form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
+
+.searchLabel {
+  margin-right: 20px;
+}
+
+.allArtistsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 9em;
+  margin-right: 9em;
+}
+
+.allArtistPic {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.allArtistPic:hover {
+  transform: scale(1.2);
+}
+
+.allArtistPic:hover img {
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+  text-shadow: 0 0 3px whitesmoke;
+  color: whitesmoke;
+}
+.allArtistPic:hover .allArtistName {
+  opacity: 1;
+  z-index: 10;
+}
+
+.allArtistPic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.allArtistName {
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  transition: 0.3s;
+  font-family: 'Oswald', sans-serif;
+}
+
+.allArtistNameText {
+  margin-top: 20px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .allArtistsRoot {
+    width: 100%;
+  }
+  .allArtistsContainer {
+    margin: 0px;
+    width: 98%;
+  }
+  .allArtistPic {
+    height: 85px;
+    width: 85px;
+  }
+  .allArtistName {
+    opacity: 1;
+    margin-top: 30px;
+    margin-left: 22px;
+    font-size: 7px;
+  }
+  .allArtistNameText {
+    width: 49px;
+    margin-top: 5px;
+  }
+}
+
+//iPad;
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .allArtistsContainer {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+  .allArtistName {
+    opacity: 1;
+    margin-left: 28px;
+  }
+  .allArtistNameText {
+    width: 92px;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .allArtistsRoot {
+    margin-top: 10em;
+  }
+  .title {
+    font-size: 3em;
+  }
+  .scrolltoload {
+    font-size: 1em;
+  }
+  .artistSearch form {
+    margin-left: 8em;
+  }
+  .artistSearch {
+    font-size: 1.3em;
+  }
+  .searchLabel {
+    margin-top: 4px;
+  }
+  .allArtistPic {
+    height: 180px;
+    width: 180px;
+  }
+  .allArtistName {
+    margin-top: 76px;
+    margin-left: 22px;
+    margin-right: 50px;
+    font-size: 20px;
+  }
+  .allArtistNameText {
+    width: 130px;
+  }
+}
+
+//Dektop
+@media only screen and (min-width: 1800px) {
+  .allArtistsRoot {
+    margin-top: 10em;
+  }
+  .title {
+    font-size: 4em;
+  }
+  .scrolltoload {
+    font-size: 1.3em;
+  }
+  .artistSearch input {
+    font-size: 1.5em;
+  }
+  .searchLabel {
+    margin-top: 8px;
+    font-size: 1.5em;
+  }
+  .artistSearch form {
+    margin-bottom: 78px;
+    margin-top: 51px;
+    margin-left: 8em;
+  }
+  .allArtistPic {
+    width: 280px;
+    height: 280px;
+  }
+  .allArtistNameText {
+    margin-top: 50%;
+    font-size: 2em;
+  }
+  .allArtistName {
+    width: 280px;
+    height: 280px;
+    margin: 0px;
+    text-align: center;
+  }
+}

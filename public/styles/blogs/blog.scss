@@ -1,0 +1,329 @@
+.blogContainer {
+  margin-left: 8em;
+  margin-right: 8em;
+  margin-top: 7em;
+}
+.blogHeader {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2em;
+}
+.blogNameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+.blogNameHeader h3 {
+  margin-top: 0px;
+  font-family: 'Oswald', sans-serif;
+}
+.blogAdminButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  cursor: pointer;
+}
+#blogEditButton {
+  margin-right: 125px;
+}
+.blogEditdelete {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.blogEditdelete:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+.blogTitle {
+  margin-bottom: 2em;
+  font-family: 'Oswald', sans-serif;
+}
+.lowerBlogHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.blogAuthor {
+  font-family: 'Oswald', sans-serif;
+}
+.blogLikesDislikes {
+  display: flex;
+}
+.blogLikeDislikeButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+  cursor: pointer;
+}
+.blogLikeDislikeButton:focus {
+  outline: 0;
+}
+.blogLikeDislikeImage {
+  height: 30px;
+  width: 30px;
+}
+.blogToArtistLink {
+  height: 0;
+}
+.blogToArtistButton {
+  width: 150px;
+  height: 50px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  font-size: 1em;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+}
+.blogToArtistButton:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.blogPicDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.blogBannerDiv {
+  margin-top: 2em;
+  width: 43em;
+  height: 30em;
+  display: inline-block;
+  overflow: hidden;
+}
+.blogBanner {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.blogPost {
+  margin-top: 40px;
+  text-align: center;
+  margin-left: 12em;
+  margin-right: 12em;
+}
+.blogPostText {
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+.blogIframe {
+  height: 448px;
+  width: 796px;
+  margin-left: -2.5em;
+}
+.blogCommentContainer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.blogCommentForm {
+  margin-bottom: 30px;
+}
+.blogCommentForm textarea {
+  height: 3em;
+  width: 23em;
+  border: solid;
+}
+.blogCommentForm button {
+  margin-left: 1em;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.blogCommentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.blogSingleComment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .blogContainer {
+    margin: 0px;
+    width: 100%;
+  }
+  .blogHeader {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 7em;
+  }
+  .blogNameHeader h3 {
+    font-size: 1em;
+  }
+  .blogNameHeader h5 {
+    font-size: 0.9em;
+    margin-top: auto;
+  }
+  .blogLikeDislikeButton {
+    height: 35px;
+    width: 47px;
+  }
+  .blogLikeDislikeImage {
+    height: 30px;
+    width: 30px;
+  }
+  .blogToArtistButton {
+    width: 7em;
+    height: 3em;
+  }
+  .blogBannerDiv {
+    width: 29em;
+    height: 25em;
+  }
+  .blogPost {
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+  .blogPost iframe {
+    width: 100%;
+  }
+  .blogIframe {
+    height: 200px;
+    width: 355px;
+    margin-left: 0;
+  }
+  .blogCommentContainer {
+    margin-left: 1em;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .blogPost iframe {
+    width: 100%;
+  }
+  .blogPost {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .blogIframe {
+    height: 26em;
+    margin-left: 0;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .blogContainer {
+    margin-top: 10em;
+  }
+  .blogTitle {
+    font-size: 3em;
+  }
+  .blogAuthor {
+    font-size: 1.7em;
+  }
+  .blogLikesDislikes p {
+    font-size: 1.4em;
+  }
+  .blogLikeDislikeButton {
+    height: 42px;
+    width: 47px;
+  }
+  .blogLikeDislikeImage {
+    height: 40px;
+    width: 40px;
+  }
+  .blogPicDescription h5 {
+    font-size: 1.4em;
+  }
+  .blogBannerDiv {
+    width: 55em;
+    height: 40em;
+  }
+  .blogPost {
+    margin-right: 6em;
+    margin-left: 6em;
+  }
+  .blogPostText {
+    font-size: 1.7em;
+  }
+  .blogCommentForm label {
+    font-size: 1.2em;
+  }
+  .blogCommentForm button {
+    width: 5em;
+    height: 2em;
+  }
+  .blogSingleComment p {
+    font-size: 1.4em;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .blogContainer {
+    margin-top: 10em;
+  }
+  .blogTitle {
+    font-size: 3em;
+  }
+  .blogAuthor {
+    font-size: 1.4em;
+  }
+  .blogLikesDislikes p {
+    font-size: 2.3em;
+  }
+  .blogLikeDislikeButton {
+    height: 47px;
+    width: 53px;
+  }
+  .blogLikeDislikeImage {
+    height: 37px;
+    width: 37px;
+  }
+  .blogPicDescription h5 {
+    font-size: 2.4em;
+  }
+  .blogBannerDiv {
+    width: 82em;
+    height: 56em;
+  }
+  .blogPost {
+    margin-right: 10em;
+    margin-left: 10em;
+    font-size: 1.7em;
+  }
+  .blogIframe {
+    margin-left: 0;
+  }
+  .blogCommentForm label {
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .blogCommentForm button {
+    width: 4em;
+    height: 2em;
+    font-size: 1.4em;
+  }
+  .blogCommentForm textarea {
+    height: 4em;
+    width: 37em;
+  }
+  .blogSingleComment p {
+    font-size: 1.4em;
+  }
+}

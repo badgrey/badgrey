@@ -1,0 +1,154 @@
+.genreGrid {
+  display: inline-grid;
+  grid-template-rows: 160px 160px;
+  grid-template-columns: 160px 160px 160px 160px 160px;
+  grid-gap: 3px;
+  margin-top: 100px;
+  padding-bottom: 20px;
+}
+.genreName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  color: black;
+  font-size: 15px;
+  background-color: black;
+  color: whitesmoke;
+  transition: 0.3s;
+  cursor: pointer;
+}
+#Trap
+  #Alternative
+  #Cloud
+  #Conscious
+  #Experimental
+  #Instrumental
+  #Pop
+  #JazzSoul
+  #RB
+  #OldSchool {
+  transition: 0.3s;
+}
+#Trap:hover {
+  background-image: url('../images/genres/Trap.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#Alternative:hover {
+  background-image: url('../images/genres/Alternative.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#Cloud:hover {
+  background-image: url('../images/genres/Cloud.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#Conscious:hover {
+  background-image: url('../images/genres/Conscious.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#Experimental:hover {
+  background-image: url('../images/genres/Experimental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#Instrumental:hover {
+  background-image: url('../images/genres/Instrumental.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#Pop:hover {
+  background-image: url('../images/genres/Pop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#JazzSoul:hover {
+  background-image: url('../images/genres/JazzSoul.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#RB:hover {
+  background-image: url('../images/genres/R&B.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+#OldSchool:hover {
+  background-image: url('../images/genres/Old\ School.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: scale(1.2);
+  color: whitesmoke;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .genreGrid {
+    grid-template-columns: 70px 70px 70px 70px 70px;
+    grid-template-rows: 70px 70px;
+  }
+  .genreName {
+    font-size: 10px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .genreGrid {
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .genreGrid {
+    grid-template-rows: 200px 200px;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    margin-top: 156px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .genreGrid {
+    grid-template-rows: 17em 17em;
+    grid-template-columns: 17em 17em 17em 17em 17em;
+  }
+  .genreName {
+    background-color: black;
+    color: whitesmoke;
+    transition: 0.3s;
+    font-size: 2.1em;
+  }
+}

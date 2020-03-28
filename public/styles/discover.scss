@@ -1,0 +1,219 @@
+.discover {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  margin-top: 7em;
+}
+.discover h1 {
+  font-family: 'Oswald', sans-serif;
+}
+.bannerContainer {
+  display: flex;
+  justify-content: center;
+  height: 20em;
+  margin-top: 5em;
+}
+
+.bannerImage {
+  object-fit: cover;
+  height: 100%;
+  width: 83%;
+  cursor: pointer;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+
+.allAndGlobe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.allArtistsButton {
+  margin-top: 40px;
+  width: 150px;
+  height: 50px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  font-size: 1em;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+}
+
+.allArtistsButton:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.internationalLink:hover {
+  opacity: 0.5;
+}
+
+.globe {
+  border: solid black;
+  padding: 10px;
+  border-radius: 80px;
+  cursor: pointer;
+}
+
+.globeLabel {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.map {
+  display: flex;
+  justify-content: space-around;
+}
+
+.genreDiv {
+  margin-top: -24px;
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+  .discover {
+    width: 100%;
+  }
+  .bannerContainer {
+    height: 12em;
+    margin-top: 3em;
+  }
+  .bannerImage {
+    object-fit: contain;
+    width: 93%;
+  }
+  .topContainer {
+    flex-direction: column;
+    margin-top: 0;
+  }
+  .allAndGlobe a {
+    height: 0px;
+  }
+  .allArtistsButton {
+    width: 7em;
+    height: 3em;
+  }
+  .globe {
+    height: 90px;
+    width: 90px;
+  }
+  .globeLabel {
+    font-size: 1em;
+  }
+  .map {
+    margin-top: -5em;
+    margin-bottom: -156px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .bannerImage {
+    object-fit: contain;
+  }
+  .topContainer {
+    flex-direction: column;
+  }
+  .allAndGlobe {
+    margin-top: 20px;
+  }
+  .allArtistsButton {
+    margin-top: 32px;
+    width: 139px;
+    height: 50px;
+    font-size: 1.1em;
+  }
+  .internationalLink {
+    margin-top: 45;
+  }
+  .globe {
+    border-radius: 80px;
+    height: 150px;
+    width: 150px;
+  }
+  .globeLabel {
+    font-size: 1em;
+    margin-bottom: -23px;
+  }
+  .genreDiv {
+    margin-top: -20px;
+  }
+}
+
+// 15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .discover {
+    margin-top: 10em;
+  }
+  .discover h1 {
+    font-size: 3em;
+    margin-bottom: 55px;
+  }
+  .allAndGlobe a {
+    height: 0px;
+  }
+  .allArtistsButton {
+    width: 150px;
+    height: 50px;
+    font-size: 1.3em;
+  }
+  .globe {
+    border-radius: 98px;
+    height: 200px;
+    width: 200px;
+  }
+  .map svg {
+    height: 661px;
+    width: 1081px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .discover {
+    margin-top: 10em;
+  }
+  .discover h1 {
+    font-size: 3em;
+  }
+  .bannerContainer {
+    height: 24em;
+  }
+  .topContainer {
+    margin-bottom: 6em;
+  }
+  .allAndGlobe {
+    margin-top: 5em;
+  }
+  .allAndGlobe a {
+    height: 0px;
+  }
+  .allArtistsButton {
+    width: 208px;
+    height: 65px;
+    font-size: 1.7em;
+  }
+  .globe {
+    border: solid black 6px;
+    padding: 17px;
+    border-radius: 191px;
+    height: 200px;
+    width: 200px;
+  }
+  .globeLabel {
+    font-size: 2.8em;
+    margin-top: 11px;
+  }
+  .map svg {
+    height: 86em;
+    width: 92em;
+  }
+}

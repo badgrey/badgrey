@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { YoutubePlayer } from './index';
+import '../../public/styles/index.scss';
 
-export const FeaturedContent = ({ videos, interview }) => {
+export const FeaturedContent = ({ videos }) => {
   return videos.length === 0 ? null : (
     <div className="featuredContentContainer">
       <h1 className="featuredContentTitle">NEW VIDEOS</h1>
@@ -13,20 +13,6 @@ export const FeaturedContent = ({ videos, interview }) => {
           </div>
         );
       })}
-      {/*
-      <div key={interview.id} className="homeInterview">
-      <h2 className="homeInterviewTitle">INTERVIEW:</h2>
-      <h1 className="homeInterviewTitle">{interview.artist.name}</h1>
-        <div className="homeInterviewPic">
-          <img src={interview.artist.imageURL} />
-        </div>
-        <div>
-          <Link to={`/interviews/${interview.id}`}>
-            <button className="interviewButton">Read More</button>
-          </Link>
-        </div>
-      </div>
-    */}
     </div>
   );
 };

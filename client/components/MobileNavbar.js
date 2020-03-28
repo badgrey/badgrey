@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
-import '../../public/style.css';
+import '../../public/styles/index.scss';
 
 class MobileNavbar extends Component {
   constructor() {
@@ -26,11 +26,11 @@ class MobileNavbar extends Component {
 
   render() {
     return (
-      <div className="navbar">
+      <div className="mobileNavbar">
         <div>
           <Link to="/">
             <img
-              className="badGreyTextLogo"
+              className="mobileWolfLogo"
               src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWolfLogo.png"
             />
           </Link>
@@ -44,57 +44,43 @@ class MobileNavbar extends Component {
                   <div>
                     <div onClick={this.renderDropDown}>
                       <img
-                        className="barmenuPic"
+                        className="mobileBarmenuPic"
                         src={require('../../public/images/barmenu.png')}
                       />
                     </div>
                     {this.state.clicked === false ? null : (
-                      <div className="navOptions">
-                        <div className="singleNavOption">
+                      <div className="mobileNavOptions">
+                        <div className="mobileSingleNavOption">
                           <Link to="/discover">Discover</Link>
                         </div>
-                        {/*
-                    <div className="singleNavOption">
-                      <Link to="/interviews">
-                      Interviews
-                      </Link>
-                    </div>
-                    */}
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <a href="https://www.badgrey.shop/">Shop</a>
                         </div>
-                        {/*<div className="singleNavOption">
+                        {/*<div className="mobileSingleNavOption">
                           <Link to="/TheBricks">The Bricks</Link>
                   </div>*/}
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/originalcontent">Original Content</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/submit">Submit</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/newArtist">Add Artist</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/newBlog">Add Blog</Link>
                         </div>
-                        {/*
-                    <div className="singleNavOption">
-                      <Link to="/newInterview">
-                        Add Interview
-                      </Link>
-                    </div>
-                    */}
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/account">Account</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/saved">Saved</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/users">Users</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <a href="#" onClick={this.props.handleClick}>
                             Logout
                           </a>
@@ -103,38 +89,31 @@ class MobileNavbar extends Component {
                     )}
                   </div>
                 ) : (
-                  <div className="navOptions">
+                  <div className="mobileNavOptions">
                     <div onClick={this.renderDropDown}>
                       <img
-                        className="barmenuPic"
+                        className="mobileBarmenuPic"
                         src={require('../../public/images/barmenu.png')}
                       />
                     </div>
                     {this.state.clicked === false ? null : (
                       <div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/discover">Discover</Link>
                         </div>
-                        {/*
-                        <div className="singleNavOption">
-                          <Link to="/interviews">
-                          Interviews
-                          </Link>
-                        </div>
-                        */}
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/originalcontent">Original Content</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/submit">Submit</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/account">Account</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <Link to="/saved">Saved</Link>
                         </div>
-                        <div className="singleNavOption">
+                        <div className="mobileSingleNavOption">
                           <a href="#" onClick={this.props.handleClick}>
                             Logout
                           </a>
@@ -150,39 +129,32 @@ class MobileNavbar extends Component {
               <div>
                 <div onClick={this.renderDropDown}>
                   <img
-                    className="barmenuPic"
+                    className="mobileBarmenuPic"
                     src={require('../../public/images/barmenu.png')}
                   />
                 </div>
                 {this.state.clicked === false ? null : (
-                  <div className="navOptions">
+                  <div className="mobileNavOptions">
                     {/* The navbar will show these links before you log in */}
-                    <div className="singleNavOption">
+                    <div className="mobileSingleNavOption">
                       <Link to="/discover">Discover</Link>
                     </div>
-                    {/*
-                  <div className="singleNavOption">
-                      <Link to="/interviews">
-                      Interviews
-                      </Link>
-                  </div>
-                  */}
-                    <div className="singleNavOption">
+                    <div className="mobileSingleNavOption">
                       <a href="https://www.badgrey.shop/">Shop</a>
                     </div>
-                    {/*<div className="singleNavOption">
+                    {/*<div className="mobileSingleNavOption">
                   <Link to="/TheBricks">The Bricks</Link>
           </div>*/}
-                    <div className="singleNavOption">
+                    <div className="mobileSingleNavOption">
                       <Link to="/originalcontent">Original Content</Link>
                     </div>
-                    <div className="singleNavOption">
+                    <div className="mobileSingleNavOption">
                       <Link to="/submit">Submit</Link>
                     </div>
-                    <div className="singleNavOption">
+                    <div className="mobileSingleNavOption">
                       <Link to="/login">Login</Link>
                     </div>
-                    <div className="singleNavOption">
+                    <div className="mobileSingleNavOption">
                       <Link to="/signup">Sign Up</Link>
                     </div>
                   </div>

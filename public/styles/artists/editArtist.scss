@@ -1,0 +1,130 @@
+.outerEditArtistForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
+.editArtistForm {
+  margin: 3em 0 0 0;
+  width: 50vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1.2px solid black;
+  border-radius: 4px;
+}
+.editArtistForm h2 {
+  margin-top: 0px;
+  width: 100%;
+  height: 22%;
+  background-color: black;
+  color: whitesmoke;
+  padding-top: 13px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: lighter;
+}
+.editArtistForm h4 {
+  margin-top: -40px;
+  color: whitesmoke;
+}
+.editArtistForm button {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.editArtistForm button:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.editArtistForm input {
+  border: solid;
+  border-radius: 4px;
+  height: 25px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .outerEditArtistForm {
+    width: 100%;
+  }
+  .editArtistForm {
+    width: 90%;
+    height: 70vh;
+  }
+  .editArtistForm h2 {
+    height: 15%;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .editArtistForm {
+    width: 90%;
+  }
+  .editArtistForm h2 {
+    height: 15%;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .outerEditArtistForm {
+    margin-top: 10em;
+  }
+  .editArtistForm {
+    width: 65vw;
+  }
+  .editArtistForm h2 {
+    font-size: 3em;
+    height: 4em;
+  }
+  .editArtistForm h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+  .editArtistForm input {
+    height: 1.2em;
+    width: 10em;
+    font-size: 1.5em;
+  }
+  .editArtistForm button {
+    width: 7em;
+    height: 3em;
+    font-size: 1.5em;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .outerEditArtistForm {
+    margin-top: 10em;
+  }
+  .editArtistForm {
+    height: 70vh;
+  }
+  .editArtistForm h2 {
+    font-size: 3em;
+  }
+  .editArtistForm h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+  .editArtistForm input {
+    height: 1.2em;
+    width: 9em;
+    font-size: 2em;
+  }
+  .editArtistForm button {
+    width: 7em;
+    height: 2em;
+    font-size: 2em;
+  }
+}

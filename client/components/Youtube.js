@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+/* eslint-disable class-methods-use-this */
+import React, { Component } from 'react';
 import YouTube from 'react-youtube';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 
 //necessary component to display youtube videos
 export class YoutubePlayer extends Component {
-
   _onReady(event) {
     // access to player in all event handlers via event.target
-    event.target.pauseVideo()
+    event.target.pauseVideo();
   }
 
   render() {
@@ -20,16 +20,12 @@ export class YoutubePlayer extends Component {
     };
 
     return (
-      <YouTube
-        videoId={this.props.ytID}
-        opts={opts}
-        onReady={this._onReady}
-      />
+      <YouTube videoId={this.props.ytID} opts={opts} onReady={this._onReady} />
     );
   }
 }
-const mapState = null
+const mapState = null;
 
-const mapDispatch = null
+const mapDispatch = null;
 
-export default connect(mapState, mapDispatch)(YoutubePlayer)
+export default connect(mapState, mapDispatch)(YoutubePlayer);

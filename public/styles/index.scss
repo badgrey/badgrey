@@ -1,0 +1,95 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  width: 100%;
+}
+#app {
+  background: no-repeat center url('../images/websitebackground.png');
+  background-size: 80%;
+  background-attachment: fixed;
+  font-family: 'Oswald', sans-serif;
+}
+@media only screen and (max-width: 600px) {
+  #app {
+    width: 100%;
+  }
+}
+* {
+  font-family: 'Oswald', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+label {
+  display: block;
+}
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+path {
+  pointer-events: all;
+}
+path:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.commentPostError {
+  width: 207px;
+  border-radius: 4px;
+  background: rgb(0, 0, 0);
+  color: whitesmoke;
+  text-align: center;
+  font-size: 20px;
+  animation: fadeinout 2s linear forwards;
+  position: absolute;
+}
+input:focus {
+  outline-offset: 0;
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+nav a {
+  display: inline-block;
+  margin: 1em;
+  color: ghostwhite;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .noneOnMobile {
+    display: none;
+  }
+}
+
+@import './discover.scss';
+@import './footer.scss';
+@import './artists/allArtists.scss';
+@import './artists/artist.scss';
+@import './artists/editArtist.scss';
+@import './artists/newArtist.scss';
+@import './artists/savedArtists.scss';
+@import './artists/genreArtists.scss';
+@import './artists/stateArtists.scss';
+@import './blogs/allBlogs.scss';
+@import './blogs/blog.scss';
+@import './blogs/blogHomePage.scss';
+@import './blogs/editBlog.scss';
+@import './blogs/newBlog.scss';
+@import './users/allUsers.scss';
+@import './users/editUser.scss';
+@import './originalContent/originalContent.scss';
+@import './originalContent/originalContentType.scss';
+@import './authForm.scss';
+@import './featuredContent.scss';
+@import './genre.scss';
+@import './mobileNavbar.scss';
+@import './navbar.scss';
+@import './submit.scss';

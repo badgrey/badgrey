@@ -8,6 +8,7 @@ import {
   likeCurrentOriginalContent,
   dislikeCurrentOriginalContent
 } from '../store';
+import '../../public/styles/index.scss';
 
 export class OriginalContentType extends Component {
   async componentDidMount() {
@@ -60,27 +61,27 @@ export class OriginalContentType extends Component {
             return (
               <div key={oc.id} className="singleoc">
                 <YoutubePlayer ytID={oc.youtubeId} />
-                <div className="likesDislikes">
+                <div className="ocLikesDislikes">
                   <button
-                    className="likeDislikeButton"
+                    className="ocLikeDislikeButton"
                     onClick={() =>
                       this.props.likeOC({ oc, user: this.props.user })
                     }
                   >
                     <img
-                      className="likeDislikeImage"
+                      className="ocLikeDislikeImage"
                       src={require('../../public/images/like.png')}
                     />
                   </button>
                   <p>{oc.OriginalContentLikes.length}</p>
                   <button
-                    className="likeDislikeButton"
+                    className="ocLikeDislikeButton"
                     onClick={() =>
                       this.props.dislikeOC({ oc, user: this.props.user })
                     }
                   >
                     <img
-                      className="likeDislikeImage"
+                      className="ocLikeDislikeImage"
                       src={require('../../public/images/dislike.png')}
                     />
                   </button>
@@ -88,7 +89,7 @@ export class OriginalContentType extends Component {
                 </div>
                 {!this.props.isAdmin ? null : (
                   <button
-                    className="savedArtistsButton"
+                    className="ocSavedArtistsButton"
                     onClick={() => {
                       this.props.delete(oc.id);
                     }}
@@ -100,7 +101,7 @@ export class OriginalContentType extends Component {
             );
           })}
         </div>
-        <div className="viewMoreButton">
+        <div className="ocViewMoreButton">
           <button
             className="allArtistsButton"
             onClick={() =>

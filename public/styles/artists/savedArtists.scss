@@ -1,0 +1,255 @@
+.noSavedContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 7em;
+}
+.noSaved {
+  text-align: center;
+  border: solid black;
+  height: 126px;
+  width: 50%;
+  margin-top: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.savedArtistsDiv {
+  height: 100vh;
+  margin-top: 7em;
+}
+.savedArtistsTitle {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 2em;
+}
+.savedArtistsSearch {
+  display: flex;
+  justify-content: center;
+}
+.savedArtistsSearch form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
+.savedArtistsSearchLabel {
+  margin-right: 20px;
+}
+.savedArtistsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 9em;
+  margin-right: 9em;
+}
+.savedArtists {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 14px;
+}
+.savedArtistPic {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.savedArtistPic:hover {
+  transform: scale(1.2);
+}
+.savedArtistPic:hover img {
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+  text-shadow: 0 0 3px whitesmoke;
+  color: whitesmoke;
+}
+.savedArtistPic:hover .savedArtistName {
+  opacity: 1;
+  z-index: 10;
+}
+.savedArtistPic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.savedArtistName {
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  transition: 0.3s;
+  font-family: 'Oswald', sans-serif;
+}
+.savedArtistNameText {
+  margin-top: 20px;
+}
+.savedArtistsButton {
+  margin-top: 13px;
+  width: 32px;
+  height: 29px;
+  border-radius: 27px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.savedArtistsButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .noSaved {
+    height: 180px;
+  }
+  .savedArtistsDiv {
+    width: 100%;
+  }
+  .savedArtistsContainer {
+    margin: 0px;
+    width: 98%;
+  }
+  .savedArtistPic {
+    height: 85px;
+    width: 85px;
+  }
+  .savedArtistName {
+    opacity: 1;
+    margin-top: 30px;
+    margin-left: 22px;
+    font-size: 7px;
+  }
+  .savedArtistNameText {
+    width: 49px;
+    margin-top: 5px;
+  }
+  .savedArtistsButton {
+    width: 22px;
+    height: 19px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .savedArtistsContainer {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+  .savedArtistName {
+    opacity: 1;
+    margin-left: 28px;
+  }
+  .savedArtistNameText {
+    width: 92px;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .noSavedContainer {
+    margin-top: 10em;
+  }
+  .noSaved {
+    height: 15em;
+    width: 39em;
+    margin-top: 74px;
+  }
+  .noSaved h2 {
+    font-size: 2.5em;
+  }
+  .noSaved h5 {
+    font-size: 1.1em;
+  }
+  .savedArtistsDiv {
+    margin-top: 10em;
+  }
+  .savedArtistsTitle {
+    font-size: 3em;
+  }
+  .savedArtistsSearch {
+    font-size: 1.3em;
+  }
+  .savedArtistsSearch form {
+    margin-left: 8em;
+  }
+  .savedArtistsSearchLabel {
+    margin-top: 4px;
+  }
+  .savedArtistPic {
+    height: 180px;
+    width: 180px;
+  }
+  .savedArtistName {
+    margin-top: 76px;
+    margin-left: 22px;
+    margin-right: 50px;
+    font-size: 20px;
+  }
+  .savedArtistNameText {
+    width: 130px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .noSavedContainer {
+    margin-top: 10em;
+  }
+  .noSaved {
+    height: 30em;
+    width: 74em;
+    margin-top: 74px;
+  }
+  .noSaved h2 {
+    font-size: 4em;
+  }
+  .noSaved h5 {
+    font-size: 2em;
+  }
+  .savedArtistsDiv {
+    margin-top: 10em;
+  }
+  .savedArtiststitle {
+    font-size: 4em;
+  }
+  .savedArtistsSearch input {
+    font-size: 1.5em;
+  }
+  .savedArtistsSearch form {
+    margin-bottom: 78px;
+    margin-top: 51px;
+    margin-left: 8em;
+  }
+  .savedArtistsSearchLabel {
+    margin-top: 8px;
+    font-size: 1.5em;
+  }
+  .savedArtistPic {
+    width: 280px;
+    height: 280px;
+  }
+  .savedArtistName {
+    width: 280px;
+    height: 280px;
+    margin: 0px;
+    text-align: center;
+  }
+  .savedArtistNameText {
+    margin-top: 50%;
+    font-size: 2em;
+  }
+  .savedArtistsButton {
+    width: 62px;
+    height: 69px;
+    font-size: 2em;
+  }
+}
