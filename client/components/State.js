@@ -53,37 +53,37 @@ export class State extends Component {
     return (
       //if there are no artists in this state load informative message
       this.props.stateArtists.length === 0 ? (
-        <div className="noArtistsContainer">
-          <div className="noArtists">
+        <div className="noStateArtistsContainer">
+          <div className="noStateArtists">
             <h1>Searching...</h1>
           </div>
         </div>
       ) : (
-        <div className="artistsDiv">
-          <h1 className="title">
+        <div className="stateArtistsDiv">
+          <h1 className="stateArtistsTitle">
             {getStateFullName(
               this.props.stateArtists[0].stateAbbrev
             ).toUpperCase()}
           </h1>
-          <h6 className="scrolltoload">Scroll to Load More</h6>
-          <div className="artistSearch">
+          <h6 className="stateArtistsScrolltoload">Scroll to Load More</h6>
+          <div className="stateArtistSearch">
             <form>
-              <label className="searchLabel">Search Artists</label>
+              <label className="stateArtistsSearchLabel">Search Artists</label>
               <input onChange={this.handleSearch} placeholder="Name" />
             </form>
           </div>
-          <div className="state">
+          <div className="stateArtistsContainer">
             {artists.map(artist => (
               //map over artists and display link for their individual page
               <div key={artist.id}>
                 <Link
-                  className="artistPic"
+                  className="stateArtistPic"
                   to={`/discover/${artist.stateAbbrev}/${artist.name
                     .split(' ')
                     .join('') + `_${artist.id}`}`}
                 >
-                  <div className="artistName">
-                    <div className="artistNameText">{artist.name}</div>
+                  <div className="stateArtistName">
+                    <div className="stateArtistNameText">{artist.name}</div>
                   </div>
                   <img src={artist.imageURL} />
                 </Link>
