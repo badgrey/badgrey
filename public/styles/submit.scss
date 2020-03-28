@@ -1,0 +1,199 @@
+.thankYouContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 7em;
+}
+.thankYou {
+  text-align: center;
+  border: solid black;
+  height: 126px;
+  width: 50%;
+  margin-top: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.outerSubmitForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
+.submitForm {
+  margin: 3em 0 0 0;
+  width: 50vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1.2px solid black;
+  border-radius: 4px;
+}
+.submitForm h2 {
+  margin-top: 0px;
+  width: 100%;
+  height: 22%;
+  background-color: black;
+  color: whitesmoke;
+  padding-top: 13px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: lighter;
+}
+.submitForm h4 {
+  margin-top: -40px;
+  color: whitesmoke;
+}
+.submitForm button {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.submitForm button:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.submitForm input {
+  border: solid;
+  border-radius: 4px;
+  height: 25px;
+}
+.topSubmitFormInputs {
+  display: flex;
+  justify-content: space-between;
+}
+.bottomSubmitFormInputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .thankYou {
+    height: 180px;
+  }
+  .outerSubmitForm {
+    width: 100%;
+  }
+  .submitForm {
+    width: 90%;
+    height: 70vh;
+  }
+  .submitForm h2 {
+    height: 15%;
+  }
+  .topSubmitFormInputs {
+    flex-direction: column;
+  }
+  .bottomSubmitFormInputs {
+    flex-direction: column;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .submitForm {
+    width: 90%;
+  }
+  .submitForm h2 {
+    height: 15%;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .thankYouContainer {
+    margin-top: 10em;
+  }
+  .thankYou {
+    height: 15em;
+    width: 39em;
+    margin-top: 74px;
+  }
+  .thankYou h2 {
+    font-size: 2.5em;
+  }
+  .thankYou h5 {
+    font-size: 1.1em;
+  }
+  .outerSubmitForm {
+    margin-top: 10em;
+  }
+  .submitForm {
+    width: 65vw;
+  }
+  .submitForm h2 {
+    font-size: 3em;
+    height: 4em;
+  }
+  .submitForm h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+  .submitForm input {
+    height: 1.2em;
+    width: 10em;
+    font-size: 2.5em;
+  }
+  .submitForm button {
+    width: 10em;
+    height: 70px;
+    font-size: 2em;
+  }
+  .submitFormLabel {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .thankYouContainer {
+    margin-top: 10em;
+  }
+  .thankYou {
+    height: 30em;
+    width: 74em;
+    margin-top: 74px;
+  }
+  .thankYou h2 {
+    font-size: 4em;
+  }
+  .thankYou h5 {
+    font-size: 2em;
+  }
+  .outerSubmitForm {
+    margin-top: 10em;
+  }
+  .submitForm {
+    height: 70vh;
+  }
+  .submitForm h2 {
+    font-size: 3em;
+  }
+  .submitForm h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+  .submitForm input {
+    height: 1.2em;
+    width: 9em;
+    font-size: 2em;
+  }
+  .submitForm button {
+    width: 7em;
+    height: 2em;
+    font-size: 2em;
+  }
+  .submitFormLabel {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import '../../public/style.scss';
+import '../../public/styles/index.scss';
 
 //for now static submit page with information how to reach us
 class Submit extends Component {
@@ -24,8 +24,8 @@ class Submit extends Component {
 
   render() {
     return this.state.sent ? (
-      <div className="noSavedContainer">
-        <div className="noSaved">
+      <div className="thankYouContainer">
+        <div className="thankYou">
           <h2>Thank You For Submitting</h2>
           <h5>
             We Will Check You Out And See If You Are A Good Fit For Bad Grey
@@ -33,37 +33,35 @@ class Submit extends Component {
         </div>
       </div>
     ) : (
-      <div className="outerForm">
+      <div className="outerSubmitForm">
         <form
           id="submitform"
-          className="form"
+          className="submitForm"
           onSubmit={this.submit}
           name={name}
         >
           <h2>Want To Be Featured On Bad Grey?</h2>
           <h4>Fill Out The Information Below</h4>
-          <div className="topInputs">
+          <div className="topSubmitFormInputs">
             <div>
-              <label className="loginSignupLabel">Your Name</label>
-              <input className="loginInput" name="name" type="text" />
+              <label className="submitFormLabel">Your Name</label>
+              <input name="name" type="text" />
             </div>
             <div>
-              <label className="loginSignupLabel">Your Home City</label>
-              <input className="loginInput" name="city" type="text" />
+              <label className="submitFormLabel">Your Home City</label>
+              <input name="city" type="text" />
             </div>
           </div>
-          <div className="bottomInputs">
+          <div className="bottomSubmitFormInputs">
             <div>
-              <label className="loginSignupLabel">
-                Link To Your Soundcloud
-              </label>
-              <input className="loginInput" name="soundcloud" />
+              <label className="submitFormLabel">Link To Your Soundcloud</label>
+              <input name="soundcloud" />
             </div>
             <div>
-              <label className="loginSignupLabel">
+              <label className="submitFormLabel">
                 Link To Your Music Video
               </label>
-              <input className="loginInput" name="youtube" />
+              <input name="youtube" />
             </div>
           </div>
           <div>
