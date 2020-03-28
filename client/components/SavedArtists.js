@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../public/style.scss';
+import '../../public/styles/index.scss';
 import {
   fetchArtists,
   fetchSavedArtists,
@@ -70,25 +70,25 @@ export class SavedArtists extends Component {
         </div>
       ) : (
         <div className="savedArtistsDiv">
-          <h1 className="title">SAVED</h1>
-          <div className="artistSearch">
+          <h1 className="savedArtistsTitle">SAVED</h1>
+          <div className="savedArtistsSearch">
             <form>
-              <label className="searchLabel">Search Artists</label>
+              <label className="savedArtistsSearchLabel">Search Artists</label>
               <input onChange={this.handleSearch} placeholder="Name" />
             </form>
           </div>
-          <div className="state">
+          <div className="savedArtistsContainer">
             {//map over saved artists and display them like everything else
             artists.map(artist => (
               <div key={artist.id} className="savedArtists">
                 <Link
-                  className="artistPic"
+                  className="savedArtistPic"
                   to={`/discover/${artist.stateAbbrev}/${artist.name
                     .split(' ')
                     .join('') + `_${artist.id}`}`}
                 >
-                  <div className="artistName">
-                    <div className="artistNameText">{artist.name}</div>
+                  <div className="savedArtistName">
+                    <div className="savedArtistNameText">{artist.name}</div>
                   </div>
                   <img src={artist.imageURL} />
                 </Link>
