@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
-import '../../public/style.css';
+import '../../public/styles/index.scss';
 
 class Navbar extends Component {
   constructor() {
@@ -14,7 +14,6 @@ class Navbar extends Component {
     this.renderDropDown = this.renderDropDown.bind(this);
   }
 
-  //makes wolf dropdown
   renderDropDown(evt) {
     evt.preventDefault();
     if (this.state.clicked === false) {
@@ -30,18 +29,13 @@ class Navbar extends Component {
         <div>
           <Link to="/">
             <img
-              className="badGreyTextLogo"
+              className="navWolfLogo"
               src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWolfLogo.png"
             />
           </Link>
         </div>
         <div className="navList">
           <Link to="/discover">Discover</Link>
-          {/*
-          <Link to="/interviews">
-            Interviews
-          </Link>
-          */}
           <a href="https://www.badgrey.shop/">Shop</a>
           {/*<Link to="/TheBricks">The Bricks</Link>*/}
           <Link to="/originalcontent">Original Content</Link>
@@ -55,12 +49,14 @@ class Navbar extends Component {
                 {this.props.isAdmin ? (
                   <div>
                     <div
-                      className="menuContainer"
+                      className="navMenuContainer"
                       onClick={this.renderDropDown}
                     >
                       <img
                         className="barmenuPic"
-                        src={require('../../public/images/barmenu.png')}
+                        src={
+                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                        }
                       />
                     </div>
                     {this.state.clicked === false ? null : (
@@ -71,13 +67,6 @@ class Navbar extends Component {
                         <div className="singleNavOption">
                           <Link to="/newBlog">Add Blog</Link>
                         </div>
-                        {/*
-                    <div className="singleNavOption">
-                      <Link to="/newInterview">
-                        Add Interview
-                      </Link>
-                    </div>
-                    */}
                         <div className="singleNavOption">
                           <Link to="/account">Account</Link>
                         </div>
@@ -98,12 +87,14 @@ class Navbar extends Component {
                 ) : (
                   <div className="navOptions">
                     <div
-                      className="menuContainer"
+                      className="navMenuContainer"
                       onClick={this.renderDropDown}
                     >
                       <img
                         className="barmenuPic"
-                        src={require('../../public/images/barmenu.png')}
+                        src={
+                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                        }
                       />
                     </div>
                     {this.state.clicked === false ? null : (
@@ -128,10 +119,12 @@ class Navbar extends Component {
           ) : (
             <div className="navLinks">
               <div>
-                <div className="menuContainer" onClick={this.renderDropDown}>
+                <div className="mnavMnuContainer" onClick={this.renderDropDown}>
                   <img
                     className="barmenuPic"
-                    src={require('../../public/images/barmenu.png')}
+                    src={
+                      'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                    }
                   />
                 </div>
                 {this.state.clicked === false ? null : (

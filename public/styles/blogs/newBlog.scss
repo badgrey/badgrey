@@ -1,0 +1,129 @@
+.outerNewBlogForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
+.newBlogForm {
+  margin: 3em 0 0 0;
+  width: 50vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1.2px solid black;
+  border-radius: 4px;
+}
+.newBlogForm h2 {
+  margin-top: 0px;
+  width: 100%;
+  height: 22%;
+  background-color: black;
+  color: whitesmoke;
+  padding-top: 13px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: lighter;
+}
+.newBlogForm h4 {
+  margin-top: -40px;
+  color: whitesmoke;
+}
+.newBlogForm button {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.newBlogForm button:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.newBlogForm input {
+  border: solid;
+  border-radius: 4px;
+  height: 25px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .outerNewBlogForm {
+    width: 100%;
+  }
+  .newBlogForm {
+    width: 90%;
+    height: 70vh;
+  }
+  .newBlogForm h2 {
+    height: 15%;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .newBlogForm {
+    width: 90%;
+  }
+  .newBlogForm h2 {
+    height: 15%;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .outerNewBlogForm {
+    margin-top: 10em;
+  }
+  .newBlogForm {
+    width: 65vw;
+  }
+  .newBlogForm h2 {
+    font-size: 3em;
+    height: 4em;
+  }
+  .newBlogForm h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+  .newBlogForm input {
+    height: 1.2em;
+    width: 10em;
+    font-size: 2.5em;
+  }
+  .newBlogForm button {
+    width: 10em;
+    height: 70px;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .outerNewBlogForm {
+    margin-top: 10em;
+  }
+  .newBlogForm {
+    height: 70vh;
+  }
+  .newBlogForm h2 {
+    font-size: 3em;
+  }
+  .newBlogForm h4 {
+    margin-top: -3em;
+    margin-bottom: 2em;
+    font-size: 2em;
+  }
+  .newBlogForm input {
+    height: 1.2em;
+    width: 9em;
+    font-size: 2em;
+  }
+  .newBlogForm button {
+    width: 7em;
+    height: 2em;
+    font-size: 2em;
+  }
+}

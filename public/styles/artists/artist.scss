@@ -1,0 +1,496 @@
+.artistRoot {
+  text-align: -webkit-center;
+  margin-top: 7em;
+}
+.artistHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+.artistStateLink {
+  height: 0px;
+  cursor: pointer;
+  padding-top: 2em;
+}
+.artistStateImage {
+  height: 140px;
+  width: 140px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.artistStateImage:hover {
+  transform: scale(1.2);
+}
+.artistNameHeader h1 {
+  margin-bottom: 0;
+}
+.artistNameHeader h3 {
+  margin-top: 0px;
+  margin-bottom: 2em;
+}
+.artistTitle {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 2em;
+}
+.artistCity {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Oswald', sans-serif;
+}
+.artistSaveButton {
+  color: whitesmoke;
+  background-color: black;
+  border-radius: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.artistSaveButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+.artistLikesDislikes {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.artistLikeDislikeButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+  cursor: pointer;
+}
+.artistLikeDislikeButton:focus {
+  outline: 0;
+}
+.artistLikeDislikeImage {
+  height: 30px;
+  width: 30px;
+}
+.artistAdminButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.artistEditLink {
+  margin-right: 125px;
+}
+.artistEditdelete {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.artistEditdelete:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+.artistGenreLink {
+  display: inline-grid;
+  grid-template-rows: 120px;
+  grid-template-columns: 120px;
+  align-items: center;
+  border: 2px solid black;
+  margin: 3em 20px 0 0;
+  padding: 5px;
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  height: 130px;
+  cursor: pointer;
+}
+.artistGenreLink:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.artistRelatedBlogsContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  margin-left: 2em;
+  margin-right: 2em;
+  border: solid black;
+  padding: 1em;
+}
+.artistSingleRelatedBlog {
+  display: flex;
+  width: 26em;
+  justify-content: space-around;
+}
+.artistRelatedBlogPic {
+  height: 13em;
+  width: 12em;
+  display: inline-block;
+  overflow: hidden;
+}
+.artistRelatedBlogPic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.artistSingleRelatedBlogInfo {
+  margin: 5px auto;
+  max-width: 50%;
+}
+.artistSingleRelatedBlogInfo h6 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.artistRelatedBlogButton {
+  background-color: black;
+  color: white;
+  width: 9em;
+  height: 36px;
+  transition: 0.3s;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
+.artistRelatedBlogButton:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+.artistSoundcloudAndYoutube {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5em;
+}
+.artistYoutube {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.artistCommentContainer {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  margin-left: 6em;
+}
+.artistCommentForm {
+  margin-bottom: 30px;
+}
+.artistCommentForm textarea {
+  height: 3em;
+  width: 23em;
+  border: solid;
+}
+.artistCommentForm button {
+  margin-left: 1em;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.artistCommentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.artistSingleComment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.likesDislikes {
+  display: flex;
+}
+.likeDislikeButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+  cursor: pointer;
+}
+.likeDislikeButton:focus {
+  outline: 0;
+}
+.likeDislikeImage {
+  height: 30px;
+  width: 30px;
+}
+.deleteCommentButton {
+  margin-top: 13px;
+  width: 32px;
+  height: 29px;
+  border-radius: 27px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-left: 6px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .artistHeader {
+    width: 100%;
+    margin-left: -3em;
+  }
+  .artistStateImage {
+    height: 80px;
+    width: 80px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: -5em;
+  }
+  .artistNameHeader {
+    width: 18em;
+  }
+  .artistNameHeader h1 {
+    font-size: 1.3em;
+  }
+  .artistNameHeader h3 {
+    font-size: 1em;
+  }
+  .artistLikeDislikeButton {
+    height: 35px;
+    width: 47px;
+  }
+  .artistLikeDislikeImage {
+    height: 30px;
+    width: 30px;
+  }
+  .artistGenreLink {
+    grid-template-rows: 80px;
+    grid-template-columns: 80px;
+    height: 95px;
+    margin-right: -31px;
+    margin-left: -5em;
+  }
+  .artistRelatedBlogsContainer {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  .artistSingleRelatedBlog {
+    margin-bottom: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .artistRelatedBlogPic {
+    width: 15em;
+    width: 15em;
+  }
+  .artistSoundcloudAndYoutube {
+    height: auto;
+    margin-top: 5em;
+    flex-direction: column;
+  }
+  .artistSoundcloud {
+    margin-bottom: 5em;
+  }
+  .artistSoundcloud iframe {
+    width: 28em;
+  }
+  .artistYoutube iframe {
+    width: 28em;
+  }
+  .artistCommentContainer {
+    margin-top: 5em;
+    margin-left: 3em;
+  }
+  .likeDislikeButton {
+    height: 35px;
+    width: 47px;
+  }
+  .likeDislikeImage {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .artistRoot {
+    margin-top: 7em;
+  }
+  .artistRelatedBlogsContainer {
+    flex-wrap: wrap;
+  }
+  .artistSoundcloudAndYoutube {
+    flex-direction: column;
+    margin-right: -1em;
+    height: auto;
+  }
+  .artistSoundcloud {
+    margin-bottom: 5em;
+  }
+  .artistCommentContainer {
+    margin-top: 5em;
+    margin-left: 8em;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .artistRoot {
+    margin-top: 10em;
+  }
+  .artistStateImage {
+    height: 180px;
+    width: 180px;
+  }
+  .artistTitle {
+    font-size: 3em;
+  }
+  .artistCity {
+    font-size: 1.5em;
+  }
+  .artistSaveButton {
+    font-size: 1.2em;
+  }
+  .artistLikeDislikeButton {
+    height: 42px;
+    width: 47px;
+  }
+  .artistLikeDislikeImage {
+    height: 40px;
+    width: 40px;
+  }
+  .artistGenreLink {
+    font-size: 1.5em;
+    height: 7em;
+  }
+  .artistCommentContainer {
+    margin-left: 10em;
+  }
+  .artistCommentForm label {
+    font-size: 1.2em;
+  }
+  .artistCommentForm button {
+    width: 5em;
+    height: 2em;
+  }
+  .artistSingleComment p {
+    font-size: 1.4em;
+  }
+  .likesDislikes p {
+    font-size: 1.4em;
+  }
+  .likeDislikeButton {
+    height: 42px;
+    width: 47px;
+  }
+  .likeDislikeImage {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .artistRoot {
+    margin-top: 10em;
+  }
+  .artistStateImage {
+    height: 180px;
+    width: 180px;
+  }
+  .artistTitle {
+    font-size: 4em;
+  }
+  .artistCity {
+    font-size: 2em;
+  }
+  .artistSaveButton {
+    font-size: 1.5em;
+  }
+  .artistLikesDislikes p {
+    font-size: 2.5em;
+  }
+  .artistLikeDislikeButton {
+    height: 47px;
+    width: 53px;
+  }
+  .artistLikeDislikeImage {
+    height: 37px;
+    width: 37px;
+  }
+  .artistGenreLink {
+    grid-template-rows: 150px;
+    grid-template-columns: 150px;
+    font-size: 1.5em;
+    height: 7em;
+    line-height: 1.5;
+  }
+  .artistSingleRelatedBlog {
+    width: auto;
+  }
+  .artistRelatedBlogPic {
+    height: 16em;
+    width: 16em;
+  }
+  .artistSoundcloud {
+    margin-top: 5em;
+  }
+  .artistSoundcloud iframe {
+    height: 1300px;
+    width: 800px;
+  }
+  .artistYoutube {
+    height: auto;
+    margin-top: 5em;
+  }
+  .artistYoutube iframe {
+    height: 640px;
+    width: 890px;
+  }
+  .artistCommentContainer {
+    margin-top: 1em;
+    margin-left: 20em;
+  }
+  .artistCommentForm label {
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .artistCommentForm button {
+    width: 4em;
+    height: 2em;
+    font-size: 1.4em;
+  }
+  .artistCommentForm textarea {
+    height: 4em;
+    width: 37em;
+  }
+  .artistSingleComment p {
+    font-size: 1.4em;
+  }
+  .likesDislikes p {
+    font-size: 2.3em;
+  }
+  .likeDislikeButton {
+    height: 47px;
+    width: 53px;
+  }
+  .likeDislikeImage {
+    height: 37px;
+    width: 37px;
+  }
+}

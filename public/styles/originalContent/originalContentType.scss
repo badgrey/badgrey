@@ -1,0 +1,146 @@
+.OCcontainerDiv {
+  margin-top: 7em;
+}
+.OCheader {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  flex-direction: column;
+  padding-top: 2em;
+}
+.OCheader h1 {
+  font-family: 'Oswald', sans-serif;
+}
+.OCcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.singleoc {
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ocLikesDislikes {
+  display: flex;
+}
+.ocLikeDislikeButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+  cursor: pointer;
+}
+.ocLikeDislikeButton:focus {
+  outline: 0;
+}
+.ocLikeDislikeImage {
+  height: 30px;
+  width: 30px;
+}
+.ocSavedArtistsButton {
+  margin-top: 13px;
+  width: 32px;
+  height: 29px;
+  border-radius: 27px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.ocSavedArtistsButton:hover {
+  background-color: whitesmoke;
+  color: black;
+  transform: scale(1.2);
+}
+.ocViewMoreButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4em;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .OCcontainerDiv {
+    width: 100%;
+  }
+  .singleoc iframe {
+    width: 400px;
+  }
+  .ocLikeDislikeButton {
+    height: 35px;
+    width: 47px;
+  }
+  .ocLikeDislikeImage {
+    height: 30px;
+    width: 30px;
+  }
+  .ocSavedArtistsButton {
+    width: 22px;
+    height: 19px;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .OCcontainerDiv {
+    margin-top: 10em;
+  }
+  .OCheader h1 {
+    font-size: 3.5em;
+  }
+  .ocLikesDislikes p {
+    font-size: 1.4em;
+  }
+  .ocLikeDislikeButton {
+    height: 42px;
+    width: 47px;
+  }
+  .ocLikeDislikeImage {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .OCcontainerDiv {
+    margin-top: 10em;
+  }
+  .OCheader h1 {
+    font-size: 4em;
+  }
+  .newOC {
+    font-size: 3em;
+  }
+  .newOC label {
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  .singleoc iframe {
+    width: 62em;
+    height: 33em;
+  }
+  .ocLikesDislikes p {
+    font-size: 2.3em;
+  }
+  .ocLikeDislikeButton {
+    height: 47px;
+    width: 53px;
+  }
+  .ocLikeDislikeImage {
+    height: 37px;
+    width: 37px;
+  }
+  .ocSavedArtistsButton {
+    width: 62px;
+    height: 69px;
+    font-size: 2em;
+  }
+}

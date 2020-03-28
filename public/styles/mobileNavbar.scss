@@ -1,0 +1,45 @@
+.mobileNavbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #141210;
+  text-align: center;
+  height: 104px;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.mobileWolfLogo {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  margin-left: 1em;
+}
+.mobileWolfLogo:hover {
+  opacity: 0.5;
+}
+.mobileNavLinks {
+  display: flex;
+  justify-content: center;
+  width: 7em;
+}
+.mobileBarmenuPic {
+  cursor: pointer;
+  margin-top: 1.5em;
+  margin-right: 0.5em;
+  height: 70px;
+  width: 70px;
+}
+.mobileBarmenuPic:hover {
+  opacity: 0.5;
+}
+.mobileNavOptions {
+  background-color: #141210;
+  margin-top: -1px;
+  position: relative;
+}
+.mobileSingleNavOption a:hover {
+  color: grey;
+}

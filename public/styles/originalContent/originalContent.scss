@@ -1,0 +1,85 @@
+.ocSelectorContainer {
+  height: 100%;
+}
+.ocSelectorHeader {
+  margin-top: 7em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3em;
+  flex-direction: column;
+  padding-top: 2em;
+}
+.ocSelectorOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 11em;
+  margin-right: 11em;
+}
+.ocOption {
+  width: 25em;
+  height: 30em;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.ocOption:hover img {
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+  filter: brightness(60%);
+  text-shadow: 0 0 3px whitesmoke;
+  color: whitesmoke;
+}
+.ocOption:hover .ocOptionTextContainer {
+  opacity: 1;
+  z-index: 10;
+}
+.ocOption img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .ocSelectorOptions {
+    justify-content: center;
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+  .ocOption {
+    width: 13.5em;
+    height: 21em;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .ocSelectorOptions {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+  .ocOption {
+    width: 18em;
+    height: 23em;
+  }
+}
+
+//15" and Up
+@media only screen and (min-width: 1400px) {
+  .ocSelectorContainer {
+    height: 48em;
+  }
+  .ocSelectorHeader {
+    margin-top: 10em;
+  }
+  .ocSelectorHeader h1 {
+    font-size: 3.5em;
+  }
+  .ocOption {
+    width: 26em;
+    height: 32em;
+  }
+}
