@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../public/style.scss';
 import {
   fetchArtists,
   fetchSavedArtists,
