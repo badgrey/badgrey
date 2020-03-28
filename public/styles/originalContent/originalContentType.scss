@@ -13,6 +13,11 @@
 .OCheader h1 {
   font-family: 'Oswald', sans-serif;
 }
+.OCcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .singleoc {
   margin-bottom: 2em;
   display: flex;

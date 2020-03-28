@@ -45,7 +45,9 @@ class MobileNavbar extends Component {
                     <div onClick={this.renderDropDown}>
                       <img
                         className="mobileBarmenuPic"
-                        src={require('../../public/images/barmenu.png')}
+                        src={
+                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                        }
                       />
                     </div>
                     {this.state.clicked === false ? null : (
@@ -93,7 +95,9 @@ class MobileNavbar extends Component {
                     <div onClick={this.renderDropDown}>
                       <img
                         className="mobileBarmenuPic"
-                        src={require('../../public/images/barmenu.png')}
+                        src={
+                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                        }
                       />
                     </div>
                     {this.state.clicked === false ? null : (
@@ -130,7 +134,9 @@ class MobileNavbar extends Component {
                 <div onClick={this.renderDropDown}>
                   <img
                     className="mobileBarmenuPic"
-                    src={require('../../public/images/barmenu.png')}
+                    src={
+                      'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                    }
                   />
                 </div>
                 {this.state.clicked === false ? null : (

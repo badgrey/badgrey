@@ -6,7 +6,8 @@ body {
   width: 100%;
 }
 #app {
-  background: no-repeat center url('../images/websitebackground.png');
+  background: no-repeat center
+    url('https://badgrey-other.s3.us-east-2.amazonaws.com/websitebackground.png');
   background-size: 80%;
   background-attachment: fixed;
   font-family: 'Oswald', sans-serif;
