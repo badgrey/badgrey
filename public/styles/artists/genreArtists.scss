@@ -1,0 +1,185 @@
+.genreArtistsDiv {
+  margin-top: 7em;
+  height: 100%;
+}
+.genreArtistsTitle {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 2em;
+}
+.genreArtistsScrolltoload {
+  text-align: center;
+  margin: 0px;
+}
+.genreArtistsSearch {
+  display: flex;
+  justify-content: center;
+}
+.genreArtistsSearch form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
+.genreArtistsSearchLabel {
+  margin-right: 20px;
+}
+.genreArtistsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 9em;
+  margin-right: 9em;
+}
+.genreArtistPic {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.genreArtistPic:hover {
+  transform: scale(1.2);
+}
+.genreArtistPic:hover img {
+  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+  text-shadow: 0 0 3px whitesmoke;
+  color: whitesmoke;
+}
+.genreArtistPic:hover .genreArtistName {
+  opacity: 1;
+  z-index: 10;
+}
+.genreArtistPic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.genreArtistName {
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  transition: 0.3s;
+  font-family: 'Oswald', sans-serif;
+}
+.genreArtistNameText {
+  margin-top: 20px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .genreArtistsDiv {
+    width: 100%;
+  }
+  .genreArtistsContainer {
+    margin: 0px;
+    width: 98%;
+  }
+  .genreArtistPic {
+    height: 85px;
+    width: 85px;
+  }
+  .genreArtistName {
+    opacity: 1;
+    margin-top: 30px;
+    margin-left: 22px;
+    font-size: 7px;
+  }
+  .genreArtistNameText {
+    width: 49px;
+    margin-top: 5px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .genreArtistsContainer {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+  .genreArtistName {
+    opacity: 1;
+    margin-left: 28px;
+  }
+  .genreArtistNameText {
+    width: 92px;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .genreArtistsDiv {
+    margin-top: 10em;
+  }
+  .genreArtistsTitle {
+    font-size: 3em;
+  }
+  .genreArtistsSearch form {
+    margin-left: 8em;
+  }
+  .genreArtistsSearch {
+    font-size: 1.3em;
+  }
+  .genreArtistsSearchLabel {
+    margin-top: 4px;
+  }
+  .genreArtistPic {
+    height: 180px;
+    width: 180px;
+  }
+  .genreArtistName {
+    margin-top: 76px;
+    margin-left: 22px;
+    margin-right: 50px;
+    font-size: 20px;
+  }
+  .genreArtistNameText {
+    margin-top: 10px;
+    width: 130px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .genreArtistsDiv {
+    margin-top: 10em;
+  }
+  .genreArtistsTitle {
+    font-size: 4em;
+  }
+  .genreArtistsScrolltoload {
+    font-size: 1.3em;
+  }
+  .genreArtistsSearch input {
+    font-size: 1.5em;
+  }
+  .genreArtistsSearch form {
+    margin-bottom: 78px;
+    margin-top: 51px;
+    margin-left: 8em;
+  }
+  .genreArtistsSearchLabel {
+    margin-top: 8px;
+    font-size: 1.5em;
+  }
+  .genreArtistPic {
+    width: 280px;
+    height: 280px;
+  }
+  .genreArtistName {
+    width: 280px;
+    height: 280px;
+    margin: 0px;
+    text-align: center;
+  }
+  .genreArtistNameText {
+    margin-top: 50%;
+    font-size: 2em;
+  }
+}

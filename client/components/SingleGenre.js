@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../public/style.scss';
+import '../../public/styles/index.scss';
 import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../store';
 
 //component for artists under single genre
@@ -52,27 +52,29 @@ export class SingleGenre extends Component {
       artist.name.toLowerCase().includes(this.state.search.toLowerCase())
     );
     return this.props.genreArtists.length === 0 ? null : (
-      <div className="artistsDiv">
-        <h1 className="title">{this.props.genreArtists[0].genre}</h1>
-        <h6 className="scrolltoload">Scroll to Load More</h6>
-        <div className="artistSearch">
+      <div className="genreArtistsDiv">
+        <h1 className="genreArtistsTitle">
+          {this.props.genreArtists[0].genre}
+        </h1>
+        <h6 className="genreArtistsScrolltoload">Scroll to Load More</h6>
+        <div className="genreArtistsSearch">
           <form>
-            <label className="searchLabel">Search Artists</label>
+            <label className="genreArtistsSearchLabel">Search Artists</label>
             <input onChange={this.handleSearch} placeholder="Name" />
           </form>
         </div>
-        <div className="state">
+        <div className="genreArtistsContainer">
           {artists.map(artist => (
             //map over all artists that belong to chosen genre
             <div key={artist.id}>
               <Link
-                className="artistPic"
+                className="genreArtistPic"
                 to={`/discover/${artist.stateAbbrev}/${artist.name
                   .split(' ')
                   .join('') + `_${artist.id}`}`}
               >
-                <div className="artistName">
-                  <div className="artistNameText">{artist.name}</div>
+                <div className="genreArtistName">
+                  <div className="genreArtistNameText">{artist.name}</div>
                 </div>
                 <img src={artist.imageURL} />
               </Link>
