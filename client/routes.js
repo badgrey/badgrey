@@ -6,9 +6,9 @@ import {
   Login,
   Signup,
   Discover,
-  State,
+  StateArtists,
   Artist,
-  SingleGenre,
+  GenreArtists,
   NewArtist,
   EditArtist,
   EditUser,
@@ -19,22 +19,13 @@ import {
   Blog,
   EditBlog,
   NewBlog,
-  // AllInterviews,
-  // Interview,
-  // NewInterview,
   OriginalContent,
   OriginalContentType,
   Submit
   // AllBricksChapters,
   // BricksChapter
 } from './components';
-import {
-  me,
-  fetchArtists,
-  fetchBlogs,
-  fetchInterviews,
-  fetchOriginalContent
-} from './store';
+import { me, fetchArtists, fetchBlogs, fetchOriginalContent } from './store';
 
 /**
  * COMPONENT
@@ -54,13 +45,11 @@ class Routes extends Component {
         <Route exact path="/" component={Discover} />
         <Route exact path="/discover" component={Discover} />
         <Route exact path="/discover/all" component={AllArtists} />
-        <Route exact path="/discover/genre/:genre" component={SingleGenre} />
-        <Route exact path="/discover/:state" component={State} />
+        <Route exact path="/discover/genre/:genre" component={GenreArtists} />
+        <Route exact path="/discover/:state" component={StateArtists} />
         <Route exact path="/discover/:state/:artist" component={Artist} />
         <Route exact path="/allblogs" component={AllBlogs} />
         <Route exact path="/allblogs/:id" component={Blog} />
-        {/*<Route exact path="/interviews" component={AllInterviews} />*/}
-        {/*<Route exact path="/interviews/:interview" component={Interview} />*/}
         <Route exact path="/originalcontent" component={OriginalContent} />
         <Route
           exact
@@ -80,7 +69,6 @@ class Routes extends Component {
             <Route exact path="/users" component={AllUsers} />
             <Route exact path="/newBlog" component={NewBlog} />
             <Route exact path="/editblog/:id" component={EditBlog} />
-            {/*<Route exact path="/newInterview" component={NewInterview} />*/}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -107,7 +95,6 @@ const mapDispatch = dispatch => {
       dispatch(me());
       dispatch(fetchArtists());
       dispatch(fetchBlogs());
-      dispatch(fetchInterviews());
       dispatch(fetchOriginalContent());
     }
   };

@@ -54,7 +54,9 @@ class Navbar extends Component {
                     >
                       <img
                         className="barmenuPic"
-                        src={require('../../public/images/barmenu.png')}
+                        src={
+                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                        }
                       />
                     </div>
                     {this.state.clicked === false ? null : (
@@ -90,7 +92,9 @@ class Navbar extends Component {
                     >
                       <img
                         className="barmenuPic"
-                        src={require('../../public/images/barmenu.png')}
+                        src={
+                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                        }
                       />
                     </div>
                     {this.state.clicked === false ? null : (
@@ -118,7 +122,9 @@ class Navbar extends Component {
                 <div className="mnavMnuContainer" onClick={this.renderDropDown}>
                   <img
                     className="barmenuPic"
-                    src={require('../../public/images/barmenu.png')}
+                    src={
+                      'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
+                    }
                   />
                 </div>
                 {this.state.clicked === false ? null : (

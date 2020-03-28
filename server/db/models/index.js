@@ -2,7 +2,6 @@ const User = require('./user');
 const Artist = require('./artist');
 const Blog = require('./blog');
 const Comment = require('./comment');
-const Interview = require('./interview');
 const OriginalContent = require('./originalcontent');
 const BricksChapters = require('./bricksChapter');
 const ComicPage = require('./comicPage');
@@ -19,22 +18,16 @@ User.hasMany(Blog);
 Blog.belongsTo(Artist);
 Artist.hasMany(Blog);
 
-//setting up comment association with artists and blogs and interviews and Bricks
+//setting up comment association with artists and blogs and Bricks
 Comment.belongsTo(Blog);
 Blog.hasMany(Comment);
 Comment.belongsTo(Artist);
 Artist.hasMany(Comment);
-Comment.belongsTo(Interview);
-Interview.hasMany(Comment);
 Comment.belongsTo(BricksChapters);
 BricksChapters.hasMany(Comment);
 //setting association between user and comment
 Comment.belongsTo(User);
 User.hasMany(Comment);
-
-//setting association with interview and artist
-Interview.belongsTo(Artist);
-Artist.hasOne(Interview);
 
 //setting associtation of bricks volume to bricks chapter
 ComicPage.belongsTo(BricksChapters);
@@ -50,15 +43,6 @@ Blog.belongsToMany(User, { through: 'Dislike_Blog', as: 'BlogDislikes' });
 Artist.belongsToMany(User, { through: 'Like_Artist', as: 'ArtistLikes' });
 Artist.belongsToMany(User, { through: 'Dislike_Artist', as: 'ArtistDislikes' });
 
-Interview.belongsToMany(User, {
-  through: 'Like_Interview',
-  as: 'InterviewLikes'
-});
-Interview.belongsToMany(User, {
-  through: 'Dislike_Interview',
-  as: 'InterviewDislikes'
-});
-
 OriginalContent.belongsToMany(User, {
   through: 'Like_OriginalContent',
   as: 'OriginalContentLikes'
@@ -73,7 +57,6 @@ module.exports = {
   Artist,
   Blog,
   Comment,
-  Interview,
   OriginalContent,
   BricksChapters,
   ComicPage
