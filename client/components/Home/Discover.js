@@ -107,7 +107,9 @@ export class Discover extends Component {
           <div className="internationalLink">
             <img
               className="globe"
-              src={require('../../../public/images/states/International.png')}
+              src={
+                'https://badgrey-states.s3.us-east-2.amazonaws.com/International.png'
+              }
               onClick={this.viewGlobalArtists}
             />
             <label className="globeLabel">International</label>
@@ -155,7 +157,9 @@ export class Discover extends Component {
           <div className="internationalLink">
             <img
               className="globe"
-              src={require('../../../public/images/states/International.png')}
+              src={
+                'https://badgrey-states.s3.us-east-2.amazonaws.com/International.png'
+              }
               onClick={this.viewGlobalArtists}
             />
             <label className="globeLabel">International</label>
