@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../../public/styles/index.scss';
-import { YoutubePlayer } from '../index';
+import { YoutubePlayer, Comments } from '../';
 import {
   fetchArtists,
   deleteCurrentArtist,
@@ -9,10 +9,6 @@ import {
   addNewSavedArtist,
   fetchBlogs,
   fetchArtistComments,
-  createNewComment,
-  deleteCurrentComment,
-  likeCurrentComment,
-  dislikeCurrentComment,
   likeCurrentArtist,
   dislikeCurrentArtist,
   deleteError
@@ -20,30 +16,22 @@ import {
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { sortedArtistsSelector } from '../../store/selectors/artists';
-import { sortedCommentsSelector } from '../../store/selectors/comments';
 
 //individual artist page component
 export class Artist extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      savedCheck: true
-    };
-    this.deleteArtist = this.deleteArtist.bind(this);
-    this.saved = this.saved.bind(this);
-    this.saveArtist = this.saveArtist.bind(this);
-    this.postComment = this.postComment.bind(this);
-  }
+  state = {
+    savedCheck: true
+  };
 
   //getting initial data and comments for specific user when getting to page
-  componentDidMount() {
+  async componentDidMount() {
     window.scroll(0, 0);
     if (this.props.chosenArtist === []) {
-      this.props.loadInitialData();
+      await this.props.loadInitialData();
     }
     // eslint-disable-next-line radix
     const id = parseInt(this.props.match.params.artist.split('_')[1]);
-    this.props.getArtistComments(id);
+    await this.props.getArtistComments(id);
   }
 
   componentDidUpdate() {
@@ -51,46 +39,33 @@ export class Artist extends Component {
   }
 
   //deletes artist
-  async deleteArtist() {
+  deleteArtist = async () => {
     await axios.post('/api/deleteArtistPicture', {
       name: this.props.chosenArtist[0].fileKey
     });
     const state = this.props.chosenArtist[0].stateAbbrev;
     this.props.delete(this.props.chosenArtist[0].id);
     this.props.history.push(`/discover/${state}`);
-  }
+  };
 
-  saved() {
+  saved = async () => {
     if (
       this.props.isLoggedIn &&
       this.props.savedArtists.length === 0 &&
       this.state.savedCheck
     ) {
-      this.props.fetchSaved();
+      await this.props.fetchSaved();
       this.setState({ savedCheck: false });
     }
-  }
-
-  //posts commentand resets the form
-  postComment(event) {
-    event.preventDefault();
-    let commentInfo = {
-      comment: { comment: event.target.comment.value },
-      user: this.props.user,
-      artist: this.props.chosenArtist[0]
-    };
-    document.getElementById('form').reset();
-    this.props.submitForm(commentInfo);
-    this.props.getArtistComments(this.props.chosenArtist[0].id);
-  }
+  };
 
   //saves artist to users saved page
-  saveArtist() {
-    this.props.saveCurrentArtist({
+  saveArtist = async () => {
+    await this.props.saveCurrentArtist({
       id: this.props.chosenArtist[0].id,
       user: this.props.user
     });
-  }
+  };
 
   //gets rid of error message after a little
   renderErrorMessage() {
@@ -243,90 +218,7 @@ export class Artist extends Component {
             })}
           </div>
         </div>
-        <div className="artistCommentContainer">
-          <form
-            onSubmit={this.postComment}
-            id="form"
-            className="artistCommentForm"
-          >
-            <label>Comment</label>
-            <textarea name="comment" type="text" required />
-            <button type="submit">Post</button>
-            {error
-              ? //posts error if trying to comment on artist page and not logged in
-                error.error === 'Login To Comment' && (
-                  <div className="commentPostError">
-                    <p>{error.error}</p>
-                  </div>
-                )
-              : null}
-          </form>
-          <div className="artistCommentList">
-            {//mapping over all artist comments
-            this.props.comments.map(comment => {
-              return (
-                <div className="artistSingleComment" key={comment.id}>
-                  <p>{comment.user.username}</p>
-                  <p>{comment.comment}</p>
-                  <div className="likesDislikes">
-                    <button
-                      className="likeDislikeButton"
-                      onClick={() =>
-                        this.props.likeComment({
-                          comment,
-                          user: this.props.user
-                        })
-                      }
-                    >
-                      <img
-                        className="likeDislikeImage"
-                        src={
-                          'https://badgrey-other.s3.us-east-2.amazonaws.com/like.png'
-                        }
-                      />
-                    </button>
-                    <p>{comment.Likes.length}</p>
-                    <button
-                      className="likeDislikeButton"
-                      onClick={() =>
-                        this.props.dislikeComment({
-                          comment,
-                          user: this.props.user
-                        })
-                      }
-                    >
-                      <img
-                        className="likeDislikeImage"
-                        src={
-                          'https://badgrey-other.s3.us-east-2.amazonaws.com/dislike.png'
-                        }
-                      />
-                    </button>
-                    <p>{comment.Dislikes.length}</p>
-                    {this.props.user.id !== comment.user.id ? null : (
-                      <div>
-                        <button
-                          className="deleteCommentButton"
-                          onClick={() => this.props.deleteComment(comment.id)}
-                        >
-                          X
-                        </button>
-                      </div>
-                    )}
-                    {error
-                      ? //posts error when trying to like or dislike comment
-                        error.error === 'Login To Upvote/Downvote' && (
-                          <div className="commentPostError">
-                            <p>{error.error}</p>
-                          </div>
-                        )
-                      : null}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <Comments artist={this.props.chosenArtist[0]} />
       </div>
     );
   }
@@ -341,7 +233,6 @@ const mapState = (state, ownProps) => {
       return artist.name.split(' ').join('') === targetArtist;
     }),
     artists: sortedArtistsSelector(state),
-    comments: sortedCommentsSelector(state),
     isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin,
     user,
@@ -380,18 +271,6 @@ const mapDispatch = dispatch => {
     },
     getArtistComments(id) {
       dispatch(fetchArtistComments(id));
-    },
-    deleteComment(id) {
-      dispatch(deleteCurrentComment(id));
-    },
-    likeComment(comment) {
-      dispatch(likeCurrentComment(comment));
-    },
-    dislikeComment(comment) {
-      dispatch(dislikeCurrentComment(comment));
-    },
-    submitForm(comment) {
-      dispatch(createNewComment(comment));
     },
     likeArtist(artist) {
       dispatch(likeCurrentArtist(artist));
