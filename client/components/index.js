@@ -28,6 +28,7 @@ export { default as OriginalContentType } from './OriginalContent/OriginalConten
 export { default as Navbar } from './navbar';
 export { default as MobileNavbar } from './MobileNavbar';
 export { Login, Signup } from './auth-form';
+export { default as Comments } from './Comments';
 export { default as YoutubePlayer } from './Youtube';
 export { default as Submit } from './Submit';
 export { default as AllBricksChapters } from './TheBricks/AllBricksChapters';

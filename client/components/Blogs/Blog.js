@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../../public/styles/index.scss';
+import { Comments } from '../';
 import {
   fetchBlogs,
   deleteCurrentBlog,
   fetchArtists,
   fetchSavedArtists,
   fetchComments,
-  createNewComment,
-  deleteCurrentComment,
-  likeCurrentComment,
-  dislikeCurrentComment,
   likeCurrentBlog,
   dislikeCurrentBlog,
   deleteError
@@ -18,7 +15,6 @@ import {
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { sortedArtistsSelector } from '../../store/selectors/artists';
-import { sortedCommentsSelector } from '../../store/selectors/comments';
 
 export class Blog extends Component {
   constructor(props) {
@@ -205,91 +201,7 @@ export class Blog extends Component {
             allow="encrypted-media"
           />
         </div>
-        <div className="blogCommentContainer">
-          <form
-            onSubmit={this.postComment}
-            id="form"
-            className="blogCommentForm"
-          >
-            <label>Comment</label>
-            <textarea name="comment" type="text" required />
-            <button type="submit">Post</button>
-            {error
-              ? //throws error if try to comment on blog when not logged in
-                error.error === 'Login To Comment' && (
-                  <div className="commentPostError">
-                    <p>{error.error}</p>
-                  </div>
-                )
-              : null}
-          </form>
-          <div className="blogCommentList">
-            {//maps over specific blogs comments
-            this.props.comments.map(comment => {
-              return (
-                <div className="blogSingleComment" key={comment.id}>
-                  <p>{comment.user.username}</p>
-                  <p>{comment.comment}</p>
-                  <div className="blogLikesDislikes">
-                    <button
-                      className="blogLikeDislikeButton"
-                      onClick={() =>
-                        this.props.likeComment({
-                          comment,
-                          user: this.props.user
-                        })
-                      }
-                    >
-                      <img
-                        className="blogLikeDislikeImage"
-                        src={
-                          'https://badgrey-other.s3.us-east-2.amazonaws.com/like.png'
-                        }
-                      />
-                    </button>
-                    <p>{comment.Likes.length}</p>
-                    <button
-                      className="blogLikeDislikeButton"
-                      onClick={() =>
-                        this.props.dislikeComment({
-                          comment,
-                          user: this.props.user
-                        })
-                      }
-                    >
-                      <img
-                        className="blogLikeDislikeImage"
-                        src={
-                          'https://badgrey-other.s3.us-east-2.amazonaws.com/dislike.png'
-                        }
-                      />
-                    </button>
-                    <p>{comment.Dislikes.length}</p>
-                    {//lets you delete your wn comment
-                    this.props.user.id !== comment.user.id ? null : (
-                      <div>
-                        <button
-                          className="deleteCommentButton"
-                          onClick={() => this.props.deleteComment(comment.id)}
-                        >
-                          X
-                        </button>
-                      </div>
-                    )}
-                    {error
-                      ? //throws error if you are not logged in
-                        error.error === 'Login To Upvote/Downvote' && (
-                          <div className="commentPostError">
-                            <p>{error.error}</p>
-                          </div>
-                        )
-                      : null}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <Comments blog={this.props.chosenBlog[0]} />
       </div>
     );
   }
@@ -307,7 +219,6 @@ const mapState = (state, ownProps) => {
     isAdmin: user.isAdmin,
     user,
     savedArtists,
-    comments: sortedCommentsSelector(state),
     error
   };
 };
@@ -326,18 +237,6 @@ const mapDispatch = dispatch => {
     },
     getBlogComments(id) {
       dispatch(fetchComments(id));
-    },
-    submitForm(comment) {
-      dispatch(createNewComment(comment));
-    },
-    deleteComment(id) {
-      dispatch(deleteCurrentComment(id));
-    },
-    likeComment(comment) {
-      dispatch(likeCurrentComment(comment));
-    },
-    dislikeComment(comment) {
-      dispatch(dislikeCurrentComment(comment));
     },
     likeBlog(blog) {
       dispatch(likeCurrentBlog(blog));

@@ -1,0 +1,153 @@
+.commentContainer {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  margin-left: 6em;
+}
+.commentForm {
+  margin-bottom: 30px;
+}
+.commentForm textarea {
+  height: 3em;
+  width: 23em;
+  border: solid;
+}
+.commentForm button {
+  margin-left: 1em;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.commentList {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.singleComment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.likesDislikes {
+  display: flex;
+}
+.likeDislikeButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  height: 30px;
+  width: 37px;
+  cursor: pointer;
+}
+.likeDislikeButton:focus {
+  outline: 0;
+}
+.likeDislikeImage {
+  height: 30px;
+  width: 30px;
+}
+.deleteCommentButton {
+  margin-top: 13px;
+  width: 32px;
+  height: 29px;
+  border-radius: 27px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-left: 6px;
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+  .commentContainer {
+    margin-top: 5em;
+    margin-left: 3em;
+  }
+  .likeDislikeButton {
+    height: 35px;
+    width: 47px;
+  }
+  .likeDislikeImage {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+//iPad
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .commentContainer {
+    margin-top: 5em;
+    margin-left: 8em;
+  }
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .commentContainer {
+    margin-left: 10em;
+  }
+  .commentForm label {
+    font-size: 1.2em;
+  }
+  .commentForm button {
+    width: 5em;
+    height: 2em;
+  }
+  .singleComment p {
+    font-size: 1.4em;
+  }
+  .likesDislikes p {
+    font-size: 1.4em;
+  }
+  .likeDislikeButton {
+    height: 42px;
+    width: 47px;
+  }
+  .likeDislikeImage {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 1800px) {
+  .commentContainer {
+    margin-top: 1em;
+    margin-left: 20em;
+  }
+  .commentForm label {
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+  .commentForm button {
+    width: 4em;
+    height: 2em;
+    font-size: 1.4em;
+  }
+  .commentForm textarea {
+    height: 4em;
+    width: 37em;
+  }
+  .singleComment p {
+    font-size: 1.4em;
+  }
+  .likesDislikes p {
+    font-size: 2.3em;
+  }
+  .likeDislikeButton {
+    height: 47px;
+    width: 53px;
+  }
+  .likeDislikeImage {
+    height: 37px;
+    width: 37px;
+  }
+}
