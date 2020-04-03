@@ -23,8 +23,8 @@ Comment.belongsTo(Blog);
 Blog.hasMany(Comment);
 Comment.belongsTo(Artist);
 Artist.hasMany(Comment);
-Comment.belongsTo(BricksChapters);
-BricksChapters.hasMany(Comment);
+// Comment.belongsTo(BricksChapters);
+// BricksChapters.hasMany(Comment);
 //setting association between user and comment
 Comment.belongsTo(User);
 User.hasMany(Comment);
