@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../../store';
 import { getStateFullName } from '../../utils/states';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //for indivisula states display of artists that live there
 export class StateArtists extends Component {
@@ -96,16 +97,13 @@ export class StateArtists extends Component {
   }
 }
 
-const mapState = ({ artists, user, savedArtists }, ownProps) => {
+const mapState = (state, ownProps) => {
+  const { artists, user, savedArtists } = state;
   return {
     stateArtists: artists.filter(artist => {
       return artist.stateAbbrev === ownProps.match.params.state;
     }),
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     isLoggedIn: !!user.id,
     user,
     savedArtists

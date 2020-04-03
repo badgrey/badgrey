@@ -8,6 +8,7 @@ import {
   deleteCurrentSavedArtist,
   fetchBlogs
 } from '../../store';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //component for showing saved artists in specific users saved component
 export class SavedArtists extends Component {
@@ -110,14 +111,11 @@ export class SavedArtists extends Component {
   }
 }
 
-const mapState = ({ artists, user, savedArtists }) => {
+const mapState = state => {
+  const { user, savedArtists } = state;
   return {
     savedArtists,
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     isLoggedIn: !!user,
     user
   };

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createNewArtist } from '../../store/artists';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //state and genre options for dropdown
 const stateOptions = [
@@ -201,11 +202,7 @@ export class NewArtist extends Component {
 
 const mapState = state => {
   return {
-    artists: state.artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     isAdmin: state.user.isAdmin
   };
 };

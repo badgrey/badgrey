@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../../store';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //component for artists under single genre
 export class GenreArtists extends Component {
@@ -87,16 +88,13 @@ export class GenreArtists extends Component {
 }
 
 //matches artists with route
-const mapState = ({ artists, user, savedArtists }, ownProps) => {
+const mapState = (state, ownProps) => {
+  const { artists, user, savedArtists } = state;
   return {
     genreArtists: artists.filter(artist => {
       return artist.genre.split(' / ').join('') === ownProps.match.params.genre;
     }),
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     isLoggedIn: !!user.id,
     user,
     savedArtists

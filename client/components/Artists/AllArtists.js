@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import LazyLoad from 'react-lazyload';
 import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../../store';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //component for all artists page
 export class AllArtists extends Component {
@@ -88,13 +89,10 @@ export class AllArtists extends Component {
 }
 
 //putting all artists in alphabetical order and user and saved artists on props
-const mapState = ({ artists, user, savedArtists }) => {
+const mapState = state => {
+  const { user, savedArtists } = state;
   return {
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     isLoggedIn: !!user.id,
     user,
     savedArtists
