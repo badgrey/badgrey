@@ -6,6 +6,7 @@ import Genre from './Genre';
 import BlogHomePage from './BlogHomePage';
 import { FeaturedContent } from './FeaturedContent';
 import { statesCustomConfig } from '../../utils/states';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 export class Discover extends Component {
   constructor(props) {
@@ -182,13 +183,10 @@ export class Discover extends Component {
   }
 }
 
-const mapState = ({ artists, user, savedArtists, blogs, originalcontent }) => {
+const mapState = state => {
+  const { user, savedArtists, blogs, originalcontent } = state;
   return {
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     user: user,
     isLoggedIn: !!user.id,
     savedArtists: savedArtists,

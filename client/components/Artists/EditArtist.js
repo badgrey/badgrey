@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { editCurrentArtist } from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //state and genre options for drop down
 const stateOptions = [
@@ -225,17 +226,14 @@ export class EditArtist extends Component {
 }
 
 //chooses artist based off route
-const mapState = ({ artists, user }, ownProps) => {
+const mapState = (state, ownProps) => {
+  const { artists, user } = state;
   return {
     chosenArtist: artists.filter(artist => {
       let targetArtist = ownProps.match.params.artist.split('_')[0];
       return artist.name.split(' ').join('') === targetArtist;
     }),
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     user,
     isAdmin: user.isAdmin
   };
