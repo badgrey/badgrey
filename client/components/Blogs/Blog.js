@@ -17,6 +17,8 @@ import {
 } from '../../store';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { sortedArtistsSelector } from '../../store/selectors/artists';
+import { sortedCommentsSelector } from '../../store/selectors/comments';
 
 export class Blog extends Component {
   constructor(props) {
@@ -293,16 +295,10 @@ export class Blog extends Component {
   }
 }
 
-const mapState = (
-  { artists, blogs, user, savedArtists, comments, error },
-  ownProps
-) => {
+const mapState = (state, ownProps) => {
+  const { blogs, user, savedArtists, error } = state;
   return {
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: sortedArtistsSelector(state),
     blogs: blogs.blogs,
     chosenBlog: blogs.blogs.filter(blog => {
       return '' + blog.id === ownProps.match.params.id;
@@ -311,11 +307,7 @@ const mapState = (
     isAdmin: user.isAdmin,
     user,
     savedArtists,
-    comments: comments.sort((commentA, commentB) => {
-      if (commentA.Likes.length < commentB.Likes.length) return 1;
-      if (commentA.Likes.length > commentB.Likes.length) return -1;
-      return 0;
-    }),
+    comments: sortedCommentsSelector(state),
     error
   };
 };

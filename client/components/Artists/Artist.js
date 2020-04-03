@@ -20,6 +20,7 @@ import {
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { sortedArtistsSelector } from '../../store/selectors/artists';
+import { sortedCommentsSelector } from '../../store/selectors/comments';
 
 //individual artist page component
 export class Artist extends Component {
@@ -333,18 +334,14 @@ export class Artist extends Component {
 
 //putting artists comments chosen artist savedartists error and is saved on props
 const mapState = (state, ownProps) => {
-  const { artists, user, savedArtists, comments, error } = state;
+  const { artists, user, savedArtists, error } = state;
   return {
     chosenArtist: artists.filter(artist => {
       let targetArtist = ownProps.match.params.artist.split('_')[0];
       return artist.name.split(' ').join('') === targetArtist;
     }),
     artists: sortedArtistsSelector(state),
-    comments: comments.sort((commentA, commentB) => {
-      if (commentA.Likes.length < commentB.Likes.length) return 1;
-      if (commentA.Likes.length > commentB.Likes.length) return -1;
-      return 0;
-    }),
+    comments: sortedCommentsSelector(state),
     isLoggedIn: !!user.isLoggedIn,
     isAdmin: user.isAdmin,
     user,
