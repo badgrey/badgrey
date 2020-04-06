@@ -6,7 +6,6 @@ import Genre from './Genre';
 import BlogHomePage from './BlogHomePage';
 import { FeaturedContent } from './FeaturedContent';
 import { statesCustomConfig } from '../../utils/states';
-import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 export class Discover extends Component {
   constructor(props) {
@@ -184,9 +183,9 @@ export class Discover extends Component {
 }
 
 const mapState = state => {
-  const { user, savedArtists, blogs, originalcontent } = state;
+  const { artists, user, savedArtists, blogs, originalcontent } = state;
   return {
-    artists: sortedArtistsSelector(state),
+    artists: artists.artists,
     user: user,
     isLoggedIn: !!user.id,
     savedArtists: savedArtists,

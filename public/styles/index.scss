@@ -63,6 +63,9 @@ nav a {
   color: ghostwhite;
   cursor: pointer;
 }
+.hidden {
+  display: none;
+}
 
 @media only screen and (max-width: 900px) {
   .noneOnMobile {
@@ -95,3 +98,4 @@ nav a {
 @import './navbar.scss';
 @import './submit.scss';
 @import './comments.scss';
+@import './pagination.scss';

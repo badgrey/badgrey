@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../../../public/styles/index.scss';
 import { YoutubePlayer, Comments } from '../';
 import {
-  fetchArtists,
+  fetchAllArtists,
   deleteCurrentArtist,
   fetchSavedArtists,
   addNewSavedArtist,
@@ -257,7 +257,7 @@ const mapState = (state, ownProps) => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(fetchArtists());
+      dispatch(fetchAllArtists());
       dispatch(fetchBlogs());
     },
     delete(id) {

@@ -1,0 +1,56 @@
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5em;
+}
+.paginationPagesContainer {
+  display: flex;
+  border: solid black 1px;
+}
+.paginationSelectedPage {
+  color: whitesmoke;
+  background-color: black;
+  border: solid black 1px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paginationPage {
+  border: solid black 1px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.paginationPage:hover {
+  color: whitesmoke;
+  background-color: black;
+}
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .paginationBackArrow {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .paginationForwardArrwo {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .paginationLastPage {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  .paginationFirstPage {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+}

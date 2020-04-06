@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
-import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../../store';
+import { fetchAllArtists, fetchSavedArtists, fetchBlogs } from '../../store';
 import LazyLoad from 'react-lazyload';
 import { sortedArtistsSelector } from '../../store/selectors/artists';
 
@@ -98,7 +98,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(fetchArtists());
+      dispatch(fetchAllArtists());
       dispatch(fetchBlogs());
     },
     fetchSaved() {

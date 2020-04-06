@@ -5,7 +5,7 @@ import { Comments } from '../';
 import {
   fetchBlogs,
   deleteCurrentBlog,
-  fetchArtists,
+  fetchAllArtists,
   fetchSavedArtists,
   fetchComments,
   likeCurrentBlog,
@@ -226,7 +226,7 @@ const mapState = (state, ownProps) => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(fetchArtists());
+      dispatch(fetchAllArtists());
       dispatch(fetchBlogs());
     },
     fetchSaved() {

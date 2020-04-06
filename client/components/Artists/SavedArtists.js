@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import {
-  fetchArtists,
+  fetchAllArtists,
   fetchSavedArtists,
   deleteCurrentSavedArtist,
   fetchBlogs
@@ -124,7 +124,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(fetchArtists());
+      dispatch(fetchAllArtists());
       dispatch(fetchBlogs());
     },
     fetchSaved() {

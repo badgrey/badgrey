@@ -25,7 +25,7 @@ import {
   // AllBricksChapters,
   // BricksChapter
 } from './components';
-import { me, fetchArtists, fetchBlogs, fetchOriginalContent } from './store';
+import { me, fetchBlogs, fetchOriginalContent } from './store';
 
 /**
  * COMPONENT
@@ -93,7 +93,6 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
-      dispatch(fetchArtists());
       dispatch(fetchBlogs());
       dispatch(fetchOriginalContent());
     }
