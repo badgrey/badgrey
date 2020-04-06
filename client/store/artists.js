@@ -1,3 +1,5 @@
+/* eslint-disable curly */
+/* eslint-disable nonblock-statement-body-position */
 /* eslint-disable complexity */
 import axios from 'axios';
 import { addError } from './error';
@@ -114,27 +116,46 @@ export default function reducer(state = initialArtistState, action) {
 
 //THUNK CREATORS
 
-export const fetchAllArtists = (page = 1) => async dispatch => {
+export const fetchAllArtists = (
+  page = 1,
+  searchValue = ''
+) => async dispatch => {
   try {
-    const artists = await axios.get(`/api/artists/?page=${page}`);
+    const artists = await axios.get(
+      `/api/artists/?page=${page}&&search=${searchValue}`
+    );
+
     return dispatch(getArtists(artists.data));
   } catch (err) {
     console.error(err);
   }
 };
 
-export const fetchStateArtists = (state, page = 1) => async dispatch => {
+export const fetchStateArtists = (
+  state,
+  page = 1,
+  searchValue = ''
+) => async dispatch => {
   try {
-    const artists = await axios.get(`/api/artists/state/${state}?page=${page}`);
+    console.log(state, page, searchValue);
+    const artists = await axios.get(
+      `/api/artists/state/${state}?page=${page}&&search=${searchValue}`
+    );
     return dispatch(getStateArtists(artists.data));
   } catch (err) {
     console.error(err);
   }
 };
 
-export const fetchGenreArtists = (genre, page = 1) => async dispatch => {
+export const fetchGenreArtists = (
+  genre,
+  page = 1,
+  searchValue = ''
+) => async dispatch => {
   try {
-    const artists = await axios.get(`/api/artists/genre/${genre}?page=${page}`);
+    const artists = await axios.get(
+      `/api/artists/genre/${genre}?page=${page}&&search=${searchValue}`
+    );
     return dispatch(getGenreArtists(artists.data));
   } catch (err) {
     console.error(err);

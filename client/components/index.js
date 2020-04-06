@@ -34,3 +34,4 @@ export { default as Submit } from './Submit';
 export { default as AllBricksChapters } from './TheBricks/AllBricksChapters';
 export { default as BricksChapter } from './TheBricks/BricksChapter';
 export { default as Pagination } from './Pagination';
+export { default as Search } from './Search';

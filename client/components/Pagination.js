@@ -1,3 +1,6 @@
+/* eslint-disable curly */
+/* eslint-disable nonblock-statement-body-position */
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import '../../public/styles/index.scss';
 
@@ -23,7 +26,6 @@ const Pagination = ({
       <div className="paginationPagesContainer">
         {totalPages.map((page, index) => {
           let current = index + 1;
-          let modTen = currentPage % 10;
           let selectedPage = currentPage === index + 1;
           let outOfView;
           if (currentPage >= totalPages.length - 6)

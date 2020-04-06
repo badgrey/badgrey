@@ -8,7 +8,7 @@ import {
   clearArtistState
 } from '../../store';
 import { getStateFullName } from '../../utils/states';
-import { Pagination } from '../';
+import { Pagination, Search } from '../';
 
 //for indivisula states display of artists that live there
 export class StateArtists extends Component {
@@ -50,16 +50,12 @@ export class StateArtists extends Component {
     }
   };
 
-  handleSearch = evt => {
-    this.setState({
-      search: evt.target.value
-    });
-  };
   incrementPage = async () => {
     try {
       await this.props.fetchStateArtists(
         this.props.match.params.state,
-        this.state.currentPage + 1
+        this.state.currentPage + 1,
+        this.state.search
       );
       this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
       window.scroll(0, 0);
@@ -71,7 +67,8 @@ export class StateArtists extends Component {
     try {
       await this.props.fetchStateArtists(
         this.props.match.params.state,
-        this.state.currentPage - 1
+        this.state.currentPage - 1,
+        this.state.search
       );
       this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
       window.scroll(0, 0);
@@ -82,17 +79,26 @@ export class StateArtists extends Component {
 
   jumpToPage = async page => {
     try {
-      await this.props.fetchStateArtists(this.props.match.params.state, page);
+      await this.props.fetchStateArtists(
+        this.props.match.params.state,
+        page,
+        this.state.search
+      );
       this.setState({ currentPage: page });
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
     }
   };
+
+  searchForArtists = async evt => {
+    evt.preventDefault();
+    const name = evt.target.name.value;
+    await this.props.fetchStateArtists(this.props.match.params.state, 1, name);
+    this.setState({ search: name });
+  };
+
   render() {
-    const artists = this.props.stateArtists.filter(artist =>
-      artist.name.toLowerCase().includes(this.state.search.toLowerCase())
-    );
     return (
       //if there are no artists in this state load informative message
       this.props.stateArtists.length === 0 ? (
@@ -108,15 +114,13 @@ export class StateArtists extends Component {
               this.props.stateArtists[0].stateAbbrev
             ).toUpperCase()}
           </h1>
-          <h6 className="stateArtistsScrolltoload">Scroll to Load More</h6>
-          <div className="stateArtistSearch">
-            <form>
-              <label className="stateArtistsSearchLabel">Search Artists</label>
-              <input onChange={this.handleSearch} placeholder="Name" />
-            </form>
-          </div>
+          <Search
+            onSubmit={this.searchForArtists}
+            label={'Search Artists'}
+            placeholder={'Name'}
+          />
           <div className="stateArtistsContainer">
-            {artists.map(artist => (
+            {this.props.stateArtists.map(artist => (
               //map over artists and display link for their individual page
               <div key={artist.id}>
                 <Link
@@ -159,7 +163,8 @@ const mapState = ({ artists, user, savedArtists }) => ({
 });
 
 const mapDispatch = dispatch => ({
-  fetchStateArtists: (state, page) => dispatch(fetchStateArtists(state, page)),
+  fetchStateArtists: (state, page, search) =>
+    dispatch(fetchStateArtists(state, page, search)),
   fetchSaved: () => dispatch(fetchSavedArtists()),
   clearArtistState: () => dispatch(clearArtistState())
 });

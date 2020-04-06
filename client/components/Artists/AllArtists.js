@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
@@ -8,10 +8,10 @@ import {
   fetchSavedArtists,
   clearArtistState
 } from '../../store';
-import { Pagination } from '../';
+import { Pagination, Search } from '../';
 
 //component for all artists page
-export class AllArtists extends Component {
+export class AllArtists extends PureComponent {
   state = {
     savedCheck: true,
     search: '',
@@ -47,16 +47,12 @@ export class AllArtists extends Component {
     }
   };
 
-  //for search bar at top
-  handleSearch = evt => {
-    this.setState({
-      search: evt.target.value
-    });
-  };
-
   incrementPage = async () => {
     try {
-      await this.props.fetchAllArtists(this.state.currentPage + 1);
+      await this.props.fetchAllArtists(
+        this.state.currentPage + 1,
+        this.state.search
+      );
       this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
       window.scroll(0, 0);
     } catch (err) {
@@ -65,7 +61,10 @@ export class AllArtists extends Component {
   };
   decrementPage = async () => {
     try {
-      await this.props.fetchAllArtists(this.state.currentPage - 1);
+      await this.props.fetchAllArtists(
+        this.state.currentPage - 1,
+        this.state.search
+      );
       this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
       window.scroll(0, 0);
     } catch (err) {
@@ -75,7 +74,7 @@ export class AllArtists extends Component {
 
   jumpToPage = async page => {
     try {
-      await this.props.fetchAllArtists(page);
+      await this.props.fetchAllArtists(page, this.state.search);
       this.setState({ currentPage: page });
       window.scroll(0, 0);
     } catch (err) {
@@ -83,22 +82,24 @@ export class AllArtists extends Component {
     }
   };
 
+  searchForArtists = async evt => {
+    evt.preventDefault();
+    const name = evt.target.name.value;
+    await this.props.fetchAllArtists(1, name);
+    this.setState({ search: name });
+  };
+
   render() {
-    const artists = this.props.artists.filter(artist =>
-      artist.name.toLowerCase().includes(this.state.search.toLowerCase())
-    );
     return this.props.artists.length === 0 ? null : (
       <div className="allArtistsRoot">
         <h1 className="title">ALL</h1>
-        <h6 className="scrolltoload">Scroll to Load More</h6>
-        <div className="artistSearch">
-          <form>
-            <label className="searchLabel">Search Artists</label>
-            <input onChange={this.handleSearch} placeholder="Name" />
-          </form>
-        </div>
+        <Search
+          onSubmit={this.searchForArtists}
+          label={'Search Artists'}
+          placeholder={'Name'}
+        />
         <div className="allArtistsContainer">
-          {artists.map(artist => (
+          {this.props.artists.map(artist => (
             //mapping over every artist and returning picture with link to artists page
             <div key={artist.id}>
               <Link
@@ -146,7 +147,7 @@ const mapState = ({ artists, user, savedArtists }) => {
 
 //putting loadinitiail data and fetchsaved on props
 const mapDispatch = dispatch => ({
-  fetchAllArtists: page => dispatch(fetchAllArtists(page)),
+  fetchAllArtists: (page, search) => dispatch(fetchAllArtists(page, search)),
   clearArtistState: () => dispatch(clearArtistState()),
   fetchSaved: () => dispatch(fetchSavedArtists())
 });

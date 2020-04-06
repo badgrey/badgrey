@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Artist, User, Blog } = require('../db/models');
 const asyncHandler = require('express-async-handler');
 const { isAdmin, isLoggedIn } = require('../permissions');
+const { Op } = require('sequelize');
 module.exports = router;
 
 //get artists including user associated with them
@@ -9,6 +10,11 @@ router.get(
   '/',
   asyncHandler(async (req, res, next) => {
     const artists = await Artist.findAndCountAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${req.query.search}%`
+        }
+      },
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
@@ -29,7 +35,10 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const artists = await Artist.findAndCountAll({
       where: {
-        stateAbbrev: req.params.state
+        stateAbbrev: req.params.state,
+        name: {
+          [Op.iLike]: `%${req.query.search}%`
+        }
       },
       include: [
         { model: User },
@@ -51,7 +60,10 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const artists = await Artist.findAndCountAll({
       where: {
-        genre: req.params.genre
+        genre: req.params.genre,
+        name: {
+          [Op.iLike]: `%${req.query.search}%`
+        }
       },
       include: [
         { model: User },

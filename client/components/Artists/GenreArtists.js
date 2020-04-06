@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import { fetchGenreArtists, fetchSavedArtists } from '../../store';
-import { Pagination } from '../';
+import { Pagination, Search } from '../';
 //component for artists under single genre
 export class GenreArtists extends Component {
   state = {
@@ -47,16 +47,12 @@ export class GenreArtists extends Component {
     }
   };
 
-  handleSearch = evt => {
-    this.setState({
-      search: evt.target.value
-    });
-  };
   incrementPage = async () => {
     try {
       await this.props.fetchGenreArtists(
         this.props.match.params.genre,
-        this.state.currentPage + 1
+        this.state.currentPage + 1,
+        this.state.search
       );
       this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
       window.scroll(0, 0);
@@ -68,7 +64,8 @@ export class GenreArtists extends Component {
     try {
       await this.props.fetchGenreArtists(
         this.props.match.params.genre,
-        this.state.currentPage - 1
+        this.state.currentPage - 1,
+        this.state.search
       );
       this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
       window.scroll(0, 0);
@@ -79,31 +76,38 @@ export class GenreArtists extends Component {
 
   jumpToPage = async page => {
     try {
-      await this.props.fetchGenreArtists(this.props.match.params.genre, page);
+      await this.props.fetchGenreArtists(
+        this.props.match.params.genre,
+        page,
+        this.state.search
+      );
       this.setState({ currentPage: page });
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
     }
   };
+
+  searchForArtists = async evt => {
+    evt.preventDefault();
+    const name = evt.target.name.value;
+    await this.props.fetchGenreArtists(this.props.match.params.genre, 1, name);
+    this.setState({ search: name });
+  };
+
   render() {
-    const artists = this.props.genreArtists.filter(artist =>
-      artist.name.toLowerCase().includes(this.state.search.toLowerCase())
-    );
     return this.props.genreArtists.length === 0 ? null : (
       <div className="genreArtistsDiv">
         <h1 className="genreArtistsTitle">
           {this.props.genreArtists[0].genre}
         </h1>
-        <h6 className="genreArtistsScrolltoload">Scroll to Load More</h6>
-        <div className="genreArtistsSearch">
-          <form>
-            <label className="genreArtistsSearchLabel">Search Artists</label>
-            <input onChange={this.handleSearch} placeholder="Name" />
-          </form>
-        </div>
+        <Search
+          onSubmit={this.searchForArtists}
+          label={'Search Artists'}
+          placeholder={'Name'}
+        />
         <div className="genreArtistsContainer">
-          {artists.map(artist => (
+          {this.props.genreArtists.map(artist => (
             //map over all artists that belong to chosen genre
             <div key={artist.id}>
               <Link
@@ -148,7 +152,8 @@ const mapState = ({ artists, user, savedArtists }) => {
 };
 
 const mapDispatch = dispatch => ({
-  fetchGenreArtists: (genre, page) => dispatch(fetchGenreArtists(genre, page)),
+  fetchGenreArtists: (genre, page, search) =>
+    dispatch(fetchGenreArtists(genre, page, search)),
   fetchSaved: () => dispatch(fetchSavedArtists())
 });
 
