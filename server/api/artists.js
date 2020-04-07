@@ -58,6 +58,7 @@ router.get(
 router.get(
   '/genre/:genre',
   asyncHandler(async (req, res, next) => {
+    if (req.params.genre === 'JazzSoul') req.params.genre = 'Jazz / Soul';
     const artists = await Artist.findAndCountAll({
       where: {
         genre: req.params.genre,

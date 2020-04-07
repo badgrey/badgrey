@@ -30,7 +30,6 @@ export class Blog extends Component {
   //loads comments and gets data upon arriving to page if not done already
   componentDidMount() {
     window.scroll(0, 0);
-    // eslint-disable-next-line radix
     const id = parseInt(this.props.match.params.id);
     if (this.props.artists === []) {
       this.props.loadInitialData();
@@ -88,7 +87,6 @@ export class Blog extends Component {
     setTimeout(() => this.props.renderError(), 3000);
   }
 
-  // eslint-disable-next-line complexity
   render() {
     const error = this.props.error.error;
     if (error) {

@@ -1,6 +1,3 @@
-/* eslint-disable curly */
-/* eslint-disable nonblock-statement-body-position */
-/* eslint-disable no-nested-ternary */
 import React from 'react';
 import '../../public/styles/index.scss';
 

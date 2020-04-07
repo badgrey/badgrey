@@ -8,22 +8,6 @@
   font-family: 'Oswald', sans-serif;
   padding-top: 2em;
 }
-.genreArtistsScrolltoload {
-  text-align: center;
-  margin: 0px;
-}
-.genreArtistsSearch {
-  display: flex;
-  justify-content: center;
-}
-.genreArtistsSearch form {
-  display: flex;
-  margin-bottom: 31px;
-  margin-top: 10px;
-}
-.genreArtistsSearchLabel {
-  margin-right: 20px;
-}
 .genreArtistsContainer {
   display: flex;
   justify-content: center;
@@ -120,15 +104,6 @@
   .genreArtistsTitle {
     font-size: 3em;
   }
-  .genreArtistsSearch form {
-    margin-left: 8em;
-  }
-  .genreArtistsSearch {
-    font-size: 1.3em;
-  }
-  .genreArtistsSearchLabel {
-    margin-top: 4px;
-  }
   .genreArtistPic {
     height: 180px;
     width: 180px;
@@ -152,21 +127,6 @@
   }
   .genreArtistsTitle {
     font-size: 4em;
-  }
-  .genreArtistsScrolltoload {
-    font-size: 1.3em;
-  }
-  .genreArtistsSearch input {
-    font-size: 1.5em;
-  }
-  .genreArtistsSearch form {
-    margin-bottom: 78px;
-    margin-top: 51px;
-    margin-left: 8em;
-  }
-  .genreArtistsSearchLabel {
-    margin-top: 8px;
-    font-size: 1.5em;
   }
   .genreArtistPic {
     width: 280px;

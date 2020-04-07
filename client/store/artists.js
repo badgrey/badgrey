@@ -1,6 +1,3 @@
-/* eslint-disable curly */
-/* eslint-disable nonblock-statement-body-position */
-/* eslint-disable complexity */
 import axios from 'axios';
 import { addError } from './error';
 

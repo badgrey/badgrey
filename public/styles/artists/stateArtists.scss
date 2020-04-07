@@ -24,22 +24,6 @@
   font-family: 'Oswald', sans-serif;
   padding-top: 2em;
 }
-.stateArtistsScrolltoload {
-  text-align: center;
-  margin: 0px;
-}
-.stateArtistSearch {
-  display: flex;
-  justify-content: center;
-}
-.stateArtistSearch form {
-  display: flex;
-  margin-bottom: 31px;
-  margin-top: 10px;
-}
-.stateArtistsSearchLabel {
-  margin-right: 20px;
-}
 .stateArtistsContainer {
   display: flex;
   justify-content: center;
@@ -55,11 +39,9 @@
   transition: 0.3s;
   cursor: pointer;
 }
-
 .stateArtistPic:hover {
   transform: scale(1.2);
 }
-
 .stateArtistPic:hover img {
   filter: brightness(60%);
   -webkit-filter: brightness(60%);
@@ -70,7 +52,6 @@
   opacity: 1;
   z-index: 10;
 }
-
 .stateArtistPic img {
   object-fit: cover;
   width: 100%;
@@ -150,15 +131,6 @@
   .stateArtistsTitle {
     font-size: 3em;
   }
-  .stateArtistSearch form {
-    margin-left: 8em;
-  }
-  .stateArtistSearch {
-    font-size: 1.3em;
-  }
-  .stateArtistsSearchLabel {
-    margin-top: 4px;
-  }
   .stateArtistPic {
     height: 180px;
     width: 180px;
@@ -192,21 +164,6 @@
   }
   .stateArtistsTitle {
     font-size: 4em;
-  }
-  .stateArtistsScrolltoload {
-    font-size: 1.3em;
-  }
-  .stateArtistSearch input {
-    font-size: 1.5em;
-  }
-  .stateArtistSearch form {
-    margin-bottom: 78px;
-    margin-top: 51px;
-    margin-left: 8em;
-  }
-  .stateArtistsSearchLabel {
-    margin-top: 8px;
-    font-size: 1.5em;
   }
   .stateArtistPic {
     width: 280px;

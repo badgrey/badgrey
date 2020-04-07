@@ -14,26 +14,22 @@
   height: 20em;
   margin-top: 5em;
 }
-
 .bannerImage {
   object-fit: cover;
   height: 100%;
   width: 83%;
   cursor: pointer;
 }
-
 .topContainer {
   display: flex;
   justify-content: space-between;
   margin-top: 3em;
 }
-
 .allAndGlobe {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-
 .allArtistsButton {
   margin-top: 40px;
   width: 150px;
@@ -45,34 +41,28 @@
   font-family: 'Oswald', sans-serif;
   cursor: pointer;
 }
-
 .allArtistsButton:hover {
   background-color: whitesmoke;
   color: black;
 }
-
 .internationalLink:hover {
   opacity: 0.5;
 }
-
 .globe {
   border: solid black;
   padding: 10px;
   border-radius: 80px;
   cursor: pointer;
 }
-
 .globeLabel {
   color: black;
   text-decoration: none;
   font-size: 1.2em;
 }
-
 .map {
   display: flex;
   justify-content: space-around;
 }
-
 .genreDiv {
   margin-top: -24px;
 }

@@ -1,0 +1,8 @@
+/*
+
+pretty up search artist for and make its own stylesheet
+implement pagination for blogs
+implement pagination original content
+remove lazy load from all images
+put in google analytics
+*/

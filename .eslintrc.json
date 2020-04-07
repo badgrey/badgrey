@@ -1,9 +1,16 @@
 {
-	"root": true,
-	"parser": "babel-eslint",
-	"extends": "fullstack",
-	"rules": {
-		"semi": 0,
-		"new-cap": [1, { "capIsNewExceptions": ["Router"] }]
-	}
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": "fullstack",
+  "rules": {
+    "semi": 0,
+    "new-cap": [1, { "capIsNewExceptions": ["Router"] }],
+    "no-nested-ternary": "off",
+    "nonblock-statement-body-position": "off",
+    "curly": "off",
+    "class-methods-use-this": "off",
+    "radix": "off",
+    "complexity": "off",
+    "no-confusing-arrow": "off"
+  }
 }

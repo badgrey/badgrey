@@ -4,7 +4,7 @@ const Search = ({ onSubmit, label, placeholder }) => {
   return (
     <React.Fragment>
       <h6 className="scrolltoload">Scroll to Load More</h6>
-      <div className="artistSearch">
+      <div className="searchContainer">
         <form onSubmit={evt => onSubmit(evt)}>
           <label className="searchLabel">{label}</label>
           <input name="name" placeholder={placeholder} />

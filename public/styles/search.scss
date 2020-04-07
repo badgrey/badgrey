@@ -1,0 +1,66 @@
+.scrolltoload {
+  text-align: center;
+  margin: 0px;
+}
+.searchContainer {
+  display: flex;
+  justify-content: center;
+}
+.searchContainer form {
+  display: flex;
+  margin-bottom: 31px;
+  margin-top: 10px;
+}
+.searchContainer input {
+  border: solid black 1.5px;
+}
+.searchLabel {
+  margin-right: 20px;
+}
+.searchContainer button {
+  width: 5em;
+  height: 2em;
+  margin-left: 10px;
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s;
+  font-size: 1em;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+}
+.searchContainer button:hover {
+  background-color: whitesmoke;
+  color: black;
+}
+
+//15"
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+  .scrolltoload {
+    font-size: 1em;
+  }
+  .searchContainer {
+    font-size: 1.3em;
+  }
+  .searchLabel {
+    margin-top: 4px;
+  }
+}
+
+//Dektop
+@media only screen and (min-width: 1800px) {
+  .scrolltoload {
+    font-size: 1.3em;
+  }
+  .searchContainer form {
+    margin-bottom: 78px;
+    margin-top: 51px;
+    margin-left: 8em;
+  }
+  .searchContainer input {
+    font-size: 1.5em;
+  }
+  .searchLabel {
+    margin-top: 8px;
+    font-size: 1.5em;
+  }
+}
