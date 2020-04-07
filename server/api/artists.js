@@ -153,8 +153,23 @@ router.post(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' }
+        { model: User, as: 'ArtistDislikes' },
+        { model: Blog }
       ]
+    });
+    res.status(201).json(artist[0]);
+  })
+);
+
+//check for duplicate artists
+router.post(
+  '/duplicate/admin',
+  isAdmin,
+  asyncHandler(async (req, res, next) => {
+    const artist = await Artist.findAll({
+      where: {
+        name: req.body.name
+      }
     });
     res.status(201).json(artist[0]);
   })
@@ -178,7 +193,8 @@ router.put(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' }
+        { model: User, as: 'ArtistDislikes' },
+        { model: Blog }
       ]
     });
     res.json(artist[0]);
@@ -218,7 +234,8 @@ router.post(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' }
+        { model: User, as: 'ArtistDislikes' },
+        { model: Blog }
       ]
     });
     res.status(200).json(artist);
@@ -243,7 +260,8 @@ router.post(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' }
+        { model: User, as: 'ArtistDislikes' },
+        { model: Blog }
       ]
     });
     res.status(200).json(artist);

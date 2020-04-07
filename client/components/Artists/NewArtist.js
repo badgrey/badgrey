@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewArtist } from '../../store/artists';
+import { createNewArtist, checkForDuplicateArtist } from '../../store/artists';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
-import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //state and genre options for dropdown
 const stateOptions = [
@@ -71,13 +70,9 @@ const genreOptions = [
 ];
 
 export class NewArtist extends Component {
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-    this.state = {
-      file: null
-    };
-  }
+  state = {
+    file: null
+  };
 
   //if not admin redirects
   componentDidMount() {
@@ -92,15 +87,8 @@ export class NewArtist extends Component {
   };
 
   //sends artist info to backend
-  async submit(event) {
+  submit = async event => {
     event.preventDefault();
-
-    //checks to see if adding an artist that is already added
-    for (let i = 0; i < this.props.artists.length; i++) {
-      if (this.props.artists[i].name === name) {
-        return;
-      }
-    }
     let artistInfo = {
       name: event.target.name.value,
       city: event.target.city.value,
@@ -111,21 +99,32 @@ export class NewArtist extends Component {
     if (event.target.youtubeID.value !== '') {
       artistInfo.youtubeID = event.target.youtubeID.value.split(' ');
     }
-
-    let picture;
-    const formData = new FormData();
-    formData.append('file', this.state.file[0]);
-    picture = await axios.post('/api/uploadArtistPicture', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-    let key = picture.data.Location.split('/');
-    artistInfo.imageURL = picture.data.Location;
-    artistInfo.fileKey = key[key.length - 1];
-    this.props.submitForm(artistInfo);
-    this.props.history.push(`/discover/${artistInfo.stateAbbrev}`);
-  }
+    try {
+      await this.props.checkForDuplicateArtist(artistInfo.name);
+      console.log('made it past here!');
+      let picture;
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+      picture = await axios.post('/api/uploadArtistPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      let key = picture.data.Location.split('/');
+      artistInfo.imageURL = picture.data.Location;
+      artistInfo.fileKey = key[key.length - 1];
+      await this.props.createNewArtist(artistInfo);
+      this.props.history.push(
+        `/discover/${
+          this.props.chosenArtist.stateAbbrev
+        }/${this.props.chosenArtist.name.split(' ').join('')}_${
+          this.props.chosenArtist.id
+        }`
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   render() {
     return (
@@ -200,17 +199,13 @@ export class NewArtist extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    artists: sortedArtistsSelector(state),
-    isAdmin: state.user.isAdmin
-  };
-};
+const mapState = ({ user }) => ({
+  isAdmin: user.isAdmin
+});
 
 const mapDispatch = dispatch => ({
-  submitForm(artist) {
-    dispatch(createNewArtist(artist));
-  }
+  createNewArtist: artist => dispatch(createNewArtist(artist)),
+  checkForDuplicateArtist: name => dispatch(checkForDuplicateArtist(name))
 });
 
 export default connect(mapState, mapDispatch)(NewArtist);

@@ -77,42 +77,27 @@ export default function reducer(state = initialArtistState, action) {
     case CREATE_NEW_ARTIST:
       return {
         ...state,
-        artists: [...state.artists, action.payload]
+        chosenArtist: action.payload
       };
     case EDIT_ARTIST:
       return {
         ...state,
-        artists: state.artists.map(artist => {
-          if (action.payload.id === artist.id) {
-            return action.payload;
-          }
-          return artist;
-        })
+        chosenArtist: action.payload
       };
     case DELETE_ARTIST:
       return {
         ...state,
-        artists: state.artists.filter(artist => artist.id !== action.payload)
+        chosenArtist: {}
       };
     case LIKE_ARTIST:
       return {
         ...state,
-        artists: state.artists.map(artist => {
-          if (action.payload.id === artist.id) {
-            return action.payload;
-          }
-          return artist;
-        })
+        chosenArtist: action.payload
       };
     case DISLIKE_ARTIST:
       return {
         ...state,
-        artists: state.artists.map(artist => {
-          if (action.payload.id === artist.id) {
-            return action.payload;
-          }
-          return artist;
-        })
+        chosenArtist: action.payload
       };
     case CLEAR_ARTIST_STATE:
       return initialArtistState;
@@ -212,6 +197,17 @@ export const editCurrentArtist = (id, artist) => async dispatch => {
     return dispatch(editArtist(editedArtist.data));
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const checkForDuplicateArtist = name => async () => {
+  try {
+    const duplicateArtist = await axios.post(`/api/artists/duplicate/admin/`, {
+      name
+    });
+    if (duplicateArtist.data.id) throw new Error('Already Exists!');
+  } catch (err) {
+    throw new Error(err);
   }
 };
 

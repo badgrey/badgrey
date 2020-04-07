@@ -38,10 +38,10 @@ export class Artist extends Component {
   //deletes artist
   deleteArtist = async () => {
     await axios.post('/api/deleteArtistPicture', {
-      name: this.props.chosenArtist[0].fileKey
+      name: this.props.chosenArtist.fileKey
     });
-    const state = this.props.chosenArtist[0].stateAbbrev;
-    this.props.delete(this.props.chosenArtist[0].id);
+    const state = this.props.chosenArtist.stateAbbrev;
+    this.props.delete(this.props.chosenArtist.id);
     this.props.history.push(`/discover/${state}`);
   };
 
@@ -59,7 +59,7 @@ export class Artist extends Component {
   //saves artist to users saved page
   saveArtist = async () => {
     await this.props.saveCurrentArtist({
-      id: this.props.chosenArtist[0].id,
+      id: this.props.chosenArtist.id,
       user: this.props.user
     });
   };
@@ -222,29 +222,18 @@ export class Artist extends Component {
 }
 
 //putting artists comments chosen artist savedartists error and is saved on props
-const mapState = (state, ownProps) => {
-  const { artists, user, savedArtists, error } = state;
-  return {
-    chosenArtist: artists.chosenArtist,
-    isLoggedIn: !!user.isLoggedIn,
-    isAdmin: user.isAdmin,
-    user,
-    error,
-    savedArtists,
-    isSaved:
-      savedArtists.filter(artist => {
-        return (
-          artist.id ===
-          artists.filter(otherArtist => {
-            return (
-              otherArtist.name.split(' ').join('') ===
-              ownProps.match.params.artist.split('_')[0]
-            );
-          })[0].id
-        );
-      }).length !== 0
-  };
-};
+const mapState = ({ artists, user, savedArtists, error }) => ({
+  chosenArtist: artists.chosenArtist,
+  isLoggedIn: !!user.id,
+  isAdmin: user.isAdmin,
+  user,
+  error,
+  savedArtists,
+  isSaved:
+    savedArtists.filter(artist => {
+      return artist.id === artists.chosenArtist.id;
+    }).length !== 0
+});
 
 //buncha stuff over here on props too
 const mapDispatch = dispatch => ({

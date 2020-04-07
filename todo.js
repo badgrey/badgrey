@@ -1,8 +1,6 @@
 /*
-
-fix SINGLE artist and Blog page
+change ADD and EDIT LIKE for Artists and Blogs
 implement pagination original content
-change ADD and EDIT for Artists, Blogs, and OC
 remove lazy load from all images
 put in google analytics
 */
