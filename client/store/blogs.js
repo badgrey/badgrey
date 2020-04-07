@@ -42,7 +42,8 @@ const dislikeBlog = blog => ({ type: DISLIKE_BLOG, blog });
 const initialState = {
   blogs: [],
   spotlight: [],
-  nonSpotlight: []
+  nonSpotlight: [],
+  numBlogs: 0
 };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -51,7 +52,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         blogs: action.payload.blogs,
         spotlight: action.payload.spotlight,
-        nonSpotlight: action.payload.nonSpotlight
+        nonSpotlight: action.payload.nonSpotlight,
+        numBlogs: action.payload.numBlogs
       };
     case CREATE_NEW_BLOG:
       return action.payload.blog.spotlight
@@ -124,28 +126,26 @@ export default function reducer(state = initialState, action) {
 
 //THUNK CREATORS
 
-export const fetchBlogs = () => async dispatch => {
+export const fetchAllBlogs = (page = 1, searchValue = '') => async dispatch => {
   try {
     let response = {
       blogs: [],
       spotlight: [],
-      nonSpotlight: []
+      nonSpotlight: [],
+      numBlogs: 0
     };
-    let { data } = await axios.get('/api/blog');
-    data = data.sort((blogA, blogB) => {
-      if (blogA.createdAt < blogB.createdAt) return 1;
-      if (blogA.createdAt > blogB.createdAt) return -1;
-      return 0;
-    });
-    for (let i = 0; i < data.length; i++) {
-      response.blogs.push(data[i]);
-      if (data[i].spotlight === true) {
-        response.spotlight.push(data[i]);
-      } else {
-        response.nonSpotlight.push(data[i]);
-      }
+    const { data } = await axios.get(
+      `/api/blog/?page=${page}&&search=${searchValue}`
+    );
+    const spotlightBlog = await axios.get('/api/blog/spotlight');
+    for (let i = 0; i < data.rows.length; i++) {
+      response.blogs.push(data.rows[i]);
+      if (data.rows[i].id === spotlightBlog.data[0].id) continue;
+      else response.nonSpotlight.push(data.rows[i]);
     }
-
+    response.spotlight.push(spotlightBlog.data[0]);
+    response.numBlogs = data.count;
+    console.log(response);
     return dispatch(getBlogs(response));
   } catch (err) {
     console.error(err);

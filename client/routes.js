@@ -25,7 +25,7 @@ import {
   // AllBricksChapters,
   // BricksChapter
 } from './components';
-import { me, fetchBlogs, fetchOriginalContent } from './store';
+import { me, fetchAllBlogs, fetchOriginalContent } from './store';
 
 /**
  * COMPONENT
@@ -93,7 +93,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
-      dispatch(fetchBlogs());
+      dispatch(fetchAllBlogs());
       dispatch(fetchOriginalContent());
     }
   };
