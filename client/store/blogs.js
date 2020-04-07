@@ -5,6 +5,7 @@ import { addError } from './error';
  * ACTION TYPES
  */
 const GET_BLOGS = 'GET_BLOGS';
+const GET_CHOSEN_BLOG = 'GET_CHOSEN_BLOG';
 const CREATE_NEW_BLOG = 'CREATE_NEW_BLOG';
 const EDIT_BLOG = 'EDIT_BLOG';
 const DELETE_BLOG = 'DELETE_BLOG';
@@ -19,6 +20,7 @@ const getBlogs = blogs => ({
   type: GET_BLOGS,
   payload: blogs
 });
+const getChosenBlog = blog => ({ type: GET_CHOSEN_BLOG, payload: blog });
 const newBlog = blog => ({
   type: CREATE_NEW_BLOG,
   payload: blog
@@ -43,7 +45,8 @@ const initialState = {
   blogs: [],
   spotlight: [],
   nonSpotlight: [],
-  numBlogs: 0
+  numBlogs: 0,
+  chosenBlog: {}
 };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -54,6 +57,11 @@ export default function reducer(state = initialState, action) {
         spotlight: action.payload.spotlight,
         nonSpotlight: action.payload.nonSpotlight,
         numBlogs: action.payload.numBlogs
+      };
+    case GET_CHOSEN_BLOG:
+      return {
+        ...state,
+        chosenBlog: action.payload
       };
     case CREATE_NEW_BLOG:
       return action.payload.blog.spotlight
@@ -145,13 +153,38 @@ export const fetchAllBlogs = (page = 1, searchValue = '') => async dispatch => {
     }
     response.spotlight.push(spotlightBlog.data[0]);
     response.numBlogs = data.count;
-    console.log(response);
     return dispatch(getBlogs(response));
   } catch (err) {
     console.error(err);
   }
 };
-
+export const fetchChosenBlog = id => async (dispatch, getState) => {
+  const blogState = getState().blogs;
+  const allBlogs = blogState.spotlight;
+  const spotlightBlog = blogState.nonSpotlight;
+  const nonSpotlightBlog = blogState.blogs;
+  for (let i = 0; i < spotlightBlog.length; i++) {
+    if (spotlightBlog[i].id === id) {
+      return dispatch(getChosenBlog(spotlightBlog[i]));
+    }
+  }
+  for (let i = 0; i < nonSpotlightBlog.length; i++) {
+    if (nonSpotlightBlog[i].id === id) {
+      return dispatch(getChosenBlog(nonSpotlightBlog[i]));
+    }
+  }
+  for (let i = 0; i < allBlogs.length; i++) {
+    if (allBlogs[i].id === id) {
+      return dispatch(getChosenBlog(allBlogs[i]));
+    }
+  }
+  try {
+    const { data } = await axios.get(`/api/blog/blog/${id}`);
+    return dispatch(getChosenBlog(data));
+  } catch (err) {
+    console.error(err);
+  }
+};
 export const createNewBlog = blog => async dispatch => {
   try {
     const newCreatedBlog = await axios.post('/api/blog', blog);

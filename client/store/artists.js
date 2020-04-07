@@ -7,6 +7,7 @@ import { addError } from './error';
 const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
 const GET_STATE_ARTISTS = 'GET_STATE_ARTISTS';
 const GET_GENRE_ARTISTS = 'GET_GENRE_ARTISTS';
+const GET_CHOSEN_ARTIST = 'GET_CHOSEN_ARTIST';
 const CREATE_NEW_ARTIST = 'CREATE_NEW_ARTIST';
 const EDIT_ARTIST = 'EDIT_ARTIST';
 const DELETE_ARTIST = 'DELETE_ARTIST';
@@ -27,6 +28,10 @@ const getGenreArtists = artists => ({
   type: GET_GENRE_ARTISTS,
   payload: artists
 });
+const getChosenArtist = artist => ({
+  type: GET_CHOSEN_ARTIST,
+  payload: artist
+});
 const newArtist = artist => ({ type: CREATE_NEW_ARTIST, payload: artist });
 const editArtist = artist => ({ type: EDIT_ARTIST, payload: artist });
 const deleteArtist = id => ({ type: DELETE_ARTIST, payload: id });
@@ -40,7 +45,8 @@ const initialArtistState = {
   numStateArtists: 0,
   stateArtists: [],
   numGenreArtists: 0,
-  genreArtists: []
+  genreArtists: [],
+  chosenArtist: {}
 };
 //REDUCER
 export default function reducer(state = initialArtistState, action) {
@@ -62,6 +68,11 @@ export default function reducer(state = initialArtistState, action) {
         ...state,
         numGenreArtists: action.payload.count,
         genreArtists: action.payload.rows
+      };
+    case GET_CHOSEN_ARTIST:
+      return {
+        ...state,
+        chosenArtist: action.payload
       };
     case CREATE_NEW_ARTIST:
       return {
@@ -134,7 +145,6 @@ export const fetchStateArtists = (
   searchValue = ''
 ) => async dispatch => {
   try {
-    console.log(state, page, searchValue);
     const artists = await axios.get(
       `/api/artists/state/${state}?page=${page}&&search=${searchValue}`
     );
@@ -154,6 +164,34 @@ export const fetchGenreArtists = (
       `/api/artists/genre/${genre}?page=${page}&&search=${searchValue}`
     );
     return dispatch(getGenreArtists(artists.data));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const fetchChosenArtist = id => async (dispatch, getState) => {
+  const artistState = getState().artists;
+  const allArtists = artistState.allArtists;
+  const genreArtists = artistState.genreArtists;
+  const stateArtists = artistState.stateArtists;
+  for (let i = 0; i < stateArtists.length; i++) {
+    if (stateArtists[i].id === id) {
+      return dispatch(getChosenArtist(stateArtists[i]));
+    }
+  }
+  for (let i = 0; i < genreArtists.length; i++) {
+    if (genreArtists[i].id === id) {
+      return dispatch(getChosenArtist(genreArtists[i]));
+    }
+  }
+  for (let i = 0; i < allArtists.length; i++) {
+    if (allArtists[i].id === id) {
+      return dispatch(getChosenArtist(allArtists[i]));
+    }
+  }
+  try {
+    const { data } = await axios.get(`/api/artists/artist/${id}`);
+    return dispatch(getChosenArtist(data));
   } catch (err) {
     console.error(err);
   }

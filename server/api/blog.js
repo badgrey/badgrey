@@ -51,6 +51,21 @@ router.get(
   })
 );
 
+router.get(
+  '/blog/:id',
+  asyncHandler(async (req, res, next) => {
+    const blog = await Blog.findByPk(req.params.id, {
+      include: [
+        { model: Artist },
+        { model: User },
+        { model: User, as: 'BlogLikes' },
+        { model: User, as: 'BlogDislikes' }
+      ]
+    });
+    res.json(blog);
+  })
+);
+
 //creates blog, returns blog with associated artist and user likes/dislikes. must be blogger
 router.post(
   '/',

@@ -80,6 +80,21 @@ router.get(
   })
 );
 
+//get single artist
+router.get(
+  '/artist/:id',
+  asyncHandler(async (req, res, next) => {
+    const artist = await Artist.findByPk(req.params.id, {
+      include: [
+        { model: User },
+        { model: User, as: 'ArtistLikes' },
+        { model: User, as: 'ArtistDislikes' },
+        { model: Blog }
+      ]
+    });
+    res.json(artist);
+  })
+);
 //gets saved artists
 router.get(
   '/saved',
