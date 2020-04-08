@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   height: 100vh;
-  margin-top: 7em;
 }
 .noStateArtists {
   text-align: center;
@@ -15,7 +14,6 @@
   font-family: 'Oswald', sans-serif;
 }
 .stateArtistsDiv {
-  margin-top: 7em;
   height: 100%;
 }
 .stateArtistsTitle {
@@ -122,12 +120,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .noStateArtistsContainer {
-    margin-top: 10em;
-  }
-  .stateArtistsDiv {
-    margin-top: 10em;
-  }
   .stateArtistsTitle {
     font-size: 3em;
   }
@@ -149,18 +141,12 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .noStateArtistsContainer {
-    margin-top: 10em;
-  }
   .noStateArtists {
     height: 32em;
     width: 92em;
   }
   .noStateArtists h2 {
     font-size: 3em;
-  }
-  .stateArtistsDiv {
-    margin-top: 10em;
   }
   .stateArtistsTitle {
     font-size: 4em;

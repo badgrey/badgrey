@@ -2,7 +2,6 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  margin-top: 7em;
 }
 .noSaved {
   text-align: center;
@@ -16,7 +15,6 @@
 }
 .savedArtistsDiv {
   height: 100vh;
-  margin-top: 7em;
 }
 .savedArtistsTitle {
   text-align: center;
@@ -155,9 +153,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .noSavedContainer {
-    margin-top: 10em;
-  }
   .noSaved {
     height: 15em;
     width: 39em;
@@ -168,9 +163,6 @@
   }
   .noSaved h5 {
     font-size: 1.1em;
-  }
-  .savedArtistsDiv {
-    margin-top: 10em;
   }
   .savedArtistsTitle {
     font-size: 3em;
@@ -201,9 +193,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .noSavedContainer {
-    margin-top: 10em;
-  }
   .noSaved {
     height: 30em;
     width: 74em;
@@ -214,9 +203,6 @@
   }
   .noSaved h5 {
     font-size: 2em;
-  }
-  .savedArtistsDiv {
-    margin-top: 10em;
   }
   .savedArtiststitle {
     font-size: 4em;

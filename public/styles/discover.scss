@@ -3,7 +3,6 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
-  margin-top: 7em;
 }
 .discover h1 {
   font-family: 'Oswald', sans-serif;
@@ -140,9 +139,6 @@
 
 // 15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .discover {
-    margin-top: 10em;
-  }
   .discover h1 {
     font-size: 3em;
     margin-bottom: 55px;
@@ -168,9 +164,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .discover {
-    margin-top: 10em;
-  }
   .discover h1 {
     font-size: 3em;
   }

@@ -1,4 +1,3 @@
 /*
-fix background height
 put in google analytics
 */

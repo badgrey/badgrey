@@ -2,7 +2,6 @@
   height: 100%;
 }
 .ocSelectorHeader {
-  margin-top: 7em;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -71,9 +70,6 @@
 @media only screen and (min-width: 1400px) {
   .ocSelectorContainer {
     height: 48em;
-  }
-  .ocSelectorHeader {
-    margin-top: 10em;
   }
   .ocSelectorHeader h1 {
     font-size: 3.5em;

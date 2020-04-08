@@ -1,5 +1,4 @@
 .genreArtistsDiv {
-  margin-top: 7em;
   height: 100%;
 }
 .genreArtistsTitle {
@@ -98,9 +97,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .genreArtistsDiv {
-    margin-top: 10em;
-  }
   .genreArtistsTitle {
     font-size: 3em;
   }
@@ -122,9 +118,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .genreArtistsDiv {
-    margin-top: 10em;
-  }
   .genreArtistsTitle {
     font-size: 4em;
   }

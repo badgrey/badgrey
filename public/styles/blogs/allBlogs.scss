@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 7em;
 }
 .allBlogsDiv h1 {
   font-family: 'Oswald', sans-serif;
@@ -164,9 +163,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .allBlogsDiv {
-    margin-top: 10em;
-  }
   .artistSearch form {
     margin-left: 8em;
   }
@@ -192,9 +188,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .allBlogsDiv {
-    margin-top: 10em;
-  }
   .allBlogsDiv h1 {
     font-size: 3em;
   }
