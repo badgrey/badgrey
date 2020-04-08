@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editCurrentBlog } from '../../store';
+import { editCurrentBlog, deleteError } from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
 
@@ -65,7 +65,16 @@ export class EditBlog extends Component {
     }
   };
 
+  //gets rid of error message after a little
+  renderErrorMessage = () => {
+    setTimeout(() => this.props.renderError(), 3000);
+  };
+
   render() {
+    const error = this.props.error.error;
+    if (error) {
+      this.renderErrorMessage();
+    }
     return (
       <div className="outerEditBlogForm">
         <form className="editBlogForm" onSubmit={this.submit}>
@@ -143,23 +152,29 @@ export class EditBlog extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        {//displays error if trying to save artist when not logged in
+        error && error.error && (
+          <div className="commentPostError">
+            <p>{error.error}</p>
+          </div>
+        )}
       </div>
     );
   }
 }
 
 //chosen blog gotten from route
-const mapState = ({ blogs, user }) => ({
+const mapState = ({ blogs, user, error }) => ({
   chosenBlog: blogs.chosenBlog,
   user,
   isAdmin: user.isAdmin,
-  isBlogger: user.isBlogger
+  isBlogger: user.isBlogger,
+  error
 });
 
 const mapDispatch = dispatch => ({
-  submitForm: (id, blog) => {
-    dispatch(editCurrentBlog(id, blog));
-  }
+  submitForm: (id, blog) => dispatch(editCurrentBlog(id, blog)),
+  renderError: () => dispatch(deleteError())
 });
 
 export default connect(mapState, mapDispatch)(EditBlog);

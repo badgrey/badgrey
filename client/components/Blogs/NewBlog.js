@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import {
   createNewBlog,
   fetchAllArtistsNoLimit,
-  clearArtistState
+  clearArtistState,
+  deleteError
 } from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
@@ -71,6 +72,10 @@ export class NewBlog extends Component {
       console.error(err);
     }
   }
+  //gets rid of error message after a little
+  renderErrorMessage = () => {
+    setTimeout(() => this.props.renderError(), 3000);
+  };
 
   render() {
     const error = this.props.error.error;
@@ -170,7 +175,8 @@ const mapState = ({ blogs, user, artists, error }) => ({
 const mapDispatch = dispatch => ({
   submitForm: blog => dispatch(createNewBlog(blog)),
   fetchAllArtistsNoLimit: () => dispatch(fetchAllArtistsNoLimit()),
-  clearArtistState: () => dispatch(clearArtistState())
+  clearArtistState: () => dispatch(clearArtistState()),
+  renderError: () => dispatch(deleteError())
 });
 
 export default connect(mapState, mapDispatch)(NewBlog);
