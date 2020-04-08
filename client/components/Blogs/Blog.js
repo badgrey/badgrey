@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import '../../../public/styles/index.scss';
 import { Comments } from '../';
 import {
-  fetchBlogs,
+  fetchChosenBlog,
   deleteCurrentBlog,
-  fetchArtists,
   fetchSavedArtists,
   fetchComments,
   likeCurrentBlog,
@@ -14,52 +13,44 @@ import {
 } from '../../store';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 export class Blog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      savedCheck: true
-    };
-    this.saved = this.saved.bind(this);
-    this.deleteBlog = this.deleteBlog.bind(this);
-    this.postComment = this.postComment.bind(this);
-  }
+  state = {
+    savedCheck: true
+  };
 
   //loads comments and gets data upon arriving to page if not done already
-  componentDidMount() {
+  async componentDidMount() {
     window.scroll(0, 0);
-    // eslint-disable-next-line radix
-    const id = parseInt(this.props.match.params.id);
-    if (this.props.artists === []) {
-      this.props.loadInitialData();
+    const id = +this.props.match.params.id;
+    if (this.props.chosenBlog.id !== id) {
+      await this.props.fetchChosenBlog(id);
     }
     if (
       this.props.comments.length === 0 ||
       id !== this.props.comments[0].blogId
     ) {
-      this.props.getBlogComments(id);
+      await this.props.getBlogComments(id);
     }
   }
 
   //deletes blog
-  async deleteBlog() {
+  deleteBlog = async () => {
     await axios.post('/api/deleteBlogPicture', {
-      name: this.props.chosenBlog[0].fileKey
+      name: this.props.chosenBlog.fileKey
     });
     this.props.delete(
-      this.props.chosenBlog[0].id,
-      this.props.chosenBlog[0].spotlight
+      this.props.chosenBlog.id,
+      this.props.chosenBlog.spotlight
     );
     this.props.history.push('/allblogs');
-  }
+  };
 
   componentDidUpdate() {
     this.saved();
   }
 
-  saved() {
+  saved = () => {
     if (
       this.props.isLoggedIn &&
       this.props.savedArtists.length === 0 &&
@@ -68,33 +59,32 @@ export class Blog extends Component {
       this.props.fetchSaved();
       this.setState({ savedCheck: false });
     }
-  }
+  };
 
   //posts comment
-  postComment(event) {
+  postComment = event => {
     event.preventDefault();
     let commentInfo = {
       comment: { comment: event.target.comment.value },
       user: this.props.user,
-      blog: this.props.chosenBlog[0]
+      blog: this.props.chosenBlog
     };
     document.getElementById('form').reset();
     this.props.submitForm(commentInfo);
-    this.props.getBlogComments(this.props.chosenBlog[0].id);
-  }
+    this.props.getBlogComments(this.props.chosenBlog.id);
+  };
 
   //makes error message dissapear after some time
-  renderErrorMessage() {
+  renderErrorMessage = () => {
     setTimeout(() => this.props.renderError(), 3000);
-  }
+  };
 
-  // eslint-disable-next-line complexity
   render() {
     const error = this.props.error.error;
     if (error) {
       this.renderErrorMessage();
     }
-    return this.props.chosenBlog.length === 0 ? null : (
+    return !this.props.chosenBlog.id ? null : (
       <div className="blogContainer">
         <div className="blogHeader">
           <div className="blogNameHeader">
@@ -112,17 +102,15 @@ export class Blog extends Component {
                 </button>
               </div>
             )}
-            <h1 className="blogTitle">{this.props.chosenBlog[0].title}</h1>
+            <h1 className="blogTitle">{this.props.chosenBlog.title}</h1>
             <div className="lowerBlogHeader">
-              <h3 className="blogAuthor">
-                By {this.props.chosenBlog[0].author}
-              </h3>
+              <h3 className="blogAuthor">By {this.props.chosenBlog.author}</h3>
               <div className="blogLikesDislikes">
                 <button
                   className="blogLikeDislikeButton"
                   onClick={() =>
                     this.props.likeBlog({
-                      blog: this.props.chosenBlog[0],
+                      blog: this.props.chosenBlog,
                       user: this.props.user
                     })
                   }
@@ -134,12 +122,12 @@ export class Blog extends Component {
                     }
                   />
                 </button>
-                <p>{this.props.chosenBlog[0].BlogLikes.length}</p>
+                <p>{this.props.chosenBlog.BlogLikes.length}</p>
                 <button
                   className="blogLikeDislikeButton"
                   onClick={() =>
                     this.props.dislikeBlog({
-                      blog: this.props.chosenBlog[0],
+                      blog: this.props.chosenBlog,
                       user: this.props.user
                     })
                   }
@@ -151,7 +139,7 @@ export class Blog extends Component {
                     }
                   />
                 </button>
-                <p>{this.props.chosenBlog[0].BlogDislikes.length}</p>
+                <p>{this.props.chosenBlog.BlogDislikes.length}</p>
               </div>
               {error
                 ? //throws error if you try to like or dislike blog when not logged in
@@ -164,12 +152,12 @@ export class Blog extends Component {
               <Link
                 className="blogToArtistLink"
                 to={`/discover/${
-                  this.props.chosenBlog[0].artist.stateAbbrev
-                }/${this.props.chosenBlog[0].artist.name.split(' ').join('') +
-                  `_${this.props.chosenBlog[0].artist.id}`}`}
+                  this.props.chosenBlog.artist.stateAbbrev
+                }/${this.props.chosenBlog.artist.name.split(' ').join('') +
+                  `_${this.props.chosenBlog.artist.id}`}`}
               >
                 <button className="blogToArtistButton">
-                  {this.props.chosenBlog[0].artist.name}
+                  {this.props.chosenBlog.artist.name}
                 </button>
               </Link>
             </div>
@@ -177,14 +165,11 @@ export class Blog extends Component {
         </div>
         <div className="blogPicDescription">
           <div className="blogBannerDiv">
-            <img
-              className="blogBanner"
-              src={this.props.chosenBlog[0].blogPic}
-            />
+            <img className="blogBanner" src={this.props.chosenBlog.blogPic} />
           </div>
         </div>
         <div className="blogPost">
-          {this.props.chosenBlog[0].blogPost.split('<>').map(post => {
+          {this.props.chosenBlog.blogPost.split('<>').map(post => {
             return (
               <p key={post.length} className="blogPostText">
                 {post}
@@ -193,7 +178,7 @@ export class Blog extends Component {
           })}
           <iframe
             className="blogIframe"
-            src={this.props.chosenBlog[0].spotifyURL}
+            src={this.props.chosenBlog.spotifyURL}
             width="600"
             height="200"
             frameBorder="0"
@@ -201,53 +186,30 @@ export class Blog extends Component {
             allow="encrypted-media"
           />
         </div>
-        <Comments blog={this.props.chosenBlog[0]} />
+        <Comments blog={this.props.chosenBlog} />
       </div>
     );
   }
 }
 
-const mapState = (state, ownProps) => {
-  const { blogs, user, savedArtists, error } = state;
-  return {
-    artists: sortedArtistsSelector(state),
-    blogs: blogs.blogs,
-    chosenBlog: blogs.blogs.filter(blog => {
-      return '' + blog.id === ownProps.match.params.id;
-    }),
-    isLoggedIn: !!user.id,
-    isAdmin: user.isAdmin,
-    user,
-    savedArtists,
-    error
-  };
-};
+const mapState = ({ blogs, user, savedArtists, error, comments }) => ({
+  chosenBlog: blogs.chosenBlog,
+  isLoggedIn: !!user.id,
+  isAdmin: user.isAdmin,
+  user,
+  savedArtists,
+  error,
+  comments
+});
 
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(fetchArtists());
-      dispatch(fetchBlogs());
-    },
-    fetchSaved() {
-      dispatch(fetchSavedArtists());
-    },
-    delete(id, spotlight) {
-      dispatch(deleteCurrentBlog(id, spotlight));
-    },
-    getBlogComments(id) {
-      dispatch(fetchComments(id));
-    },
-    likeBlog(blog) {
-      dispatch(likeCurrentBlog(blog));
-    },
-    dislikeBlog(blog) {
-      dispatch(dislikeCurrentBlog(blog));
-    },
-    renderError() {
-      dispatch(deleteError());
-    }
-  };
-};
+const mapDispatch = dispatch => ({
+  fetchChosenBlog: id => dispatch(fetchChosenBlog(id)),
+  fetchSaved: () => dispatch(fetchSavedArtists()),
+  delete: (id, spotlight) => dispatch(deleteCurrentBlog(id, spotlight)),
+  getBlogComments: id => dispatch(fetchComments(id)),
+  likeBlog: blog => dispatch(likeCurrentBlog(blog)),
+  dislikeBlog: blog => dispatch(dislikeCurrentBlog(blog)),
+  renderError: () => dispatch(deleteError())
+});
 
 export default connect(mapState, mapDispatch)(Blog);

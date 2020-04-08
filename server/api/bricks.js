@@ -31,7 +31,6 @@ router.get(
 //         title: req.params.name
 //       }
 //     });
-//     console.log()
 //     res.json(chapter);
 //   })
 // );

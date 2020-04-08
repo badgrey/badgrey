@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewArtist } from '../../store/artists';
+import {
+  createNewArtist,
+  checkForDuplicateArtist,
+  deleteError
+} from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
-import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //state and genre options for dropdown
 const stateOptions = [
@@ -71,13 +74,9 @@ const genreOptions = [
 ];
 
 export class NewArtist extends Component {
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-    this.state = {
-      file: null
-    };
-  }
+  state = {
+    file: null
+  };
 
   //if not admin redirects
   componentDidMount() {
@@ -92,15 +91,8 @@ export class NewArtist extends Component {
   };
 
   //sends artist info to backend
-  async submit(event) {
+  submit = async event => {
     event.preventDefault();
-
-    //checks to see if adding an artist that is already added
-    for (let i = 0; i < this.props.artists.length; i++) {
-      if (this.props.artists[i].name === name) {
-        return;
-      }
-    }
     let artistInfo = {
       name: event.target.name.value,
       city: event.target.city.value,
@@ -111,23 +103,42 @@ export class NewArtist extends Component {
     if (event.target.youtubeID.value !== '') {
       artistInfo.youtubeID = event.target.youtubeID.value.split(' ');
     }
+    try {
+      await this.props.checkForDuplicateArtist(artistInfo.name);
+      let picture;
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+      picture = await axios.post('/api/uploadArtistPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      let key = picture.data.Location.split('/');
+      artistInfo.imageURL = picture.data.Location;
+      artistInfo.fileKey = key[key.length - 1];
+      await this.props.createNewArtist(artistInfo);
+      this.props.history.push(
+        `/discover/${
+          this.props.chosenArtist.stateAbbrev
+        }/${this.props.chosenArtist.name.split(' ').join('')}_${
+          this.props.chosenArtist.id
+        }`
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    let picture;
-    const formData = new FormData();
-    formData.append('file', this.state.file[0]);
-    picture = await axios.post('/api/uploadArtistPicture', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-    let key = picture.data.Location.split('/');
-    artistInfo.imageURL = picture.data.Location;
-    artistInfo.fileKey = key[key.length - 1];
-    this.props.submitForm(artistInfo);
-    this.props.history.push(`/discover/${artistInfo.stateAbbrev}`);
+  //gets rid of error message after a little
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000);
   }
 
   render() {
+    const error = this.props.error.error;
+    if (error) {
+      this.renderErrorMessage();
+    }
     return (
       <div className="outerNewArtistForm">
         <form className="newArtistForm" onSubmit={this.submit}>
@@ -195,22 +206,27 @@ export class NewArtist extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        {//displays error if trying to save artist when not logged in
+        error && error.error && (
+          <div className="commentPostError">
+            <p>{error.error}</p>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-const mapState = state => {
-  return {
-    artists: sortedArtistsSelector(state),
-    isAdmin: state.user.isAdmin
-  };
-};
+const mapState = ({ user, artists, error }) => ({
+  isAdmin: user.isAdmin,
+  error,
+  chosenArtist: artists.chosenArtist
+});
 
 const mapDispatch = dispatch => ({
-  submitForm(artist) {
-    dispatch(createNewArtist(artist));
-  }
+  createNewArtist: artist => dispatch(createNewArtist(artist)),
+  checkForDuplicateArtist: name => dispatch(checkForDuplicateArtist(name)),
+  renderError: () => dispatch(deleteError())
 });
 
 export default connect(mapState, mapDispatch)(NewArtist);

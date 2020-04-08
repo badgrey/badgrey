@@ -3,19 +3,18 @@ import { connect } from 'react-redux';
 import '../../../public/styles/index.scss';
 import { YoutubePlayer, Comments } from '../';
 import {
-  fetchArtists,
+  fetchChosenArtist,
   deleteCurrentArtist,
   fetchSavedArtists,
   addNewSavedArtist,
-  fetchBlogs,
   fetchArtistComments,
   likeCurrentArtist,
   dislikeCurrentArtist,
-  deleteError
+  deleteError,
+  fetchStateArtists
 } from '../../store';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //individual artist page component
 export class Artist extends Component {
@@ -25,13 +24,12 @@ export class Artist extends Component {
 
   //getting initial data and comments for specific user when getting to page
   async componentDidMount() {
+    const artistId = +this.props.match.params.artist.split('_')[1];
     window.scroll(0, 0);
-    if (this.props.chosenArtist === []) {
-      await this.props.loadInitialData();
+    if (this.props.chosenArtist.id !== artistId) {
+      await this.props.fetchChosenArtist(artistId);
     }
-    // eslint-disable-next-line radix
-    const id = parseInt(this.props.match.params.artist.split('_')[1]);
-    await this.props.getArtistComments(id);
+    await this.props.getArtistComments(artistId);
   }
 
   componentDidUpdate() {
@@ -41,10 +39,11 @@ export class Artist extends Component {
   //deletes artist
   deleteArtist = async () => {
     await axios.post('/api/deleteArtistPicture', {
-      name: this.props.chosenArtist[0].fileKey
+      name: this.props.chosenArtist.fileKey
     });
-    const state = this.props.chosenArtist[0].stateAbbrev;
-    this.props.delete(this.props.chosenArtist[0].id);
+    const state = this.props.chosenArtist.stateAbbrev;
+    await this.props.delete(this.props.chosenArtist.id);
+    await this.props.fetchStateArtists(1, state);
     this.props.history.push(`/discover/${state}`);
   };
 
@@ -62,7 +61,7 @@ export class Artist extends Component {
   //saves artist to users saved page
   saveArtist = async () => {
     await this.props.saveCurrentArtist({
-      id: this.props.chosenArtist[0].id,
+      id: this.props.chosenArtist.id,
       user: this.props.user
     });
   };
@@ -72,27 +71,26 @@ export class Artist extends Component {
     setTimeout(() => this.props.renderError(), 3000);
   }
 
-  // eslint-disable-next-line complexity
   render() {
     const error = this.props.error.error;
     if (error) {
       this.renderErrorMessage();
     }
-    return this.props.chosenArtist.length === 0 ? null : (
+    return !this.props.chosenArtist.id ? null : (
       <div className="artistRoot">
         <div className="artistHeader">
           <Link
             className="artistStateLink"
-            to={`/discover/${this.props.chosenArtist[0].stateAbbrev}`}
+            to={`/discover/${this.props.chosenArtist.stateAbbrev}`}
           >
             <img
               className="artistStateImage"
-              src={`https://badgrey-states.s3.us-east-2.amazonaws.com/${this.props.chosenArtist[0].stateAbbrev}.png`}
+              src={`https://badgrey-states.s3.us-east-2.amazonaws.com/${this.props.chosenArtist.stateAbbrev}.png`}
             />
           </Link>
           <div className="artistNameHeader">
-            <h1 className="artistTitle">{this.props.chosenArtist[0].name}</h1>
-            <h3 className="artistCity">{this.props.chosenArtist[0].city}</h3>
+            <h1 className="artistTitle">{this.props.chosenArtist.name}</h1>
+            <h3 className="artistCity">{this.props.chosenArtist.city}</h3>
             {//depending if artist is saved or not will display a button to save them or just "saved"
             this.props.isSaved ? (
               <div>Saved</div>
@@ -114,7 +112,7 @@ export class Artist extends Component {
                 className="artistLikeDislikeButton"
                 onClick={() =>
                   this.props.likeArtist({
-                    artist: this.props.chosenArtist[0],
+                    artist: this.props.chosenArtist,
                     user: this.props.user
                   })
                 }
@@ -126,12 +124,12 @@ export class Artist extends Component {
                   }
                 />
               </button>
-              <p>{this.props.chosenArtist[0].ArtistLikes.length}</p>
+              <p>{this.props.chosenArtist.ArtistLikes.length}</p>
               <button
                 className="artistLikeDislikeButton"
                 onClick={() =>
                   this.props.dislikeArtist({
-                    artist: this.props.chosenArtist[0],
+                    artist: this.props.chosenArtist,
                     user: this.props.user
                   })
                 }
@@ -143,7 +141,7 @@ export class Artist extends Component {
                   }
                 />
               </button>
-              <p>{this.props.chosenArtist[0].ArtistDislikes.length}</p>
+              <p>{this.props.chosenArtist.ArtistDislikes.length}</p>
             </div>
             {error
               ? //puts forward error if trying to like or dislike artist when not logged in
@@ -172,15 +170,15 @@ export class Artist extends Component {
             )}
           </div>
           <Link
-            to={`/discover/genre/${this.props.chosenArtist[0].genre}`}
+            to={`/discover/genre/${this.props.chosenArtist.genre}`}
             className="artistGenreLink"
           >
-            <div>More {this.props.chosenArtist[0].genre} Artists</div>
+            <div>More {this.props.chosenArtist.genre} Artists</div>
           </Link>
         </div>
-        {this.props.chosenArtist[0].blogs.length === 0 ? null : (
+        {this.props.chosenArtist.blogs.length === 0 ? null : (
           <div className="artistRelatedBlogsContainer">
-            {this.props.chosenArtist[0].blogs.slice(-3).map(blog => {
+            {this.props.chosenArtist.blogs.slice(-3).map(blog => {
               return (
                 <div key={blog.id} className="artistSingleRelatedBlog">
                   <div className="artistRelatedBlogPic">
@@ -208,80 +206,47 @@ export class Artist extends Component {
               frameBorder="0"
               allowFullScreen
               allow="autoplay"
-              src={this.props.chosenArtist[0].soundcloudURL}
+              src={this.props.chosenArtist.soundcloudURL}
             />
           </div>
           <div className="artistYoutube">
             {//maps through youtube ids and puts up youtube video for each artist
-            this.props.chosenArtist[0].youtubeID.map(id => {
+            this.props.chosenArtist.youtubeID.map(id => {
               return <YoutubePlayer key={id} ytID={id} />;
             })}
           </div>
         </div>
-        <Comments artist={this.props.chosenArtist[0]} />
+        <Comments artist={this.props.chosenArtist} />
       </div>
     );
   }
 }
 
 //putting artists comments chosen artist savedartists error and is saved on props
-const mapState = (state, ownProps) => {
-  const { artists, user, savedArtists, error } = state;
-  return {
-    chosenArtist: artists.filter(artist => {
-      let targetArtist = ownProps.match.params.artist.split('_')[0];
-      return artist.name.split(' ').join('') === targetArtist;
-    }),
-    artists: sortedArtistsSelector(state),
-    isLoggedIn: !!user.isLoggedIn,
-    isAdmin: user.isAdmin,
-    user,
-    error,
-    savedArtists,
-    isSaved:
-      savedArtists.filter(artist => {
-        return (
-          artist.id ===
-          artists.filter(otherArtist => {
-            return (
-              otherArtist.name.split(' ').join('') ===
-              ownProps.match.params.artist.split('_')[0]
-            );
-          })[0].id
-        );
-      }).length !== 0
-  };
-};
+const mapState = ({ artists, user, savedArtists, error }) => ({
+  chosenArtist: artists.chosenArtist,
+  isLoggedIn: !!user.id,
+  isAdmin: user.isAdmin,
+  user,
+  error,
+  savedArtists,
+  isSaved:
+    savedArtists.filter(artist => {
+      return artist.id === artists.chosenArtist.id;
+    }).length !== 0
+});
 
 //buncha stuff over here on props too
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(fetchArtists());
-      dispatch(fetchBlogs());
-    },
-    delete(id) {
-      dispatch(deleteCurrentArtist(id));
-    },
-    fetchSaved() {
-      dispatch(fetchSavedArtists());
-    },
-    saveCurrentArtist(id) {
-      dispatch(addNewSavedArtist(id));
-    },
-    getArtistComments(id) {
-      dispatch(fetchArtistComments(id));
-    },
-    likeArtist(artist) {
-      dispatch(likeCurrentArtist(artist));
-    },
-    dislikeArtist(artist) {
-      dispatch(dislikeCurrentArtist(artist));
-    },
-    renderError() {
-      dispatch(deleteError());
-    }
-  };
-};
+const mapDispatch = dispatch => ({
+  fetchChosenArtist: id => dispatch(fetchChosenArtist(id)),
+  fetchStateArtists: (page, state) => dispatch(fetchStateArtists(page, state)),
+  delete: id => dispatch(deleteCurrentArtist(id)),
+  fetchSaved: () => dispatch(fetchSavedArtists()),
+  saveCurrentArtist: id => dispatch(addNewSavedArtist(id)),
+  getArtistComments: id => dispatch(fetchArtistComments(id)),
+  likeArtist: artist => dispatch(likeCurrentArtist(artist)),
+  dislikeArtist: artist => dispatch(dislikeCurrentArtist(artist)),
+  renderError: () => dispatch(deleteError())
+});
 
 export default connect(mapState, mapDispatch)(Artist);

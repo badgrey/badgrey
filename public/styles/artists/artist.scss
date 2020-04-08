@@ -1,6 +1,5 @@
 .artistRoot {
   text-align: -webkit-center;
-  margin-top: 7em;
 }
 .artistHeader {
   display: flex;
@@ -250,9 +249,6 @@
 
 //iPad
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .artistRoot {
-    margin-top: 7em;
-  }
   .artistRelatedBlogsContainer {
     flex-wrap: wrap;
   }
@@ -268,9 +264,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .artistRoot {
-    margin-top: 10em;
-  }
   .artistStateImage {
     height: 180px;
     width: 180px;
@@ -300,9 +293,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .artistRoot {
-    margin-top: 10em;
-  }
   .artistStateImage {
     height: 180px;
     width: 180px;

@@ -1,7 +1,6 @@
 .blogContainer {
   margin-left: 8em;
   margin-right: 8em;
-  margin-top: 7em;
 }
 .blogHeader {
   margin-top: 40px;
@@ -192,9 +191,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .blogContainer {
-    margin-top: 10em;
-  }
   .blogTitle {
     font-size: 3em;
   }
@@ -230,9 +226,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .blogContainer {
-    margin-top: 10em;
-  }
   .blogTitle {
     font-size: 3em;
   }

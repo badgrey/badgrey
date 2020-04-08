@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7em;
 }
 .editBlogForm {
   margin: 3em 0 0 0;
@@ -74,9 +73,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .outerEditBlogForm {
-    margin-top: 10em;
-  }
   .editBlogForm {
     width: 65vw;
   }
@@ -103,9 +99,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .outerEditBlogForm {
-    margin-top: 10em;
-  }
   .editBlogForm {
     height: 70vh;
   }

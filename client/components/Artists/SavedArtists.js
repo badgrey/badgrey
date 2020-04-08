@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import {
-  fetchArtists,
+  fetchAllArtists,
   fetchSavedArtists,
   deleteCurrentSavedArtist,
   fetchBlogs
 } from '../../store';
-import { sortedArtistsSelector } from '../../store/selectors/artists';
 
 //component for showing saved artists in specific users saved component
 export class SavedArtists extends Component {
@@ -115,7 +114,6 @@ const mapState = state => {
   const { user, savedArtists } = state;
   return {
     savedArtists,
-    artists: sortedArtistsSelector(state),
     isLoggedIn: !!user,
     user
   };
@@ -124,7 +122,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(fetchArtists());
+      dispatch(fetchAllArtists());
       dispatch(fetchBlogs());
     },
     fetchSaved() {

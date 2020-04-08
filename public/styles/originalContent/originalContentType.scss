@@ -1,5 +1,4 @@
 .OCcontainerDiv {
-  margin-top: 7em;
 }
 .OCheader {
   display: flex;
@@ -89,9 +88,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .OCcontainerDiv {
-    margin-top: 10em;
-  }
   .OCheader h1 {
     font-size: 3.5em;
   }
@@ -110,9 +106,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .OCcontainerDiv {
-    margin-top: 10em;
-  }
   .OCheader h1 {
     font-size: 4em;
   }

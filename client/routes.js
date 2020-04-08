@@ -25,14 +25,14 @@ import {
   // AllBricksChapters,
   // BricksChapter
 } from './components';
-import { me, fetchArtists, fetchBlogs, fetchOriginalContent } from './store';
+import { me, fetchAllBlogs, fetchFeaturedContent } from './store';
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData();
+  async componentDidMount() {
+    await this.props.loadInitialData();
   }
 
   render() {
@@ -81,24 +81,19 @@ class Routes extends Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
-  return {
-    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
-  };
-};
+const mapState = ({ user }) => ({
+  // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
+  // Otherwise, state.user will be an empty object, and state.user.id will be falsey
+  isLoggedIn: !!user.id
+});
 
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(me());
-      dispatch(fetchArtists());
-      dispatch(fetchBlogs());
-      dispatch(fetchOriginalContent());
-    }
-  };
-};
+const mapDispatch = dispatch => ({
+  loadInitialData: () => {
+    dispatch(me());
+    dispatch(fetchAllBlogs());
+    dispatch(fetchFeaturedContent());
+  }
+});
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes

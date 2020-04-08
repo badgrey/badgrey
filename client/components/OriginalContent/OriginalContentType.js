@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { YoutubePlayer } from '../index';
 import {
-  fetchOriginalContent,
+  fetchMusicVideos,
+  fetchCitySounds,
   createNewOriginalContent,
   deleteCurrentOriginalContent,
   likeCurrentOriginalContent,
@@ -12,10 +13,14 @@ import '../../../public/styles/index.scss';
 
 export class OriginalContentType extends Component {
   async componentDidMount() {
-    await this.props.loadContent(this.props.match.params.type);
+    const type = this.props.match.params.type;
+    if (this.props[type].length === 0) {
+      if (type === 'MusicVideo') await this.props.fetchMusicVideos();
+      else await this.props.fetchCitySounds();
+    }
   }
 
-  submit = event => {
+  submit = async event => {
     event.preventDefault();
     let info = {
       youtubeId: event.target.oc.value,
@@ -24,11 +29,12 @@ export class OriginalContentType extends Component {
           ? 'MusicVideo'
           : 'CitySounds'
     };
-    this.props.submitContent(info);
+    await this.props.submitContent(info);
   };
 
   render() {
-    return !this.props.content.length && this.props.isAdmin ? (
+    return !this.props[this.props.match.params.type].length &&
+      this.props.isAdmin ? (
       <div className="OCcontainerDiv">
         <div className="OCheader">
           <h1>Bad Grey Films</h1>
@@ -57,7 +63,7 @@ export class OriginalContentType extends Component {
         </div>
         <div className="OCcontainer">
           {//maps over all youtube ids and displays original content
-          this.props.content.map(oc => {
+          this.props[this.props.match.params.type].map(oc => {
             return (
               <div key={oc.id} className="singleoc">
                 <YoutubePlayer ytID={oc.youtubeId} />
@@ -123,18 +129,18 @@ export class OriginalContentType extends Component {
   }
 }
 
-const mapState = ({ originalcontent, user }, ownProps) => {
+const mapState = ({ originalcontent, user }) => {
   return {
-    content: originalcontent
-      .filter(oc => oc.contentType === ownProps.match.params.type)
-      .slice(0, 6),
+    MusicVideo: originalcontent.musicVideos,
+    CitySounds: originalcontent.citySounds,
     user,
     isAdmin: user.isAdmin
   };
 };
 
 const mapDispatch = () => dispatch => ({
-  loadContent: type => dispatch(fetchOriginalContent(type)),
+  fetchMusicVideos: () => dispatch(fetchMusicVideos()),
+  fetchCitySounds: () => dispatch(fetchCitySounds()),
   submitContent: oc => dispatch(createNewOriginalContent(oc)),
   delete: id => dispatch(deleteCurrentOriginalContent(id)),
   likeOC: oc => dispatch(likeCurrentOriginalContent(oc)),

@@ -45,18 +45,22 @@ export class NewBlog extends Component {
     if (event.target.spotlight.value === 'No') {
       blogInfo.blogInfo.spotlight = false;
     }
-    const formData = new FormData();
-    formData.append('file', this.state.file[0]);
-    let picture = await axios.post('/api/uploadBlogPicture', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-    let key = picture.data.Location.split('/');
-    blogInfo.blogInfo.blogPic = picture.data.Location;
-    blogInfo.blogInfo.fileKey = key[key.length - 1];
-    this.props.submitForm(blogInfo);
-    this.props.history.push(`/`);
+    try {
+      const formData = new FormData();
+      formData.append('file', this.state.file[0]);
+      let picture = await axios.post('/api/uploadBlogPicture', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      let key = picture.data.Location.split('/');
+      blogInfo.blogInfo.blogPic = picture.data.Location;
+      blogInfo.blogInfo.fileKey = key[key.length - 1];
+      await this.props.submitForm(blogInfo);
+      this.props.history.push(`/`);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   render() {

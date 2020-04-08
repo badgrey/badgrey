@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 7em;
   height: 100vh;
   width: 100%;
 }
@@ -44,17 +43,8 @@
   animation: fadeinout 2s linear forwards;
 }
 
-@media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .outerAccountForm {
-    margin-top: 10em;
-  }
-}
-
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .outerAccountForm {
-    margin-top: 10em;
-  }
   .editEmail h1 {
     font-size: 4em;
   }
