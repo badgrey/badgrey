@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import { fetchAllBlogs, fetchSavedArtists } from '../../store';
-import LazyLoad from 'react-lazyload';
 import { Pagination, Search } from '../';
 
 export class AllBlogs extends Component {
@@ -95,18 +94,20 @@ export class AllBlogs extends Component {
           {this.props.blogs.map(blog => {
             //mapping over all blogs and creating links to individual blog pages
             return (
-              <LazyLoad key={blog.id} height={200}>
-                <Link className="allSingleBlogLink" to={`/allblogs/${blog.id}`}>
-                  <div className="allSingleBlog">
-                    <div className="allSingleBlogInfo">
-                      <p className="allSingleBlogTitle">{blog.title}</p>
-                      <p className="noneOnMobile">By {blog.author}</p>
-                      <p className="noneOnMobile">{blog.date}</p>
-                    </div>
-                    <img src={blog.blogPic} />
+              <Link
+                key={blog.id}
+                className="allSingleBlogLink"
+                to={`/allblogs/${blog.id}`}
+              >
+                <div className="allSingleBlog">
+                  <div className="allSingleBlogInfo">
+                    <p className="allSingleBlogTitle">{blog.title}</p>
+                    <p className="noneOnMobile">By {blog.author}</p>
+                    <p className="noneOnMobile">{blog.date}</p>
                   </div>
-                </Link>
-              </LazyLoad>
+                  <img src={blog.blogPic} />
+                </div>
+              </Link>
             );
           })}
         </div>

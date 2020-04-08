@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
-import LazyLoad from 'react-lazyload';
 import {
   fetchAllArtists,
   fetchSavedArtists,
@@ -111,9 +110,7 @@ export class AllArtists extends PureComponent {
                 <div className="allArtistName">
                   <div className="allArtistNameText">{artist.name}</div>
                 </div>
-                <LazyLoad height={200}>
-                  <img src={artist.imageURL} />
-                </LazyLoad>
+                <img src={artist.imageURL} />
               </Link>
             </div>
           ))}

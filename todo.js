@@ -1,5 +1,4 @@
 /*
-implement pagination original content
-remove lazy load from all images
+fix background height
 put in google analytics
 */
