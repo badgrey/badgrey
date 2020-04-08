@@ -192,13 +192,14 @@ export class Blog extends Component {
   }
 }
 
-const mapState = ({ blogs, user, savedArtists, error }) => ({
+const mapState = ({ blogs, user, savedArtists, error, comments }) => ({
   chosenBlog: blogs.chosenBlog,
   isLoggedIn: !!user.id,
   isAdmin: user.isAdmin,
   user,
   savedArtists,
-  error
+  error,
+  comments
 });
 
 const mapDispatch = dispatch => ({

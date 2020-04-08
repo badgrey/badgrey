@@ -36,8 +36,8 @@ const deleteBlog = (id, spotlight) => ({
     spotlight
   }
 });
-const likeBlog = blog => ({ type: LIKE_BLOG, blog });
-const dislikeBlog = blog => ({ type: DISLIKE_BLOG, blog });
+const likeBlog = blog => ({ type: LIKE_BLOG, payload: blog });
+const dislikeBlog = blog => ({ type: DISLIKE_BLOG, payload: blog });
 
 //REDUCER
 
@@ -64,68 +64,43 @@ export default function reducer(state = initialState, action) {
         chosenBlog: action.payload
       };
     case CREATE_NEW_BLOG:
-      return action.payload.blog.spotlight
-        ? {
-            ...state,
-            blogs: [action.payload.blog, ...state.blogs],
-            spotlight: [action.payload.blog, ...state.nonSpotlight]
-          }
-        : {
-            ...state,
-            blogs: [action.payload.blog, ...state.blogs],
-            nonSpotlight: [action.payload.blog, ...state.spotlight]
-          };
+      if (action.payload.spotlight) {
+        return {
+          ...state,
+          blogs: [action.payload, ...state.blogs],
+          spotlight: [action.payload, ...state.nonSpotlight],
+          chosenBlog: action.payload,
+          numBlogs: state.numBlogs + 1
+        };
+      } else {
+        return {
+          ...state,
+          blogs: [action.payload, ...state.blogs],
+          nonSpotlight: [action.payload, ...state.spotlight],
+          chosenBlog: action.payload,
+          numBlogs: state.numBlogs + 1
+        };
+      }
     case EDIT_BLOG:
-      return action.payload.blog.spotlight
-        ? {
-            ...state,
-            blogs: state.blogs.map(blog =>
-              action.payload.blog.id === blog.id ? action.blog : blog
-            ),
-            spotlight: state.spotlight.map(blog =>
-              action.payload.blog.id === blog.id ? action.blog : blog
-            )
-          }
-        : {
-            ...state,
-            blogs: state.blogs.map(blog =>
-              action.payload.blog.id === blog.id ? action.blog : blog
-            ),
-            spotlight: state.spotlight.map(blog =>
-              action.payload.blog.id === blog.id ? action.blog : blog
-            )
-          };
-
+      return {
+        blogs: [],
+        spotlight: [],
+        nonSpotlight: [],
+        numBlogs: 0,
+        chosenBlog: action.payload
+      };
     case DELETE_BLOG:
-      return action.payload.spotlight
-        ? {
-            ...state,
-            blogs: state.blogs.filter(blog => blog.id !== action.payload.id),
-            spotlight: state.spotlight.filter(
-              blog => blog.id !== action.payload.id
-            )
-          }
-        : {
-            ...state,
-            blogs: state.blogs.filter(blog => blog.id !== action.payload.id),
-            nonSpotlight: state.nonSpotlight.filter(
-              blog => blog.id !== action.payload.id
-            )
-          };
+      return initialState;
     case LIKE_BLOG:
       return {
         ...state,
-        blogs: state.blogs.map(blog =>
-          action.blog.id === blog.id ? action.blog : blog
-        )
+        chosenBlog: action.payload
       };
 
     case DISLIKE_BLOG:
       return {
         ...state,
-        blogs: state.blogs.map(blog =>
-          action.blog.id === blog.id ? action.blog : blog
-        )
+        chosenBlog: action.payload
       };
     default:
       return state;
@@ -155,7 +130,8 @@ export const fetchAllBlogs = (page = 1, searchValue = '') => async dispatch => {
     response.numBlogs = data.count;
     return dispatch(getBlogs(response));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 export const fetchChosenBlog = id => async (dispatch, getState) => {
@@ -182,7 +158,8 @@ export const fetchChosenBlog = id => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/blog/blog/${id}`);
     return dispatch(getChosenBlog(data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 export const createNewBlog = blog => async dispatch => {
@@ -190,7 +167,8 @@ export const createNewBlog = blog => async dispatch => {
     const newCreatedBlog = await axios.post('/api/blog', blog);
     return dispatch(newBlog(newCreatedBlog.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -199,7 +177,8 @@ export const editCurrentBlog = (id, blog) => async dispatch => {
     const editedBlog = await axios.put(`/api/blog/edit/${id}`, blog);
     return dispatch(editBlog(editedBlog.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -208,7 +187,8 @@ export const deleteCurrentBlog = (id, spotlight) => async dispatch => {
     await axios.delete(`/api/blog/delete/${id}`);
     return dispatch(deleteBlog(id, spotlight));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -218,9 +198,11 @@ export const likeCurrentBlog = blog => async dispatch => {
       return dispatch(addError({ error: 'Login To Upvote/Downvote Blog' }));
     }
     const likedBlog = await axios.post('/api/blog/like', blog);
+    console.log(likedBlog);
     return dispatch(likeBlog(likedBlog.data[0]));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -230,8 +212,10 @@ export const dislikeCurrentBlog = blog => async dispatch => {
       return dispatch(addError({ error: 'Login To Upvote/Downvote Blog' }));
     }
     const dislikedBlog = await axios.post('/api/blog/dislike', blog);
+    console.log(dislikedBlog);
     return dispatch(dislikeBlog(dislikedBlog.data[0]));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };

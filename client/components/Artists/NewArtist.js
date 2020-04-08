@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewArtist, checkForDuplicateArtist } from '../../store/artists';
+import {
+  createNewArtist,
+  checkForDuplicateArtist,
+  deleteError
+} from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
 
@@ -101,7 +105,6 @@ export class NewArtist extends Component {
     }
     try {
       await this.props.checkForDuplicateArtist(artistInfo.name);
-      console.log('made it past here!');
       let picture;
       const formData = new FormData();
       formData.append('file', this.state.file[0]);
@@ -126,7 +129,16 @@ export class NewArtist extends Component {
     }
   };
 
+  //gets rid of error message after a little
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000);
+  }
+
   render() {
+    const error = this.props.error.error;
+    if (error) {
+      this.renderErrorMessage();
+    }
     return (
       <div className="outerNewArtistForm">
         <form className="newArtistForm" onSubmit={this.submit}>
@@ -194,18 +206,27 @@ export class NewArtist extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        {//displays error if trying to save artist when not logged in
+        error && error.error && (
+          <div className="commentPostError">
+            <p>{error.error}</p>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-const mapState = ({ user }) => ({
-  isAdmin: user.isAdmin
+const mapState = ({ user, artists, error }) => ({
+  isAdmin: user.isAdmin,
+  error,
+  chosenArtist: artists.chosenArtist
 });
 
 const mapDispatch = dispatch => ({
   createNewArtist: artist => dispatch(createNewArtist(artist)),
-  checkForDuplicateArtist: name => dispatch(checkForDuplicateArtist(name))
+  checkForDuplicateArtist: name => dispatch(checkForDuplicateArtist(name)),
+  renderError: () => dispatch(deleteError())
 });
 
 export default connect(mapState, mapDispatch)(NewArtist);

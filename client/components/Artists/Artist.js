@@ -10,7 +10,8 @@ import {
   fetchArtistComments,
   likeCurrentArtist,
   dislikeCurrentArtist,
-  deleteError
+  deleteError,
+  fetchStateArtists
 } from '../../store';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -41,7 +42,8 @@ export class Artist extends Component {
       name: this.props.chosenArtist.fileKey
     });
     const state = this.props.chosenArtist.stateAbbrev;
-    this.props.delete(this.props.chosenArtist.id);
+    await this.props.delete(this.props.chosenArtist.id);
+    await this.props.fetchStateArtists(1, state);
     this.props.history.push(`/discover/${state}`);
   };
 
@@ -74,7 +76,6 @@ export class Artist extends Component {
     if (error) {
       this.renderErrorMessage();
     }
-    console.log(this.props);
     return !this.props.chosenArtist.id ? null : (
       <div className="artistRoot">
         <div className="artistHeader">
@@ -238,6 +239,7 @@ const mapState = ({ artists, user, savedArtists, error }) => ({
 //buncha stuff over here on props too
 const mapDispatch = dispatch => ({
   fetchChosenArtist: id => dispatch(fetchChosenArtist(id)),
+  fetchStateArtists: (page, state) => dispatch(fetchStateArtists(page, state)),
   delete: id => dispatch(deleteCurrentArtist(id)),
   fetchSaved: () => dispatch(fetchSavedArtists()),
   saveCurrentArtist: id => dispatch(addNewSavedArtist(id)),

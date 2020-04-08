@@ -76,19 +76,26 @@ export default function reducer(state = initialArtistState, action) {
       };
     case CREATE_NEW_ARTIST:
       return {
-        ...state,
+        numArtists: 0,
+        allArtists: [],
+        numStateArtists: 0,
+        stateArtists: [],
+        numGenreArtists: 0,
+        genreArtists: [],
         chosenArtist: action.payload
       };
     case EDIT_ARTIST:
       return {
-        ...state,
+        numArtists: 0,
+        allArtists: [],
+        numStateArtists: 0,
+        stateArtists: [],
+        numGenreArtists: 0,
+        genreArtists: [],
         chosenArtist: action.payload
       };
     case DELETE_ARTIST:
-      return {
-        ...state,
-        chosenArtist: {}
-      };
+      return initialArtistState;
     case LIKE_ARTIST:
       return {
         ...state,
@@ -120,7 +127,8 @@ export const fetchAllArtists = (
 
     return dispatch(getArtists(artists.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -135,7 +143,8 @@ export const fetchStateArtists = (
     );
     return dispatch(getStateArtists(artists.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -150,7 +159,8 @@ export const fetchGenreArtists = (
     );
     return dispatch(getGenreArtists(artists.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -178,16 +188,18 @@ export const fetchChosenArtist = id => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/artists/artist/${id}`);
     return dispatch(getChosenArtist(data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
 export const createNewArtist = artist => async dispatch => {
   try {
     const newCreatedArtist = await axios.post('/api/artists/admin', artist);
-    return dispatch(newArtist(newCreatedArtist.data));
+    dispatch(newArtist(newCreatedArtist.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -196,17 +208,22 @@ export const editCurrentArtist = (id, artist) => async dispatch => {
     const editedArtist = await axios.put(`/api/artists/admin/${id}`, artist);
     return dispatch(editArtist(editedArtist.data));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
-export const checkForDuplicateArtist = name => async () => {
+export const checkForDuplicateArtist = name => async dispatch => {
   try {
     const duplicateArtist = await axios.post(`/api/artists/duplicate/admin/`, {
       name
     });
-    if (duplicateArtist.data.id) throw new Error('Already Exists!');
+    if (duplicateArtist.data.id) {
+      dispatch(addError({ error: 'This Artists Already Exists!' }));
+      throw new Error('Already Exists!');
+    }
   } catch (err) {
+    dispatch(addError({ error: 'Something Went Wrong!' }));
     throw new Error(err);
   }
 };
@@ -216,7 +233,8 @@ export const deleteCurrentArtist = id => async dispatch => {
     await axios.delete(`/api/artists/admin/${id}`);
     return dispatch(deleteArtist(id));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -228,7 +246,8 @@ export const likeCurrentArtist = artist => async dispatch => {
     const likedArtist = await axios.post('/api/artists/like', artist);
     return dispatch(likeArtist(likedArtist.data[0]));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
 
@@ -240,6 +259,7 @@ export const dislikeCurrentArtist = artist => async dispatch => {
     const dislikedArtist = await axios.post('/api/artists/dislike', artist);
     return dispatch(dislikeArtist(dislikedArtist.data[0]));
   } catch (err) {
-    console.error(err);
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
   }
 };
