@@ -116,6 +116,16 @@ export default function reducer(state = initialArtistState, action) {
 
 //THUNK CREATORS
 
+export const fetchAllArtistsNoLimit = () => async dispatch => {
+  try {
+    const artists = await axios.get(`/api/artists/noLimit`);
+    return dispatch(getArtists(artists.data));
+  } catch (err) {
+    dispatch(addError({ error: 'Something Went Wrong!' }));
+    throw new Error(err);
+  }
+};
+
 export const fetchAllArtists = (
   page = 1,
   searchValue = ''

@@ -131,6 +131,16 @@ router.delete(
   })
 );
 
+router.get(
+  '/noLimit',
+  asyncHandler(async (req, res, next) => {
+    const artists = await Artist.findAndCountAll({
+      order: ['name']
+    });
+    res.json(artists);
+  })
+);
+
 //get a specific artist. not sure if in use
 router.get(
   '/:id',

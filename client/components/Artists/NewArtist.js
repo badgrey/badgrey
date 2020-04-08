@@ -130,9 +130,9 @@ export class NewArtist extends Component {
   };
 
   //gets rid of error message after a little
-  renderErrorMessage() {
+  renderErrorMessage = () => {
     setTimeout(() => this.props.renderError(), 3000);
-  }
+  };
 
   render() {
     const error = this.props.error.error;
