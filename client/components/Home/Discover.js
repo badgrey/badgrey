@@ -91,7 +91,7 @@ export class Discover extends Component {
             spotlight={this.props.spotlight}
             blogs={this.props.nonSpotlight}
           />
-          <FeaturedContent videos={this.props.videos} />
+          <FeaturedContent videos={this.props.featuredContent} />
         </div>
         {//scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
         this.props.match.path === '/discover'
@@ -145,7 +145,7 @@ export class Discover extends Component {
             spotlight={this.props.spotlight}
             blogs={this.props.nonSpotlight}
           />
-          <FeaturedContent videos={this.props.videos} />
+          <FeaturedContent videos={this.props.featuredContent} />
         </div>
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
@@ -182,20 +182,15 @@ export class Discover extends Component {
   }
 }
 
-const mapState = state => {
-  const { artists, user, savedArtists, blogs, originalcontent } = state;
-  return {
-    artists: artists.artists,
-    user: user,
-    isLoggedIn: !!user.id,
-    savedArtists: savedArtists,
-    blogs: blogs.blogs,
-    spotlight: blogs.spotlight[0],
-    nonSpotlight: blogs.nonSpotlight.slice(0, 4),
-    videos: originalcontent
-      .filter(content => content.contentType === 'MusicVideo')
-      .slice(0, 5)
-  };
-};
+const mapState = ({ artists, user, savedArtists, blogs, originalcontent }) => ({
+  artists: artists.artists,
+  user: user,
+  isLoggedIn: !!user.id,
+  savedArtists: savedArtists,
+  blogs: blogs.blogs,
+  spotlight: blogs.spotlight[0],
+  nonSpotlight: blogs.nonSpotlight.slice(0, 4),
+  featuredContent: originalcontent.featuredContent
+});
 
 export default connect(mapState)(Discover);

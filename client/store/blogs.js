@@ -41,14 +41,14 @@ const dislikeBlog = blog => ({ type: DISLIKE_BLOG, payload: blog });
 
 //REDUCER
 
-const initialState = {
+const initialBlogState = {
   blogs: [],
   spotlight: [],
   nonSpotlight: [],
   numBlogs: 0,
   chosenBlog: {}
 };
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialBlogState, action) {
   switch (action.type) {
     case GET_BLOGS:
       return {
@@ -90,7 +90,7 @@ export default function reducer(state = initialState, action) {
         chosenBlog: action.payload
       };
     case DELETE_BLOG:
-      return initialState;
+      return initialBlogState;
     case LIKE_BLOG:
       return {
         ...state,

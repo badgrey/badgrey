@@ -1,5 +1,4 @@
 /*
-change ADD and EDIT LIKE for Artists and Blogs
 implement pagination original content
 remove lazy load from all images
 put in google analytics
