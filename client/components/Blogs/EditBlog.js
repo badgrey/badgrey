@@ -5,14 +5,10 @@ import axios from 'axios';
 import '../../../public/styles/index.scss';
 
 export class EditBlog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      changePic: false,
-      file: null
-    };
-    this.submit = this.submit.bind(this);
-  }
+  state = {
+    changePic: false,
+    file: null
+  };
 
   //if you are not a blogger you get redirected
   componentDidMount() {
@@ -31,7 +27,7 @@ export class EditBlog extends Component {
   };
 
   //submit all info to backend to edit blog
-  async submit(event) {
+  submit = async event => {
     event.preventDefault();
     const blogInfo = {
       title: event.target.title.value,
@@ -45,7 +41,7 @@ export class EditBlog extends Component {
     if (this.state.changePic) {
       let picture;
       await axios.post('/api/deleteBlogPicture', {
-        name: this.props.chosenBlog[0].fileKey
+        name: this.props.chosenBlog.fileKey
       });
       const formData = new FormData();
       formData.append('file', this.state.file[0]);
@@ -58,13 +54,16 @@ export class EditBlog extends Component {
       blogInfo.blogPic = picture.data.Location;
       blogInfo.fileKey = key[key.length - 1];
     } else {
-      blogInfo.blogPic = this.props.chosenBlog[0].blogPic;
-      blogInfo.fileKey = this.props.chosenBlog[0].fileKey;
+      blogInfo.blogPic = this.props.chosenBlog.blogPic;
+      blogInfo.fileKey = this.props.chosenBlog.fileKey;
     }
-
-    this.props.submitForm(this.props.chosenBlog[0].id, blogInfo);
-    this.props.history.push(`/allblogs/${this.props.chosenBlog[0].id}`);
-  }
+    try {
+      await this.props.submitForm(this.props.chosenBlog.id, blogInfo);
+      this.props.history.push(`/allblogs/${this.props.chosenBlog.id}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   render() {
     return (
@@ -75,7 +74,7 @@ export class EditBlog extends Component {
             <input
               name="title"
               type="text"
-              defaultValue={this.props.chosenBlog[0].title}
+              defaultValue={this.props.chosenBlog.title}
             />
           </div>
           <div>
@@ -84,7 +83,7 @@ export class EditBlog extends Component {
               name="author"
               type="text"
               required
-              defaultValue={this.props.chosenBlog[0].author}
+              defaultValue={this.props.chosenBlog.author}
             />
           </div>
           <div>
@@ -94,7 +93,7 @@ export class EditBlog extends Component {
                 name="description"
                 type="text"
                 required
-                defaultValue={this.props.chosenBlog[0].description}
+                defaultValue={this.props.chosenBlog.description}
               />
             </div>
             <div>
@@ -103,7 +102,7 @@ export class EditBlog extends Component {
                 name="spotify"
                 type="text"
                 required
-                defaultValue={this.props.chosenBlog[0].spotifyURL}
+                defaultValue={this.props.chosenBlog.spotifyURL}
               />
             </div>
             {!this.state.changePic ? (
@@ -126,14 +125,14 @@ export class EditBlog extends Component {
               <label>Blog Post</label>
               <textarea
                 name="blogPost"
-                defaultValue={this.props.chosenBlog[0].blogPost}
+                defaultValue={this.props.chosenBlog.blogPost}
               />
             </div>
             <div>
               <label>Spotlight Blog?</label>
               <select
                 name="spotlight"
-                defaultValue={this.props.chosenBlog[0].spotlight ? 'Yes' : 'No'}
+                defaultValue={this.props.chosenBlog.spotlight ? 'Yes' : 'No'}
                 type="text"
                 required
               >
@@ -150,20 +149,15 @@ export class EditBlog extends Component {
 }
 
 //chosen blog gotten from route
-const mapState = ({ blogs, user }, ownProps) => {
-  return {
-    chosenBlog: blogs.blogs.filter(blog => {
-      return '' + blog.id === ownProps.match.params.id;
-    }),
-    blogs: blogs.blogs,
-    user,
-    isAdmin: user.isAdmin,
-    isBlogger: user.isBlogger
-  };
-};
+const mapState = ({ blogs, user }) => ({
+  chosenBlog: blogs.chosenBlog,
+  user,
+  isAdmin: user.isAdmin,
+  isBlogger: user.isBlogger
+});
 
 const mapDispatch = dispatch => ({
-  submitForm(id, blog) {
+  submitForm: (id, blog) => {
     dispatch(editCurrentBlog(id, blog));
   }
 });

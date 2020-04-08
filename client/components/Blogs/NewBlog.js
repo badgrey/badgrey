@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewBlog } from '../../store';
+import {
+  createNewBlog,
+  fetchAllArtistsNoLimit,
+  clearArtistState
+} from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
 
@@ -19,10 +23,15 @@ export class NewBlog extends Component {
   };
 
   //if not a blogger redirect
-  componentDidMount() {
+  async componentDidMount() {
     if (!this.props.isBlogger) {
       this.props.history.push('/');
     }
+    await this.props.fetchAllArtistsNoLimit();
+  }
+
+  componentWillUnmount() {
+    this.props.clearArtistState();
   }
 
   //submits new blog info to database
@@ -64,6 +73,10 @@ export class NewBlog extends Component {
   }
 
   render() {
+    const error = this.props.error.error;
+    if (error) {
+      this.renderErrorMessage();
+    }
     return (
       <div className="outerNewBlogForm">
         <form className="newBlogForm" onSubmit={this.submit}>
@@ -135,24 +148,29 @@ export class NewBlog extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        {//displays error if trying to save artist when not logged in
+        error && error.error && (
+          <div className="commentPostError">
+            <p>{error.error}</p>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-const mapState = state => {
-  return {
-    blogs: state.blogs,
-    isBlogger: state.user.isBlogger,
-    user: state.user,
-    artists: state.artists
-  };
-};
+const mapState = ({ blogs, user, artists, error }) => ({
+  blogs,
+  isBlogger: user.isBlogger,
+  user,
+  artists: artists.allArtists,
+  error
+});
 
 const mapDispatch = dispatch => ({
-  submitForm(blog) {
-    dispatch(createNewBlog(blog));
-  }
+  submitForm: blog => dispatch(createNewBlog(blog)),
+  fetchAllArtistsNoLimit: () => dispatch(fetchAllArtistsNoLimit()),
+  clearArtistState: () => dispatch(clearArtistState())
 });
 
 export default connect(mapState, mapDispatch)(NewBlog);
