@@ -1,6 +1,5 @@
 .artistRoot {
   text-align: -webkit-center;
-  margin-top: 7em;
 }
 .artistHeader {
   display: flex;
@@ -176,71 +175,6 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-.artistCommentContainer {
-  margin-top: 5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  text-align: left;
-  margin-left: 6em;
-}
-.artistCommentForm {
-  margin-bottom: 30px;
-}
-.artistCommentForm textarea {
-  height: 3em;
-  width: 23em;
-  border: solid;
-}
-.artistCommentForm button {
-  margin-left: 1em;
-  background-color: black;
-  color: white;
-  border: 1px solid black;
-  cursor: pointer;
-}
-.artistCommentList {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-}
-.artistSingleComment {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-}
-.likesDislikes {
-  display: flex;
-}
-.likeDislikeButton {
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  height: 30px;
-  width: 37px;
-  cursor: pointer;
-}
-.likeDislikeButton:focus {
-  outline: 0;
-}
-.likeDislikeImage {
-  height: 30px;
-  width: 30px;
-}
-.deleteCommentButton {
-  margin-top: 13px;
-  width: 32px;
-  height: 29px;
-  border-radius: 27px;
-  color: whitesmoke;
-  background-color: black;
-  transition: 0.3s;
-  cursor: pointer;
-  margin-top: 0px;
-  margin-left: 6px;
-}
 
 //Mobile
 @media only screen and (max-width: 600px) {
@@ -311,25 +245,10 @@
   .artistYoutube iframe {
     width: 28em;
   }
-  .artistCommentContainer {
-    margin-top: 5em;
-    margin-left: 3em;
-  }
-  .likeDislikeButton {
-    height: 35px;
-    width: 47px;
-  }
-  .likeDislikeImage {
-    height: 30px;
-    width: 30px;
-  }
 }
 
 //iPad
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .artistRoot {
-    margin-top: 7em;
-  }
   .artistRelatedBlogsContainer {
     flex-wrap: wrap;
   }
@@ -341,17 +260,10 @@
   .artistSoundcloud {
     margin-bottom: 5em;
   }
-  .artistCommentContainer {
-    margin-top: 5em;
-    margin-left: 8em;
-  }
 }
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .artistRoot {
-    margin-top: 10em;
-  }
   .artistStateImage {
     height: 180px;
     width: 180px;
@@ -377,37 +289,10 @@
     font-size: 1.5em;
     height: 7em;
   }
-  .artistCommentContainer {
-    margin-left: 10em;
-  }
-  .artistCommentForm label {
-    font-size: 1.2em;
-  }
-  .artistCommentForm button {
-    width: 5em;
-    height: 2em;
-  }
-  .artistSingleComment p {
-    font-size: 1.4em;
-  }
-  .likesDislikes p {
-    font-size: 1.4em;
-  }
-  .likeDislikeButton {
-    height: 42px;
-    width: 47px;
-  }
-  .likeDislikeImage {
-    height: 40px;
-    width: 40px;
-  }
 }
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .artistRoot {
-    margin-top: 10em;
-  }
   .artistStateImage {
     height: 180px;
     width: 180px;
@@ -460,37 +345,5 @@
   .artistYoutube iframe {
     height: 640px;
     width: 890px;
-  }
-  .artistCommentContainer {
-    margin-top: 1em;
-    margin-left: 20em;
-  }
-  .artistCommentForm label {
-    font-size: 1.2em;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-  }
-  .artistCommentForm button {
-    width: 4em;
-    height: 2em;
-    font-size: 1.4em;
-  }
-  .artistCommentForm textarea {
-    height: 4em;
-    width: 37em;
-  }
-  .artistSingleComment p {
-    font-size: 1.4em;
-  }
-  .likesDislikes p {
-    font-size: 2.3em;
-  }
-  .likeDislikeButton {
-    height: 47px;
-    width: 53px;
-  }
-  .likeDislikeImage {
-    height: 37px;
-    width: 37px;
   }
 }

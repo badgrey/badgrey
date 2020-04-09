@@ -2,26 +2,36 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
-import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../../store';
+import {
+  fetchStateArtists,
+  fetchSavedArtists,
+  clearArtistState
+} from '../../store';
 import { getStateFullName } from '../../utils/states';
+import { Pagination, Search } from '../';
 
 //for indivisula states display of artists that live there
 export class StateArtists extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      savedCheck: true,
-      search: ''
-    };
-    this.saved = this.saved.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+  state = {
+    savedCheck: true,
+    search: '',
+    currentPage: 1
+  };
+  //load data if no artists
+  async componentDidMount() {
+    window.scroll(0, 0);
+    const currentState = this.props.match.params.state;
+    if (
+      this.props.stateArtists.length === 0 ||
+      this.props.stateArtists[0].stateAbbrev !== currentState
+    ) {
+      await this.props.fetchStateArtists(currentState);
+    }
   }
 
-  //load data if no artists
-  componentDidMount() {
-    window.scroll(0, 0);
-    if (this.props.stateArtists === []) {
-      this.props.loadInitialData();
+  componentWillUnmount() {
+    if (this.state.currentPage !== 1) {
+      this.props.fetchStateArtists(this.props.match.params.state);
     }
   }
 
@@ -29,7 +39,7 @@ export class StateArtists extends Component {
     this.saved();
   }
 
-  saved() {
+  saved = () => {
     if (
       this.props.isLoggedIn &&
       this.props.savedArtists.length === 0 &&
@@ -38,18 +48,57 @@ export class StateArtists extends Component {
       this.props.fetchSaved();
       this.setState({ savedCheck: false });
     }
-  }
+  };
 
-  handleSearch(evt) {
-    this.setState({
-      search: evt.target.value
-    });
-  }
+  incrementPage = async () => {
+    try {
+      await this.props.fetchStateArtists(
+        this.props.match.params.state,
+        this.state.currentPage + 1,
+        this.state.search
+      );
+      this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
+      window.scroll(0, 0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  decrementPage = async () => {
+    try {
+      await this.props.fetchStateArtists(
+        this.props.match.params.state,
+        this.state.currentPage - 1,
+        this.state.search
+      );
+      this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
+      window.scroll(0, 0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  jumpToPage = async page => {
+    try {
+      await this.props.fetchStateArtists(
+        this.props.match.params.state,
+        page,
+        this.state.search
+      );
+      this.setState({ currentPage: page });
+      window.scroll(0, 0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  searchForArtists = async evt => {
+    evt.preventDefault();
+    const name = evt.target.name.value;
+    await this.props.fetchStateArtists(this.props.match.params.state, 1, name);
+    this.setState({ search: name });
+  };
 
   render() {
-    const artists = this.props.stateArtists.filter(artist =>
-      artist.name.toLowerCase().includes(this.state.search.toLowerCase())
-    );
     return (
       //if there are no artists in this state load informative message
       this.props.stateArtists.length === 0 ? (
@@ -65,15 +114,13 @@ export class StateArtists extends Component {
               this.props.stateArtists[0].stateAbbrev
             ).toUpperCase()}
           </h1>
-          <h6 className="stateArtistsScrolltoload">Scroll to Load More</h6>
-          <div className="stateArtistSearch">
-            <form>
-              <label className="stateArtistsSearchLabel">Search Artists</label>
-              <input onChange={this.handleSearch} placeholder="Name" />
-            </form>
-          </div>
+          <Search
+            onSubmit={this.searchForArtists}
+            label={'Search Artists'}
+            placeholder={'Name'}
+          />
           <div className="stateArtistsContainer">
-            {artists.map(artist => (
+            {this.props.stateArtists.map(artist => (
               //map over artists and display link for their individual page
               <div key={artist.id}>
                 <Link
@@ -90,38 +137,36 @@ export class StateArtists extends Component {
               </div>
             ))}
           </div>
+          {new Array(Math.ceil(this.props.numArtists / 50)).length > 1 && (
+            <Pagination
+              totalPages={new Array(Math.ceil(this.props.numArtists / 50)).fill(
+                null
+              )}
+              currentPage={this.state.currentPage}
+              incrementPage={this.incrementPage}
+              decrementPage={this.decrementPage}
+              jumpToPage={this.jumpToPage}
+            />
+          )}
         </div>
       )
     );
   }
 }
 
-const mapState = ({ artists, user, savedArtists }, ownProps) => {
-  return {
-    stateArtists: artists.filter(artist => {
-      return artist.stateAbbrev === ownProps.match.params.state;
-    }),
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
-    isLoggedIn: !!user.id,
-    user,
-    savedArtists
-  };
-};
+const mapState = ({ artists, user, savedArtists }) => ({
+  stateArtists: artists.stateArtists,
+  numArtists: artists.numStateArtists,
+  isLoggedIn: !!user.id,
+  user,
+  savedArtists
+});
 
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(fetchArtists());
-      dispatch(fetchBlogs());
-    },
-    fetchSaved() {
-      dispatch(fetchSavedArtists());
-    }
-  };
-};
+const mapDispatch = dispatch => ({
+  fetchStateArtists: (state, page, search) =>
+    dispatch(fetchStateArtists(state, page, search)),
+  fetchSaved: () => dispatch(fetchSavedArtists()),
+  clearArtistState: () => dispatch(clearArtistState())
+});
 
 export default connect(mapState, mapDispatch)(StateArtists);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editCurrentArtist } from '../../store';
+import { editCurrentArtist, deleteError, fetchChosenArtist } from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
 
@@ -80,9 +80,13 @@ export class EditArtist extends Component {
   }
 
   //if you are not admin you are redirected to home
-  componentDidMount() {
+  async componentDidMount() {
     if (!this.props.isAdmin) {
       this.props.history.push('/');
+    }
+    const artistId = +this.props.match.params.artist.split('_')[1];
+    if (this.props.chosenArtist.id !== artistId) {
+      await this.props.fetchChosenArtist(artistId);
     }
   }
 
@@ -111,7 +115,7 @@ export class EditArtist extends Component {
     if (this.state.changePic) {
       let picture;
       await axios.post('/api/deleteArtistPicture', {
-        name: this.props.chosenArtist[0].fileKey
+        name: this.props.chosenArtist.fileKey
       });
       const formData = new FormData();
       formData.append('file', this.state.file[0]);
@@ -124,19 +128,32 @@ export class EditArtist extends Component {
       artistInfo.imageURL = picture.data.Location;
       artistInfo.fileKey = key[key.length - 1];
     } else {
-      artistInfo.imageURL = this.props.chosenArtist[0].imageURL;
-      artistInfo.fileKey = this.props.chosenArtist[0].fileKey;
+      artistInfo.imageURL = this.props.chosenArtist.imageURL;
+      artistInfo.fileKey = this.props.chosenArtist.fileKey;
     }
 
     //submits then pushes new route to new artists page
-    this.props.submitForm(this.props.chosenArtist[0].id, artistInfo);
-    this.props.history.push(
-      `/discover/${artistInfo.stateAbbrev}/${urlName +
-        `_${this.props.chosenArtist[0].id}`}`
-    );
+    try {
+      await this.props.submitForm(this.props.chosenArtist.id, artistInfo);
+      this.props.history.push(
+        `/discover/${artistInfo.stateAbbrev}/${urlName +
+          `_${this.props.chosenArtist.id}`}`
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  //gets rid of error message after a little
+  renderErrorMessage() {
+    setTimeout(() => this.props.renderError(), 3000);
   }
 
   render() {
+    const error = this.props.error.error;
+    if (error) {
+      this.renderErrorMessage();
+    }
     return (
       <div className="outerEditArtistForm">
         <form className="editArtistForm" onSubmit={this.submit}>
@@ -145,7 +162,7 @@ export class EditArtist extends Component {
             <input
               name="name"
               type="text"
-              defaultValue={this.props.chosenArtist[0].name}
+              defaultValue={this.props.chosenArtist.name}
             />
           </div>
           <div>
@@ -154,7 +171,7 @@ export class EditArtist extends Component {
               name="city"
               type="text"
               required
-              defaultValue={this.props.chosenArtist[0].city}
+              defaultValue={this.props.chosenArtist.city}
             />
           </div>
           <div>
@@ -163,7 +180,7 @@ export class EditArtist extends Component {
               type="text"
               required
               label="State"
-              defaultValue={this.props.chosenArtist[0].stateAbbrev}
+              defaultValue={this.props.chosenArtist.stateAbbrev}
             >
               {//maps out state options for dropdown
               stateOptions.map(state => {
@@ -175,7 +192,7 @@ export class EditArtist extends Component {
               type="text"
               required
               label="Genre"
-              defaultValue={this.props.chosenArtist[0].genre}
+              defaultValue={this.props.chosenArtist.genre}
             >
               {//maps out genre options for dropdown
               genreOptions.map(genre => {
@@ -190,14 +207,14 @@ export class EditArtist extends Component {
                 name="soundcloudURL"
                 type="url"
                 required
-                defaultValue={this.props.chosenArtist[0].soundcloudURL}
+                defaultValue={this.props.chosenArtist.soundcloudURL}
               />
             </div>
             <div>
               <label>Youtube ID</label>
               <input
                 name="youtubeID"
-                defaultValue={this.props.chosenArtist[0].youtubeID}
+                defaultValue={this.props.chosenArtist.youtubeID}
               />
             </div>
             {!this.state.changePic ? (
@@ -219,32 +236,29 @@ export class EditArtist extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        {//displays error if trying to save artist when not logged in
+        error && error.error && (
+          <div className="commentPostError">
+            <p>{error.error}</p>
+          </div>
+        )}
       </div>
     );
   }
 }
 
 //chooses artist based off route
-const mapState = ({ artists, user }, ownProps) => {
-  return {
-    chosenArtist: artists.filter(artist => {
-      let targetArtist = ownProps.match.params.artist.split('_')[0];
-      return artist.name.split(' ').join('') === targetArtist;
-    }),
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
-    user,
-    isAdmin: user.isAdmin
-  };
-};
+const mapState = ({ artists, user, error }) => ({
+  chosenArtist: artists.chosenArtist,
+  user,
+  isAdmin: user.isAdmin,
+  error
+});
 
 const mapDispatch = dispatch => ({
-  submitForm(id, artist) {
-    dispatch(editCurrentArtist(id, artist));
-  }
+  submitForm: (id, artist) => dispatch(editCurrentArtist(id, artist)),
+  renderError: () => dispatch(deleteError()),
+  fetchChosenArtist: id => dispatch(fetchChosenArtist(id))
 });
 
 export default connect(mapState, mapDispatch)(EditArtist);

@@ -1,36 +1,41 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
-import LazyLoad from 'react-lazyload';
-import { fetchArtists, fetchSavedArtists, fetchBlogs } from '../../store';
+import {
+  fetchAllArtists,
+  fetchSavedArtists,
+  clearArtistState
+} from '../../store';
+import { Pagination, Search } from '../';
 
 //component for all artists page
-export class AllArtists extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      savedCheck: true,
-      search: ''
-    };
-    this.saved = this.saved.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-  }
+export class AllArtists extends PureComponent {
+  state = {
+    savedCheck: true,
+    search: '',
+    currentPage: 1
+  };
 
   //load all data if user is visiting this page for the first time
-  componentDidMount() {
+  async componentDidMount() {
     window.scroll(0, 0);
-    if (this.props.artists === []) {
-      this.props.loadInitialData();
+    if (this.props.artists.length === 0) {
+      await this.props.fetchAllArtists();
     }
   }
 
+  componentWillUnmount() {
+    if (this.state.currentPage !== 1) {
+      this.props.fetchAllArtists();
+    }
+  }
   componentDidUpdate() {
     this.saved();
   }
 
   //if logged in and no saved and it was already checked, fetch saved artists from db
-  saved() {
+  saved = () => {
     if (
       this.props.isLoggedIn &&
       this.props.savedArtists.length === 0 &&
@@ -39,31 +44,61 @@ export class AllArtists extends Component {
       this.props.fetchSaved();
       this.setState({ savedCheck: false });
     }
-  }
+  };
 
-  //for search bar at top
-  handleSearch(evt) {
-    this.setState({
-      search: evt.target.value
-    });
-  }
+  incrementPage = async () => {
+    try {
+      await this.props.fetchAllArtists(
+        this.state.currentPage + 1,
+        this.state.search
+      );
+      this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
+      window.scroll(0, 0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  decrementPage = async () => {
+    try {
+      await this.props.fetchAllArtists(
+        this.state.currentPage - 1,
+        this.state.search
+      );
+      this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
+      window.scroll(0, 0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  jumpToPage = async page => {
+    try {
+      await this.props.fetchAllArtists(page, this.state.search);
+      this.setState({ currentPage: page });
+      window.scroll(0, 0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  searchForArtists = async evt => {
+    evt.preventDefault();
+    const name = evt.target.name.value;
+    await this.props.fetchAllArtists(1, name);
+    this.setState({ search: name });
+  };
 
   render() {
-    const artists = this.props.artists.filter(artist =>
-      artist.name.toLowerCase().includes(this.state.search.toLowerCase())
-    );
     return this.props.artists.length === 0 ? null : (
       <div className="allArtistsRoot">
         <h1 className="title">ALL</h1>
-        <h6 className="scrolltoload">Scroll to Load More</h6>
-        <div className="artistSearch">
-          <form>
-            <label className="searchLabel">Search Artists</label>
-            <input onChange={this.handleSearch} placeholder="Name" />
-          </form>
-        </div>
+        <Search
+          onSubmit={this.searchForArtists}
+          label={'Search Artists'}
+          placeholder={'Name'}
+        />
         <div className="allArtistsContainer">
-          {artists.map(artist => (
+          {this.props.artists.map(artist => (
             //mapping over every artist and returning picture with link to artists page
             <div key={artist.id}>
               <Link
@@ -75,13 +110,22 @@ export class AllArtists extends Component {
                 <div className="allArtistName">
                   <div className="allArtistNameText">{artist.name}</div>
                 </div>
-                <LazyLoad height={200}>
-                  <img src={artist.imageURL} />
-                </LazyLoad>
+                <img src={artist.imageURL} />
               </Link>
             </div>
           ))}
         </div>
+        {new Array(Math.ceil(this.props.numArtists / 50)).length > 1 && (
+          <Pagination
+            totalPages={new Array(Math.ceil(this.props.numArtists / 50)).fill(
+              null
+            )}
+            currentPage={this.state.currentPage}
+            incrementPage={this.incrementPage}
+            decrementPage={this.decrementPage}
+            jumpToPage={this.jumpToPage}
+          />
+        )}
       </div>
     );
   }
@@ -90,11 +134,8 @@ export class AllArtists extends Component {
 //putting all artists in alphabetical order and user and saved artists on props
 const mapState = ({ artists, user, savedArtists }) => {
   return {
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
+    artists: artists.allArtists,
+    numArtists: artists.numArtists,
     isLoggedIn: !!user.id,
     user,
     savedArtists
@@ -102,16 +143,10 @@ const mapState = ({ artists, user, savedArtists }) => {
 };
 
 //putting loadinitiail data and fetchsaved on props
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(fetchArtists());
-      dispatch(fetchBlogs());
-    },
-    fetchSaved() {
-      dispatch(fetchSavedArtists());
-    }
-  };
-};
+const mapDispatch = dispatch => ({
+  fetchAllArtists: (page, search) => dispatch(fetchAllArtists(page, search)),
+  clearArtistState: () => dispatch(clearArtistState()),
+  fetchSaved: () => dispatch(fetchSavedArtists())
+});
 
 export default connect(mapState, mapDispatch)(AllArtists);

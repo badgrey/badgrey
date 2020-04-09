@@ -1,7 +1,6 @@
 .blogContainer {
   margin-left: 8em;
   margin-right: 8em;
-  margin-top: 7em;
 }
 .blogHeader {
   margin-top: 40px;
@@ -126,37 +125,6 @@
   width: 796px;
   margin-left: -2.5em;
 }
-.blogCommentContainer {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-}
-.blogCommentForm {
-  margin-bottom: 30px;
-}
-.blogCommentForm textarea {
-  height: 3em;
-  width: 23em;
-  border: solid;
-}
-.blogCommentForm button {
-  margin-left: 1em;
-  background-color: black;
-  color: white;
-  border: 1px solid black;
-  cursor: pointer;
-}
-.blogCommentList {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-}
-.blogSingleComment {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-}
 
 //Mobile
 @media only screen and (max-width: 600px) {
@@ -204,9 +172,6 @@
     width: 355px;
     margin-left: 0;
   }
-  .blogCommentContainer {
-    margin-left: 1em;
-  }
 }
 
 //iPad
@@ -226,9 +191,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .blogContainer {
-    margin-top: 10em;
-  }
   .blogTitle {
     font-size: 3em;
   }
@@ -260,23 +222,10 @@
   .blogPostText {
     font-size: 1.7em;
   }
-  .blogCommentForm label {
-    font-size: 1.2em;
-  }
-  .blogCommentForm button {
-    width: 5em;
-    height: 2em;
-  }
-  .blogSingleComment p {
-    font-size: 1.4em;
-  }
 }
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .blogContainer {
-    margin-top: 10em;
-  }
   .blogTitle {
     font-size: 3em;
   }
@@ -308,22 +257,5 @@
   }
   .blogIframe {
     margin-left: 0;
-  }
-  .blogCommentForm label {
-    font-size: 1.2em;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-  }
-  .blogCommentForm button {
-    width: 4em;
-    height: 2em;
-    font-size: 1.4em;
-  }
-  .blogCommentForm textarea {
-    height: 4em;
-    width: 37em;
-  }
-  .blogSingleComment p {
-    font-size: 1.4em;
   }
 }

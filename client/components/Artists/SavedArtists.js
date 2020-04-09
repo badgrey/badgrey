@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../public/styles/index.scss';
 import {
-  fetchArtists,
+  fetchAllArtists,
   fetchSavedArtists,
   deleteCurrentSavedArtist,
   fetchBlogs
@@ -110,14 +110,10 @@ export class SavedArtists extends Component {
   }
 }
 
-const mapState = ({ artists, user, savedArtists }) => {
+const mapState = state => {
+  const { user, savedArtists } = state;
   return {
     savedArtists,
-    artists: artists.sort((artistA, artistB) => {
-      if (artistA.name < artistB.name) return -1;
-      if (artistA.name > artistB.name) return 1;
-      return 0;
-    }),
     isLoggedIn: !!user,
     user
   };
@@ -126,7 +122,7 @@ const mapState = ({ artists, user, savedArtists }) => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(fetchArtists());
+      dispatch(fetchAllArtists());
       dispatch(fetchBlogs());
     },
     fetchSaved() {

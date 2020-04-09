@@ -2,7 +2,6 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  margin-top: 7em;
 }
 .thankYou {
   text-align: center;
@@ -18,7 +17,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7em;
 }
 .submitForm {
   margin: 3em 0 0 0;
@@ -107,9 +105,6 @@
 
 //15"
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .thankYouContainer {
-    margin-top: 10em;
-  }
   .thankYou {
     height: 15em;
     width: 39em;
@@ -120,9 +115,6 @@
   }
   .thankYou h5 {
     font-size: 1.1em;
-  }
-  .outerSubmitForm {
-    margin-top: 10em;
   }
   .submitForm {
     width: 65vw;
@@ -154,9 +146,6 @@
 
 //Desktop
 @media only screen and (min-width: 1800px) {
-  .thankYouContainer {
-    margin-top: 10em;
-  }
   .thankYou {
     height: 30em;
     width: 74em;
@@ -167,9 +156,6 @@
   }
   .thankYou h5 {
     font-size: 2em;
-  }
-  .outerSubmitForm {
-    margin-top: 10em;
   }
   .submitForm {
     height: 70vh;
