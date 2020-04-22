@@ -14,8 +14,6 @@ notifications:
 install:
   - npm i -g npm@5.7.1
   - npm ci
-before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres
 before_deploy:
   - npm run build-client
   - rm -rf node_modules
