@@ -54,7 +54,10 @@ const createApp = () => {
   app.use(sslRedirect());
   app.use('/auth', require('./auth'));
   app.use('/api', require('./api'));
-
+  app.use('/robots.txt', function(req, res, next) {
+    res.type('text/plain');
+    res.send('User-agent: *\nDisallow: /');
+  });
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
