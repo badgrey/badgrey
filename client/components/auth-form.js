@@ -45,7 +45,7 @@ export class AuthForm extends Component {
       try {
         this.props.handleSubmitLogin(
           evt.target.username.value,
-          evt.target.email.value,
+          null,
           evt.target.password.value,
           formName
         );
@@ -88,12 +88,14 @@ export class AuthForm extends Component {
             <label className="loginSignupLabel">Username</label>
             <input name="username" type="text" />
           </div>
-          <div>
-            <label className="loginSignupLabel" htmlFor="email">
-              Email
-            </label>
-            <input name="email" type="text" />
-          </div>
+          {this.props.name !== 'login' && (
+            <div>
+              <label className="loginSignupLabel" htmlFor="email">
+                Email
+              </label>
+              <input name="email" type="text" />
+            </div>
+          )}
           <div>
             <label className="loginSignupLabel" htmlFor="password">
               Password

@@ -1,7 +1,7 @@
-const router = require('express').Router()
-const nodemailer = require('nodemailer')
+const router = require('express').Router();
+const nodemailer = require('nodemailer');
 const Mailgen = require('mailgen');
-module.exports = router
+module.exports = router;
 
 //file sets up automated email for when signing up
 
@@ -11,14 +11,14 @@ router.post('/', (req, res, next) => {
     theme: 'default',
     product: {
       name: 'Bad Grey',
-      link: 'https://www.badgrey.com/',
+      link: 'https://www.badgrey.com/'
     }
   });
-
   const createdOrderEmail = {
     body: {
       name: 'Cole',
-      intro: `${req.body.name} // ${req.body.city} // ${req.body.soundcloud} // ${req.body.youtube}`
+      intro: `${req.body.name} || ${req.body.email}`,
+      outro: req.body.message
     }
   };
 
@@ -27,26 +27,30 @@ router.post('/', (req, res, next) => {
   const mailOptions = {
     from: 'Bad Grey',
     to: process.env.COMPANYEMAIL,
-    subject: 'New Artist Alert',
-    text: `New Artist Alert`,
+    subject: 'YO COLE!',
+    text: `Someone's trying to reach out from badgrey.com`,
     html: emailBody
-  }
+  };
 
   let transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
+      type: 'OAuth2',
       user: process.env.GMAILUSER,
-      pass: process.env.GMAILPASS,
+      clientId: process.env.GMAILCLIENTID,
+      clientSecret: process.env.GMAILCLIENTSECRET,
+      refreshToken: process.env.GMAILREFRESHTOKEN
     }
   });
 
   transporter.sendMail(mailOptions, function(err, response) {
     if (err) {
-      console.error(err)
+      console.error(err);
     } else {
       console.log('Success!', { success: response });
-      res.status(201).send('Success')
+      res.status(201).send('Success');
     }
-  })
-
-})
+  });
+});
