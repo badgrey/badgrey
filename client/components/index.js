@@ -25,12 +25,12 @@ export { default as AllUsers } from './Users/AllUsers';
 export { default as OriginalContent } from './OriginalContent/OriginalContent';
 export { default as OriginalContentType } from './OriginalContent/OriginalContentType';
 
+export { default as Home } from './Home/Home';
 export { default as Navbar } from './navbar';
-export { default as MobileNavbar } from './MobileNavbar';
 export { Login, Signup } from './auth-form';
 export { default as Comments } from './Comments';
 export { default as YoutubePlayer } from './Youtube';
-export { default as Submit } from './Submit';
+export { default as Contact } from './Contact';
 export { default as AllBricksChapters } from './TheBricks/AllBricksChapters';
 export { default as BricksChapter } from './TheBricks/BricksChapter';
 export { default as Pagination } from './Pagination';

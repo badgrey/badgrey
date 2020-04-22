@@ -1,0 +1,18 @@
+.homeRoot {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+.homeFeatureBannerContainer {
+  display: flex;
+  justify-content: center;
+  height: 20em;
+  margin-top: 5em;
+}
+.homeFeatureBannerImage {
+  object-fit: cover;
+  height: 100%;
+  width: 83%;
+  cursor: pointer;
+}

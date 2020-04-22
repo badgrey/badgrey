@@ -3,6 +3,7 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
+  padding-top: 2em;
 }
 .discover h1 {
   font-family: 'Oswald', sans-serif;
@@ -196,7 +197,7 @@
     margin-top: 11px;
   }
   .map svg {
-    height: 86em;
+    height: 60em;
     width: 92em;
   }
 }

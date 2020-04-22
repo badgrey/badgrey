@@ -15,13 +15,14 @@ import {
   SavedArtists,
   AllUsers,
   AllArtists,
-  AllBlogs,
-  Blog,
+  // AllBlogs,
+  // Blog,
+  Home,
   EditBlog,
   NewBlog,
   OriginalContent,
   OriginalContentType,
-  Submit
+  Contact
   // AllBricksChapters,
   // BricksChapter
 } from './components';
@@ -42,21 +43,21 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/" component={Discover} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/discover" component={Discover} />
         <Route exact path="/discover/all" component={AllArtists} />
         <Route exact path="/discover/genre/:genre" component={GenreArtists} />
         <Route exact path="/discover/:state" component={StateArtists} />
         <Route exact path="/discover/:state/:artist" component={Artist} />
-        <Route exact path="/allblogs" component={AllBlogs} />
-        <Route exact path="/allblogs/:id" component={Blog} />
+        {/*<Route exact path="/allblogs" component={AllBlogs} />*/}
+        {/*<Route exact path="/allblogs/:id" component={Blog} />*/}
         <Route exact path="/originalcontent" component={OriginalContent} />
         <Route
           exact
           path="/originalcontent/:type"
           component={OriginalContentType}
         />
-        <Route exact path="/submit" component={Submit} />
+        <Route exact path="/contact" component={Contact} />
         {/*<Route exact path="/TheBricks" component={AllBricksChapters} />
     <Route exact path="/TheBricks/:name" component={BricksChapter} />*/}
         {isLoggedIn && (

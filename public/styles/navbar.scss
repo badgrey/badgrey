@@ -11,14 +11,33 @@
   width: 100%;
   z-index: 10;
 }
+.navLogoContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.navLinksContainer {
+  position: absolute;
+  right: 0;
+}
+.navLogoLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  cursor: pointer;
+}
+.navLogoLink:hover img {
+  opacity: 0.5;
+}
 .navWolfLogo {
   height: 100px;
   width: 100px;
-  cursor: pointer;
-  margin-left: 1em;
 }
-.navWolfLogo:hover {
-  opacity: 0.5;
+.navTextLogo {
+  height: 100px;
+  width: 100px;
+  margin-left: -30px;
 }
 .navList a {
   color: whitesmoke;
@@ -109,6 +128,11 @@
     height: 160px;
     width: 160px;
   }
+  .navTextLogo {
+    height: 160px;
+    width: 160px;
+    margin-left: -45px;
+  }
   .navList {
     margin-top: 111px;
     margin-left: 19em;
@@ -132,6 +156,11 @@
   .navWolfLogo {
     height: 160px;
     width: 160px;
+  }
+  .navTextLogo {
+    height: 160px;
+    width: 160px;
+    margin-left: -45px;
   }
   .navList {
     font-size: 1.5em;

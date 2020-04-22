@@ -22,15 +22,15 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: heroku
+    app: 
+    master: badgrey
+  on:
+    branch: master
+    script: script/deploy_prod
   app:
     develop: badgrey-dev
   on:
     branch: develop
     script: script/deploy_dev
-  app: 
-    master: badgrey
-  on:
-    branch: master
-    script: script/deploy_prod
   api_key:
     secure: m8xSkkBAff8WnJ8xdTI448uvO+27olaaVTdHE9MtLnEYpmy+P4pyxTcnuC87vll2ctZxptitIWZFunlFXLrjNpkccwe0aEmLP9lKxQaM7lKliLKAVV4YOhJJcg0zzNHlDlQmwD2XL384cjUGgpCx2fXJgd4E8sM+ckqiciThyz8yspWhow8e+N4DYfM2PIkmJhpMEnaSLICXMNjHoPIPagLtmM93Fj6c+c+eujs91C8vWjqk+rH9c0gJyNJuSvBQEutjh5ZyGR/Ff+bKp1MsL7MeMTbZCEQVP521jW4iTm4FzgcQ1fnacxHvzo0NAORXhT2caWwyWwYm6hKMl1sXu30eehFUIKoVdlObj4Ti9oyHuhYDtJs0TN2H2hFH3ZgpR/VJAm5dE97tfANfesSqT0Y3dXky4EaI6lvbSoxJBP0A3moaRh1Pj1ApUMTu3SEaRJ6V3jHj6crDX/0TlVr9Jo95vuJo4PZKGNXxFVSbCw1ZUhoceJAkUhv8hqJzjVPOSlAXC9hx11jlrvHwuXR/Xh+19TmezVvrVsURF/7EOZoJoQyc8u5i/EDJu9F7mJeKoWUdvv6gdV7zqTcPD/yNfFy+zXbvT7XSpL7I+WDfwUxk/4pSNLE2enA2+rc9ByBoYGTY/W4cLtZ0uJuKwd0uZDB7mCoEyvb9W2ZWCCfNFN8=
