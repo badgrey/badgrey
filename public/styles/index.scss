@@ -1,31 +1,3 @@
-@import './discover.css';
-@import './footer.css';
-@import './artists/allArtists.css';
-@import './artists/artist.css';
-@import './artists/editArtist.css';
-@import './artists/newArtist.css';
-@import './artists/savedArtists.css';
-@import './artists/genreArtists.css';
-@import './artists/stateArtists.css';
-@import './blogs/allBlogs.css';
-@import './blogs/blog.css';
-@import './blogs/blogHomePage.css';
-@import './blogs/editBlog.css';
-@import './blogs/newBlog.css';
-@import './users/allUsers.css';
-@import './users/editUser.css';
-@import './originalContent/originalContent.css';
-@import './originalContent/originalContentType.css';
-@import './authForm.css';
-@import './featuredContent.css';
-@import './genre.css';
-@import './navbar.css';
-@import './contact.css';
-@import './comments.css';
-@import './pagination.css';
-@import './search.css';
-@import './home.css';
-
 html,
 #app {
   margin: 0px;
@@ -115,3 +87,31 @@ nav a {
     display: none;
   }
 }
+
+@import './discover.scss';
+@import './footer.scss';
+@import './artists/allArtists.scss';
+@import './artists/artist.scss';
+@import './artists/editArtist.scss';
+@import './artists/newArtist.scss';
+@import './artists/savedArtists.scss';
+@import './artists/genreArtists.scss';
+@import './artists/stateArtists.scss';
+@import './blogs/allBlogs.scss';
+@import './blogs/blog.scss';
+@import './blogs/blogHomePage.scss';
+@import './blogs/editBlog.scss';
+@import './blogs/newBlog.scss';
+@import './users/allUsers.scss';
+@import './users/editUser.scss';
+@import './originalContent/originalContent.scss';
+@import './originalContent/originalContentType.scss';
+@import './authForm.scss';
+@import './featuredContent.scss';
+@import './genre.scss';
+@import './navbar.scss';
+@import './contact.scss';
+@import './comments.scss';
+@import './pagination.scss';
+@import './search.scss';
+@import './home.scss';

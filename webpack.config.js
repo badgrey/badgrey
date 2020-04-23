@@ -8,8 +8,7 @@ module.exports = {
   ],
   output: {
     path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    filename: './public/bundle.js'
   },
   devtool: 'source-map',
   module: {
@@ -20,9 +19,8 @@ module.exports = {
         loader: ['babel-loader']
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        loader: ['css-loader']
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.(png|jpg|gif)$/,

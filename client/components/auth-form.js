@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { auth, deleteError, sendConfirmEmail, addError } from '../store';
 import { Link } from 'react-router-dom';
-import '../../public/styles/index.css';
+import '../../public/styles/index.scss';
 
 export class AuthForm extends Component {
   constructor(props) {

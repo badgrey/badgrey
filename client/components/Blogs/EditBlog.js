@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { editCurrentBlog, deleteError } from '../../store';
 import axios from 'axios';
-import '../../../public/styles/index.css';
+import '../../../public/styles/index.scss';
 
 export class EditBlog extends Component {
   state = {

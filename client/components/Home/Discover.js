@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import USAMap from 'react-usa-map';
-import '../../../public/styles/index.css';
+import '../../../public/styles/index.scss';
 import Genre from './Genre';
 // import BlogHomePage from './BlogHomePage';
 // import { FeaturedContent } from './FeaturedContent';

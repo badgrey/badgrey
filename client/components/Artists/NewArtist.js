@@ -6,7 +6,7 @@ import {
   deleteError
 } from '../../store';
 import axios from 'axios';
-import '../../../public/styles/index.css';
+import '../../../public/styles/index.scss';
 
 //state and genre options for dropdown
 const stateOptions = [

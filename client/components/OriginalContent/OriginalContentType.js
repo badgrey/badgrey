@@ -9,7 +9,7 @@ import {
   likeCurrentOriginalContent,
   dislikeCurrentOriginalContent
 } from '../../store';
-import '../../../public/styles/index.css';
+import '../../../public/styles/index.scss';
 
 export class OriginalContentType extends Component {
   async componentDidMount() {
