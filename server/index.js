@@ -49,7 +49,7 @@ const createApp = () => {
   );
   app.use(passport.initialize());
   app.use(passport.session());
-
+  console.log('running!!!');
   // auth and api routes
   app.use(sslRedirect());
   app.use('/auth', require('./auth'));
@@ -63,6 +63,7 @@ const createApp = () => {
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
+    console.log('RUNNING');
     if (path.extname(req.path).length) {
       const err = new Error('Not found');
       err.status = 404;
