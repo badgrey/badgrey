@@ -18,8 +18,8 @@ router.get(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ],
       order: ['name'],
       offset: (req.query.page - 1) * 50,
@@ -43,8 +43,8 @@ router.get(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ],
       order: ['name'],
       offset: (req.query.page - 1) * 50,
@@ -69,8 +69,8 @@ router.get(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ],
       order: ['name'],
       offset: (req.query.page - 1) * 50,
@@ -88,8 +88,8 @@ router.get(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ]
     });
     res.json(artist);
@@ -163,8 +163,8 @@ router.post(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ]
     });
     res.status(201).json(artist[0]);
@@ -203,8 +203,8 @@ router.put(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ]
     });
     res.json(artist[0]);
@@ -244,8 +244,8 @@ router.post(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ]
     });
     res.status(200).json(artist);
@@ -270,8 +270,8 @@ router.post(
       include: [
         { model: User },
         { model: User, as: 'ArtistLikes' },
-        { model: User, as: 'ArtistDislikes' },
-        { model: Blog }
+        { model: User, as: 'ArtistDislikes' }
+        // { model: Blog }
       ]
     });
     res.status(200).json(artist);

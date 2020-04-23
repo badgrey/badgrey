@@ -176,7 +176,7 @@ export class Artist extends Component {
             <div>More {this.props.chosenArtist.genre} Artists</div>
           </Link>
         </div>
-        {this.props.chosenArtist.blogs.length === 0 ? null : (
+        {/*this.props.chosenArtist.blogs.length === 0 ? null : (
           <div className="artistRelatedBlogsContainer">
             {this.props.chosenArtist.blogs.slice(-3).map(blog => {
               return (
@@ -196,7 +196,7 @@ export class Artist extends Component {
               );
             })}
           </div>
-        )}
+          )*/}
         <div className="artistSoundcloudAndYoutube">
           <div className="artistSoundcloud">
             <iframe
