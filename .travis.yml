@@ -18,6 +18,11 @@ before_deploy:
   - rm -rf node_modules
 deploy:
   provider: heroku
+  app: 
+    master: badgrey
+  on:
+    branch: master
+    script: script/deploy_prod
   app:
     develop: badgrey-dev
   on:
