@@ -1,3 +1,0 @@
-/*
-put in google analytics
-*/
