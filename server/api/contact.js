@@ -37,11 +37,11 @@ router.post('/', (req, res, next) => {
     port: 465,
     secure: true,
     auth: {
-      // type: 'OAuth2',
-      // user: process.env.GMAILUSER,
-      // clientId: process.env.GMAILCLIENTID,
-      // clientSecret: process.env.GMAILCLIENTSECRET,
-      // refreshToken: process.env.GMAILREFRESHTOKEN
+      type: 'OAuth2',
+      user: process.env.GMAILUSER,
+      clientId: process.env.GMAILCLIENTID,
+      clientSecret: process.env.GMAILCLIENTSECRET,
+      refreshToken: process.env.GMAILREFRESHTOKEN
     }
   });
 
