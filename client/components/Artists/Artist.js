@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 import { YoutubePlayer, Comments } from '../';
 import {
   fetchChosenArtist,

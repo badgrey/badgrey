@@ -58,14 +58,14 @@
   transform: scale(1.2);
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .searchLabel {
     margin-top: 4px;
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .searchLabel {
     margin-top: 8px;

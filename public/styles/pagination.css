@@ -31,7 +31,7 @@
   color: whitesmoke;
   background-color: black;
 }
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .paginationBackArrow {
     height: 30px;

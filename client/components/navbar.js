@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
-import '../../public/styles/index.scss';
+import '../../public/styles/index.css';
 
 class Navbar extends Component {
   state = {

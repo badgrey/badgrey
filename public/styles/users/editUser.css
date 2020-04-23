@@ -43,7 +43,7 @@
   animation: fadeinout 2s linear forwards;
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .editEmail h1 {
     font-size: 4em;

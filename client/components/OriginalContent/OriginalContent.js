@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 
 const OriginalContent = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 import { fetchGenreArtists, fetchSavedArtists } from '../../store';
 import { Pagination, Search } from '../';
 //component for artists under single genre

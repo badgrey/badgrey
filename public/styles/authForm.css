@@ -1,9 +1,9 @@
-.outerEditArtistForm {
+.outerForm {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.editArtistForm {
+.form {
   margin: 3em 0 0 0;
   width: 50vw;
   height: 70vh;
@@ -14,7 +14,7 @@
   border: 1.2px solid black;
   border-radius: 4px;
 }
-.editArtistForm h2 {
+.form h2 {
   margin-top: 0px;
   width: 100%;
   height: 22%;
@@ -24,11 +24,11 @@
   font-family: 'Oswald', sans-serif;
   font-weight: lighter;
 }
-.editArtistForm h4 {
+.form h4 {
   margin-top: -40px;
   color: whitesmoke;
 }
-.editArtistForm button {
+.form button {
   background-color: black;
   color: white;
   width: 9em;
@@ -37,87 +37,127 @@
   border: 1px solid black;
   cursor: pointer;
 }
-.editArtistForm button:hover {
+.form button:hover {
   background-color: whitesmoke;
   color: black;
 }
-.editArtistForm input {
+.form input {
   border: solid;
   border-radius: 4px;
   height: 25px;
 }
+.loginSignupRoute h4 {
+  color: black;
+}
+.loginError {
+  position: absolute;
+  width: 180px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: whitesmoke;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 65vh;
+  margin-right: 5px;
+  animation: fadeinout 2s linear forwards;
+}
 
-//Mobile
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  85%,
+  65%,
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Mobile */
 @media only screen and (max-width: 600px) {
-  .outerEditArtistForm {
+  .outerForm {
     width: 100%;
   }
-  .editArtistForm {
+  .form {
     width: 90%;
     height: 70vh;
   }
-  .editArtistForm h2 {
+  .form h2 {
     height: 15%;
+  }
+  .loginError {
+    margin-top: 85vh;
+    margin-right: 25px;
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .editArtistForm {
+  .form {
     width: 90%;
   }
-  .editArtistForm h2 {
+  .form h2 {
     height: 15%;
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .editArtistForm {
+  .form {
     width: 65vw;
+    height: 75vh;
   }
-  .editArtistForm h2 {
+  .form h2 {
     font-size: 3em;
     height: 4em;
   }
-  .editArtistForm h4 {
-    margin-top: -3em;
-    margin-bottom: 2em;
+  .form h4 {
+    margin-top: 0;
+    margin-bottom: 0;
     font-size: 2em;
   }
-  .editArtistForm input {
+  .form input {
     height: 1.2em;
     width: 10em;
-    font-size: 1.5em;
+    font-size: 2em;
   }
-  .editArtistForm button {
-    width: 7em;
-    height: 3em;
-    font-size: 1.5em;
+  .form button {
+    width: 10em;
+    height: 70px;
+    font-size: 2em;
+  }
+  .loginSignupLabel {
+    font-size: 2.5em;
+    margin-bottom: 20px;
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
-  .editArtistForm {
+  .form {
     height: 70vh;
   }
-  .editArtistForm h2 {
+  .form h2 {
     font-size: 3em;
   }
-  .editArtistForm h4 {
-    margin-top: -3em;
+  .form h4 {
+    margin-top: 0;
     margin-bottom: 2em;
     font-size: 2em;
   }
-  .editArtistForm input {
+  .form input {
     height: 1.2em;
     width: 9em;
     font-size: 2em;
   }
-  .editArtistForm button {
+  .form button {
     width: 7em;
     height: 2em;
     font-size: 2em;
+  }
+  .loginSignupLabel {
+    font-size: 2em;
+    margin-bottom: 20px;
   }
 }

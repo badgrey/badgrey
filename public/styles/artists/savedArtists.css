@@ -104,7 +104,7 @@
   transform: scale(1.2);
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .noSaved {
     height: 180px;
@@ -136,7 +136,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .savedArtistsContainer {
     margin-left: 5em;
@@ -151,7 +151,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .noSaved {
     height: 15em;
@@ -191,7 +191,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .noSaved {
     height: 30em;

@@ -1,20 +1,35 @@
-.allArtistsRoot {
+.noStateArtistsContainer {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+.noStateArtists {
+  text-align: center;
+  height: 13em;
+  width: 47em;
+  margin-top: 74px;
+}
+.noStateArtists h1 {
+  font-size: 3em;
+  font-family: 'Oswald', sans-serif;
+}
+.stateArtistsDiv {
   height: 100%;
 }
-.title {
+.stateArtistsTitle {
   text-align: center;
   margin-top: 40px;
   font-family: 'Oswald', sans-serif;
   padding-top: 2em;
 }
-.allArtistsContainer {
+.stateArtistsContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-left: 9em;
   margin-right: 9em;
 }
-.allArtistPic {
+.stateArtistPic {
   width: 150px;
   height: 150px;
   display: inline-block;
@@ -22,25 +37,25 @@
   transition: 0.3s;
   cursor: pointer;
 }
-.allArtistPic:hover {
+.stateArtistPic:hover {
   transform: scale(1.2);
 }
-.allArtistPic:hover img {
+.stateArtistPic:hover img {
   filter: brightness(60%);
   -webkit-filter: brightness(60%);
   text-shadow: 0 0 3px whitesmoke;
   color: whitesmoke;
 }
-.allArtistPic:hover .allArtistName {
+.stateArtistPic:hover .stateArtistName {
   opacity: 1;
   z-index: 10;
 }
-.allArtistPic img {
+.stateArtistPic img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.allArtistName {
+.stateArtistName {
   width: 150px;
   height: 150px;
   opacity: 0;
@@ -51,88 +66,103 @@
   transition: 0.3s;
   font-family: 'Oswald', sans-serif;
 }
-.allArtistNameText {
+.stateArtistNameText {
   margin-top: 20px;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
-  .allArtistsRoot {
+  .noStateArtistsContainer {
+    width: 32em;
+  }
+  .noStateArtists {
+    height: 18em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .stateArtistsDiv {
     width: 100%;
   }
-  .allArtistsContainer {
+  .stateArtistsContainer {
     margin: 0px;
     width: 98%;
   }
-  .allArtistPic {
+  .stateArtistPic {
     height: 85px;
     width: 85px;
   }
-  .allArtistName {
+  .stateArtistName {
     opacity: 1;
     margin-top: 30px;
     margin-left: 22px;
     font-size: 7px;
   }
-  .allArtistNameText {
+  .stateArtistNameText {
     width: 49px;
     margin-top: 5px;
   }
 }
 
-//iPad;
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .allArtistsContainer {
+  .stateArtistsContainer {
     margin-left: 5em;
     margin-right: 5em;
   }
-  .allArtistName {
+  .stateArtistName {
     opacity: 1;
     margin-left: 28px;
   }
-  .allArtistNameText {
+  .stateArtistNameText {
     width: 92px;
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
-  .title {
+  .stateArtistsTitle {
     font-size: 3em;
   }
-  .allArtistPic {
+  .stateArtistPic {
     height: 180px;
     width: 180px;
   }
-  .allArtistName {
-    margin-top: 30px;
-    margin-left: 20px;
+  .stateArtistName {
+    margin-top: 76px;
+    margin-left: 22px;
     margin-right: 50px;
     font-size: 20px;
-    padding-top: 25px;
   }
-  .allArtistNameText {
+  .stateArtistNameText {
     width: 130px;
+    margin-top: 10px;
   }
 }
 
-//Dektop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
-  .title {
+  .noStateArtists {
+    height: 32em;
+    width: 92em;
+  }
+  .noStateArtists h2 {
+    font-size: 3em;
+  }
+  .stateArtistsTitle {
     font-size: 4em;
   }
-  .allArtistPic {
+  .stateArtistPic {
     width: 280px;
     height: 280px;
   }
-  .allArtistNameText {
-    margin-top: 50%;
-    font-size: 2em;
-  }
-  .allArtistName {
+  .stateArtistName {
     width: 280px;
     height: 280px;
     margin: 0px;
     text-align: center;
+  }
+  .stateArtistNameText {
+    margin-top: 50%;
+    font-size: 2em;
   }
 }

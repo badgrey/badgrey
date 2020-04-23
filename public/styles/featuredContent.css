@@ -19,14 +19,14 @@
   height: 9.5em;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .featuredContentContainer {
     display: none;
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .featuredContentContainer {
     display: none;
@@ -36,7 +36,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .featuredContentContainer {
     width: 20%;
@@ -52,7 +52,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .featuredContentContainer {
     width: 15%;

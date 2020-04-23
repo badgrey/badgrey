@@ -7,7 +7,7 @@ import {
   deleteError
 } from '../../store';
 import axios from 'axios';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 
 export class NewBlog extends Component {
   constructor(props) {

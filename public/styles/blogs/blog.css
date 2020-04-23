@@ -126,7 +126,7 @@
   margin-left: -2.5em;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .blogContainer {
     margin: 0px;
@@ -174,7 +174,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .blogPost iframe {
     width: 100%;
@@ -189,7 +189,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .blogTitle {
     font-size: 3em;
@@ -224,7 +224,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .blogTitle {
     font-size: 3em;

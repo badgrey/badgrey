@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../public/styles/index.scss';
+import '../../public/styles/index.css';
 
 const Pagination = ({
   totalPages,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 
 //component for three most recent blogs to be visible on homepage
 const BlogHomePage = props => {

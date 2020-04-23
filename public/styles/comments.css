@@ -64,7 +64,7 @@
   margin-left: 6px;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .commentContainer {
     margin-top: 5em;
@@ -80,7 +80,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .commentContainer {
     margin-top: 5em;
@@ -88,7 +88,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .commentContainer {
     margin-left: 10em;
@@ -116,7 +116,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .commentContainer {
     margin-top: 1em;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { editCurrentArtist, deleteError, fetchChosenArtist } from '../../store';
 import axios from 'axios';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 
 //state and genre options for drop down
 const stateOptions = [

@@ -5,7 +5,7 @@ import {
   editSingleUser,
   deleteCurrentUser
 } from '../../store/allusers';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 
 export class AllUsers extends Component {
   constructor(props) {

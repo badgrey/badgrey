@@ -6,7 +6,7 @@ import {
   deleteError,
   addError
 } from '../../store';
-import '../../../public/styles/index.scss';
+import '../../../public/styles/index.css';
 
 //for user editing their own information
 export class EditArtist extends Component {
