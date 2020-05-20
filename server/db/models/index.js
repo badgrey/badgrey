@@ -30,8 +30,8 @@ Comment.belongsTo(User);
 User.hasMany(Comment);
 
 //setting associtation of bricks volume to bricks chapter
-ComicPage.belongsTo(BricksChapters);
-BricksChapters.hasMany(ComicPage);
+// ComicPage.belongsTo(BricksChapters);
+// BricksChapters.hasMany(ComicPage);
 
 //setting up new tables for likes and dislikes through associations between users and everytihng else
 Comment.belongsToMany(User, { through: 'Like_Comment', as: 'Likes' });

@@ -5,7 +5,7 @@ import '../../../public/styles/index.scss';
 import {
   fetchAllArtists,
   fetchSavedArtists,
-  clearArtistState
+  clearArtistState,
 } from '../../store';
 import { Pagination, Search } from '../';
 
@@ -14,7 +14,7 @@ export class AllArtists extends PureComponent {
   state = {
     savedCheck: true,
     search: '',
-    currentPage: 1
+    currentPage: 1,
   };
 
   //load all data if user is visiting this page for the first time
@@ -52,7 +52,9 @@ export class AllArtists extends PureComponent {
         this.state.currentPage + 1,
         this.state.search
       );
-      this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage + 1,
+      }));
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
@@ -64,14 +66,16 @@ export class AllArtists extends PureComponent {
         this.state.currentPage - 1,
         this.state.search
       );
-      this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage - 1,
+      }));
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
     }
   };
 
-  jumpToPage = async page => {
+  jumpToPage = async (page) => {
     try {
       await this.props.fetchAllArtists(page, this.state.search);
       this.setState({ currentPage: page });
@@ -81,7 +85,7 @@ export class AllArtists extends PureComponent {
     }
   };
 
-  searchForArtists = async evt => {
+  searchForArtists = async (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
     await this.props.fetchAllArtists(1, name);
@@ -98,14 +102,14 @@ export class AllArtists extends PureComponent {
           placeholder={'Name'}
         />
         <div className="allArtistsContainer">
-          {this.props.artists.map(artist => (
+          {this.props.artists.map((artist) => (
             //mapping over every artist and returning picture with link to artists page
             <div key={artist.id}>
               <Link
                 className="allArtistPic"
-                to={`/discover/${artist.stateAbbrev}/${artist.name
-                  .split(' ')
-                  .join('') + `_${artist.id}`}`}
+                to={`/RapMap/${artist.stateAbbrev}/${
+                  artist.name.split(' ').join('') + `_${artist.id}`
+                }`}
               >
                 <div className="allArtistName">
                   <div className="allArtistNameText">{artist.name}</div>
@@ -138,15 +142,15 @@ const mapState = ({ artists, user, savedArtists }) => {
     numArtists: artists.numArtists,
     isLoggedIn: !!user.id,
     user,
-    savedArtists
+    savedArtists,
   };
 };
 
 //putting loadinitiail data and fetchsaved on props
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch) => ({
   fetchAllArtists: (page, search) => dispatch(fetchAllArtists(page, search)),
   clearArtistState: () => dispatch(clearArtistState()),
-  fetchSaved: () => dispatch(fetchSavedArtists())
+  fetchSaved: () => dispatch(fetchSavedArtists()),
 });
 
 export default connect(mapState, mapDispatch)(AllArtists);

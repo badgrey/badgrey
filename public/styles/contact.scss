@@ -13,12 +13,12 @@
   flex-direction: column;
   justify-content: center;
 }
-.outerSubmitForm {
+.outerContactForm {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.submitForm {
+.contactForm {
   margin: 3em 0 0 0;
   width: 50vw;
   height: 70vh;
@@ -29,7 +29,7 @@
   border: 1.2px solid black;
   border-radius: 4px;
 }
-.submitForm h2 {
+.contactForm h2 {
   margin-top: 0px;
   width: 100%;
   height: 22%;
@@ -39,11 +39,11 @@
   font-family: 'Oswald', sans-serif;
   font-weight: lighter;
 }
-.submitForm h4 {
+.contactForm h4 {
   margin-top: -40px;
   color: whitesmoke;
 }
-.submitForm button {
+.contactForm button {
   background-color: black;
   color: white;
   width: 9em;
@@ -52,58 +52,67 @@
   border: 1px solid black;
   cursor: pointer;
 }
-.submitForm button:hover {
+.contactForm button:hover {
   background-color: whitesmoke;
   color: black;
 }
-.submitForm input {
+.contactForm input {
   border: solid;
   border-radius: 4px;
   height: 25px;
+  background: transparent;
 }
-.topSubmitFormInputs {
+.contactForm textarea {
+  resize: none;
+  border: solid;
+  border-radius: 4px;
+  width: 75%;
+  height: 7em;
+  background: transparent;
+}
+.topContactFormInputs {
   display: flex;
   justify-content: space-between;
 }
-.bottomSubmitFormInputs {
+.bottomContactFormInputs {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .thankYou {
     height: 180px;
   }
-  .outerSubmitForm {
+  .outerContactForm {
     width: 100%;
   }
-  .submitForm {
+  .contactForm {
     width: 90%;
     height: 70vh;
   }
-  .submitForm h2 {
+  .contactForm h2 {
     height: 15%;
   }
-  .topSubmitFormInputs {
-    flex-direction: column;
-  }
-  .bottomSubmitFormInputs {
+  .topContactFormInputs {
     flex-direction: column;
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
-  .submitForm {
+  .contactForm {
     width: 90%;
   }
-  .submitForm h2 {
+  .contactForm h2 {
     height: 15%;
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .thankYou {
     height: 15em;
@@ -116,35 +125,35 @@
   .thankYou h5 {
     font-size: 1.1em;
   }
-  .submitForm {
+  .contactForm {
     width: 65vw;
   }
-  .submitForm h2 {
+  .contactForm h2 {
     font-size: 3em;
     height: 4em;
   }
-  .submitForm h4 {
+  .contactForm h4 {
     margin-top: -3em;
     margin-bottom: 2em;
     font-size: 2em;
   }
-  .submitForm input {
+  .contactForm input {
     height: 1.2em;
     width: 10em;
     font-size: 2.5em;
   }
-  .submitForm button {
+  .contactForm button {
     width: 10em;
     height: 70px;
     font-size: 2em;
   }
-  .submitFormLabel {
+  .contactFormLabel {
     font-size: 2.5em;
     margin-bottom: 20px;
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .thankYou {
     height: 30em;
@@ -157,28 +166,28 @@
   .thankYou h5 {
     font-size: 2em;
   }
-  .submitForm {
+  .contactForm {
     height: 70vh;
   }
-  .submitForm h2 {
+  .contactForm h2 {
     font-size: 3em;
   }
-  .submitForm h4 {
+  .contactForm h4 {
     margin-top: -3em;
     margin-bottom: 2em;
     font-size: 2em;
   }
-  .submitForm input {
-    height: 1.2em;
-    width: 9em;
-    font-size: 2em;
+  .contactForm input {
+    height: 1.5em;
+    width: 11em;
+    font-size: 1.5em;
   }
-  .submitForm button {
+  .contactForm button {
     width: 7em;
     height: 2em;
     font-size: 2em;
   }
-  .submitFormLabel {
+  .contactFormLabel {
     font-size: 2em;
     margin-bottom: 20px;
   }

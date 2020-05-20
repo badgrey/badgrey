@@ -87,7 +87,7 @@
   font-size: 20px;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .allBlogsDiv {
     display: flex;
@@ -127,7 +127,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .blogsList {
     width: 90%;
@@ -153,15 +153,13 @@
   }
 }
 
-//TODO
-
 @media only screen and (min-width: 900px) and (max-width: 1400px) and (min-height: 800px) {
   .allSingleBlogInfo {
     height: 24%;
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .artistSearch form {
     margin-left: 8em;
@@ -186,7 +184,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .allBlogsDiv h1 {
     font-size: 3em;

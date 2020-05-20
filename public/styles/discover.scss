@@ -3,6 +3,7 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
+  padding-top: 2em;
 }
 .discover h1 {
   font-family: 'Oswald', sans-serif;
@@ -66,7 +67,7 @@
   margin-top: -24px;
 }
 
-// Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .discover {
     width: 100%;
@@ -103,7 +104,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .bannerImage {
     object-fit: contain;
@@ -137,7 +138,7 @@
   }
 }
 
-// 15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .discover h1 {
     font-size: 3em;
@@ -162,7 +163,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .discover h1 {
     font-size: 3em;
@@ -196,7 +197,7 @@
     margin-top: 11px;
   }
   .map svg {
-    height: 86em;
+    height: 60em;
     width: 92em;
   }
 }

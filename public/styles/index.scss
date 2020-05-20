@@ -4,8 +4,8 @@ html,
   padding: 0px;
   border: 0px;
   width: 100%;
-  background: no-repeat center
-    url('https://badgrey-other.s3.us-east-2.amazonaws.com/websitebackground.png');
+  // background: no-repeat center
+  //   url('https://badgrey-other.s3.us-east-2.amazonaws.com/websitebackground.png');
   background-size: 80%;
   background-attachment: fixed;
   font-family: 'Oswald', sans-serif;
@@ -75,7 +75,7 @@ button:focus {
 nav a {
   display: inline-block;
   margin: 1em;
-  color: ghostwhite;
+  color: black;
   cursor: pointer;
 }
 .hidden {
@@ -109,9 +109,9 @@ nav a {
 @import './authForm.scss';
 @import './featuredContent.scss';
 @import './genre.scss';
-@import './mobileNavbar.scss';
 @import './navbar.scss';
-@import './submit.scss';
+@import './contact.scss';
 @import './comments.scss';
 @import './pagination.scss';
 @import './search.scss';
+@import './home.scss';

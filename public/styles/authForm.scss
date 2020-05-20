@@ -74,7 +74,7 @@
   }
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .outerForm {
     width: 100%;
@@ -92,7 +92,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .form {
     width: 90%;
@@ -102,7 +102,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .form {
     width: 65vw;
@@ -133,7 +133,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .form {
     height: 70vh;
@@ -142,7 +142,7 @@
     font-size: 3em;
   }
   .form h4 {
-    margin-top: -3em;
+    margin-top: 0;
     margin-bottom: 2em;
     font-size: 2em;
   }

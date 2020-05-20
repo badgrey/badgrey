@@ -11,7 +11,7 @@ import {
   likeCurrentArtist,
   dislikeCurrentArtist,
   deleteError,
-  fetchStateArtists
+  fetchStateArtists,
 } from '../../store';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -19,7 +19,7 @@ import axios from 'axios';
 //individual artist page component
 export class Artist extends Component {
   state = {
-    savedCheck: true
+    savedCheck: true,
   };
 
   //getting initial data and comments for specific user when getting to page
@@ -39,12 +39,12 @@ export class Artist extends Component {
   //deletes artist
   deleteArtist = async () => {
     await axios.post('/api/deleteArtistPicture', {
-      name: this.props.chosenArtist.fileKey
+      name: this.props.chosenArtist.fileKey,
     });
     const state = this.props.chosenArtist.stateAbbrev;
     await this.props.delete(this.props.chosenArtist.id);
     await this.props.fetchStateArtists(1, state);
-    this.props.history.push(`/discover/${state}`);
+    this.props.history.push(`/RapMap/${state}`);
   };
 
   saved = async () => {
@@ -62,7 +62,7 @@ export class Artist extends Component {
   saveArtist = async () => {
     await this.props.saveCurrentArtist({
       id: this.props.chosenArtist.id,
-      user: this.props.user
+      user: this.props.user,
     });
   };
 
@@ -81,7 +81,7 @@ export class Artist extends Component {
         <div className="artistHeader">
           <Link
             className="artistStateLink"
-            to={`/discover/${this.props.chosenArtist.stateAbbrev}`}
+            to={`/RapMap/${this.props.chosenArtist.stateAbbrev}`}
           >
             <img
               className="artistStateImage"
@@ -91,14 +91,16 @@ export class Artist extends Component {
           <div className="artistNameHeader">
             <h1 className="artistTitle">{this.props.chosenArtist.name}</h1>
             <h3 className="artistCity">{this.props.chosenArtist.city}</h3>
-            {//depending if artist is saved or not will display a button to save them or just "saved"
-            this.props.isSaved ? (
-              <div>Saved</div>
-            ) : (
-              <button className="artistSaveButton" onClick={this.saveArtist}>
-                + Save +
-              </button>
-            )}
+            {
+              //depending if artist is saved or not will display a button to save them or just "saved"
+              this.props.isSaved ? (
+                <div>Saved</div>
+              ) : (
+                <button className="artistSaveButton" onClick={this.saveArtist}>
+                  + Save +
+                </button>
+              )
+            }
             {error
               ? //displays error if trying to save artist when not logged in
                 error.error === 'Login To Save Artist' && (
@@ -113,7 +115,7 @@ export class Artist extends Component {
                 onClick={() =>
                   this.props.likeArtist({
                     artist: this.props.chosenArtist,
-                    user: this.props.user
+                    user: this.props.user,
                   })
                 }
               >
@@ -130,7 +132,7 @@ export class Artist extends Component {
                 onClick={() =>
                   this.props.dislikeArtist({
                     artist: this.props.chosenArtist,
-                    user: this.props.user
+                    user: this.props.user,
                   })
                 }
               >
@@ -151,32 +153,36 @@ export class Artist extends Component {
                   </div>
                 )
               : null}
-            {//displays admin buttons for edit or delete if admin
-            !this.props.isLoggedIn && !this.props.isAdmin ? null : (
-              <div className="artistAdminButtons">
-                <Link
-                  className="artistEditLink"
-                  to={`/edit/${this.props.match.params.artist}`}
-                >
-                  <button className="artistEditdelete">Edit Artist Info</button>
-                </Link>
-                <button
-                  className="artistEditdelete"
-                  onClick={this.deleteArtist}
-                >
-                  DELETE ARTIST
-                </button>
-              </div>
-            )}
+            {
+              //displays admin buttons for edit or delete if admin
+              !this.props.isLoggedIn && !this.props.isAdmin ? null : (
+                <div className="artistAdminButtons">
+                  <Link
+                    className="artistEditLink"
+                    to={`/edit/${this.props.match.params.artist}`}
+                  >
+                    <button className="artistEditdelete">
+                      Edit Artist Info
+                    </button>
+                  </Link>
+                  <button
+                    className="artistEditdelete"
+                    onClick={this.deleteArtist}
+                  >
+                    DELETE ARTIST
+                  </button>
+                </div>
+              )
+            }
           </div>
           <Link
-            to={`/discover/genre/${this.props.chosenArtist.genre}`}
+            to={`/RapMap/genre/${this.props.chosenArtist.genre}`}
             className="artistGenreLink"
           >
             <div>More {this.props.chosenArtist.genre} Artists</div>
           </Link>
         </div>
-        {this.props.chosenArtist.blogs.length === 0 ? null : (
+        {/*this.props.chosenArtist.blogs.length === 0 ? null : (
           <div className="artistRelatedBlogsContainer">
             {this.props.chosenArtist.blogs.slice(-3).map(blog => {
               return (
@@ -196,7 +202,7 @@ export class Artist extends Component {
               );
             })}
           </div>
-        )}
+          )*/}
         <div className="artistSoundcloudAndYoutube">
           <div className="artistSoundcloud">
             <iframe
@@ -210,10 +216,12 @@ export class Artist extends Component {
             />
           </div>
           <div className="artistYoutube">
-            {//maps through youtube ids and puts up youtube video for each artist
-            this.props.chosenArtist.youtubeID.map(id => {
-              return <YoutubePlayer key={id} ytID={id} />;
-            })}
+            {
+              //maps through youtube ids and puts up youtube video for each artist
+              this.props.chosenArtist.youtubeID.map((id) => {
+                return <YoutubePlayer key={id} ytID={id} />;
+              })
+            }
           </div>
         </div>
         <Comments artist={this.props.chosenArtist} />
@@ -231,22 +239,22 @@ const mapState = ({ artists, user, savedArtists, error }) => ({
   error,
   savedArtists,
   isSaved:
-    savedArtists.filter(artist => {
+    savedArtists.filter((artist) => {
       return artist.id === artists.chosenArtist.id;
-    }).length !== 0
+    }).length !== 0,
 });
 
 //buncha stuff over here on props too
-const mapDispatch = dispatch => ({
-  fetchChosenArtist: id => dispatch(fetchChosenArtist(id)),
+const mapDispatch = (dispatch) => ({
+  fetchChosenArtist: (id) => dispatch(fetchChosenArtist(id)),
   fetchStateArtists: (page, state) => dispatch(fetchStateArtists(page, state)),
-  delete: id => dispatch(deleteCurrentArtist(id)),
+  delete: (id) => dispatch(deleteCurrentArtist(id)),
   fetchSaved: () => dispatch(fetchSavedArtists()),
-  saveCurrentArtist: id => dispatch(addNewSavedArtist(id)),
-  getArtistComments: id => dispatch(fetchArtistComments(id)),
-  likeArtist: artist => dispatch(likeCurrentArtist(artist)),
-  dislikeArtist: artist => dispatch(dislikeCurrentArtist(artist)),
-  renderError: () => dispatch(deleteError())
+  saveCurrentArtist: (id) => dispatch(addNewSavedArtist(id)),
+  getArtistComments: (id) => dispatch(fetchArtistComments(id)),
+  likeArtist: (artist) => dispatch(likeCurrentArtist(artist)),
+  dislikeArtist: (artist) => dispatch(dislikeCurrentArtist(artist)),
+  renderError: () => dispatch(deleteError()),
 });
 
 export default connect(mapState, mapDispatch)(Artist);

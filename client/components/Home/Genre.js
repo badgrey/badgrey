@@ -14,11 +14,11 @@ export const Genre = () => {
     'Pop',
     'R&B',
     'Experimental',
-    'Instrumental'
+    'Instrumental',
   ];
   return (
     <div className="genreGrid">
-      {genres.map(genre => {
+      {genres.map((genre) => {
         //maps out the genre array to a grid, and replaces the spaces and symbols in genre with blan space
         let current = genre;
         let id = genre;
@@ -33,7 +33,7 @@ export const Genre = () => {
 
         return (
           <Link
-            to={`/discover/genre/${current}`}
+            to={`/RapMap/genre/${current}`}
             className="genreName"
             id={id}
             key={current}

@@ -54,7 +54,7 @@ const stateOptions = [
   'WA',
   'WV',
   'WI',
-  'WY'
+  'WY',
 ];
 const genreOptions = [
   'Alternative',
@@ -66,7 +66,7 @@ const genreOptions = [
   'Old School',
   'Pop',
   'R&B',
-  'Trap'
+  'Trap',
 ];
 
 export class EditArtist extends Component {
@@ -75,7 +75,7 @@ export class EditArtist extends Component {
     this.submit = this.submit.bind(this);
     this.state = {
       changePic: false,
-      file: null
+      file: null,
     };
   }
 
@@ -95,7 +95,7 @@ export class EditArtist extends Component {
   };
 
   //changes state to file name
-  handleFileUpload = event => {
+  handleFileUpload = (event) => {
     this.setState({ file: event.target.files });
   };
 
@@ -108,21 +108,21 @@ export class EditArtist extends Component {
       city: event.target.city.value,
       soundcloudURL: event.target.soundcloudURL.value,
       genre: event.target.genre.value,
-      stateAbbrev: event.target.stateAbbrev.value
+      stateAbbrev: event.target.stateAbbrev.value,
     };
     let youtubeID = event.target.youtubeID.value.split(' ');
     if (youtubeID !== '') artistInfo.youtubeID = youtubeID;
     if (this.state.changePic) {
       let picture;
       await axios.post('/api/deleteArtistPicture', {
-        name: this.props.chosenArtist.fileKey
+        name: this.props.chosenArtist.fileKey,
       });
       const formData = new FormData();
       formData.append('file', this.state.file[0]);
       picture = await axios.post('/api/uploadArtistPicture', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
       let key = picture.data.Location.split('/');
       artistInfo.imageURL = picture.data.Location;
@@ -136,8 +136,9 @@ export class EditArtist extends Component {
     try {
       await this.props.submitForm(this.props.chosenArtist.id, artistInfo);
       this.props.history.push(
-        `/discover/${artistInfo.stateAbbrev}/${urlName +
-          `_${this.props.chosenArtist.id}`}`
+        `/RapMap/${artistInfo.stateAbbrev}/${
+          urlName + `_${this.props.chosenArtist.id}`
+        }`
       );
     } catch (err) {
       console.error(err);
@@ -182,10 +183,12 @@ export class EditArtist extends Component {
               label="State"
               defaultValue={this.props.chosenArtist.stateAbbrev}
             >
-              {//maps out state options for dropdown
-              stateOptions.map(state => {
-                return <option key={state}>{state}</option>;
-              })}
+              {
+                //maps out state options for dropdown
+                stateOptions.map((state) => {
+                  return <option key={state}>{state}</option>;
+                })
+              }
             </select>
             <select
               name="genre"
@@ -194,10 +197,12 @@ export class EditArtist extends Component {
               label="Genre"
               defaultValue={this.props.chosenArtist.genre}
             >
-              {//maps out genre options for dropdown
-              genreOptions.map(genre => {
-                return <option key={genre}>{genre}</option>;
-              })}
+              {
+                //maps out genre options for dropdown
+                genreOptions.map((genre) => {
+                  return <option key={genre}>{genre}</option>;
+                })
+              }
             </select>
           </div>
           <div>
@@ -236,12 +241,14 @@ export class EditArtist extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
-        {//displays error if trying to save artist when not logged in
-        error && error.error && (
-          <div className="commentPostError">
-            <p>{error.error}</p>
-          </div>
-        )}
+        {
+          //displays error if trying to save artist when not logged in
+          error && error.error && (
+            <div className="commentPostError">
+              <p>{error.error}</p>
+            </div>
+          )
+        }
       </div>
     );
   }
@@ -252,13 +259,13 @@ const mapState = ({ artists, user, error }) => ({
   chosenArtist: artists.chosenArtist,
   user,
   isAdmin: user.isAdmin,
-  error
+  error,
 });
 
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch) => ({
   submitForm: (id, artist) => dispatch(editCurrentArtist(id, artist)),
   renderError: () => dispatch(deleteError()),
-  fetchChosenArtist: id => dispatch(fetchChosenArtist(id))
+  fetchChosenArtist: (id) => dispatch(fetchChosenArtist(id)),
 });
 
 export default connect(mapState, mapDispatch)(EditArtist);

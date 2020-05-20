@@ -15,6 +15,7 @@ const db = new Sequelize(
     port: '5432',
     logging: console.log(),
     maxConcurrentQueries: 100,
+    operatorsAliases: false,
     dialect: 'postgres',
     dialectOptions: {
       ssl: 'Amazon RDS'

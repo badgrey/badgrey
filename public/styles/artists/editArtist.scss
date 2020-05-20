@@ -47,7 +47,6 @@
   height: 25px;
 }
 
-//Mobile
 @media only screen and (max-width: 600px) {
   .outerEditArtistForm {
     width: 100%;
@@ -61,7 +60,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .editArtistForm {
     width: 90%;
@@ -71,7 +70,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .editArtistForm {
     width: 65vw;
@@ -97,7 +96,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .editArtistForm {
     height: 70vh;

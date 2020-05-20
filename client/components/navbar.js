@@ -6,143 +6,83 @@ import { logout } from '../store';
 import '../../public/styles/index.scss';
 
 class Navbar extends Component {
-  constructor() {
-    super();
-    this.state = {
-      clicked: false
-    };
-    this.renderDropDown = this.renderDropDown.bind(this);
-  }
+  state = {
+    clicked: false,
+  };
 
-  renderDropDown(evt) {
+  renderDropDown = (evt) => {
     evt.preventDefault();
     if (this.state.clicked === false) {
       this.setState({ clicked: true });
     } else {
       this.setState({ clicked: false });
     }
-  }
+  };
 
   render() {
     return (
-      <div className="navbar">
-        <div>
-          <Link to="/">
-            <img
-              className="navWolfLogo"
-              src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWolfLogo.png"
-            />
-          </Link>
+      <>
+        <Link to="/" className="navLogoLink">
+          <img
+            className="navTextLogo"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackTextLogo.png"
+          />
+        </Link>
+        <div className="navMenuContainer" onClick={this.renderDropDown}>
+          <img
+            className="barmenuPic"
+            src={'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'}
+          />
         </div>
-        <div className="navList">
-          <Link to="/discover">Discover</Link>
-          <a href="https://www.badgrey.shop/">Shop</a>
-          {/*<Link to="/TheBricks">The Bricks</Link>*/}
-          <Link to="/originalcontent">Original Content</Link>
-          <Link to="/submit">Submit</Link>
-        </div>
-        <nav>
-          {/* The navbar will show these links after you log in */}
-          {this.props.isLoggedIn ? (
-            <div className="navLinks">
-              <div>
-                {this.props.isAdmin ? (
-                  <div>
-                    <div
-                      className="navMenuContainer"
-                      onClick={this.renderDropDown}
-                    >
-                      <img
-                        className="barmenuPic"
-                        src={
-                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
-                        }
-                      />
-                    </div>
-                    {this.state.clicked === false ? null : (
-                      <div className="navOptions">
-                        <div className="singleNavOption">
-                          <Link to="/newArtist">Add Artist</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <Link to="/newBlog">Add Blog</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <Link to="/account">Account</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <Link to="/saved">Saved</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <Link to="/users">Users</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <a href="#" onClick={this.props.handleClick}>
-                            Logout
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="navOptions">
-                    <div
-                      className="navMenuContainer"
-                      onClick={this.renderDropDown}
-                    >
-                      <img
-                        className="barmenuPic"
-                        src={
-                          'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
-                        }
-                      />
-                    </div>
-                    {this.state.clicked === false ? null : (
-                      <div>
-                        <div className="singleNavOption">
-                          <Link to="/account">Account</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <Link to="/saved">Saved</Link>
-                        </div>
-                        <div className="singleNavOption">
-                          <a href="#" onClick={this.props.handleClick}>
-                            Logout
-                          </a>
-                        </div>
-                      </div>
-                    )}
+        <nav className="navLinksContainer">
+          <div className="navLinks">
+            {this.state.clicked && (
+              <div className="navOptions">
+                {!this.props.isLoggedIn && (
+                  <div className="singleNavOption">
+                    <a href="https://www.badgrey.shop/">Shop</a>
                   </div>
                 )}
-              </div>
-            </div>
-          ) : (
-            <div className="navLinks">
-              <div>
-                <div className="mnavMnuContainer" onClick={this.renderDropDown}>
-                  <img
-                    className="barmenuPic"
-                    src={
-                      'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
-                    }
-                  />
+                <div className="singleNavOption">
+                  <Link to="/RapMap">Rap Map</Link>
                 </div>
-                {this.state.clicked === false ? null : (
-                  <div className="navOptions">
-                    {/* The navbar will show these links before you log in */}
-                    <div className="singleNavOption">
-                      <Link to="/login">Login</Link>
-                    </div>
-                    <div className="singleNavOption">
-                      <Link to="/signup">Sign Up</Link>
-                    </div>
-                  </div>
-                )}
+                <div className="singleNavOption">
+                  <Link to="/contact">Contact Us</Link>
+                </div>
+                {/*
+                    {this.props.isAdmin && (
+                      <div className="singleNavOption">
+                        <Link to="/newArtist">Add Artist</Link>
+                      </div>
+                    )}
+                    {this.props.isAdmin && (
+                      <div className="singleNavOption">
+                        <Link to="/users">Users</Link>
+                      </div>
+                    )}
+                    {this.props.isLoggedIn && (
+                      <div className="singleNavOption">
+                        <Link to="/saved">Saved</Link>
+                      </div>
+                    )}
+                    {this.props.isLoggedIn && (
+                      <div className="singleNavOption">
+                        <Link to="/account">Account</Link>
+                      </div>
+                    )}
+                    {this.props.isLoggedIn && (
+                      <div className="singleNavOption">
+                        <a href="#" onClick={this.props.handleClick}>
+                          Logout
+                        </a>
+                      </div>
+                    )}
+                    */}
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </nav>
-      </div>
+      </>
     );
   }
 }
@@ -150,20 +90,16 @@ class Navbar extends Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = ({ user }) => {
   return {
-    isLoggedIn: !!state.user.id,
-    isAdmin: state.user.isAdmin
+    isLoggedIn: !!user.id,
+    isAdmin: user.isAdmin,
   };
 };
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout());
-    }
-  };
-};
+const mapDispatch = (dispatch) => ({
+  handleClick: () => dispatch(logout()),
+});
 
 export default connect(mapState, mapDispatch)(Navbar);
 
@@ -171,6 +107,6 @@ export default connect(mapState, mapDispatch)(Navbar);
  * PROP TYPES
  */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  // handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };

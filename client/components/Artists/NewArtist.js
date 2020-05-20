@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   createNewArtist,
   checkForDuplicateArtist,
-  deleteError
+  deleteError,
 } from '../../store';
 import axios from 'axios';
 import '../../../public/styles/index.scss';
@@ -58,7 +58,7 @@ const stateOptions = [
   'WA',
   'WV',
   'WI',
-  'WY'
+  'WY',
 ];
 const genreOptions = [
   'Alternative',
@@ -70,12 +70,12 @@ const genreOptions = [
   'Old School',
   'Pop',
   'R&B',
-  'Trap'
+  'Trap',
 ];
 
 export class NewArtist extends Component {
   state = {
-    file: null
+    file: null,
   };
 
   //if not admin redirects
@@ -86,19 +86,19 @@ export class NewArtist extends Component {
   }
 
   //changes state to file name
-  handleFileUpload = event => {
+  handleFileUpload = (event) => {
     this.setState({ file: event.target.files });
   };
 
   //sends artist info to backend
-  submit = async event => {
+  submit = async (event) => {
     event.preventDefault();
     let artistInfo = {
       name: event.target.name.value,
       city: event.target.city.value,
       soundcloudURL: event.target.soundcloudURL.value,
       genre: event.target.genre.value,
-      stateAbbrev: event.target.stateAbbrev.value
+      stateAbbrev: event.target.stateAbbrev.value,
     };
     if (event.target.youtubeID.value !== '') {
       artistInfo.youtubeID = event.target.youtubeID.value.split(' ');
@@ -110,15 +110,15 @@ export class NewArtist extends Component {
       formData.append('file', this.state.file[0]);
       picture = await axios.post('/api/uploadArtistPicture', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
       let key = picture.data.Location.split('/');
       artistInfo.imageURL = picture.data.Location;
       artistInfo.fileKey = key[key.length - 1];
       await this.props.createNewArtist(artistInfo);
       this.props.history.push(
-        `/discover/${
+        `/RapMap/${
           this.props.chosenArtist.stateAbbrev
         }/${this.props.chosenArtist.name.split(' ').join('')}_${
           this.props.chosenArtist.id
@@ -161,7 +161,7 @@ export class NewArtist extends Component {
               <option value="" disabled selected>
                 State
               </option>
-              {stateOptions.map(state => {
+              {stateOptions.map((state) => {
                 return <option key={state}>{state}</option>;
               })}
             </select>
@@ -175,7 +175,7 @@ export class NewArtist extends Component {
               <option value="" disabled selected>
                 Genre
               </option>
-              {genreOptions.map(genre => {
+              {genreOptions.map((genre) => {
                 return <option key={genre}>{genre}</option>;
               })}
             </select>
@@ -206,12 +206,14 @@ export class NewArtist extends Component {
           </div>
           <button type="submit">Submit</button>
         </form>
-        {//displays error if trying to save artist when not logged in
-        error && error.error && (
-          <div className="commentPostError">
-            <p>{error.error}</p>
-          </div>
-        )}
+        {
+          //displays error if trying to save artist when not logged in
+          error && error.error && (
+            <div className="commentPostError">
+              <p>{error.error}</p>
+            </div>
+          )
+        }
       </div>
     );
   }
@@ -220,13 +222,13 @@ export class NewArtist extends Component {
 const mapState = ({ user, artists, error }) => ({
   isAdmin: user.isAdmin,
   error,
-  chosenArtist: artists.chosenArtist
+  chosenArtist: artists.chosenArtist,
 });
 
-const mapDispatch = dispatch => ({
-  createNewArtist: artist => dispatch(createNewArtist(artist)),
-  checkForDuplicateArtist: name => dispatch(checkForDuplicateArtist(name)),
-  renderError: () => dispatch(deleteError())
+const mapDispatch = (dispatch) => ({
+  createNewArtist: (artist) => dispatch(createNewArtist(artist)),
+  checkForDuplicateArtist: (name) => dispatch(checkForDuplicateArtist(name)),
+  renderError: () => dispatch(deleteError()),
 });
 
 export default connect(mapState, mapDispatch)(NewArtist);

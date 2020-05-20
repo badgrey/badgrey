@@ -120,7 +120,7 @@
   color: black;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .blogsHomeContainer {
     width: 100%;
@@ -183,7 +183,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .blogsHomeContainer {
     width: 100%;
@@ -244,7 +244,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .blogsHomeContainer {
     width: 85%;
@@ -274,7 +274,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .blogsHomeContainer {
     width: 85%;

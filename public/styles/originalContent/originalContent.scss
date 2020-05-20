@@ -41,7 +41,7 @@
   height: 100%;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .ocSelectorOptions {
     justify-content: center;
@@ -54,7 +54,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .ocSelectorOptions {
     margin-left: 5em;
@@ -66,7 +66,7 @@
   }
 }
 
-//15" and Up
+/* 15" and Up */
 @media only screen and (min-width: 1400px) {
   .ocSelectorContainer {
     height: 48em;

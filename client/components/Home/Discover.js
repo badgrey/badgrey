@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import USAMap from 'react-usa-map';
 import '../../../public/styles/index.scss';
 import Genre from './Genre';
-import BlogHomePage from './BlogHomePage';
-import { FeaturedContent } from './FeaturedContent';
+// import BlogHomePage from './BlogHomePage';
+// import { FeaturedContent } from './FeaturedContent';
 import { statesCustomConfig } from '../../utils/states';
 
 export class Discover extends Component {
@@ -14,16 +14,11 @@ export class Discover extends Component {
   }
 
   componentDidMount() {
-    window.onscroll = this.fakeInfinite;
-  }
-
-  componentWillUnmount() {
-    this.scrollto = null;
-    window.onscroll = null;
+    window.scroll(0, 0);
   }
 
   //changes route based on state clicked
-  clickToState = event => {
+  clickToState = (event) => {
     const stateName = event.target.dataset.name;
     if (
       stateName === 'DE' ||
@@ -31,126 +26,26 @@ export class Discover extends Component {
       stateName === 'VA' ||
       stateName === 'DC'
     ) {
-      this.props.history.push('/discover/DMV');
+      this.props.history.push('/RapMap/DMV');
     } else {
-      this.props.history.push(`/discover/${stateName}`);
-    }
-  };
-
-  setScroll = () => {
-    let scrollto = 1420;
-    if (window.matchMedia('(max-width: 600px)').matches) {
-      scrollto = 900;
-    } else if (
-      window.matchMedia('(min-width: 600px)').matches &&
-      window.matchMedia('(max-width: 900px)').matches
-    ) {
-      scrollto = 1200;
-    } else if (
-      window.matchMedia('(min-width: 1400px)').matches &&
-      window.matchMedia('(max-width: 1800px)').matches
-    ) {
-      scrollto = 1570;
-    } else if (window.matchMedia('(min-width: 1800px)').matches) {
-      scrollto = 1700;
-    }
-    return scrollto;
-  };
-
-  fakeInfinite = () => {
-    if (window.pageYOffset + 50 >= document.body.scrollHeight / 2) {
-      window.scrollTo(0, 0);
+      this.props.history.push(`/RapMap/${stateName}`);
     }
   };
 
   viewAllArtists = () => {
-    this.props.history.push('/discover/all');
+    this.props.history.push('/RapMap/all');
   };
 
   viewGlobalArtists = () => {
-    this.props.history.push('/discover/International');
+    this.props.history.push('/RapMap/International');
   };
   render() {
-    let scrollto = this.setScroll();
     return (
       <div className="discover">
-        <div className="bannerContainer">
-          <img
-            className="bannerImage"
-            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
-            onClick={() =>
-              window.open(
-                'https://www.youtube.com/watch?v=izHkSruuvRw',
-                '_blank'
-              )
-            }
-          />
-        </div>
-        <div className="topContainer">
-          <BlogHomePage
-            spotlight={this.props.spotlight}
-            blogs={this.props.nonSpotlight}
-          />
-          <FeaturedContent videos={this.props.featuredContent} />
-        </div>
-        {//scrolls down to 1200 pixels to discover page if the discover button on the navbar is clicked. not sure if this is best way to do this
-        this.props.match.path === '/discover'
-          ? window.scroll(0, scrollto)
-          : null}
         <h1>DISCOVER</h1>
         <div className="allAndGlobe">
           <div>
             <button onClick={this.viewAllArtists} className="allArtistsButton">
-              View All Artists
-            </button>
-          </div>
-          <div className="internationalLink">
-            <img
-              className="globe"
-              src={
-                'https://badgrey-states.s3.us-east-2.amazonaws.com/International.png'
-              }
-              onClick={this.viewGlobalArtists}
-            />
-            <label className="globeLabel">International</label>
-          </div>
-        </div>
-        <div className="map">
-          <USAMap
-            title="Choose Region"
-            width={869}
-            height={503}
-            customize={statesCustomConfig()}
-            onClick={this.clickToState}
-          />
-        </div>
-        <div className="genreDiv">
-          <Genre />
-        </div>
-        <div className="bannerContainer">
-          <img
-            className="bannerImage"
-            style={{ cursor: 'pointer' }}
-            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
-            onClick={() =>
-              window.open(
-                'https://www.youtube.com/watch?v=izHkSruuvRw',
-                '_blank'
-              )
-            }
-          />
-        </div>
-        <div className="topContainer">
-          <BlogHomePage
-            spotlight={this.props.spotlight}
-            blogs={this.props.nonSpotlight}
-          />
-          <FeaturedContent videos={this.props.featuredContent} />
-        </div>
-        <h1>DISCOVER</h1>
-        <div className="allAndGlobe">
-          <div>
-            <button className="allArtistsButton" onClick={this.viewAllArtists}>
               View All Artists
             </button>
           </div>
@@ -190,7 +85,7 @@ const mapState = ({ artists, user, savedArtists, blogs, originalcontent }) => ({
   blogs: blogs.blogs,
   spotlight: blogs.spotlight[0],
   nonSpotlight: blogs.nonSpotlight.slice(0, 4),
-  featuredContent: originalcontent.featuredContent
+  featuredContent: originalcontent.featuredContent,
 });
 
 export default connect(mapState)(Discover);

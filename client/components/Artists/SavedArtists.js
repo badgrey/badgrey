@@ -6,7 +6,7 @@ import {
   fetchAllArtists,
   fetchSavedArtists,
   deleteCurrentSavedArtist,
-  fetchBlogs
+  fetchBlogs,
 } from '../../store';
 
 //component for showing saved artists in specific users saved component
@@ -15,7 +15,7 @@ export class SavedArtists extends Component {
     super(props);
     this.state = {
       savedCheck: true,
-      search: ''
+      search: '',
     };
     this.deleteSaved = this.deleteSaved.bind(this);
     this.saved = this.saved.bind(this);
@@ -48,12 +48,12 @@ export class SavedArtists extends Component {
 
   handleSearch(evt) {
     this.setState({
-      search: evt.target.value
+      search: evt.target.value,
     });
   }
 
   render() {
-    const artists = this.props.savedArtists.filter(artist =>
+    const artists = this.props.savedArtists.filter((artist) =>
       artist.name.toLowerCase().includes(this.state.search.toLowerCase())
     );
     return (
@@ -78,31 +78,33 @@ export class SavedArtists extends Component {
             </form>
           </div>
           <div className="savedArtistsContainer">
-            {//map over saved artists and display them like everything else
-            artists.map(artist => (
-              <div key={artist.id} className="savedArtists">
-                <Link
-                  className="savedArtistPic"
-                  to={`/discover/${artist.stateAbbrev}/${artist.name
-                    .split(' ')
-                    .join('') + `_${artist.id}`}`}
-                >
-                  <div className="savedArtistName">
-                    <div className="savedArtistNameText">{artist.name}</div>
-                  </div>
-                  <img src={artist.imageURL} />
-                </Link>
-                <button
-                  className="savedArtistsButton"
-                  onClick={() => {
-                    this.props.delete(artist.id);
-                    this.props.history.push('/saved');
-                  }}
-                >
-                  X
-                </button>
-              </div>
-            ))}
+            {
+              //map over saved artists and display them like everything else
+              artists.map((artist) => (
+                <div key={artist.id} className="savedArtists">
+                  <Link
+                    className="savedArtistPic"
+                    to={`/RapMap/${artist.stateAbbrev}/${
+                      artist.name.split(' ').join('') + `_${artist.id}`
+                    }`}
+                  >
+                    <div className="savedArtistName">
+                      <div className="savedArtistNameText">{artist.name}</div>
+                    </div>
+                    <img src={artist.imageURL} />
+                  </Link>
+                  <button
+                    className="savedArtistsButton"
+                    onClick={() => {
+                      this.props.delete(artist.id);
+                      this.props.history.push('/saved');
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+              ))
+            }
           </div>
         </div>
       )
@@ -110,16 +112,16 @@ export class SavedArtists extends Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   const { user, savedArtists } = state;
   return {
     savedArtists,
     isLoggedIn: !!user,
-    user
+    user,
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(fetchAllArtists());
@@ -130,7 +132,7 @@ const mapDispatch = dispatch => {
     },
     delete(id) {
       dispatch(deleteCurrentSavedArtist(id));
-    }
+    },
   };
 };
 

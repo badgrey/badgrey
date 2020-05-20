@@ -70,7 +70,7 @@
   margin-top: 20px;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .noStateArtistsContainer {
     width: 32em;
@@ -103,7 +103,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .stateArtistsContainer {
     margin-left: 5em;
@@ -118,7 +118,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .stateArtistsTitle {
     font-size: 3em;
@@ -139,7 +139,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .noStateArtists {
     height: 32em;

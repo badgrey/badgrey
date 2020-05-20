@@ -111,7 +111,7 @@
   color: whitesmoke;
 }
 
-//Mobile
+/* Mobile */
 @media only screen and (max-width: 600px) {
   .genreGrid {
     grid-template-columns: 70px 70px 70px 70px 70px;
@@ -122,7 +122,7 @@
   }
 }
 
-//iPad
+/* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .genreGrid {
     grid-template-rows: 100px 100px;
@@ -130,7 +130,7 @@
   }
 }
 
-//15"
+/* 15" */
 @media only screen and (min-width: 1400px) and (max-width: 1800px) {
   .genreGrid {
     grid-template-rows: 200px 200px;
@@ -139,7 +139,7 @@
   }
 }
 
-//Desktop
+/* Desktop*/
 @media only screen and (min-width: 1800px) {
   .genreGrid {
     grid-template-rows: 17em 17em;
