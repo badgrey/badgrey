@@ -6,8 +6,9 @@
   align-items: center;
 }
 .homeWolfLogo {
-  height: 50%;
-  width: 60%;
+  height: 10em;
+  width: 10em;
+  margin: 30%;
 }
 .homeFeatureBannerContainer {
   display: flex;
@@ -86,7 +87,7 @@
     width: 93%;
   }
   .homeWolfLogo {
-    width: 150%;
+    margin: 70%;
   }
 }
 
@@ -96,6 +97,18 @@
     object-fit: contain;
   }
   .homeWolfLogo {
-    width: 100%;
+    margin: 40%;
+  }
+}
+
+@media only screen and (min-width: 1400px) and(max-width: 1800px) {
+  .homeWolfLogo {
+    margin: 25%;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .homeWolfLogo {
+    margin: 20%;
   }
 }
