@@ -3,18 +3,80 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
+  align-items: center;
+}
+.homeWolfLogo {
+  height: 50%;
+  width: 60%;
 }
 .homeFeatureBannerContainer {
   display: flex;
   justify-content: center;
-  height: 20em;
+  height: 30em;
   margin-top: 5em;
+  width: 83%;
 }
 .homeFeatureBannerImage {
   object-fit: cover;
   height: 100%;
-  width: 83%;
+  width: 100%;
   cursor: pointer;
+}
+.homeMusicVideosContainer {
+  display: flex;
+  justify-content: center;
+  height: 30em;
+  margin-top: 5em;
+  width: 83%;
+  align-items: center;
+}
+.homeMusicVideosContainer:hover img {
+  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.homeMusicVideosContainer:hover .homeMusicVideos {
+  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+.homeMusicVideos {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  justify-content: space-around;
+  width: 83%;
+  background-color: black;
+  height: 30em;
+  align-items: center;
+}
+.homeSingleMusicVideo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  width: 10em;
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+}
+.homeCitySoundsContainer {
+  display: flex;
+  justify-content: center;
+  height: 30em;
+  margin-top: 5em;
+}
+.homeShopContainer {
+  display: flex;
+  justify-content: center;
+  height: 30em;
+  margin-top: 5em;
 }
 
 // Mobile
@@ -23,11 +85,17 @@
     object-fit: contain;
     width: 93%;
   }
+  .homeWolfLogo {
+    width: 150%;
+  }
 }
 
 /* iPad */
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .homeFeatureBannerImage {
     object-fit: contain;
+  }
+  .homeWolfLogo {
+    width: 100%;
   }
 }

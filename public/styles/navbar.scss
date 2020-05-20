@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  background-color: #141210;
+  background-color: white;
   text-align: center;
   height: 104px;
   justify-content: space-between;
@@ -9,18 +9,21 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 1;
 }
 .navLogoContainer {
   width: 100%;
   display: flex;
-  justify-content: center;
 }
 .navLinksContainer {
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 1.5%;
+  top: 10%;
 }
 .navLogoLink {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +65,10 @@
 }
 .navMenuContainer {
   width: 6em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-right: 0.8em;
 }
 .barmenuPic {
   cursor: pointer;
@@ -69,19 +76,24 @@
   margin-right: 0.5em;
   height: 80px;
   width: 80px;
+  filter: invert(1);
 }
 .barmenuPic:hover {
   opacity: 0.5;
 }
 .navOptions {
-  background-color: #141210;
   margin-top: -1px;
   position: relative;
 }
-.singleNavOption a:hover {
-  color: grey;
+.singleNavOption {
+  text-align: center;
 }
-
+.singleNavOption:hover {
+  background-color: black;
+}
+.singleNavOption:hover a {
+  color: whitesmoke;
+}
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .navbar {
@@ -102,6 +114,9 @@
     position: relative;
     margin-top: 5px;
   }
+  .navMenuContainer {
+    margin-right: -0.5em;
+  }
 }
 
 /* iPad */
@@ -116,6 +131,9 @@
   .barmenuPic {
     height: 80px;
     width: 80px;
+  }
+  .navMenuContainer {
+    margin-right: 0.3em;
   }
 }
 
@@ -144,6 +162,12 @@
   }
   .navOptions {
     margin-top: 15px;
+  }
+  .navMenuContainer {
+    margin-right: 1em;
+  }
+  .navLinksContainer {
+    top: 12%;
   }
 }
 
@@ -176,5 +200,11 @@
   .navOptions {
     margin-top: -0.5em;
     font-size: 1.5em;
+  }
+  .navLinksContainer {
+    top: 15%;
+  }
+  .navMenuContainer {
+    margin-right: 0;
   }
 }

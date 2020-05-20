@@ -7,10 +7,10 @@ import '../../public/styles/index.scss';
 
 class Navbar extends Component {
   state = {
-    clicked: false
+    clicked: false,
   };
 
-  renderDropDown = evt => {
+  renderDropDown = (evt) => {
     evt.preventDefault();
     if (this.state.clicked === false) {
       this.setState({ clicked: true });
@@ -21,41 +21,33 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="navbar">
-        <div className="navLogoContainer">
-          <Link to="/" className="navLogoLink">
-            <img
-              className="navWolfLogo"
-              src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWolfLogo.png"
-            />
-            <img
-              className="navTextLogo"
-              src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyTextLogo.png"
-            />
-          </Link>
+      <>
+        <Link to="/" className="navLogoLink">
+          <img
+            className="navTextLogo"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackTextLogo.png"
+          />
+        </Link>
+        <div className="navMenuContainer" onClick={this.renderDropDown}>
+          <img
+            className="barmenuPic"
+            src={'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'}
+          />
         </div>
         <nav className="navLinksContainer">
           <div className="navLinks">
-            <div>
-              <div>
-                <div className="navMenuContainer" onClick={this.renderDropDown}>
-                  <img
-                    className="barmenuPic"
-                    src={
-                      'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'
-                    }
-                  />
+            {this.state.clicked && (
+              <div className="navOptions">
+                <div className="singleNavOption">
+                  <Link to="/RapMap">Rap Map</Link>
                 </div>
-                {this.state.clicked && (
-                  <div className="navOptions">
-                    {!this.props.isLoggedIn && (
-                      <div className="singleNavOption">
-                        <Link to="/login">Login</Link>
-                      </div>
-                    )}
-                    <div className="singleNavOption">
-                      <Link to="/discover">Discover</Link>
-                    </div>
+
+                {!this.props.isLoggedIn && (
+                  <div className="singleNavOption">
+                    <a href="https://www.badgrey.shop/">Shop</a>
+                  </div>
+                )}
+                {/*
                     {this.props.isAdmin && (
                       <div className="singleNavOption">
                         <Link to="/newArtist">Add Artist</Link>
@@ -86,13 +78,12 @@ class Navbar extends Component {
                         </a>
                       </div>
                     )}
-                  </div>
-                )}
+                    */}
               </div>
-            </div>
+            )}
           </div>
         </nav>
-      </div>
+      </>
     );
   }
 }
@@ -103,12 +94,12 @@ class Navbar extends Component {
 const mapState = ({ user }) => {
   return {
     isLoggedIn: !!user.id,
-    isAdmin: user.isAdmin
+    isAdmin: user.isAdmin,
   };
 };
 
-const mapDispatch = dispatch => ({
-  handleClick: () => dispatch(logout())
+const mapDispatch = (dispatch) => ({
+  handleClick: () => dispatch(logout()),
 });
 
 export default connect(mapState, mapDispatch)(Navbar);
@@ -117,6 +108,6 @@ export default connect(mapState, mapDispatch)(Navbar);
  * PROP TYPES
  */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  // handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
