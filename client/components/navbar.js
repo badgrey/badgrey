@@ -47,6 +47,9 @@ class Navbar extends Component {
                     <a href="https://www.badgrey.shop/">Shop</a>
                   </div>
                 )}
+                <div className="singleNavOption">
+                  <Link to="/contact">Contact Us</Link>
+                </div>
                 {/*
                     {this.props.isAdmin && (
                       <div className="singleNavOption">
@@ -68,9 +71,6 @@ class Navbar extends Component {
                         <Link to="/account">Account</Link>
                       </div>
                     )}
-                    <div className="singleNavOption">
-                      <Link to="/contact">Contact Us</Link>
-                    </div>
                     {this.props.isLoggedIn && (
                       <div className="singleNavOption">
                         <a href="#" onClick={this.props.handleClick}>
