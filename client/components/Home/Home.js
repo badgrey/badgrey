@@ -16,6 +16,23 @@ class Home extends PureComponent {
   render() {
     return (
       <div className="homeRoot">
+        <img
+          className="homeWolfLogo"
+          src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackWolfLogo.png"
+        />
+        <img
+          className="homeWolfLogo"
+          src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackWolfLogo.png"
+        />
+      </div>
+    );
+  }
+}
+
+export default Home;
+
+/*
+ <div className="homeRoot">
         <div className="homeFeatureBannerContainer">
           <img
             className="homeFeatureBannerImage"
@@ -28,9 +45,30 @@ class Home extends PureComponent {
             }
           />
         </div>
+        <div className="homeMusicVideosContainer">
+          <img
+            className="homeFeatureBannerImage"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
+          />
+          <div className="homeMusicVideos">
+            <div className="homeSingleMusicVideo">Video</div>
+            <div className="homeSingleMusicVideo">Video</div>
+            <div className="homeSingleMusicVideo">Video</div>
+            <div className="homeSingleMusicVideo">Video</div>
+            <div className="homeSingleMusicVideo">Video</div>
+          </div>
+        </div>
+        <div className="homeCitySoundsContainer">
+          <img
+            className="homeFeatureBannerImage"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
+          />
+        </div>
+        <div className="homeShopContainer">
+          <img
+            className="homeFeatureBannerImage"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/dashBanner.jpg"
+          />
+        </div>
       </div>
-    );
-  }
-}
-
-export default Home;
+*/
