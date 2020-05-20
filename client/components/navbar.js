@@ -38,15 +38,14 @@ class Navbar extends Component {
           <div className="navLinks">
             {this.state.clicked && (
               <div className="navOptions">
-                <div className="singleNavOption">
-                  <Link to="/RapMap">Rap Map</Link>
-                </div>
-
                 {!this.props.isLoggedIn && (
                   <div className="singleNavOption">
                     <a href="https://www.badgrey.shop/">Shop</a>
                   </div>
                 )}
+                <div className="singleNavOption">
+                  <Link to="/RapMap">Rap Map</Link>
+                </div>
                 <div className="singleNavOption">
                   <Link to="/contact">Contact Us</Link>
                 </div>
