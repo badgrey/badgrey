@@ -9,14 +9,14 @@ import {
   fetchComments,
   likeCurrentBlog,
   dislikeCurrentBlog,
-  deleteError
+  deleteError,
 } from '../../store';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export class Blog extends Component {
   state = {
-    savedCheck: true
+    savedCheck: true,
   };
 
   //loads comments and gets data upon arriving to page if not done already
@@ -37,7 +37,7 @@ export class Blog extends Component {
   //deletes blog
   deleteBlog = async () => {
     await axios.post('/api/deleteBlogPicture', {
-      name: this.props.chosenBlog.fileKey
+      name: this.props.chosenBlog.fileKey,
     });
     this.props.delete(
       this.props.chosenBlog.id,
@@ -62,12 +62,12 @@ export class Blog extends Component {
   };
 
   //posts comment
-  postComment = event => {
+  postComment = (event) => {
     event.preventDefault();
     let commentInfo = {
       comment: { comment: event.target.comment.value },
       user: this.props.user,
-      blog: this.props.chosenBlog
+      blog: this.props.chosenBlog,
     };
     document.getElementById('form').reset();
     this.props.submitForm(commentInfo);
@@ -88,20 +88,22 @@ export class Blog extends Component {
       <div className="blogContainer">
         <div className="blogHeader">
           <div className="blogNameHeader">
-            {//shows admin buttons if admin
-            !this.props.isLoggedIn && !this.props.isAdmin ? null : (
-              <div className="blogAdminButtons">
-                <Link
-                  id="blogEditButton"
-                  to={`/editBlog/${this.props.match.params.id}`}
-                >
-                  <button className="blogEditdelete">Edit Blog</button>
-                </Link>
-                <button className="blogEditdelete" onClick={this.deleteBlog}>
-                  DELETE BLOG
-                </button>
-              </div>
-            )}
+            {
+              //shows admin buttons if admin
+              !this.props.isLoggedIn && !this.props.isAdmin ? null : (
+                <div className="blogAdminButtons">
+                  <Link
+                    id="blogEditButton"
+                    to={`/editBlog/${this.props.match.params.id}`}
+                  >
+                    <button className="blogEditdelete">Edit Blog</button>
+                  </Link>
+                  <button className="blogEditdelete" onClick={this.deleteBlog}>
+                    DELETE BLOG
+                  </button>
+                </div>
+              )
+            }
             <h1 className="blogTitle">{this.props.chosenBlog.title}</h1>
             <div className="lowerBlogHeader">
               <h3 className="blogAuthor">By {this.props.chosenBlog.author}</h3>
@@ -111,7 +113,7 @@ export class Blog extends Component {
                   onClick={() =>
                     this.props.likeBlog({
                       blog: this.props.chosenBlog,
-                      user: this.props.user
+                      user: this.props.user,
                     })
                   }
                 >
@@ -128,7 +130,7 @@ export class Blog extends Component {
                   onClick={() =>
                     this.props.dislikeBlog({
                       blog: this.props.chosenBlog,
-                      user: this.props.user
+                      user: this.props.user,
                     })
                   }
                 >
@@ -151,10 +153,10 @@ export class Blog extends Component {
                 : null}
               <Link
                 className="blogToArtistLink"
-                to={`/discover/${
-                  this.props.chosenBlog.artist.stateAbbrev
-                }/${this.props.chosenBlog.artist.name.split(' ').join('') +
-                  `_${this.props.chosenBlog.artist.id}`}`}
+                to={`/RapMap/${this.props.chosenBlog.artist.stateAbbrev}/${
+                  this.props.chosenBlog.artist.name.split(' ').join('') +
+                  `_${this.props.chosenBlog.artist.id}`
+                }`}
               >
                 <button className="blogToArtistButton">
                   {this.props.chosenBlog.artist.name}
@@ -169,7 +171,7 @@ export class Blog extends Component {
           </div>
         </div>
         <div className="blogPost">
-          {this.props.chosenBlog.blogPost.split('<>').map(post => {
+          {this.props.chosenBlog.blogPost.split('<>').map((post) => {
             return (
               <p key={post.length} className="blogPostText">
                 {post}
@@ -199,17 +201,17 @@ const mapState = ({ blogs, user, savedArtists, error, comments }) => ({
   user,
   savedArtists,
   error,
-  comments
+  comments,
 });
 
-const mapDispatch = dispatch => ({
-  fetchChosenBlog: id => dispatch(fetchChosenBlog(id)),
+const mapDispatch = (dispatch) => ({
+  fetchChosenBlog: (id) => dispatch(fetchChosenBlog(id)),
   fetchSaved: () => dispatch(fetchSavedArtists()),
   delete: (id, spotlight) => dispatch(deleteCurrentBlog(id, spotlight)),
-  getBlogComments: id => dispatch(fetchComments(id)),
-  likeBlog: blog => dispatch(likeCurrentBlog(blog)),
-  dislikeBlog: blog => dispatch(dislikeCurrentBlog(blog)),
-  renderError: () => dispatch(deleteError())
+  getBlogComments: (id) => dispatch(fetchComments(id)),
+  likeBlog: (blog) => dispatch(likeCurrentBlog(blog)),
+  dislikeBlog: (blog) => dispatch(dislikeCurrentBlog(blog)),
+  renderError: () => dispatch(deleteError()),
 });
 
 export default connect(mapState, mapDispatch)(Blog);

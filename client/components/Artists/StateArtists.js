@@ -5,7 +5,7 @@ import '../../../public/styles/index.scss';
 import {
   fetchStateArtists,
   fetchSavedArtists,
-  clearArtistState
+  clearArtistState,
 } from '../../store';
 import { getStateFullName } from '../../utils/states';
 import { Pagination, Search } from '../';
@@ -15,7 +15,7 @@ export class StateArtists extends Component {
   state = {
     savedCheck: true,
     search: '',
-    currentPage: 1
+    currentPage: 1,
   };
   //load data if no artists
   async componentDidMount() {
@@ -57,7 +57,9 @@ export class StateArtists extends Component {
         this.state.currentPage + 1,
         this.state.search
       );
-      this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage + 1,
+      }));
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
@@ -70,14 +72,16 @@ export class StateArtists extends Component {
         this.state.currentPage - 1,
         this.state.search
       );
-      this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage - 1,
+      }));
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
     }
   };
 
-  jumpToPage = async page => {
+  jumpToPage = async (page) => {
     try {
       await this.props.fetchStateArtists(
         this.props.match.params.state,
@@ -91,7 +95,7 @@ export class StateArtists extends Component {
     }
   };
 
-  searchForArtists = async evt => {
+  searchForArtists = async (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
     await this.props.fetchStateArtists(this.props.match.params.state, 1, name);
@@ -120,14 +124,14 @@ export class StateArtists extends Component {
             placeholder={'Name'}
           />
           <div className="stateArtistsContainer">
-            {this.props.stateArtists.map(artist => (
+            {this.props.stateArtists.map((artist) => (
               //map over artists and display link for their individual page
               <div key={artist.id}>
                 <Link
                   className="stateArtistPic"
-                  to={`/discover/${artist.stateAbbrev}/${artist.name
-                    .split(' ')
-                    .join('') + `_${artist.id}`}`}
+                  to={`/RapMap/${artist.stateAbbrev}/${
+                    artist.name.split(' ').join('') + `_${artist.id}`
+                  }`}
                 >
                   <div className="stateArtistName">
                     <div className="stateArtistNameText">{artist.name}</div>
@@ -159,14 +163,14 @@ const mapState = ({ artists, user, savedArtists }) => ({
   numArtists: artists.numStateArtists,
   isLoggedIn: !!user.id,
   user,
-  savedArtists
+  savedArtists,
 });
 
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch) => ({
   fetchStateArtists: (state, page, search) =>
     dispatch(fetchStateArtists(state, page, search)),
   fetchSaved: () => dispatch(fetchSavedArtists()),
-  clearArtistState: () => dispatch(clearArtistState())
+  clearArtistState: () => dispatch(clearArtistState()),
 });
 
 export default connect(mapState, mapDispatch)(StateArtists);

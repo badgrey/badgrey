@@ -9,7 +9,7 @@ export class GenreArtists extends Component {
   state = {
     savedCheck: true,
     search: '',
-    currentPage: 1
+    currentPage: 1,
   };
 
   //if no genre artists fetch data
@@ -54,7 +54,9 @@ export class GenreArtists extends Component {
         this.state.currentPage + 1,
         this.state.search
       );
-      this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage + 1,
+      }));
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
@@ -67,14 +69,16 @@ export class GenreArtists extends Component {
         this.state.currentPage - 1,
         this.state.search
       );
-      this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
+      this.setState((prevState) => ({
+        currentPage: prevState.currentPage - 1,
+      }));
       window.scroll(0, 0);
     } catch (err) {
       console.error(err);
     }
   };
 
-  jumpToPage = async page => {
+  jumpToPage = async (page) => {
     try {
       await this.props.fetchGenreArtists(
         this.props.match.params.genre,
@@ -88,7 +92,7 @@ export class GenreArtists extends Component {
     }
   };
 
-  searchForArtists = async evt => {
+  searchForArtists = async (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
     await this.props.fetchGenreArtists(this.props.match.params.genre, 1, name);
@@ -107,14 +111,14 @@ export class GenreArtists extends Component {
           placeholder={'Name'}
         />
         <div className="genreArtistsContainer">
-          {this.props.genreArtists.map(artist => (
+          {this.props.genreArtists.map((artist) => (
             //map over all artists that belong to chosen genre
             <div key={artist.id}>
               <Link
                 className="genreArtistPic"
-                to={`/discover/${artist.stateAbbrev}/${artist.name
-                  .split(' ')
-                  .join('') + `_${artist.id}`}`}
+                to={`/RapMap/${artist.stateAbbrev}/${
+                  artist.name.split(' ').join('') + `_${artist.id}`
+                }`}
               >
                 <div className="genreArtistName">
                   <div className="genreArtistNameText">{artist.name}</div>
@@ -147,14 +151,14 @@ const mapState = ({ artists, user, savedArtists }) => {
     numArtists: artists.numGenreArtists,
     isLoggedIn: !!user.id,
     user,
-    savedArtists
+    savedArtists,
   };
 };
 
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch) => ({
   fetchGenreArtists: (genre, page, search) =>
     dispatch(fetchGenreArtists(genre, page, search)),
-  fetchSaved: () => dispatch(fetchSavedArtists())
+  fetchSaved: () => dispatch(fetchSavedArtists()),
 });
 
 export default connect(mapState, mapDispatch)(GenreArtists);

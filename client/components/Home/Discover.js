@@ -18,7 +18,7 @@ export class Discover extends Component {
   }
 
   //changes route based on state clicked
-  clickToState = event => {
+  clickToState = (event) => {
     const stateName = event.target.dataset.name;
     if (
       stateName === 'DE' ||
@@ -26,18 +26,18 @@ export class Discover extends Component {
       stateName === 'VA' ||
       stateName === 'DC'
     ) {
-      this.props.history.push('/discover/DMV');
+      this.props.history.push('/RapMap/DMV');
     } else {
-      this.props.history.push(`/discover/${stateName}`);
+      this.props.history.push(`/RapMap/${stateName}`);
     }
   };
 
   viewAllArtists = () => {
-    this.props.history.push('/discover/all');
+    this.props.history.push('/RapMap/all');
   };
 
   viewGlobalArtists = () => {
-    this.props.history.push('/discover/International');
+    this.props.history.push('/RapMap/International');
   };
   render() {
     return (
@@ -85,7 +85,7 @@ const mapState = ({ artists, user, savedArtists, blogs, originalcontent }) => ({
   blogs: blogs.blogs,
   spotlight: blogs.spotlight[0],
   nonSpotlight: blogs.nonSpotlight.slice(0, 4),
-  featuredContent: originalcontent.featuredContent
+  featuredContent: originalcontent.featuredContent,
 });
 
 export default connect(mapState)(Discover);
