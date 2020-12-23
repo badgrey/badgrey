@@ -14,7 +14,7 @@
     "deploy-dev": "script/deploy_dev",
     "lint": "eslint ./ --ignore-path .gitignore",
     "prepush": "npm run lint && npm test",
-    "postinstall": "touch secrets.js",
+    "postinstall": "touch secrets.js & npm run build-client",
     "seed": "node script/seed.js",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run start-server & npm run build-client-watch",
