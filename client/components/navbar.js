@@ -7,7 +7,7 @@ import '../../public/styles/index.scss';
 
 class Navbar extends Component {
   state = {
-    clicked: false,
+    clicked: false
   };
 
   renderDropDown = (evt) => {
@@ -25,7 +25,7 @@ class Navbar extends Component {
         <Link to="/" className="navLogoLink">
           <img
             className="navTextLogo"
-            src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackTextLogo.png"
+            src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWhiteTextLogo.png"
           />
         </Link>
         <div className="navMenuContainer" onClick={this.renderDropDown}>
@@ -93,12 +93,12 @@ class Navbar extends Component {
 const mapState = ({ user }) => {
   return {
     isLoggedIn: !!user.id,
-    isAdmin: user.isAdmin,
+    isAdmin: user.isAdmin
   };
 };
 
 const mapDispatch = (dispatch) => ({
-  handleClick: () => dispatch(logout()),
+  handleClick: () => dispatch(logout())
 });
 
 export default connect(mapState, mapDispatch)(Navbar);
@@ -108,5 +108,5 @@ export default connect(mapState, mapDispatch)(Navbar);
  */
 Navbar.propTypes = {
   // handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };
