@@ -23,7 +23,7 @@ passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) =>
   db.models.user
     .findById(id)
-    .then(user => done(null, user))
+    .then((user) => done(null, user))
     .catch(done)
 );
 
@@ -44,7 +44,7 @@ const createApp = () => {
       secret: process.env.SESSION_SECRET || 'my best friend is Cody',
       store: sessionStore,
       resave: false,
-      saveUninitialized: false
+      saveUninitialized: false,
     })
   );
   app.use(passport.initialize());
@@ -94,11 +94,7 @@ const syncDb = () => db.sync();
 // It will evaluate false when this module is required by another module - for example,
 // if we wanted to require our app in a test spec
 if (require.main === module) {
-  sessionStore
-    .sync()
-    .then(syncDb)
-    .then(createApp)
-    .then(startListening);
+  sessionStore.sync().then(syncDb).then(createApp).then(startListening);
 } else {
   createApp();
 }
