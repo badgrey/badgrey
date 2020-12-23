@@ -11,6 +11,7 @@
     "class-methods-use-this": "off",
     "radix": "off",
     "complexity": "off",
-    "no-confusing-arrow": "off"
+    "no-confusing-arrow": "off",
+    "newline-per-chained-call": "off"
   }
 }
