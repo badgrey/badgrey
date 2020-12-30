@@ -27,8 +27,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  width: 20%;
   cursor: pointer;
+  margin-top: 10px;
 }
 .navLogoLink:hover img {
   opacity: 0.5;
@@ -38,7 +39,7 @@
   width: 100px;
 }
 .navTextLogo {
-  height: 100px;
+  height: 60px;
   width: 160px;
   margin-left: -30px;
   margin-top: 10px;
@@ -95,6 +96,7 @@
 .singleNavOption:hover a {
   color: whitesmoke;
 }
+
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .navbar {
@@ -119,7 +121,7 @@
     margin-right: -0.5em;
   }
   .navTextLogo {
-    height: 85px;
+    height: 55px;
     width: 120px;
     margin-left: 50px;
   }
@@ -141,6 +143,13 @@
   .navMenuContainer {
     margin-right: 0.3em;
   }
+  .navLogoLink {
+    width: 30%;
+  }
+  .navTextLogo {
+    width: 140px;
+    height: 55px;
+  }
 }
 
 /* 15" */
@@ -153,8 +162,8 @@
     width: 160px;
   }
   .navTextLogo {
-    height: 160px;
-    width: 300px;
+    height: 80px;
+    width: 200px;
     margin-left: -45px;
   }
   .navList {
@@ -164,7 +173,7 @@
     font-size: 1.5em;
   }
   .barmenuPic {
-    margin-top: 3em;
+    margin-top: 1em;
   }
   .navOptions {
     margin-top: 15px;
@@ -173,7 +182,11 @@
     margin-right: 1em;
   }
   .navLinksContainer {
-    top: 12%;
+    top: 8%;
+    right: 1.1%;
+  }
+  .navLogoLink {
+    width: 20%;
   }
 }
 
@@ -188,8 +201,8 @@
     width: 160px;
   }
   .navTextLogo {
-    height: 160px;
-    width: 160px;
+    height: 80px;
+    width: 200px;
     margin-left: -45px;
   }
   .navList {
@@ -212,5 +225,8 @@
   }
   .navMenuContainer {
     margin-right: 0;
+  }
+  .navLogoLink {
+    width: 15%;
   }
 }
