@@ -70,7 +70,7 @@
   position: fixed;
   right: 0;
   top: 0;
-  margin-right: 0.8em;
+  margin-right: 1.1em;
 }
 .barmenuPic {
   cursor: pointer;
@@ -118,7 +118,7 @@
     margin-top: 5px;
   }
   .navMenuContainer {
-    margin-right: -0.5em;
+    margin-right: 0;
   }
   .navTextLogo {
     height: 55px;
@@ -140,15 +140,15 @@
     height: 80px;
     width: 80px;
   }
-  .navMenuContainer {
-    margin-right: 0.3em;
-  }
   .navLogoLink {
     width: 30%;
   }
   .navTextLogo {
     width: 140px;
     height: 55px;
+  }
+  .navMenuContainer {
+    margin-right: 0.8em;
   }
 }
 
@@ -224,7 +224,7 @@
     top: 15%;
   }
   .navMenuContainer {
-    margin-right: 0;
+    margin-right: 0.5em;
   }
   .navLogoLink {
     width: 15%;
