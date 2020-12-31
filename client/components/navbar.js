@@ -22,32 +22,30 @@ class Navbar extends Component {
   render() {
     return (
       <>
-        <Link to="/" className="navLogoLink">
+        {/*<Link to="/" className="navLogoLink">
           <img
             className="navTextLogo"
             src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWhiteTextLogo.png"
           />
-        </Link>
-        <div className="navMenuContainer" onClick={this.renderDropDown}>
+    </Link>*/}
+        <div className='navMenuContainer' onClick={this.renderDropDown}>
           <img
-            className="barmenuPic"
-            src={'https://badgrey-other.s3.us-east-2.amazonaws.com/barmenu.png'}
+            className='greyScaleMenuPic'
+            src='https://badgrey-other.s3.us-east-2.amazonaws.com/grey-scale-loading.png'
           />
         </div>
-        <nav className="navLinksContainer">
-          <div className="navLinks">
+        <nav className='navLinksContainer'>
+          <div className='navLinks'>
             {this.state.clicked && (
-              <div className="navOptions">
-                {!this.props.isLoggedIn && (
-                  <div className="singleNavOption">
-                    <a href="https://www.badgrey.shop/">Shop</a>
-                  </div>
-                )}
-                <div className="singleNavOption">
-                  <Link to="/RapMap">Rap Map</Link>
+              <div className='navOptions'>
+                <div className='singleNavOption'>
+                  <a href='https://www.badgrey.shop/'>Shop</a>
                 </div>
-                <div className="singleNavOption">
-                  <Link to="/contact">Contact Us</Link>
+                <div className='singleNavOption'>
+                  <Link to='/RapMap'>Rap Map</Link>
+                </div>
+                <div className='singleNavOption'>
+                  <Link to='/contact'>Contact Us</Link>
                 </div>
                 {/*
                     {this.props.isAdmin && (
@@ -87,9 +85,6 @@ class Navbar extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = ({ user }) => {
   return {
     isLoggedIn: !!user.id,
@@ -103,9 +98,6 @@ const mapDispatch = (dispatch) => ({
 
 export default connect(mapState, mapDispatch)(Navbar);
 
-/**
- * PROP TYPES
- */
 Navbar.propTypes = {
   // handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired

@@ -12,6 +12,7 @@
     "radix": "off",
     "complexity": "off",
     "no-confusing-arrow": "off",
-    "newline-per-chained-call": "off"
+    "newline-per-chained-call": "off",
+    "jsx-quotes": "off"
   }
 }

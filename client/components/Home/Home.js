@@ -14,11 +14,10 @@ const Home = () => {
   // };
 
   return (
-    <div className="homeRoot">
+    <div className='homeRoot'>
       <img
-        className="homeWolfLogo"
-        style={{ width: '80%' }}
-        src="https://badgrey-other.s3.us-east-2.amazonaws.com/grey-scale-loading.png"
+        className='homeTextLogo'
+        src='https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWhiteTextLogo.png'
       />
       {/*<img
           className="homeWolfLogo"
