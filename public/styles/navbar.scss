@@ -17,7 +17,10 @@
 }
 .navLinksContainer {
   position: fixed;
-  right: 1.5%;
+  right: 50%;
+  left: 50%;
+  width: 6em;
+  margin-left: -3em;
   top: 12%;
 }
 .navLogoLink {
@@ -27,8 +30,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  width: 20%;
   cursor: pointer;
+  margin-top: 10px;
 }
 .navLogoLink:hover img {
   opacity: 0.5;
@@ -38,7 +42,7 @@
   width: 100px;
 }
 .navTextLogo {
-  height: 100px;
+  height: 60px;
   width: 160px;
   margin-left: -30px;
   margin-top: 10px;
@@ -65,25 +69,35 @@
   justify-content: space-between;
 }
 .navMenuContainer {
-  width: 6em;
   position: fixed;
-  right: 0;
+  right: 50%;
+  left: 50%;
+  margin-left: -6em;
   top: 0;
-  margin-right: 0.8em;
+}
+.greyScaleMenuPic {
+  cursor: pointer;
+  margin-top: 1em;
+  margin-right: 0.5em;
+  height: 50px;
+  width: 12em;
+}
+.greyScaleMenuPic:hover {
+  opacity: 0.5;
 }
 .barmenuPic {
   cursor: pointer;
   margin-top: 1em;
   margin-right: 0.5em;
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 20em;
   filter: invert(1);
 }
 .barmenuPic:hover {
   opacity: 0.5;
 }
 .navOptions {
-  margin-top: -1px;
+  width: 6em;
   position: relative;
 }
 .singleNavOption {
@@ -95,6 +109,7 @@
 .singleNavOption:hover a {
   color: whitesmoke;
 }
+
 /* Mobile */
 @media only screen and (max-width: 600px) {
   .navbar {
@@ -116,10 +131,10 @@
     margin-top: 5px;
   }
   .navMenuContainer {
-    margin-right: -0.5em;
+    margin-right: 0;
   }
   .navTextLogo {
-    height: 85px;
+    height: 55px;
     width: 120px;
     margin-left: 50px;
   }
@@ -138,8 +153,15 @@
     height: 80px;
     width: 80px;
   }
+  .navLogoLink {
+    width: 30%;
+  }
+  .navTextLogo {
+    width: 140px;
+    height: 55px;
+  }
   .navMenuContainer {
-    margin-right: 0.3em;
+    margin-right: 0.8em;
   }
 }
 
@@ -153,8 +175,8 @@
     width: 160px;
   }
   .navTextLogo {
-    height: 160px;
-    width: 300px;
+    height: 80px;
+    width: 200px;
     margin-left: -45px;
   }
   .navList {
@@ -164,7 +186,7 @@
     font-size: 1.5em;
   }
   .barmenuPic {
-    margin-top: 3em;
+    margin-top: 1em;
   }
   .navOptions {
     margin-top: 15px;
@@ -173,7 +195,11 @@
     margin-right: 1em;
   }
   .navLinksContainer {
-    top: 12%;
+    top: 8%;
+    right: 1.1%;
+  }
+  .navLogoLink {
+    width: 20%;
   }
 }
 
@@ -188,8 +214,8 @@
     width: 160px;
   }
   .navTextLogo {
-    height: 160px;
-    width: 160px;
+    height: 80px;
+    width: 200px;
     margin-left: -45px;
   }
   .navList {
@@ -204,13 +230,16 @@
     width: 140px;
   }
   .navOptions {
-    margin-top: -0.5em;
-    font-size: 1.5em;
+    margin-top: -2.5em;
+    font-size: 1.2em;
   }
   .navLinksContainer {
     top: 15%;
   }
   .navMenuContainer {
-    margin-right: 0;
+    margin-right: 0.5em;
+  }
+  .navLogoLink {
+    width: 15%;
   }
 }

@@ -10,6 +10,11 @@
   width: 10em;
   margin: 30%;
 }
+.homeTextLogo {
+  height: 60px;
+  width: 120px;
+  margin: 30%;
+}
 .homeFeatureBannerContainer {
   display: flex;
   justify-content: center;
@@ -89,6 +94,11 @@
   .homeWolfLogo {
     margin: 60%;
   }
+  .homeTextLogo {
+    margin: 60%;
+    height: 55px;
+    width: 120px;
+  }
 }
 
 /* iPad */
@@ -99,10 +109,20 @@
   .homeWolfLogo {
     margin: 38%;
   }
+  .homeTextLogo {
+    width: 140px;
+    height: 55px;
+    margin: 38%;
+  }
 }
 
 @media only screen and (min-width: 1400px) and(max-width: 1800px) {
   .homeWolfLogo {
+    margin: 20%;
+  }
+  .homeTextLogo {
+    height: 80px;
+    width: 180px;
     margin: 20%;
   }
 }
@@ -110,5 +130,10 @@
 @media only screen and (min-width: 1800px) {
   .homeWolfLogo {
     margin: 18%;
+  }
+  .homeTextLogo {
+    margin: 18%;
+    height: 80px;
+    width: 180px;
   }
 }

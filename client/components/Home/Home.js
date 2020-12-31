@@ -1,33 +1,31 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-class Home extends PureComponent {
-  componentDidMount() {
-    window.onscroll = this.fakeInfinite;
-  }
-  componentWillUnmount() {
-    window.onscroll = null;
-  }
-  fakeInfinite = () => {
-    if (window.pageYOffset + 50 >= document.body.scrollHeight / 2) {
-      window.scrollTo(0, 0);
-    }
-  };
+const Home = () => {
+  // componentDidMount() {
+  //   window.onscroll = this.fakeInfinite;
+  // }
+  // componentWillUnmount() {
+  //   window.onscroll = null;
+  // }
+  // fakeInfinite = () => {
+  //   if (window.pageYOffset + 50 >= document.body.scrollHeight / 2) {
+  //     window.scrollTo(0, 0);
+  //   }
+  // };
 
-  render() {
-    return (
-      <div className="homeRoot">
-        <img
+  return (
+    <div className='homeRoot'>
+      <img
+        className='homeTextLogo'
+        src='https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyWhiteTextLogo.png'
+      />
+      {/*<img
           className="homeWolfLogo"
           src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackWolfLogo.png"
-        />
-        <img
-          className="homeWolfLogo"
-          src="https://badgrey-other.s3.us-east-2.amazonaws.com/badGreyBlackWolfLogo.png"
-        />
-      </div>
-    );
-  }
-}
+        />*/}
+    </div>
+  );
+};
 
 export default Home;
 
