@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
@@ -38,9 +37,9 @@ class Navbar extends Component {
           <div className='navLinks'>
             {this.state.clicked && (
               <div className='navOptions'>
-                <div className='singleNavOption'>
+                {/*<div className='singleNavOption'>
                   <a href='https://www.badgrey.shop/'>Shop</a>
-                </div>
+                </div>*/}
                 <div className='singleNavOption'>
                   <Link to='/RapMap'>Rap Map</Link>
                 </div>
@@ -97,8 +96,3 @@ const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(Navbar);
-
-Navbar.propTypes = {
-  // handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
-};
